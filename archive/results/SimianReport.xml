@@ -1,0 +1,794 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="simian.xsl" type="text/xsl"?>
+<!--
+Similarity Analyser 2.2.24 - http://www.redhillconsulting.com.au/products/simian/index.html
+Copyright (c) 2003-08 RedHill Consulting Pty. Ltd.  All rights reserved.
+Simian is not free unless used solely for non-commercial or evaluation purposes.
+-->
+<simian version="2.2.24">
+    <check ignoreCharacterCase="true" ignoreCurlyBraces="true" ignoreIdentifierCase="true" ignoreModifiers="true" ignoreStringCase="true" threshold="3">
+        <set lineCount="3">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\NegativNettoKapitalIndkomstNedslagBeregnerTester.cs" startLineNumber="171" endLineNumber="175"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\NegativNettoKapitalIndkomstNedslagBeregnerTester.cs" startLineNumber="150" endLineNumber="154"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\NegativNettoKapitalIndkomstNedslagBeregnerTester.cs" startLineNumber="129" endLineNumber="133"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\NegativNettoKapitalIndkomstNedslagBeregnerTester.cs" startLineNumber="108" endLineNumber="112"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\NegativNettoKapitalIndkomstNedslagBeregnerTester.cs" startLineNumber="60" endLineNumber="64"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\NegativNettoKapitalIndkomstNedslagBeregnerTester.cs" startLineNumber="44" endLineNumber="48"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\NegativNettoKapitalIndkomstNedslagBeregnerTester.cs" startLineNumber="28" endLineNumber="32"/>
+        </set>
+        <set lineCount="3">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="281" endLineNumber="283"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="218" endLineNumber="220"/>
+        </set>
+        <set lineCount="3">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="290" endLineNumber="293"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="227" endLineNumber="230"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="169" endLineNumber="172"/>
+        </set>
+        <set lineCount="3">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\NegativNettoKapitalIndkomstNedslagBeregnerTester.cs" startLineNumber="204" endLineNumber="207"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\NegativNettoKapitalIndkomstNedslagBeregnerTester.cs" startLineNumber="89" endLineNumber="92"/>
+        </set>
+        <set lineCount="3">
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\Topskat.cs" startLineNumber="133" endLineNumber="135"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\Topskat.cs" startLineNumber="97" endLineNumber="99"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\Topskat.cs" startLineNumber="84" endLineNumber="86"/>
+        </set>
+        <set lineCount="3">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1752" endLineNumber="1755"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1691" endLineNumber="1694"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1630" endLineNumber="1633"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1568" endLineNumber="1571"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1507" endLineNumber="1510"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1449" endLineNumber="1452"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1397" endLineNumber="1400"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="598" endLineNumber="601"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="529" endLineNumber="532"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="468" endLineNumber="471"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="411" endLineNumber="414"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="304" endLineNumber="307"/>
+        </set>
+        <set lineCount="3">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Properties\AssemblyInfo.cs" startLineNumber="9" endLineNumber="11"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\Properties\AssemblyInfo.cs" startLineNumber="9" endLineNumber="11"/>
+        </set>
+        <set lineCount="3">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\NegativNettoKapitalIndkomstNedslagBeregnerTester.cs" startLineNumber="202" endLineNumber="205"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\NegativNettoKapitalIndkomstNedslagBeregnerTester.cs" startLineNumber="185" endLineNumber="188"/>
+        </set>
+        <set lineCount="3">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1636" endLineNumber="1638"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1513" endLineNumber="1515"/>
+        </set>
+        <set lineCount="3">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\DefaultSkattelovRegistryTester.cs" startLineNumber="416" endLineNumber="418"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\DefaultSkattelovRegistryTester.cs" startLineNumber="379" endLineNumber="381"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\DefaultSkattelovRegistryTester.cs" startLineNumber="342" endLineNumber="344"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\DefaultSkattelovRegistryTester.cs" startLineNumber="305" endLineNumber="307"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\DefaultSkattelovRegistryTester.cs" startLineNumber="268" endLineNumber="270"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\DefaultSkattelovRegistryTester.cs" startLineNumber="231" endLineNumber="233"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\DefaultSkattelovRegistryTester.cs" startLineNumber="194" endLineNumber="196"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\DefaultSkattelovRegistryTester.cs" startLineNumber="157" endLineNumber="159"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\DefaultSkattelovRegistryTester.cs" startLineNumber="120" endLineNumber="122"/>
+        </set>
+        <set lineCount="3">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1936" endLineNumber="1940"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1784" endLineNumber="1788"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1726" endLineNumber="1730"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1481" endLineNumber="1485"/>
+        </set>
+        <set lineCount="3">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\TopskatBeregnerTester.cs" startLineNumber="145" endLineNumber="149"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\TopskatBeregnerTester.cs" startLineNumber="63" endLineNumber="68"/>
+        </set>
+        <set lineCount="3">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\PersonfradragBeregnerTester.cs" startLineNumber="159" endLineNumber="162"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\KommuneskatBeregnerTester.cs" startLineNumber="19" endLineNumber="22"/>
+        </set>
+        <set lineCount="3">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\NegativNettoKapitalIndkomstNedslagBeregnerTester.cs" startLineNumber="100" endLineNumber="103"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\NegativNettoKapitalIndkomstNedslagBeregnerTester.cs" startLineNumber="24" endLineNumber="27"/>
+        </set>
+        <set lineCount="3">
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\SkatterAfSkattepligtigIndkomst.cs" startLineNumber="23" endLineNumber="25"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\Skatter.cs" startLineNumber="23" endLineNumber="25"/>
+        </set>
+        <set lineCount="3">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="764" endLineNumber="767"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="671" endLineNumber="674"/>
+        </set>
+        <set lineCount="3">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1964" endLineNumber="1967"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1886" endLineNumber="1889"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1810" endLineNumber="1813"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1304" endLineNumber="1307"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1211" endLineNumber="1214"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1122" endLineNumber="1125"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1029" endLineNumber="1032"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="936" endLineNumber="939"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="853" endLineNumber="856"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="756" endLineNumber="759"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="664" endLineNumber="667"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="244" endLineNumber="247"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="181" endLineNumber="184"/>
+        </set>
+        <set lineCount="3">
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\ModregnUnderskudResult.cs" startLineNumber="83" endLineNumber="92"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\ModregnUnderskudResult.cs" startLineNumber="29" endLineNumber="37"/>
+        </set>
+        <set lineCount="3">
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\Topskat.cs" startLineNumber="123" endLineNumber="125"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\Topskat.cs" startLineNumber="113" endLineNumber="115"/>
+        </set>
+        <set lineCount="3">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1343" endLineNumber="1346"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1246" endLineNumber="1249"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1158" endLineNumber="1161"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1063" endLineNumber="1066"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="972" endLineNumber="975"/>
+        </set>
+        <set lineCount="3">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1776" endLineNumber="1779"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1718" endLineNumber="1721"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1657" endLineNumber="1660"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1534" endLineNumber="1537"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1473" endLineNumber="1476"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="686" endLineNumber="690"/>
+        </set>
+        <set lineCount="3">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\PersonfradragBeregnerTester.cs" startLineNumber="110" endLineNumber="114"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\PersonfradragBeregnerTester.cs" startLineNumber="86" endLineNumber="90"/>
+        </set>
+        <set lineCount="3">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1907" endLineNumber="1911"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1830" endLineNumber="1834"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1765" endLineNumber="1769"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1707" endLineNumber="1711"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1646" endLineNumber="1650"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1523" endLineNumber="1527"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1463" endLineNumber="1467"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1414" endLineNumber="1418"/>
+        </set>
+        <set lineCount="3">
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\KompensationBeregner.cs" startLineNumber="130" endLineNumber="132"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\GroenCheckBeregner.cs" startLineNumber="34" endLineNumber="36"/>
+        </set>
+        <set lineCount="3">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1224" endLineNumber="1229"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1041" endLineNumber="1046"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="950" endLineNumber="955"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="866" endLineNumber="871"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="770" endLineNumber="775"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="676" endLineNumber="681"/>
+        </set>
+        <set lineCount="3">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\AccessorTester.cs" startLineNumber="108" endLineNumber="110"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\AccessorTester.cs" startLineNumber="99" endLineNumber="101"/>
+        </set>
+        <set lineCount="3">
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\Topskat.cs" startLineNumber="150" endLineNumber="152"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\Topskat.cs" startLineNumber="132" endLineNumber="134"/>
+        </set>
+        <set lineCount="3">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="264" endLineNumber="268"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="201" endLineNumber="205"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="153" endLineNumber="157"/>
+        </set>
+        <set lineCount="3">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\GroenCheckBeregnerTester.cs" startLineNumber="117" endLineNumber="120"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\GroenCheckBeregnerTester.cs" startLineNumber="104" endLineNumber="107"/>
+        </set>
+        <set lineCount="3">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1774" endLineNumber="1777"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1716" endLineNumber="1719"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1655" endLineNumber="1658"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1592" endLineNumber="1595"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1532" endLineNumber="1535"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1471" endLineNumber="1474"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1421" endLineNumber="1424"/>
+        </set>
+        <set lineCount="3">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1670" endLineNumber="1673"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1609" endLineNumber="1612"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1547" endLineNumber="1550"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="339" endLineNumber="343"/>
+        </set>
+        <set lineCount="3">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\NegativNettoKapitalIndkomstNedslagBeregnerTester.cs" startLineNumber="87" endLineNumber="90"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\NegativNettoKapitalIndkomstNedslagBeregnerTester.cs" startLineNumber="73" endLineNumber="76"/>
+        </set>
+        <set lineCount="3">
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\PersonligIndkomstUnderskudBeregner.cs" startLineNumber="160" endLineNumber="162"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\PersonligIndkomstUnderskudBeregner.cs" startLineNumber="97" endLineNumber="99"/>
+        </set>
+        <set lineCount="3">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\TopskatBeregnerTester.cs" startLineNumber="138" endLineNumber="140"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\TopskatBeregnerTester.cs" startLineNumber="103" endLineNumber="105"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="189" endLineNumber="191"/>
+        </set>
+        <set lineCount="3">
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\PersonFradragBeregner.cs" startLineNumber="80" endLineNumber="83"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\PersonFradragBeregner.cs" startLineNumber="70" endLineNumber="73"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\PersonFradragBeregner.cs" startLineNumber="58" endLineNumber="63"/>
+        </set>
+        <set lineCount="3">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\TopskatBeregnerTester.cs" startLineNumber="120" endLineNumber="125"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\TopskatBeregnerTester.cs" startLineNumber="87" endLineNumber="92"/>
+        </set>
+        <set lineCount="3">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1925" endLineNumber="1927"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1055" endLineNumber="1057"/>
+        </set>
+        <set lineCount="3">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1812" endLineNumber="1815"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1399" endLineNumber="1402"/>
+        </set>
+        <set lineCount="3">
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\PersonFradragBeregner.cs" startLineNumber="239" endLineNumber="241"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\KompensationBeregner.cs" startLineNumber="195" endLineNumber="197"/>
+        </set>
+        <set lineCount="3">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\AccessorTester.cs" startLineNumber="49" endLineNumber="53"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\AccessorTester.cs" startLineNumber="16" endLineNumber="20"/>
+        </set>
+        <set lineCount="3">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1124" endLineNumber="1127"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="531" endLineNumber="534"/>
+        </set>
+        <set lineCount="3">
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\Extensions\ValueTupleInterfaceExtensions.cs" startLineNumber="29" endLineNumber="33"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\Extensions\ValueTupleInterfaceExtensions.cs" startLineNumber="17" endLineNumber="21"/>
+        </set>
+        <set lineCount="3">
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\SkatterAfPersonligIndkomst.cs" startLineNumber="36" endLineNumber="40"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\Skatter.cs" startLineNumber="51" endLineNumber="55"/>
+        </set>
+        <set lineCount="3">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="974" endLineNumber="976"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="882" endLineNumber="884"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="789" endLineNumber="791"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="693" endLineNumber="695"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="625" endLineNumber="627"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="329" endLineNumber="331"/>
+        </set>
+        <set lineCount="3">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\ValueTupleTester.cs" startLineNumber="209" endLineNumber="213"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\ValueTupleTester.cs" startLineNumber="175" endLineNumber="179"/>
+        </set>
+        <set lineCount="3">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\SkatBeregner.cs" startLineNumber="15" endLineNumber="17"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\KompensationBeregner.cs" startLineNumber="227" endLineNumber="229"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\KompensationBeregner.cs" startLineNumber="179" endLineNumber="181"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\KompensationBeregner.cs" startLineNumber="97" endLineNumber="99"/>
+        </set>
+        <set lineCount="3">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="537" endLineNumber="540"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="418" endLineNumber="421"/>
+        </set>
+        <set lineCount="3">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="2032" endLineNumber="2035"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1952" endLineNumber="1955"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1874" endLineNumber="1877"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1798" endLineNumber="1800"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1740" endLineNumber="1742"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1679" endLineNumber="1681"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1618" endLineNumber="1620"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1556" endLineNumber="1558"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1495" endLineNumber="1497"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1437" endLineNumber="1439"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1386" endLineNumber="1388"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1293" endLineNumber="1295"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1200" endLineNumber="1202"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1111" endLineNumber="1113"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1018" endLineNumber="1020"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="925" endLineNumber="927"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="834" endLineNumber="836"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="737" endLineNumber="739"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="652" endLineNumber="654"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="586" endLineNumber="588"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="515" endLineNumber="517"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="455" endLineNumber="457"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="352" endLineNumber="354"/>
+        </set>
+        <set lineCount="3">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1239" endLineNumber="1241"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1151" endLineNumber="1153"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1056" endLineNumber="1058"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="965" endLineNumber="967"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="785" endLineNumber="787"/>
+        </set>
+        <set lineCount="4">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1041" endLineNumber="1047"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1224" endLineNumber="1230"/>
+        </set>
+        <set lineCount="4">
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\KompensationBeregner.cs" startLineNumber="96" endLineNumber="99"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\KompensationBeregner.cs" startLineNumber="226" endLineNumber="229"/>
+        </set>
+        <set lineCount="4">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1081" endLineNumber="1084"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1266" endLineNumber="1269"/>
+        </set>
+        <set lineCount="4">
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\Skatter.cs" startLineNumber="174" endLineNumber="177"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\SkatterAfPersonligIndkomst.cs" startLineNumber="126" endLineNumber="129"/>
+        </set>
+        <set lineCount="4">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\SkatteModregnerTester.cs" startLineNumber="12" endLineNumber="16"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\SkatteModregnerTester.cs" startLineNumber="35" endLineNumber="39"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\SkatteModregnerTester.cs" startLineNumber="58" endLineNumber="62"/>
+        </set>
+        <set lineCount="4">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1844" endLineNumber="1848"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="780" endLineNumber="785"/>
+        </set>
+        <set lineCount="4">
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\PersonFradragBeregner.cs" startLineNumber="104" endLineNumber="107"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\PersonFradragBeregner.cs" startLineNumber="120" endLineNumber="123"/>
+        </set>
+        <set lineCount="4">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\GroenCheckBeregnerTester.cs" startLineNumber="47" endLineNumber="50"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\GroenCheckBeregnerTester.cs" startLineNumber="65" endLineNumber="68"/>
+        </set>
+        <set lineCount="4">
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\Skatter.cs" startLineNumber="165" endLineNumber="171"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\SkatterAfSkattepligtigIndkomst.cs" startLineNumber="73" endLineNumber="79"/>
+        </set>
+        <set lineCount="4">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1530" endLineNumber="1535"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1590" endLineNumber="1595"/>
+        </set>
+        <set lineCount="4">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\PersonfradragBeregnerTester.cs" startLineNumber="102" endLineNumber="108"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\PersonfradragBeregnerTester.cs" startLineNumber="162" endLineNumber="168"/>
+        </set>
+        <set lineCount="4">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\PersonfradragBeregnerTester.cs" startLineNumber="40" endLineNumber="44"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\PersonfradragBeregnerTester.cs" startLineNumber="62" endLineNumber="66"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\PersonfradragBeregnerTester.cs" startLineNumber="97" endLineNumber="101"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\PersonfradragBeregnerTester.cs" startLineNumber="121" endLineNumber="125"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\PersonfradragBeregnerTester.cs" startLineNumber="153" endLineNumber="157"/>
+        </set>
+        <set lineCount="4">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\DefaultSkattelovRegistryTester.cs" startLineNumber="49" endLineNumber="52"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\DefaultSkattelovRegistryTester.cs" startLineNumber="86" endLineNumber="89"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\DefaultSkattelovRegistryTester.cs" startLineNumber="123" endLineNumber="126"/>
+        </set>
+        <set lineCount="4">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="304" endLineNumber="309"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="411" endLineNumber="416"/>
+        </set>
+        <set lineCount="4">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="690" endLineNumber="695"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="880" endLineNumber="884"/>
+        </set>
+        <set lineCount="4">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="180" endLineNumber="184"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="243" endLineNumber="247"/>
+        </set>
+        <set lineCount="4">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="352" endLineNumber="356"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="737" endLineNumber="741"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="834" endLineNumber="838"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1018" endLineNumber="1022"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1952" endLineNumber="1957"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1200" endLineNumber="1204"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1386" endLineNumber="1390"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1293" endLineNumber="1297"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="925" endLineNumber="929"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1111" endLineNumber="1115"/>
+        </set>
+        <set lineCount="4">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="190" endLineNumber="194"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="253" endLineNumber="257"/>
+        </set>
+        <set lineCount="4">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="329" endLineNumber="334"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="789" endLineNumber="794"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="974" endLineNumber="979"/>
+        </set>
+        <set lineCount="4">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1532" endLineNumber="1537"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1471" endLineNumber="1476"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1655" endLineNumber="1660"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1716" endLineNumber="1721"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1774" endLineNumber="1779"/>
+        </set>
+        <set lineCount="4">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1184" endLineNumber="1187"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="715" endLineNumber="718"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="812" endLineNumber="815"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="903" endLineNumber="906"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="996" endLineNumber="999"/>
+        </set>
+        <set lineCount="4">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\TopskatBeregnerTester.cs" startLineNumber="81" endLineNumber="86"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\TopskatBeregnerTester.cs" startLineNumber="110" endLineNumber="115"/>
+        </set>
+        <set lineCount="4">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="645" endLineNumber="648"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1287" endLineNumber="1290"/>
+        </set>
+        <set lineCount="4">
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\SkattepligtigIndkomstUnderskudBeregner.cs" startLineNumber="111" endLineNumber="114"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\SkattepligtigIndkomstUnderskudBeregner.cs" startLineNumber="177" endLineNumber="180"/>
+        </set>
+        <set lineCount="4">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1089" endLineNumber="1094"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1187" endLineNumber="1192"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1275" endLineNumber="1280"/>
+        </set>
+        <set lineCount="4">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1839" endLineNumber="1845"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1917" endLineNumber="1923"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1997" endLineNumber="2003"/>
+        </set>
+        <set lineCount="4">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\NegativNettoKapitalIndkomstNedslagBeregnerTester.cs" startLineNumber="171" endLineNumber="177"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\NegativNettoKapitalIndkomstNedslagBeregnerTester.cs" startLineNumber="60" endLineNumber="66"/>
+        </set>
+        <set lineCount="4">
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\GroenCheckBeregner.cs" startLineNumber="27" endLineNumber="35"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\KompensationBeregner.cs" startLineNumber="89" endLineNumber="97"/>
+        </set>
+        <set lineCount="4">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1357" endLineNumber="1360"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="801" endLineNumber="804"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="885" endLineNumber="888"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1172" endLineNumber="1175"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1260" endLineNumber="1263"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="705" endLineNumber="708"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="986" endLineNumber="989"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1076" endLineNumber="1079"/>
+        </set>
+        <set lineCount="4">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1523" endLineNumber="1528"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1646" endLineNumber="1651"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1463" endLineNumber="1468"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1707" endLineNumber="1712"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1765" endLineNumber="1770"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1907" endLineNumber="1912"/>
+        </set>
+        <set lineCount="4">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="675" endLineNumber="681"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="769" endLineNumber="775"/>
+        </set>
+        <set lineCount="4">
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\Properties\AssemblyInfo.cs" startLineNumber="13" endLineNumber="20"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Properties\AssemblyInfo.cs" startLineNumber="13" endLineNumber="20"/>
+        </set>
+        <set lineCount="4">
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\Topskat.cs" startLineNumber="84" endLineNumber="89"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\Topskat.cs" startLineNumber="97" endLineNumber="102"/>
+        </set>
+        <set lineCount="4">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="865" endLineNumber="871"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1040" endLineNumber="1046"/>
+        </set>
+        <set lineCount="4">
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\AktieindkomstSkat.cs" startLineNumber="64" endLineNumber="72"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\AktieindkomstSkat.cs" startLineNumber="89" endLineNumber="97"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\AktieindkomstSkat.cs" startLineNumber="117" endLineNumber="125"/>
+        </set>
+        <set lineCount="4">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1435" endLineNumber="1439"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1554" endLineNumber="1558"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1616" endLineNumber="1620"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1677" endLineNumber="1681"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1872" endLineNumber="1877"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1950" endLineNumber="1955"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="2030" endLineNumber="2035"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1493" endLineNumber="1497"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1738" endLineNumber="1742"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1796" endLineNumber="1800"/>
+        </set>
+        <set lineCount="4">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\PersonfradragBeregnerTester.cs" startLineNumber="138" endLineNumber="141"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\PersonfradragBeregnerTester.cs" startLineNumber="168" endLineNumber="171"/>
+        </set>
+        <set lineCount="5">
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\SkatterAfPersonligIndkomst.cs" startLineNumber="160" endLineNumber="164"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\Skatter.cs" startLineNumber="217" endLineNumber="221"/>
+        </set>
+        <set lineCount="5">
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\SkatterAfPersonligIndkomst.cs" startLineNumber="148" endLineNumber="152"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\Skatter.cs" startLineNumber="202" endLineNumber="206"/>
+        </set>
+        <set lineCount="5">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="546" endLineNumber="552"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="426" endLineNumber="432"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="321" endLineNumber="327"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1423" endLineNumber="1428"/>
+        </set>
+        <set lineCount="5">
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\PersonFradragBeregner.cs" startLineNumber="85" endLineNumber="89"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\PersonFradragBeregner.cs" startLineNumber="75" endLineNumber="79"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\PersonFradragBeregner.cs" startLineNumber="52" endLineNumber="56"/>
+        </set>
+        <set lineCount="5">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1691" endLineNumber="1697"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1568" endLineNumber="1574"/>
+        </set>
+        <set lineCount="5">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="994" endLineNumber="999"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="902" endLineNumber="906"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="811" endLineNumber="815"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="713" endLineNumber="718"/>
+        </set>
+        <set lineCount="5">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1765" endLineNumber="1771"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1707" endLineNumber="1713"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1646" endLineNumber="1652"/>
+        </set>
+        <set lineCount="5">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1259" endLineNumber="1263"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1171" endLineNumber="1175"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1356" endLineNumber="1360"/>
+        </set>
+        <set lineCount="5">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1640" endLineNumber="1647"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1577" endLineNumber="1584"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1517" endLineNumber="1524"/>
+        </set>
+        <set lineCount="5">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1074" endLineNumber="1079"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="984" endLineNumber="989"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="703" endLineNumber="708"/>
+        </set>
+        <set lineCount="5">
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\SkatterAfPersonligIndkomst.cs" startLineNumber="136" endLineNumber="140"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\Skatter.cs" startLineNumber="187" endLineNumber="191"/>
+        </set>
+        <set lineCount="5">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="876" endLineNumber="883"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="380" endLineNumber="387"/>
+        </set>
+        <set lineCount="5">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\NegativNettoKapitalIndkomstNedslagBeregnerTester.cs" startLineNumber="187" endLineNumber="192"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\NegativNettoKapitalIndkomstNedslagBeregnerTester.cs" startLineNumber="75" endLineNumber="80"/>
+        </set>
+        <set lineCount="5">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\DefaultSkattelovRegistryTester.cs" startLineNumber="127" endLineNumber="133"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\DefaultSkattelovRegistryTester.cs" startLineNumber="90" endLineNumber="96"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\DefaultSkattelovRegistryTester.cs" startLineNumber="423" endLineNumber="429"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\DefaultSkattelovRegistryTester.cs" startLineNumber="386" endLineNumber="392"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\DefaultSkattelovRegistryTester.cs" startLineNumber="349" endLineNumber="355"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\DefaultSkattelovRegistryTester.cs" startLineNumber="312" endLineNumber="318"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\DefaultSkattelovRegistryTester.cs" startLineNumber="275" endLineNumber="281"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\DefaultSkattelovRegistryTester.cs" startLineNumber="238" endLineNumber="244"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\DefaultSkattelovRegistryTester.cs" startLineNumber="201" endLineNumber="207"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\DefaultSkattelovRegistryTester.cs" startLineNumber="164" endLineNumber="170"/>
+        </set>
+        <set lineCount="5">
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\SkatterAfPersonligIndkomst.cs" startLineNumber="29" endLineNumber="33"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\Skatter.cs" startLineNumber="26" endLineNumber="30"/>
+        </set>
+        <set lineCount="5">
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\SkatterAfPersonligIndkomst.cs" startLineNumber="57" endLineNumber="80"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\Skatter.cs" startLineNumber="77" endLineNumber="100"/>
+        </set>
+        <set lineCount="6">
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\PersonligeBeloeb.cs" startLineNumber="141" endLineNumber="151"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\FakePersonligeBeloeb.cs" startLineNumber="61" endLineNumber="68"/>
+        </set>
+        <set lineCount="6">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1169" endLineNumber="1175"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1257" endLineNumber="1263"/>
+        </set>
+        <set lineCount="6">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="26" endLineNumber="32"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="48" endLineNumber="54"/>
+        </set>
+        <set lineCount="6">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\KirkeskatBeregnerTester.cs" startLineNumber="8" endLineNumber="16"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\KommuneskatBeregnerTester.cs" startLineNumber="8" endLineNumber="16"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\SundhedsbidragBeregnerTester.cs" startLineNumber="16" endLineNumber="24"/>
+        </set>
+        <set lineCount="6">
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\Skatter.cs" startLineNumber="150" endLineNumber="158"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\SkatterAfPersonligIndkomst.cs" startLineNumber="105" endLineNumber="113"/>
+        </set>
+        <set lineCount="6">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="321" endLineNumber="329"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="426" endLineNumber="434"/>
+        </set>
+        <set lineCount="6">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\PersonfradragBeregnerTester.cs" startLineNumber="38" endLineNumber="45"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\PersonfradragBeregnerTester.cs" startLineNumber="60" endLineNumber="67"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\PersonfradragBeregnerTester.cs" startLineNumber="95" endLineNumber="102"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\PersonfradragBeregnerTester.cs" startLineNumber="119" endLineNumber="126"/>
+        </set>
+        <set lineCount="6">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\AccessorTester.cs" startLineNumber="28" endLineNumber="35"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\AccessorTester.cs" startLineNumber="61" endLineNumber="68"/>
+        </set>
+        <set lineCount="6">
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\PersonligeBeloeb.cs" startLineNumber="117" endLineNumber="124"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\FakePersonligeBeloeb.cs" startLineNumber="43" endLineNumber="50"/>
+        </set>
+        <set lineCount="6">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1187" endLineNumber="1195"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1275" endLineNumber="1283"/>
+        </set>
+        <set lineCount="6">
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\PersonligeBeloeb.cs" startLineNumber="173" endLineNumber="189"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\FakePersonligeBeloeb.cs" startLineNumber="87" endLineNumber="94"/>
+        </set>
+        <set lineCount="6">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1061" endLineNumber="1069"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1156" endLineNumber="1164"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1244" endLineNumber="1252"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1341" endLineNumber="1349"/>
+        </set>
+        <set lineCount="6">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1554" endLineNumber="1561"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1616" endLineNumber="1623"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1677" endLineNumber="1684"/>
+        </set>
+        <set lineCount="6">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1093" endLineNumber="1100"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="817" endLineNumber="824"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="908" endLineNumber="915"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1001" endLineNumber="1008"/>
+        </set>
+        <set lineCount="6">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\NegativNettoKapitalIndkomstNedslagBeregnerTester.cs" startLineNumber="104" endLineNumber="112"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\NegativNettoKapitalIndkomstNedslagBeregnerTester.cs" startLineNumber="125" endLineNumber="133"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\NegativNettoKapitalIndkomstNedslagBeregnerTester.cs" startLineNumber="146" endLineNumber="154"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\NegativNettoKapitalIndkomstNedslagBeregnerTester.cs" startLineNumber="167" endLineNumber="175"/>
+        </set>
+        <set lineCount="6">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\NegativNettoKapitalIndkomstNedslagBeregnerTester.cs" startLineNumber="105" endLineNumber="114"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\NegativNettoKapitalIndkomstNedslagBeregnerTester.cs" startLineNumber="126" endLineNumber="135"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\NegativNettoKapitalIndkomstNedslagBeregnerTester.cs" startLineNumber="25" endLineNumber="34"/>
+        </set>
+        <set lineCount="6">
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\PersonligeBeloeb.cs" startLineNumber="245" endLineNumber="255"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\FakePersonligeBeloeb.cs" startLineNumber="104" endLineNumber="111"/>
+        </set>
+        <set lineCount="6">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\TopskatBeregnerTester.cs" startLineNumber="56" endLineNumber="63"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\TopskatBeregnerTester.cs" startLineNumber="74" endLineNumber="81"/>
+        </set>
+        <set lineCount="6">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1293" endLineNumber="1301"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1952" endLineNumber="1961"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="925" endLineNumber="933"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1111" endLineNumber="1119"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1018" endLineNumber="1026"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1386" endLineNumber="1394"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1200" endLineNumber="1208"/>
+        </set>
+        <set lineCount="6">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\DefaultSkattelovRegistryTester.cs" startLineNumber="138" endLineNumber="143"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\DefaultSkattelovRegistryTester.cs" startLineNumber="175" endLineNumber="180"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\DefaultSkattelovRegistryTester.cs" startLineNumber="212" endLineNumber="217"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\DefaultSkattelovRegistryTester.cs" startLineNumber="249" endLineNumber="254"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\DefaultSkattelovRegistryTester.cs" startLineNumber="286" endLineNumber="291"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\DefaultSkattelovRegistryTester.cs" startLineNumber="323" endLineNumber="328"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\DefaultSkattelovRegistryTester.cs" startLineNumber="360" endLineNumber="365"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\DefaultSkattelovRegistryTester.cs" startLineNumber="397" endLineNumber="402"/>
+        </set>
+        <set lineCount="7">
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\PersonFradragBeregner.cs" startLineNumber="54" endLineNumber="63"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\PersonFradragBeregner.cs" startLineNumber="66" endLineNumber="73"/>
+        </set>
+        <set lineCount="7">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\PersonfradragBeregnerTester.cs" startLineNumber="95" endLineNumber="104"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\PersonfradragBeregnerTester.cs" startLineNumber="60" endLineNumber="69"/>
+        </set>
+        <set lineCount="7">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="652" endLineNumber="661"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="586" endLineNumber="595"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="455" endLineNumber="465"/>
+        </set>
+        <set lineCount="7">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1640" endLineNumber="1651"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1517" endLineNumber="1528"/>
+        </set>
+        <set lineCount="7">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\FakePersonligeBeloeb.cs" startLineNumber="5" endLineNumber="13"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\PersonligeBeloeb.cs" startLineNumber="83" endLineNumber="91"/>
+        </set>
+        <set lineCount="7">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1198" endLineNumber="1208"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1384" endLineNumber="1394"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1291" endLineNumber="1301"/>
+        </set>
+        <set lineCount="8">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\KirkeskatBeregnerTester.cs" startLineNumber="8" endLineNumber="19"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\KommuneskatBeregnerTester.cs" startLineNumber="8" endLineNumber="19"/>
+        </set>
+        <set lineCount="8">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\DefaultSkattelovRegistryTester.cs" startLineNumber="75" endLineNumber="82"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\DefaultSkattelovRegistryTester.cs" startLineNumber="112" endLineNumber="119"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\DefaultSkattelovRegistryTester.cs" startLineNumber="38" endLineNumber="45"/>
+        </set>
+        <set lineCount="9">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="834" endLineNumber="844"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="737" endLineNumber="747"/>
+        </set>
+        <set lineCount="9">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\NegativNettoKapitalIndkomstNedslagBeregnerTester.cs" startLineNumber="125" endLineNumber="139"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\NegativNettoKapitalIndkomstNedslagBeregnerTester.cs" startLineNumber="104" endLineNumber="118"/>
+        </set>
+        <set lineCount="9">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1791" endLineNumber="1803"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1733" endLineNumber="1745"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1488" endLineNumber="1500"/>
+        </set>
+        <set lineCount="9">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1244" endLineNumber="1255"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1061" endLineNumber="1072"/>
+        </set>
+        <set lineCount="9">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="820" endLineNumber="830"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="723" endLineNumber="733"/>
+        </set>
+        <set lineCount="9">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="290" endLineNumber="301"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="227" endLineNumber="238"/>
+        </set>
+        <set lineCount="9">
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\NegativNettoKapitalIndkomstNedslagsberegner.cs" startLineNumber="99" endLineNumber="108"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\KompensationBeregner.cs" startLineNumber="236" endLineNumber="245"/>
+        </set>
+        <set lineCount="10">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\DefaultSkattelovRegistryTester.cs" startLineNumber="85" endLineNumber="96"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\DefaultSkattelovRegistryTester.cs" startLineNumber="122" endLineNumber="133"/>
+        </set>
+        <set lineCount="10">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="920" endLineNumber="933"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1106" endLineNumber="1119"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1013" endLineNumber="1026"/>
+        </set>
+        <set lineCount="10">
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\Skatter.cs" startLineNumber="134" endLineNumber="148"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\SkatterAfSkattepligtigIndkomst.cs" startLineNumber="47" endLineNumber="61"/>
+        </set>
+        <set lineCount="10">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\TopskatBeregnerTester.cs" startLineNumber="98" endLineNumber="110"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\TopskatBeregnerTester.cs" startLineNumber="133" endLineNumber="145"/>
+        </set>
+        <set lineCount="11">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1791" endLineNumber="1807"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1733" endLineNumber="1749"/>
+        </set>
+        <set lineCount="11">
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\SkatterAfPersonligIndkomst.cs" startLineNumber="85" endLineNumber="96"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\Skatter.cs" startLineNumber="121" endLineNumber="132"/>
+        </set>
+        <set lineCount="11">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="994" endLineNumber="1008"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="902" endLineNumber="915"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="811" endLineNumber="824"/>
+        </set>
+        <set lineCount="12">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="918" endLineNumber="933"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1104" endLineNumber="1119"/>
+        </set>
+        <set lineCount="13">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1189" endLineNumber="1208"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\Eksempler.cs" startLineNumber="1374" endLineNumber="1394"/>
+        </set>
+        <set lineCount="14">
+            <block sourceFile="C:\Dev\Projects\skat\src\app\Maxfire.Skat\PersonligeBeloeb.cs" startLineNumber="93" endLineNumber="111"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\FakePersonligeBeloeb.cs" startLineNumber="15" endLineNumber="33"/>
+        </set>
+        <set lineCount="15">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\DefaultSkattelovRegistryTester.cs" startLineNumber="405" endLineNumber="419"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\DefaultSkattelovRegistryTester.cs" startLineNumber="368" endLineNumber="382"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\DefaultSkattelovRegistryTester.cs" startLineNumber="331" endLineNumber="345"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\DefaultSkattelovRegistryTester.cs" startLineNumber="294" endLineNumber="308"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\DefaultSkattelovRegistryTester.cs" startLineNumber="257" endLineNumber="271"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\DefaultSkattelovRegistryTester.cs" startLineNumber="220" endLineNumber="234"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\DefaultSkattelovRegistryTester.cs" startLineNumber="183" endLineNumber="197"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\DefaultSkattelovRegistryTester.cs" startLineNumber="146" endLineNumber="160"/>
+        </set>
+        <set lineCount="20">
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\DefaultSkattelovRegistryTester.cs" startLineNumber="64" endLineNumber="83"/>
+            <block sourceFile="C:\Dev\Projects\skat\src\test\Maxfire.Skat.UnitTests\DefaultSkattelovRegistryTester.cs" startLineNumber="101" endLineNumber="120"/>
+        </set>
+        <summary duplicateFileCount="30" duplicateLineCount="1697" duplicateBlockCount="326" totalFileCount="86" totalRawLineCount="9573" totalSignificantLineCount="4770" processingTime="250"/>
+    </check>
+</simian>

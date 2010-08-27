@@ -1,0 +1,1825 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FxCopReport Version="1.36">
+ <Namespaces>
+  <Namespace Name="Maxfire.Core">
+   <Messages>
+    <Message Id="Maxfire" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+     <Issue Name="Namespace" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Maxfire' in namespace name 'Maxfire.Core'.</Issue>
+    </Message>
+   </Messages>
+  </Namespace>
+  <Namespace Name="Maxfire.Core.Collections">
+   <Messages>
+    <Message Id="Maxfire" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+     <Issue Name="Namespace" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Maxfire' in namespace name 'Maxfire.Core.Collections'.</Issue>
+    </Message>
+   </Messages>
+  </Namespace>
+  <Namespace Name="Maxfire.Core.Collections.Extensions">
+   <Messages>
+    <Message TypeName="AvoidNamespacesWithFewTypes" Category="Microsoft.Design" CheckId="CA1020" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+     <Issue Certainty="50" Level="Warning">Consider merging the types defined in 'Maxfire.Core.Collections.Extensions' with another namespace.</Issue>
+    </Message>
+    <Message Id="Maxfire" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+     <Issue Name="Namespace" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Maxfire' in namespace name 'Maxfire.Core.Collections.Extensions'.</Issue>
+    </Message>
+   </Messages>
+  </Namespace>
+  <Namespace Name="Maxfire.Core.ComponentModel">
+   <Messages>
+    <Message TypeName="AvoidNamespacesWithFewTypes" Category="Microsoft.Design" CheckId="CA1020" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+     <Issue Certainty="50" Level="Warning">Consider merging the types defined in 'Maxfire.Core.ComponentModel' with another namespace.</Issue>
+    </Message>
+    <Message Id="Maxfire" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+     <Issue Name="Namespace" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Maxfire' in namespace name 'Maxfire.Core.ComponentModel'.</Issue>
+    </Message>
+   </Messages>
+  </Namespace>
+  <Namespace Name="Maxfire.Core.Extensions">
+   <Messages>
+    <Message Id="Maxfire" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+     <Issue Name="Namespace" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Maxfire' in namespace name 'Maxfire.Core.Extensions'.</Issue>
+    </Message>
+   </Messages>
+  </Namespace>
+  <Namespace Name="Maxfire.Core.Reflection">
+   <Messages>
+    <Message Id="Maxfire" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+     <Issue Name="Namespace" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Maxfire' in namespace name 'Maxfire.Core.Reflection'.</Issue>
+    </Message>
+   </Messages>
+  </Namespace>
+  <Namespace Name="Maxfire.Core.Specifications">
+   <Messages>
+    <Message Id="Maxfire" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+     <Issue Name="Namespace" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Maxfire' in namespace name 'Maxfire.Core.Specifications'.</Issue>
+    </Message>
+   </Messages>
+  </Namespace>
+ </Namespaces>
+ <Targets>
+  <Target Name="C:\Dev\Projects\skat\src\app\Maxfire.Skat\bin\Debug\Maxfire.Core.dll">
+   <Modules>
+    <Module Name="maxfire.core.dll">
+     <Messages>
+      <Message TypeName="AssembliesShouldHaveValidStrongNames" Category="Microsoft.Design" CheckId="CA2210" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="NonBreaking">
+       <Issue Name="NoStrongName" Certainty="95" Level="CriticalError">Sign 'Maxfire.Core.dll' with a strong name key.</Issue>
+      </Message>
+      <Message Id="Maxfire" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+       <Issue Name="Assembly" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Maxfire' in assembly name 'Maxfire.Core.dll'.</Issue>
+      </Message>
+      <Message TypeName="MarkAssembliesWithClsCompliant" Category="Microsoft.Design" CheckId="CA1014" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="NonBreaking">
+       <Issue Certainty="95" Level="Error">Mark 'Maxfire.Core.dll' with CLSCompliant(true) because it exposes externally visible types.</Issue>
+      </Message>
+     </Messages>
+     <Namespaces>
+      <Namespace Name="Maxfire.Core">
+       <Types>
+        <Type Name="ComparableEnumeration`1" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="OverrideMethodsOnComparableTypes" Category="Microsoft.Design" CheckId="CA1036" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="NonBreaking">
+           <Issue Name="Equals" Certainty="75" Level="Error">'ComparableEnumeration&lt;TEnumeration&gt;' should override Equals since it implements IComparable.</Issue>
+           <Issue Name="Operator" Certainty="75" Level="Error">'ComparableEnumeration&lt;TEnumeration&gt;' should define operator '!=' since it implements IComparable.</Issue>
+           <Issue Name="Operator" Certainty="75" Level="Error">'ComparableEnumeration&lt;TEnumeration&gt;' should define operator '&lt;' since it implements IComparable.</Issue>
+           <Issue Name="Operator" Certainty="75" Level="Error">'ComparableEnumeration&lt;TEnumeration&gt;' should define operator '==' since it implements IComparable.</Issue>
+           <Issue Name="Operator" Certainty="75" Level="Error">'ComparableEnumeration&lt;TEnumeration&gt;' should define operator '&gt;' since it implements IComparable.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#CompareTo(System.Object)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="0#" TypeName="ParameterNamesShouldMatchBaseDeclaration" Category="Microsoft.Naming" CheckId="CA1725" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Enumeration.cs" Line="249">In member 'ComparableEnumeration&lt;TEnumeration&gt;.CompareTo(object)', change parameter name 'other' to 'obj' in order to match the identifier as it has been declared in 'IComparable.CompareTo(object)'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="ComparisonOperator" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="StaticHolderTypesShouldBeSealed" Category="Microsoft.Design" CheckId="CA1052" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+           <Issue Certainty="75" Level="CriticalWarning">Mark 'ComparisonOperator' as sealed.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#Equal" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotDeclareReadOnlyMutableReferenceTypes" Category="Microsoft.Security" CheckId="CA2104" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="NonBreaking">
+             <Issue Certainty="25" Level="Error">Remove the read-only designation from 'ComparisonOperator.Equal' or change the field to one that is an immutable reference type. If the reference type 'ComparisonOperator' is, in fact, immutable, exclude this message.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GreaterThan" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotDeclareReadOnlyMutableReferenceTypes" Category="Microsoft.Security" CheckId="CA2104" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="NonBreaking">
+             <Issue Certainty="25" Level="Error">Remove the read-only designation from 'ComparisonOperator.GreaterThan' or change the field to one that is an immutable reference type. If the reference type 'ComparisonOperator' is, in fact, immutable, exclude this message.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GreaterThanOrEqual" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotDeclareReadOnlyMutableReferenceTypes" Category="Microsoft.Security" CheckId="CA2104" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="NonBreaking">
+             <Issue Certainty="25" Level="Error">Remove the read-only designation from 'ComparisonOperator.GreaterThanOrEqual' or change the field to one that is an immutable reference type. If the reference type 'ComparisonOperator' is, in fact, immutable, exclude this message.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#LessThan" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotDeclareReadOnlyMutableReferenceTypes" Category="Microsoft.Security" CheckId="CA2104" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="NonBreaking">
+             <Issue Certainty="25" Level="Error">Remove the read-only designation from 'ComparisonOperator.LessThan' or change the field to one that is an immutable reference type. If the reference type 'ComparisonOperator' is, in fact, immutable, exclude this message.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#LessThanOrEqual" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotDeclareReadOnlyMutableReferenceTypes" Category="Microsoft.Security" CheckId="CA2104" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="NonBreaking">
+             <Issue Certainty="25" Level="Error">Remove the read-only designation from 'ComparisonOperator.LessThanOrEqual' or change the field to one that is an immutable reference type. If the reference type 'ComparisonOperator' is, in fact, immutable, exclude this message.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#NotEqual" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotDeclareReadOnlyMutableReferenceTypes" Category="Microsoft.Security" CheckId="CA2104" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="NonBreaking">
+             <Issue Certainty="25" Level="Error">Remove the read-only designation from 'ComparisonOperator.NotEqual' or change the field to one that is an immutable reference type. If the reference type 'ComparisonOperator' is, in fact, immutable, exclude this message.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="ConvertibleEnumeration`1" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#getInvalidCastMessage(System.Type)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message Id="System.String.Format(System.String,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="DependsOnFix">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Enumeration.cs" Line="434">Because the behavior of 'string.Format(string, object, object)' could vary based on the current user's locale settings, replace this call in 'ConvertibleEnumeration&lt;TEnumeration&gt;.getInvalidCastMessage(Type)' with a call to 'string.Format(IFormatProvider, string, params object[])'. If the result of 'string.Format(IFormatProvider, string, params object[])' will be displayed to the user, specify 'CultureInfo.CurrentCulture' as the 'IFormatProvider' parameter. Otherwise, if the result will be stored and accessed by software, such as when it is persisted to disk or to a database, specify 'CultureInfo.InvariantCulture'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#System.IConvertible.GetTypeCode()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Enumeration.cs" Line="281">Make 'ConvertibleEnumeration&lt;TEnumeration&gt;' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IConvertible.GetTypeCode()' and is visible to derived classes.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#System.IConvertible.ToBoolean(System.IFormatProvider)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Enumeration.cs" Line="286">Make 'ConvertibleEnumeration&lt;TEnumeration&gt;' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IConvertible.ToBoolean(IFormatProvider)' and is visible to derived classes.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#System.IConvertible.ToByte(System.IFormatProvider)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Enumeration.cs" Line="301">Make 'ConvertibleEnumeration&lt;TEnumeration&gt;' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IConvertible.ToByte(IFormatProvider)' and is visible to derived classes.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#System.IConvertible.ToChar(System.IFormatProvider)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Enumeration.cs" Line="291">Make 'ConvertibleEnumeration&lt;TEnumeration&gt;' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IConvertible.ToChar(IFormatProvider)' and is visible to derived classes.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#System.IConvertible.ToDateTime(System.IFormatProvider)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Enumeration.cs" Line="351">Make 'ConvertibleEnumeration&lt;TEnumeration&gt;' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IConvertible.ToDateTime(IFormatProvider)' and is visible to derived classes.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#System.IConvertible.ToDecimal(System.IFormatProvider)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Enumeration.cs" Line="346">Make 'ConvertibleEnumeration&lt;TEnumeration&gt;' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IConvertible.ToDecimal(IFormatProvider)' and is visible to derived classes.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#System.IConvertible.ToDouble(System.IFormatProvider)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Enumeration.cs" Line="341">Make 'ConvertibleEnumeration&lt;TEnumeration&gt;' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IConvertible.ToDouble(IFormatProvider)' and is visible to derived classes.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#System.IConvertible.ToInt16(System.IFormatProvider)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Enumeration.cs" Line="306">Make 'ConvertibleEnumeration&lt;TEnumeration&gt;' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IConvertible.ToInt16(IFormatProvider)' and is visible to derived classes.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#System.IConvertible.ToInt32(System.IFormatProvider)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Enumeration.cs" Line="316">Make 'ConvertibleEnumeration&lt;TEnumeration&gt;' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IConvertible.ToInt32(IFormatProvider)' and is visible to derived classes.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#System.IConvertible.ToInt64(System.IFormatProvider)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Enumeration.cs" Line="326">Make 'ConvertibleEnumeration&lt;TEnumeration&gt;' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IConvertible.ToInt64(IFormatProvider)' and is visible to derived classes.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#System.IConvertible.ToSByte(System.IFormatProvider)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Enumeration.cs" Line="296">Make 'ConvertibleEnumeration&lt;TEnumeration&gt;' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IConvertible.ToSByte(IFormatProvider)' and is visible to derived classes.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#System.IConvertible.ToSingle(System.IFormatProvider)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Enumeration.cs" Line="336">Make 'ConvertibleEnumeration&lt;TEnumeration&gt;' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IConvertible.ToSingle(IFormatProvider)' and is visible to derived classes.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#System.IConvertible.ToType(System.Type,System.IFormatProvider)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Enumeration.cs" Line="361">Make 'ConvertibleEnumeration&lt;TEnumeration&gt;' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IConvertible.ToType(Type, IFormatProvider)' and is visible to derived classes.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#System.IConvertible.ToUInt16(System.IFormatProvider)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Enumeration.cs" Line="311">Make 'ConvertibleEnumeration&lt;TEnumeration&gt;' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IConvertible.ToUInt16(IFormatProvider)' and is visible to derived classes.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#System.IConvertible.ToUInt32(System.IFormatProvider)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Enumeration.cs" Line="321">Make 'ConvertibleEnumeration&lt;TEnumeration&gt;' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IConvertible.ToUInt32(IFormatProvider)' and is visible to derived classes.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#System.IConvertible.ToUInt64(System.IFormatProvider)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Enumeration.cs" Line="331">Make 'ConvertibleEnumeration&lt;TEnumeration&gt;' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IConvertible.ToUInt64(IFormatProvider)' and is visible to derived classes.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="CriterionSet" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="IdentifiersShouldHaveCorrectSuffix" Category="Microsoft.Naming" CheckId="CA1710" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+           <Issue Certainty="95" Level="Error">Rename 'CriterionSet' to end in 'Collection'.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#GetCriteria()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="UsePropertiesWhereAppropriate" Category="Microsoft.Design" CheckId="CA1024" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="75" Level="Warning" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="CriterionSet.cs" Line="92">Change 'CriterionSet.GetCriteria()' to a property if appropriate.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="Entity`1" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#GetTypeUnproxied()" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Unproxied" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Entity.cs" Line="62">Correct the spelling of 'Unproxied' in member name 'Entity&lt;TId&gt;.GetTypeUnproxied()' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+            <Message TypeName="UsePropertiesWhereAppropriate" Category="Microsoft.Design" CheckId="CA1024" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="50" Level="Warning" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Entity.cs" Line="62">Change 'Entity&lt;TId&gt;.GetTypeUnproxied()' to a property if appropriate.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="EntityEnumeration`1" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#FromId`1(System.Int32)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotDeclareStaticMembersOnGenericTypes" Category="Microsoft.Design" CheckId="CA1000" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="EntityEnumeration.cs" Line="25">Remove 'EntityEnumeration&lt;TEnumeration&gt;.FromId&lt;TEntityEnumeration&gt;(int)' from 'EntityEnumeration&lt;TEnumeration&gt;' or make it an instance member.</Issue>
+            </Message>
+            <Message TypeName="GenericMethodsShouldProvideTypeParameter" Category="Microsoft.Design" CheckId="CA1004" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="75" Level="Warning" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="EntityEnumeration.cs" Line="25">Consider a design where 'EntityEnumeration&lt;TEnumeration&gt;.FromId&lt;TEntityEnumeration&gt;(int)' doesn't require explicit type parameter 'TEntityEnumeration' in any call to it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#FromId`1(System.Int64)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotDeclareStaticMembersOnGenericTypes" Category="Microsoft.Design" CheckId="CA1000" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="EntityEnumeration.cs" Line="20">Remove 'EntityEnumeration&lt;TEnumeration&gt;.FromId&lt;TEntityEnumeration&gt;(long)' from 'EntityEnumeration&lt;TEnumeration&gt;' or make it an instance member.</Issue>
+            </Message>
+            <Message TypeName="GenericMethodsShouldProvideTypeParameter" Category="Microsoft.Design" CheckId="CA1004" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="75" Level="Warning" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="EntityEnumeration.cs" Line="20">Consider a design where 'EntityEnumeration&lt;TEnumeration&gt;.FromId&lt;TEntityEnumeration&gt;(long)' doesn't require explicit type parameter 'TEntityEnumeration' in any call to it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#FromIdOrDefault`1(System.Int32)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotDeclareStaticMembersOnGenericTypes" Category="Microsoft.Design" CheckId="CA1000" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="EntityEnumeration.cs" Line="15">Remove 'EntityEnumeration&lt;TEnumeration&gt;.FromIdOrDefault&lt;TEntityEnumeration&gt;(int)' from 'EntityEnumeration&lt;TEnumeration&gt;' or make it an instance member.</Issue>
+            </Message>
+            <Message TypeName="GenericMethodsShouldProvideTypeParameter" Category="Microsoft.Design" CheckId="CA1004" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="75" Level="Warning" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="EntityEnumeration.cs" Line="15">Consider a design where 'EntityEnumeration&lt;TEnumeration&gt;.FromIdOrDefault&lt;TEntityEnumeration&gt;(int)' doesn't require explicit type parameter 'TEntityEnumeration' in any call to it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#FromIdOrDefault`1(System.Int64)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotDeclareStaticMembersOnGenericTypes" Category="Microsoft.Design" CheckId="CA1000" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="EntityEnumeration.cs" Line="10">Remove 'EntityEnumeration&lt;TEnumeration&gt;.FromIdOrDefault&lt;TEntityEnumeration&gt;(long)' from 'EntityEnumeration&lt;TEnumeration&gt;' or make it an instance member.</Issue>
+            </Message>
+            <Message TypeName="GenericMethodsShouldProvideTypeParameter" Category="Microsoft.Design" CheckId="CA1004" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="75" Level="Warning" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="EntityEnumeration.cs" Line="10">Consider a design where 'EntityEnumeration&lt;TEnumeration&gt;.FromIdOrDefault&lt;TEntityEnumeration&gt;(long)' doesn't require explicit type parameter 'TEntityEnumeration' in any call to it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="Enumeration" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#equalName(System.String,System.String)" Kind="Method" Static="True" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message Id="System.String.Compare(System.String,System.String,System.StringComparison)" TypeName="UseOrdinalStringComparison" Category="Microsoft.Globalization" CheckId="CA1309" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="NonBreaking">
+             <Issue Name="StringComparison" Certainty="75" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Enumeration.cs" Line="104">'Enumeration.equalName(string, string)' passes StringComparison.InvariantCultureIgnoreCase as an argument to 'string.Compare(string, string, StringComparison)'. Replace this usage with StringComparison.Ordinal or StringComparison.OrdinalIgnoreCase if appropriate.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#FromName`1(System.String)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="GenericMethodsShouldProvideTypeParameter" Category="Microsoft.Design" CheckId="CA1004" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="75" Level="Warning">Consider a design where 'Enumeration.FromName&lt;TEnumeration&gt;(string)' doesn't require explicit type parameter 'TEnumeration' in any call to it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#FromNameOrDefault`1(System.String)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="GenericMethodsShouldProvideTypeParameter" Category="Microsoft.Design" CheckId="CA1004" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="75" Level="Warning">Consider a design where 'Enumeration.FromNameOrDefault&lt;TEnumeration&gt;(string)' doesn't require explicit type parameter 'TEnumeration' in any call to it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#FromValue`1(System.Int32)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="GenericMethodsShouldProvideTypeParameter" Category="Microsoft.Design" CheckId="CA1004" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="75" Level="Warning">Consider a design where 'Enumeration.FromValue&lt;TEnumeration&gt;(int)' doesn't require explicit type parameter 'TEnumeration' in any call to it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#FromValue`1(System.Int64)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="GenericMethodsShouldProvideTypeParameter" Category="Microsoft.Design" CheckId="CA1004" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="75" Level="Warning" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Enumeration.cs" Line="71">Consider a design where 'Enumeration.FromValue&lt;TEnumeration&gt;(long)' doesn't require explicit type parameter 'TEnumeration' in any call to it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#FromValueOrDefault`1(System.Int32)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="GenericMethodsShouldProvideTypeParameter" Category="Microsoft.Design" CheckId="CA1004" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="75" Level="Warning">Consider a design where 'Enumeration.FromValueOrDefault&lt;TEnumeration&gt;(int)' doesn't require explicit type parameter 'TEnumeration' in any call to it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#FromValueOrDefault`1(System.Int64)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="GenericMethodsShouldProvideTypeParameter" Category="Microsoft.Design" CheckId="CA1004" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="75" Level="Warning" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Enumeration.cs" Line="58">Consider a design where 'Enumeration.FromValueOrDefault&lt;TEnumeration&gt;(long)' doesn't require explicit type parameter 'TEnumeration' in any call to it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetAll`1()" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="GenericMethodsShouldProvideTypeParameter" Category="Microsoft.Design" CheckId="CA1004" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="75" Level="Warning">Consider a design where 'Enumeration.GetAll&lt;TEnumeration&gt;()' doesn't require explicit type parameter 'TEnumeration' in any call to it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetAllNames`1()" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="GenericMethodsShouldProvideTypeParameter" Category="Microsoft.Design" CheckId="CA1004" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="75" Level="Warning" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Enumeration.cs" Line="40">Consider a design where 'Enumeration.GetAllNames&lt;TEnumeration&gt;()' doesn't require explicit type parameter 'TEnumeration' in any call to it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#parse`1(System.Type,!!0,System.String,System.Func`2&lt;Maxfire.Core.Enumeration,System.Boolean&gt;,System.Boolean)" Kind="Method" Static="True" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message Id="System.String.Format(System.String,System.Object,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="DependsOnFix">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Enumeration.cs" Line="146">Because the behavior of 'string.Format(string, object, object, object)' could vary based on the current user's locale settings, replace this call in 'Enumeration.parse&lt;TValue&gt;(Type, TValue, string, Func&lt;Enumeration, bool&gt;, bool)' with a call to 'string.Format(IFormatProvider, string, params object[])'. If the result of 'string.Format(IFormatProvider, string, params object[])' will be displayed to the user, specify 'CultureInfo.CurrentCulture' as the 'IFormatProvider' parameter. Otherwise, if the result will be stored and accessed by software, such as when it is persisted to disk or to a database, specify 'CultureInfo.InvariantCulture'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#parse`2(!!1,System.String,System.Func`2&lt;!!0,System.Boolean&gt;,System.Boolean)" Kind="Method" Static="True" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message Id="System.String.Format(System.String,System.Object,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="DependsOnFix">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Enumeration.cs" Line="125">Because the behavior of 'string.Format(string, object, object, object)' could vary based on the current user's locale settings, replace this call in 'Enumeration.parse&lt;TEnumeration, TValue&gt;(TValue, string, Func&lt;TEnumeration, bool&gt;, bool)' with a call to 'string.Format(IFormatProvider, string, params object[])'. If the result of 'string.Format(IFormatProvider, string, params object[])' will be displayed to the user, specify 'CultureInfo.CurrentCulture' as the 'IFormatProvider' parameter. Otherwise, if the result will be stored and accessed by software, such as when it is persisted to disk or to a database, specify 'CultureInfo.InvariantCulture'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ToString(System.String,System.IFormatProvider)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="System.Int32.ToString" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="DependsOnFix">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Enumeration.cs" Line="225">Because the behavior of 'int.ToString()' could vary based on the current user's locale settings, replace this call in 'Enumeration.ToString(string, IFormatProvider)' with a call to 'int.ToString(IFormatProvider)'. If the result of 'int.ToString(IFormatProvider)' will be displayed to the user, specify 'CultureInfo.CurrentCulture' as the 'IFormatProvider' parameter. Otherwise, if the result will be stored and accessed by software, such as when it is persisted to disk or to a database, specify 'CultureInfo.InvariantCulture'.</Issue>
+            </Message>
+            <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="DependsOnFix">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Enumeration.cs" Line="231">Because the behavior of 'string.Format(string, object)' could vary based on the current user's locale settings, replace this call in 'Enumeration.ToString(string, IFormatProvider)' with a call to 'string.Format(IFormatProvider, string, params object[])'. If the result of 'string.Format(IFormatProvider, string, params object[])' will be displayed to the user, specify 'CultureInfo.CurrentCulture' as the 'IFormatProvider' parameter. Otherwise, if the result will be stored and accessed by software, such as when it is persisted to disk or to a database, specify 'CultureInfo.InvariantCulture'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="EnumerationConverter`1" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#ConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object,System.Type)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="DependsOnFix">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="EnumerationConverter.cs" Line="42">Because the behavior of 'string.Format(string, object)' could vary based on the current user's locale settings, replace this call in 'EnumerationConverter&lt;TEnumeration&gt;.ConvertTo(ITypeDescriptorContext, CultureInfo, object, Type)' with a call to 'string.Format(IFormatProvider, string, params object[])'. If the result of 'string.Format(IFormatProvider, string, params object[])' will be displayed to the user, specify 'CultureInfo.CurrentCulture' as the 'IFormatProvider' parameter. Otherwise, if the result will be stored and accessed by software, such as when it is persisted to disk or to a database, specify 'CultureInfo.InvariantCulture'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="IRepository`2" Kind="Interface" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#GetAll()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="UsePropertiesWhereAppropriate" Category="Microsoft.Design" CheckId="CA1024" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="50" Level="Warning">Change 'IRepository&lt;TEntityClass, TId&gt;.GetAll()' to a property if appropriate.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="Operator" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message Id="Operator" TypeName="IdentifiersShouldNotMatchKeywords" Category="Microsoft.Naming" CheckId="CA1716" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="95" Level="Error">Rename type 'Operator' so that it no longer conflicts with the reserved language keyword 'Operator'. Using a reserved keyword as the name of a type makes it harder for consumers in other languages to use the type.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#AddIfNotNull`1(!!0&amp;,!!0)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="0#" TypeName="DoNotPassTypesByReference" Category="Microsoft.Design" CheckId="CA1045" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="75" Level="CriticalWarning" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Operator.cs" Line="35">Consider a design that does not require that 'accumulator' be a reference parameter.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Convert`2(!!0)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="GenericMethodsShouldProvideTypeParameter" Category="Microsoft.Design" CheckId="CA1004" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="75" Level="Warning" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Operator.cs" Line="90">Consider a design where 'Operator.Convert&lt;TFrom, TTo&gt;(TFrom)' doesn't require explicit type parameter 'TTo' in any call to it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="Operator`1" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message Id="Operator" TypeName="IdentifiersShouldNotMatchKeywords" Category="Microsoft.Naming" CheckId="CA1716" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="95" Level="Error">Rename type 'Operator&lt;T&gt;' so that it no longer conflicts with the reserved language keyword 'Operator'. Using a reserved keyword as the name of a type makes it harder for consumers in other languages to use the type.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#.cctor()" Kind="Method" Static="True" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="InitializeReferenceTypeStaticFieldsInline" Category="Microsoft.Performance" CheckId="CA1810" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="NonBreaking">
+             <Issue Certainty="90" Level="CriticalWarning" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Operator.cs" Line="451">Initialize all static fields in 'Operator&lt;T&gt;' when those fields are declared and remove the explicit static constructor.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Add" Kind="Property" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotDeclareStaticMembersOnGenericTypes" Category="Microsoft.Design" CheckId="CA1000" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Operator.cs" Line="340">Remove 'Operator&lt;T&gt;.Add' from 'Operator&lt;T&gt;' or make it an instance member.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#And" Kind="Property" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotDeclareStaticMembersOnGenericTypes" Category="Microsoft.Design" CheckId="CA1000" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Operator.cs" Line="326">Remove 'Operator&lt;T&gt;.And' from 'Operator&lt;T&gt;' or make it an instance member.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Divide" Kind="Property" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotDeclareStaticMembersOnGenericTypes" Category="Microsoft.Design" CheckId="CA1000" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Operator.cs" Line="358">Remove 'Operator&lt;T&gt;.Divide' from 'Operator&lt;T&gt;' or make it an instance member.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Equal" Kind="Property" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotDeclareStaticMembersOnGenericTypes" Category="Microsoft.Design" CheckId="CA1000" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Operator.cs" Line="367">Remove 'Operator&lt;T&gt;.Equal' from 'Operator&lt;T&gt;' or make it an instance member.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GreaterThan" Kind="Property" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotDeclareStaticMembersOnGenericTypes" Category="Microsoft.Design" CheckId="CA1000" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Operator.cs" Line="379">Remove 'Operator&lt;T&gt;.GreaterThan' from 'Operator&lt;T&gt;' or make it an instance member.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GreaterThanOrEqual" Kind="Property" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotDeclareStaticMembersOnGenericTypes" Category="Microsoft.Design" CheckId="CA1000" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Operator.cs" Line="391">Remove 'Operator&lt;T&gt;.GreaterThanOrEqual' from 'Operator&lt;T&gt;' or make it an instance member.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GreaterThanOrEqualToZero" Kind="Property" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotDeclareStaticMembersOnGenericTypes" Category="Microsoft.Design" CheckId="CA1000" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Operator.cs" Line="412">Remove 'Operator&lt;T&gt;.GreaterThanOrEqualToZero' from 'Operator&lt;T&gt;' or make it an instance member.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GreaterThanZero" Kind="Property" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotDeclareStaticMembersOnGenericTypes" Category="Microsoft.Design" CheckId="CA1000" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Operator.cs" Line="402">Remove 'Operator&lt;T&gt;.GreaterThanZero' from 'Operator&lt;T&gt;' or make it an instance member.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#LessThan" Kind="Property" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotDeclareStaticMembersOnGenericTypes" Category="Microsoft.Design" CheckId="CA1000" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Operator.cs" Line="385">Remove 'Operator&lt;T&gt;.LessThan' from 'Operator&lt;T&gt;' or make it an instance member.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#LessThanOrEqual" Kind="Property" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotDeclareStaticMembersOnGenericTypes" Category="Microsoft.Design" CheckId="CA1000" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Operator.cs" Line="397">Remove 'Operator&lt;T&gt;.LessThanOrEqual' from 'Operator&lt;T&gt;' or make it an instance member.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#LessThanOrEqualToZero" Kind="Property" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotDeclareStaticMembersOnGenericTypes" Category="Microsoft.Design" CheckId="CA1000" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Operator.cs" Line="417">Remove 'Operator&lt;T&gt;.LessThanOrEqualToZero' from 'Operator&lt;T&gt;' or make it an instance member.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#LessThanZero" Kind="Property" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotDeclareStaticMembersOnGenericTypes" Category="Microsoft.Design" CheckId="CA1000" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Operator.cs" Line="407">Remove 'Operator&lt;T&gt;.LessThanZero' from 'Operator&lt;T&gt;' or make it an instance member.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Max" Kind="Property" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotDeclareStaticMembersOnGenericTypes" Category="Microsoft.Design" CheckId="CA1000" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Operator.cs" Line="422">Remove 'Operator&lt;T&gt;.Max' from 'Operator&lt;T&gt;' or make it an instance member.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Min" Kind="Property" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotDeclareStaticMembersOnGenericTypes" Category="Microsoft.Design" CheckId="CA1000" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Operator.cs" Line="427">Remove 'Operator&lt;T&gt;.Min' from 'Operator&lt;T&gt;' or make it an instance member.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Multiply" Kind="Property" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotDeclareStaticMembersOnGenericTypes" Category="Microsoft.Design" CheckId="CA1000" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Operator.cs" Line="352">Remove 'Operator&lt;T&gt;.Multiply' from 'Operator&lt;T&gt;' or make it an instance member.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Negate" Kind="Property" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotDeclareStaticMembersOnGenericTypes" Category="Microsoft.Design" CheckId="CA1000" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Operator.cs" Line="308">Remove 'Operator&lt;T&gt;.Negate' from 'Operator&lt;T&gt;' or make it an instance member.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Not" Kind="Property" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotDeclareStaticMembersOnGenericTypes" Category="Microsoft.Design" CheckId="CA1000" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Operator.cs" Line="314">Remove 'Operator&lt;T&gt;.Not' from 'Operator&lt;T&gt;' or make it an instance member.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#NotEqual" Kind="Property" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotDeclareStaticMembersOnGenericTypes" Category="Microsoft.Design" CheckId="CA1000" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Operator.cs" Line="373">Remove 'Operator&lt;T&gt;.NotEqual' from 'Operator&lt;T&gt;' or make it an instance member.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Or" Kind="Property" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotDeclareStaticMembersOnGenericTypes" Category="Microsoft.Design" CheckId="CA1000" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Operator.cs" Line="320">Remove 'Operator&lt;T&gt;.Or' from 'Operator&lt;T&gt;' or make it an instance member.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Sign" Kind="Property" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotDeclareStaticMembersOnGenericTypes" Category="Microsoft.Design" CheckId="CA1000" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Operator.cs" Line="433">Remove 'Operator&lt;T&gt;.Sign' from 'Operator&lt;T&gt;' or make it an instance member.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Subtract" Kind="Property" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotDeclareStaticMembersOnGenericTypes" Category="Microsoft.Design" CheckId="CA1000" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Operator.cs" Line="346">Remove 'Operator&lt;T&gt;.Subtract' from 'Operator&lt;T&gt;' or make it an instance member.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Xor" Kind="Property" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotDeclareStaticMembersOnGenericTypes" Category="Microsoft.Design" CheckId="CA1000" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Operator.cs" Line="332">Remove 'Operator&lt;T&gt;.Xor' from 'Operator&lt;T&gt;' or make it an instance member.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Zero" Kind="Property" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotDeclareStaticMembersOnGenericTypes" Category="Microsoft.Design" CheckId="CA1000" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Operator.cs" Line="299">Remove 'Operator&lt;T&gt;.Zero' from 'Operator&lt;T&gt;' or make it an instance member.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="Operator`2" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message Id="Operator" TypeName="IdentifiersShouldNotMatchKeywords" Category="Microsoft.Naming" CheckId="CA1716" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="95" Level="Error">Rename type 'Operator&lt;TValue, TResult&gt;' so that it no longer conflicts with the reserved language keyword 'Operator'. Using a reserved keyword as the name of a type makes it harder for consumers in other languages to use the type.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#.cctor()" Kind="Method" Static="True" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="InitializeReferenceTypeStaticFieldsInline" Category="Microsoft.Performance" CheckId="CA1810" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="NonBreaking">
+             <Issue Certainty="90" Level="CriticalWarning" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Operator.cs" Line="250">Initialize all static fields in 'Operator&lt;TValue, TResult&gt;' when those fields are declared and remove the explicit static constructor.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Add" Kind="Property" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotDeclareStaticMembersOnGenericTypes" Category="Microsoft.Design" CheckId="CA1000" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Operator.cs" Line="264">Remove 'Operator&lt;TValue, TResult&gt;.Add' from 'Operator&lt;TValue, TResult&gt;' or make it an instance member.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Convert" Kind="Property" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotDeclareStaticMembersOnGenericTypes" Category="Microsoft.Design" CheckId="CA1000" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Operator.cs" Line="248">Remove 'Operator&lt;TValue, TResult&gt;.Convert' from 'Operator&lt;TValue, TResult&gt;' or make it an instance member.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Divide" Kind="Property" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotDeclareStaticMembersOnGenericTypes" Category="Microsoft.Design" CheckId="CA1000" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Operator.cs" Line="282">Remove 'Operator&lt;TValue, TResult&gt;.Divide' from 'Operator&lt;TValue, TResult&gt;' or make it an instance member.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Multiply" Kind="Property" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotDeclareStaticMembersOnGenericTypes" Category="Microsoft.Design" CheckId="CA1000" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Operator.cs" Line="276">Remove 'Operator&lt;TValue, TResult&gt;.Multiply' from 'Operator&lt;TValue, TResult&gt;' or make it an instance member.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Subtract" Kind="Property" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotDeclareStaticMembersOnGenericTypes" Category="Microsoft.Design" CheckId="CA1000" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="Operator.cs" Line="270">Remove 'Operator&lt;TValue, TResult&gt;.Subtract' from 'Operator&lt;TValue, TResult&gt;' or make it an instance member.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="SortOrder" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="StaticHolderTypesShouldBeSealed" Category="Microsoft.Design" CheckId="CA1052" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+           <Issue Certainty="75" Level="CriticalWarning">Mark 'SortOrder' as sealed.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#Ascending" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotDeclareReadOnlyMutableReferenceTypes" Category="Microsoft.Security" CheckId="CA2104" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="NonBreaking">
+             <Issue Certainty="25" Level="Error">Remove the read-only designation from 'SortOrder.Ascending' or change the field to one that is an immutable reference type. If the reference type 'SortOrder' is, in fact, immutable, exclude this message.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Descending" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotDeclareReadOnlyMutableReferenceTypes" Category="Microsoft.Security" CheckId="CA2104" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="NonBreaking">
+             <Issue Certainty="25" Level="Error">Remove the read-only designation from 'SortOrder.Descending' or change the field to one that is an immutable reference type. If the reference type 'SortOrder' is, in fact, immutable, exclude this message.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="SystemTime" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#Now" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="NonConstantFieldsShouldNotBeVisible" Category="Microsoft.Usage" CheckId="CA2211" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="90" Level="Warning">Consider making 'SystemTime.Now' non-public or a constant.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Today" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="NonConstantFieldsShouldNotBeVisible" Category="Microsoft.Usage" CheckId="CA2211" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="90" Level="Warning">Consider making 'SystemTime.Today' non-public or a constant.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="ValueObject`1" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#op_Equality(Maxfire.Core.ValueObject`1&lt;!0&gt;,Maxfire.Core.ValueObject`1&lt;!0&gt;)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="x" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Name="MemberParameterMoreMeaningfulName" Certainty="75" Level="CriticalWarning" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="ValueObject.cs" Line="93">In method 'ValueObject&lt;T&gt;.operator ==(ValueObject&lt;T&gt;, ValueObject&lt;T&gt;)', consider providing a more meaningful name than parameter name 'x'.</Issue>
+            </Message>
+            <Message Id="y" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Name="MemberParameterMoreMeaningfulName" Certainty="75" Level="CriticalWarning" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="ValueObject.cs" Line="93">In method 'ValueObject&lt;T&gt;.operator ==(ValueObject&lt;T&gt;, ValueObject&lt;T&gt;)', consider providing a more meaningful name than parameter name 'y'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#op_Inequality(Maxfire.Core.ValueObject`1&lt;!0&gt;,Maxfire.Core.ValueObject`1&lt;!0&gt;)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="x" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Name="MemberParameterMoreMeaningfulName" Certainty="75" Level="CriticalWarning" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="ValueObject.cs" Line="101">In method 'ValueObject&lt;T&gt;.operator !=(ValueObject&lt;T&gt;, ValueObject&lt;T&gt;)', consider providing a more meaningful name than parameter name 'x'.</Issue>
+            </Message>
+            <Message Id="y" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Name="MemberParameterMoreMeaningfulName" Certainty="75" Level="CriticalWarning" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="ValueObject.cs" Line="101">In method 'ValueObject&lt;T&gt;.operator !=(ValueObject&lt;T&gt;, ValueObject&lt;T&gt;)', consider providing a more meaningful name than parameter name 'y'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="Maxfire.Core.Collections">
+       <Types>
+        <Type Name="ComparisonComparer`1" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#CreateComparison(System.Collections.Generic.IComparer`1&lt;!0&gt;)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotDeclareStaticMembersOnGenericTypes" Category="Microsoft.Design" CheckId="CA1000" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error">Remove 'ComparisonComparer&lt;T&gt;.CreateComparison(IComparer&lt;T&gt;)' from 'ComparisonComparer&lt;T&gt;' or make it an instance member.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="ProjectionComparer" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#Create`2(!!0,System.Func`2&lt;!!0,!!1&gt;)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="ignored" TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="DependsOnFix">
+             <Issue Certainty="95" Level="Warning" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Collections" File="ProjectionComparer.cs" Line="37">Parameter 'ignored' of 'ProjectionComparer.Create&lt;TSource, TKey&gt;(TSource, Func&lt;TSource, TKey&gt;)' is never used. Remove the parameter or use it in the method body.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="ProjectionComparer`1" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#Create`1(System.Func`2&lt;!0,!!0&gt;)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotDeclareStaticMembersOnGenericTypes" Category="Microsoft.Design" CheckId="CA1000" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Collections" File="ProjectionComparer.cs" Line="55">Remove 'ProjectionComparer&lt;TSource&gt;.Create&lt;TKey&gt;(Func&lt;TSource, TKey&gt;)' from 'ProjectionComparer&lt;TSource&gt;' or make it an instance member.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="Range" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#Empty`1()" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="GenericMethodsShouldProvideTypeParameter" Category="Microsoft.Design" CheckId="CA1004" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="75" Level="Warning" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Collections" File="Range.cs" Line="321">Consider a design where 'Range.Empty&lt;T&gt;()' doesn't require explicit type parameter 'T' in any call to it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="Range`1" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#Step(System.Func`2&lt;!0,!0&gt;)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="0#" TypeName="ParameterNamesShouldNotMatchMemberNames" Category="Microsoft.Naming" CheckId="CA1719" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Collections" File="Range.cs" Line="279">Change either member or parameter name 'step' so that one differs from the other.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="RangeIterator`1" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="IdentifiersShouldHaveCorrectSuffix" Category="Microsoft.Naming" CheckId="CA1710" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+           <Issue Certainty="95" Level="Error">Rename 'RangeIterator&lt;T&gt;' to end in 'Collection'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="RangeIteratorSet`1" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="IdentifiersShouldHaveCorrectSuffix" Category="Microsoft.Naming" CheckId="CA1710" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+           <Issue Certainty="95" Level="Error">Rename 'RangeIteratorSet&lt;T&gt;' to end in 'Collection'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="Maxfire.Core.Collections.Extensions">
+       <Types>
+        <Type Name="RangeExtensions" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#Convert`2(Maxfire.Core.Collections.Range`1&lt;!!0&gt;,System.Func`2&lt;!!0,!!1&gt;)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Dest" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="NonBreaking">
+             <Issue Name="MethodTypeParameter" Certainty="75" Level="CriticalWarning" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Collections\Extensions" File="RangeExtensions.cs" Line="9">On method 'RangeExtensions.Convert&lt;TSource, TDest&gt;(this Range&lt;TSource&gt;, Func&lt;TSource, TDest&gt;)', correct the spelling of 'Dest' in generic type parameter name 'TDest'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="Maxfire.Core.ComponentModel">
+       <Types>
+        <Type Name="DisplayNameAttribute" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="AvoidUnsealedAttributes" Category="Microsoft.Performance" CheckId="CA1813" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+           <Issue Certainty="75" Level="Warning">Seal 'DisplayNameAttribute', if possible.</Issue>
+          </Message>
+          <Message TypeName="DefineAccessorsForAttributeArguments" Category="Microsoft.Design" CheckId="CA1019" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="NonBreaking">
+           <Issue Certainty="95" Level="Error">Add a public read-only property accessor for positional argument 'displayText' of Attribute 'DisplayNameAttribute'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="Maxfire.Core.Extensions">
+       <Types>
+        <Type Name="BasicExtensions" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#GetValueOrDefault`2(System.Collections.Generic.IDictionary`2&lt;!!0,!!1&gt;,!!0)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="t" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="75" Level="CriticalWarning" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Extensions" File="BasicExtensions.cs" Line="128">In method 'BasicExtensions.GetValueOrDefault&lt;TKey, TValue&gt;(this IDictionary&lt;TKey, TValue&gt;, TKey)', correct the spelling of 't' in parameter name 'tKey' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetValueOrDefault`2(System.Collections.Generic.IDictionary`2&lt;!!0,!!1&gt;,!!0,!!1)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="t" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="75" Level="CriticalWarning" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Extensions" File="BasicExtensions.cs" Line="133">In method 'BasicExtensions.GetValueOrDefault&lt;TKey, TValue&gt;(this IDictionary&lt;TKey, TValue&gt;, TKey, TValue)', correct the spelling of 't' in parameter name 'tKey' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="PrimitiveExtensions" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#GetPropertyValueOf(System.Object,System.String)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="object" TypeName="IdentifiersShouldNotContainTypeNames" Category="Microsoft.Naming" CheckId="CA1720" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Name="LanguageIndependentMemberParameter" Certainty="75" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Extensions" File="PrimitiveExtensions.cs" Line="60">In member 'PrimitiveExtensions.GetPropertyValueOf(this object, string)', consider replacing the data type identifier 'object' in parameter name 'object' with a more generic term, such as 'value'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#IsEmpty(System.String)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="string" TypeName="IdentifiersShouldNotContainTypeNames" Category="Microsoft.Naming" CheckId="CA1720" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Name="LanguageIndependentMemberParameter" Certainty="75" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Extensions" File="PrimitiveExtensions.cs" Line="9">In member 'PrimitiveExtensions.IsEmpty(this string)', consider replacing the data type identifier 'string' in parameter name 'stringValue' with a more generic term, such as 'value'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#IsNotEmpty(System.String)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="string" TypeName="IdentifiersShouldNotContainTypeNames" Category="Microsoft.Naming" CheckId="CA1720" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Name="LanguageIndependentMemberParameter" Certainty="75" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Extensions" File="PrimitiveExtensions.cs" Line="14">In member 'PrimitiveExtensions.IsNotEmpty(this string)', consider replacing the data type identifier 'string' in parameter name 'stringValue' with a more generic term, such as 'value'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#LowerCaseFirstWord(System.String)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="LowerCase" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Name="MemberShouldBeDiscreteTerm" Certainty="80" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Extensions" File="PrimitiveExtensions.cs" Line="30">The compound word 'LowerCase' in member name 'PrimitiveExtensions.LowerCaseFirstWord(this string)' exists as a discrete term. If your usage is intended to be single word, case it as 'Lowercase' or strip the first token entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+            <Message Id="s" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Name="MemberParameterMoreMeaningfulName" Certainty="75" Level="CriticalWarning" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Extensions" File="PrimitiveExtensions.cs" Line="30">In method 'PrimitiveExtensions.LowerCaseFirstWord(this string)', consider providing a more meaningful name than parameter name 's'.</Issue>
+            </Message>
+            <Message Id="System.String.ToLower" TypeName="SpecifyCultureInfo" Category="Microsoft.Globalization" CheckId="CA1304" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="DependsOnFix">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Extensions" File="PrimitiveExtensions.cs" Line="32">Because the behavior of 'string.ToLower()' could vary based on the current user's locale settings, replace this call in 'PrimitiveExtensions.LowerCaseFirstWord(this string)' with a call to 'string.ToLower(CultureInfo)'. If the result of 'string.ToLower(CultureInfo)' will be displayed to the user, specify 'CultureInfo.CurrentCulture' as the 'CultureInfo' parameter. Otherwise, if the result will be stored and accessed by software, such as when it is persisted to disk or to a database, specify 'CultureInfo.InvariantCulture'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#LowerCaseWords(System.String)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="LowerCase" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Name="MemberShouldBeDiscreteTerm" Certainty="80" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Extensions" File="PrimitiveExtensions.cs" Line="48">The compound word 'LowerCase' in member name 'PrimitiveExtensions.LowerCaseWords(this string)' exists as a discrete term. If your usage is intended to be single word, case it as 'Lowercase' or strip the first token entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+            <Message Id="s" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Name="MemberParameterMoreMeaningfulName" Certainty="75" Level="CriticalWarning" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Extensions" File="PrimitiveExtensions.cs" Line="48">In method 'PrimitiveExtensions.LowerCaseWords(this string)', consider providing a more meaningful name than parameter name 's'.</Issue>
+            </Message>
+            <Message Id="System.String.ToLower" TypeName="SpecifyCultureInfo" Category="Microsoft.Globalization" CheckId="CA1304" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="DependsOnFix">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Extensions" File="PrimitiveExtensions.cs" Line="52">Because the behavior of 'string.ToLower()' could vary based on the current user's locale settings, replace this call in 'PrimitiveExtensions.LowerCaseWords(this string)' with a call to 'string.ToLower(CultureInfo)'. If the result of 'string.ToLower(CultureInfo)' will be displayed to the user, specify 'CultureInfo.CurrentCulture' as the 'CultureInfo' parameter. Otherwise, if the result will be stored and accessed by software, such as when it is persisted to disk or to a database, specify 'CultureInfo.InvariantCulture'.</Issue>
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Extensions" File="PrimitiveExtensions.cs" Line="52">Because the behavior of 'string.ToLower()' could vary based on the current user's locale settings, replace this call in 'PrimitiveExtensions.LowerCaseWords(this string)' with a call to 'string.ToLower(CultureInfo)'. If the result of 'string.ToLower(CultureInfo)' will be displayed to the user, specify 'CultureInfo.CurrentCulture' as the 'CultureInfo' parameter. Otherwise, if the result will be stored and accessed by software, such as when it is persisted to disk or to a database, specify 'CultureInfo.InvariantCulture'.</Issue>
+            </Message>
+            <Message Id="System.String.EndsWith(System.String)" TypeName="SpecifyStringComparison" Category="Microsoft.Globalization" CheckId="CA1307" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Extensions" File="PrimitiveExtensions.cs" Line="52">'PrimitiveExtensions.LowerCaseWords(this string)' makes a call to 'string.EndsWith(string)' that does not explicitly provide a StringComparison. This should be replaced with a call to 'string.EndsWith(string, StringComparison)'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#UpperCaseFirstWord(System.String)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="UpperCase" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Name="MemberShouldBeDiscreteTerm" Certainty="80" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Extensions" File="PrimitiveExtensions.cs" Line="24">The compound word 'UpperCase' in member name 'PrimitiveExtensions.UpperCaseFirstWord(this string)' exists as a discrete term. If your usage is intended to be single word, case it as 'Uppercase' or strip the first token entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+            <Message Id="s" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Name="MemberParameterMoreMeaningfulName" Certainty="75" Level="CriticalWarning" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Extensions" File="PrimitiveExtensions.cs" Line="24">In method 'PrimitiveExtensions.UpperCaseFirstWord(this string)', consider providing a more meaningful name than parameter name 's'.</Issue>
+            </Message>
+            <Message Id="System.String.ToUpper" TypeName="SpecifyCultureInfo" Category="Microsoft.Globalization" CheckId="CA1304" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="DependsOnFix">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Extensions" File="PrimitiveExtensions.cs" Line="26">Because the behavior of 'string.ToUpper()' could vary based on the current user's locale settings, replace this call in 'PrimitiveExtensions.UpperCaseFirstWord(this string)' with a call to 'string.ToUpper(CultureInfo)'. If the result of 'string.ToUpper(CultureInfo)' will be displayed to the user, specify 'CultureInfo.CurrentCulture' as the 'CultureInfo' parameter. Otherwise, if the result will be stored and accessed by software, such as when it is persisted to disk or to a database, specify 'CultureInfo.InvariantCulture'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#UpperCaseWords(System.String)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="UpperCase" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Name="MemberShouldBeDiscreteTerm" Certainty="80" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Extensions" File="PrimitiveExtensions.cs" Line="36">The compound word 'UpperCase' in member name 'PrimitiveExtensions.UpperCaseWords(this string)' exists as a discrete term. If your usage is intended to be single word, case it as 'Uppercase' or strip the first token entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+            <Message Id="s" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Name="MemberParameterMoreMeaningfulName" Certainty="75" Level="CriticalWarning" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Extensions" File="PrimitiveExtensions.cs" Line="36">In method 'PrimitiveExtensions.UpperCaseWords(this string)', consider providing a more meaningful name than parameter name 's'.</Issue>
+            </Message>
+            <Message Id="System.String.ToUpper" TypeName="SpecifyCultureInfo" Category="Microsoft.Globalization" CheckId="CA1304" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="DependsOnFix">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Extensions" File="PrimitiveExtensions.cs" Line="40">Because the behavior of 'string.ToUpper()' could vary based on the current user's locale settings, replace this call in 'PrimitiveExtensions.UpperCaseWords(this string)' with a call to 'string.ToUpper(CultureInfo)'. If the result of 'string.ToUpper(CultureInfo)' will be displayed to the user, specify 'CultureInfo.CurrentCulture' as the 'CultureInfo' parameter. Otherwise, if the result will be stored and accessed by software, such as when it is persisted to disk or to a database, specify 'CultureInfo.InvariantCulture'.</Issue>
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Extensions" File="PrimitiveExtensions.cs" Line="40">Because the behavior of 'string.ToUpper()' could vary based on the current user's locale settings, replace this call in 'PrimitiveExtensions.UpperCaseWords(this string)' with a call to 'string.ToUpper(CultureInfo)'. If the result of 'string.ToUpper(CultureInfo)' will be displayed to the user, specify 'CultureInfo.CurrentCulture' as the 'CultureInfo' parameter. Otherwise, if the result will be stored and accessed by software, such as when it is persisted to disk or to a database, specify 'CultureInfo.InvariantCulture'.</Issue>
+            </Message>
+            <Message Id="System.String.EndsWith(System.String)" TypeName="SpecifyStringComparison" Category="Microsoft.Globalization" CheckId="CA1307" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Extensions" File="PrimitiveExtensions.cs" Line="40">'PrimitiveExtensions.UpperCaseWords(this string)' makes a call to 'string.EndsWith(string)' that does not explicitly provide a StringComparison. This should be replaced with a call to 'string.EndsWith(string, StringComparison)'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="ThrowGuardExtension" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#ThrowIfNullOrEmpty(System.String,System.String)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="s" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Name="MemberParameterMoreMeaningfulName" Certainty="75" Level="CriticalWarning" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Extensions" File="ThrowGuardExtension.cs" Line="16">In method 'ThrowGuardExtension.ThrowIfNullOrEmpty(this string, string)', consider providing a more meaningful name than parameter name 's'.</Issue>
+            </Message>
+            <Message TypeName="InstantiateArgumentExceptionsCorrectly" Category="Microsoft.Usage" CheckId="CA2208" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="NonBreaking">
+             <Issue Name="NoArguments" Certainty="95" Level="CriticalError" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Extensions" File="ThrowGuardExtension.cs" Line="19">Call the 'ArgumentNullException' constructor that contains a message and/or paramName parameter.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="TypeExtensions" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#ConvertSimpleType(System.Globalization.CultureInfo,System.Object,System.Type)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="System.String.Format(System.String,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="DependsOnFix">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Extensions" File="TypeExtensions.cs" Line="62">Because the behavior of 'string.Format(string, object, object)' could vary based on the current user's locale settings, replace this call in 'TypeExtensions.ConvertSimpleType(CultureInfo, object, Type)' with a call to 'string.Format(IFormatProvider, string, params object[])'. If the result of 'string.Format(IFormatProvider, string, params object[])' will be displayed to the user, specify 'CultureInfo.CurrentCulture' as the 'IFormatProvider' parameter. Otherwise, if the result will be stored and accessed by software, such as when it is persisted to disk or to a database, specify 'CultureInfo.InvariantCulture'.</Issue>
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Extensions" File="TypeExtensions.cs" Line="77">Because the behavior of 'string.Format(string, object, object)' could vary based on the current user's locale settings, replace this call in 'TypeExtensions.ConvertSimpleType(CultureInfo, object, Type)' with a call to 'string.Format(IFormatProvider, string, params object[])'. If the result of 'string.Format(IFormatProvider, string, params object[])' will be displayed to the user, specify 'CultureInfo.CurrentCulture' as the 'IFormatProvider' parameter. Otherwise, if the result will be stored and accessed by software, such as when it is persisted to disk or to a database, specify 'CultureInfo.InvariantCulture'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="Maxfire.Core.Reflection">
+       <Types>
+        <Type Name="AttributeExtensions" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#GetCustomAttribute`1(System.Reflection.ICustomAttributeProvider)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="GenericMethodsShouldProvideTypeParameter" Category="Microsoft.Design" CheckId="CA1004" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="75" Level="Warning" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Reflection" File="AttributeExtensions.cs" Line="31">Consider a design where 'AttributeExtensions.GetCustomAttribute&lt;T&gt;(this ICustomAttributeProvider)' doesn't require explicit type parameter 'T' in any call to it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetCustomAttribute`1(System.Reflection.ICustomAttributeProvider,System.Boolean)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="GenericMethodsShouldProvideTypeParameter" Category="Microsoft.Design" CheckId="CA1004" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="75" Level="Warning" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Reflection" File="AttributeExtensions.cs" Line="36">Consider a design where 'AttributeExtensions.GetCustomAttribute&lt;T&gt;(this ICustomAttributeProvider, bool)' doesn't require explicit type parameter 'T' in any call to it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#HasCustomAttribute`1(System.Type)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="GenericMethodsShouldProvideTypeParameter" Category="Microsoft.Design" CheckId="CA1004" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="75" Level="Warning" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Reflection" File="AttributeExtensions.cs" Line="21">Consider a design where 'AttributeExtensions.HasCustomAttribute&lt;T&gt;(this Type)' doesn't require explicit type parameter 'T' in any call to it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#HasSingleCustomAttribute`1(System.Reflection.ICustomAttributeProvider)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="GenericMethodsShouldProvideTypeParameter" Category="Microsoft.Design" CheckId="CA1004" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="75" Level="Warning" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Reflection" File="AttributeExtensions.cs" Line="11">Consider a design where 'AttributeExtensions.HasSingleCustomAttribute&lt;T&gt;(this ICustomAttributeProvider)' doesn't require explicit type parameter 'T' in any call to it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#HasSingleCustomAttribute`1(System.Reflection.ICustomAttributeProvider,System.Boolean)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="GenericMethodsShouldProvideTypeParameter" Category="Microsoft.Design" CheckId="CA1004" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="75" Level="Warning" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Reflection" File="AttributeExtensions.cs" Line="16">Consider a design where 'AttributeExtensions.HasSingleCustomAttribute&lt;T&gt;(this ICustomAttributeProvider, bool)' doesn't require explicit type parameter 'T' in any call to it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="DisplayNameExtensions" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#GetDisplayName(System.ComponentModel.PropertyDescriptor)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="ConsiderPassingBaseTypesAsParameters" Category="Microsoft.Design" CheckId="CA1011" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="50" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Reflection" File="DisplayNameExtensions.cs" Line="31">Consider changing the type of parameter 'descriptor' in 'DisplayNameExtensions.GetDisplayName(this PropertyDescriptor)' from 'PropertyDescriptor' to its base type 'MemberDescriptor'. This method appears to only require base class members in its implementation. Suppress this violation if there is a compelling reason to require the more derived type in the method signature.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetDisplayName`1(System.Linq.Expressions.Expression`1&lt;System.Func`2&lt;!!0,System.Object&gt;&gt;)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotNestGenericTypesInMemberSignatures" Category="Microsoft.Design" CheckId="CA1006" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="CriticalError" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Reflection" File="DisplayNameExtensions.cs" Line="48">Consider a design where 'DisplayNameExtensions.GetDisplayName&lt;TModel&gt;(this Expression&lt;Func&lt;TModel, object&gt;&gt;)' doesn't nest generic type 'Expression&lt;Func&lt;TModel, object&gt;&gt;'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="ExpressionExtensions" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#GetNameFor`2(System.Linq.Expressions.Expression`1&lt;System.Func`2&lt;!!0,!!1&gt;&gt;)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="ConsiderPassingBaseTypesAsParameters" Category="Microsoft.Design" CheckId="CA1011" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="50" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Reflection" File="ExpressionExtensions.cs" Line="9">Consider changing the type of parameter 'expression' in 'ExpressionExtensions.GetNameFor&lt;T, TValue&gt;(this Expression&lt;Func&lt;T, TValue&gt;&gt;)' from 'Expression&lt;Func&lt;T, TValue&gt;&gt;' to its base type 'LambdaExpression'. This method appears to only require base class members in its implementation. Suppress this violation if there is a compelling reason to require the more derived type in the method signature.</Issue>
+            </Message>
+            <Message TypeName="DoNotNestGenericTypesInMemberSignatures" Category="Microsoft.Design" CheckId="CA1006" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="CriticalError" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Reflection" File="ExpressionExtensions.cs" Line="9">Consider a design where 'ExpressionExtensions.GetNameFor&lt;T, TValue&gt;(this Expression&lt;Func&lt;T, TValue&gt;&gt;)' doesn't nest generic type 'Expression&lt;Func&lt;T, TValue&gt;&gt;'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetValueFrom`2(System.Linq.Expressions.Expression`1&lt;System.Func`2&lt;!!0,!!1&gt;&gt;,!!0)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Reflection" File="ExpressionExtensions.cs" Line="21">Modify 'ExpressionExtensions.GetValueFrom&lt;T, TValue&gt;(this Expression&lt;Func&lt;T, TValue&gt;&gt;, T)' to catch a more specific exception than 'Exception' or rethrow the exception.</Issue>
+            </Message>
+            <Message TypeName="DoNotNestGenericTypesInMemberSignatures" Category="Microsoft.Design" CheckId="CA1006" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="CriticalError" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Reflection" File="ExpressionExtensions.cs" Line="14">Consider a design where 'ExpressionExtensions.GetValueFrom&lt;T, TValue&gt;(this Expression&lt;Func&lt;T, TValue&gt;&gt;, T)' doesn't nest generic type 'Expression&lt;Func&lt;T, TValue&gt;&gt;'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="ExpressionHelper" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#CreateExpression`2(System.Func`2&lt;System.Linq.Expressions.Expression,System.Linq.Expressions.UnaryExpression&gt;)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Reflection" File="ExpressionHelper.cs" Line="87">Modify 'ExpressionHelper.CreateExpression&lt;TArg1, TResult&gt;(Func&lt;Expression, UnaryExpression&gt;)' to catch a more specific exception than 'Exception' or rethrow the exception.</Issue>
+            </Message>
+            <Message TypeName="GenericMethodsShouldProvideTypeParameter" Category="Microsoft.Design" CheckId="CA1004" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="75" Level="Warning" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Reflection" File="ExpressionHelper.cs" Line="81">Consider a design where 'ExpressionHelper.CreateExpression&lt;TArg1, TResult&gt;(Func&lt;Expression, UnaryExpression&gt;)' doesn't require explicit type parameter 'TArg1' in any call to it.</Issue>
+             <Issue Certainty="75" Level="Warning" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Reflection" File="ExpressionHelper.cs" Line="81">Consider a design where 'ExpressionHelper.CreateExpression&lt;TArg1, TResult&gt;(Func&lt;Expression, UnaryExpression&gt;)' doesn't require explicit type parameter 'TResult' in any call to it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CreateExpression`3(System.Func`3&lt;System.Linq.Expressions.Expression,System.Linq.Expressions.Expression,System.Linq.Expressions.BinaryExpression&gt;)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="GenericMethodsShouldProvideTypeParameter" Category="Microsoft.Design" CheckId="CA1004" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="75" Level="Warning" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Reflection" File="ExpressionHelper.cs" Line="104">Consider a design where 'ExpressionHelper.CreateExpression&lt;TArg1, TArg2, TResult&gt;(Func&lt;Expression, Expression, BinaryExpression&gt;)' doesn't require explicit type parameter 'TArg1' in any call to it.</Issue>
+             <Issue Certainty="75" Level="Warning" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Reflection" File="ExpressionHelper.cs" Line="104">Consider a design where 'ExpressionHelper.CreateExpression&lt;TArg1, TArg2, TResult&gt;(Func&lt;Expression, Expression, BinaryExpression&gt;)' doesn't require explicit type parameter 'TArg2' in any call to it.</Issue>
+             <Issue Certainty="75" Level="Warning" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Reflection" File="ExpressionHelper.cs" Line="104">Consider a design where 'ExpressionHelper.CreateExpression&lt;TArg1, TArg2, TResult&gt;(Func&lt;Expression, Expression, BinaryExpression&gt;)' doesn't require explicit type parameter 'TResult' in any call to it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CreateExpression`3(System.Func`3&lt;System.Linq.Expressions.Expression,System.Linq.Expressions.Expression,System.Linq.Expressions.BinaryExpression&gt;,System.Boolean)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Reflection" File="ExpressionHelper.cs" Line="154">Modify 'ExpressionHelper.CreateExpression&lt;TArg1, TArg2, TResult&gt;(Func&lt;Expression, Expression, BinaryExpression&gt;, bool)' to catch a more specific exception than 'Exception' or rethrow the exception.</Issue>
+            </Message>
+            <Message TypeName="GenericMethodsShouldProvideTypeParameter" Category="Microsoft.Design" CheckId="CA1004" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="75" Level="Warning" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Reflection" File="ExpressionHelper.cs" Line="124">Consider a design where 'ExpressionHelper.CreateExpression&lt;TArg1, TArg2, TResult&gt;(Func&lt;Expression, Expression, BinaryExpression&gt;, bool)' doesn't require explicit type parameter 'TArg1' in any call to it.</Issue>
+             <Issue Certainty="75" Level="Warning" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Reflection" File="ExpressionHelper.cs" Line="124">Consider a design where 'ExpressionHelper.CreateExpression&lt;TArg1, TArg2, TResult&gt;(Func&lt;Expression, Expression, BinaryExpression&gt;, bool)' doesn't require explicit type parameter 'TArg2' in any call to it.</Issue>
+             <Issue Certainty="75" Level="Warning" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Reflection" File="ExpressionHelper.cs" Line="124">Consider a design where 'ExpressionHelper.CreateExpression&lt;TArg1, TArg2, TResult&gt;(Func&lt;Expression, Expression, BinaryExpression&gt;, bool)' doesn't require explicit type parameter 'TResult' in any call to it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetMemberExpression`2(System.Linq.Expressions.Expression`1&lt;System.Func`2&lt;!!0,!!1&gt;&gt;)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotNestGenericTypesInMemberSignatures" Category="Microsoft.Design" CheckId="CA1006" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="CriticalError" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Reflection" File="ExpressionHelper.cs" Line="22">Consider a design where 'ExpressionHelper.GetMemberExpression&lt;TObject, TPropertyValue&gt;(Expression&lt;Func&lt;TObject, TPropertyValue&gt;&gt;)' doesn't nest generic type 'Expression&lt;Func&lt;TObject, TPropertyValue&gt;&gt;'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetMemberExpression`2(System.Linq.Expressions.Expression`1&lt;System.Func`2&lt;!!0,!!1&gt;&gt;,System.Boolean)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="ConsiderPassingBaseTypesAsParameters" Category="Microsoft.Design" CheckId="CA1011" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="50" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Reflection" File="ExpressionHelper.cs" Line="27">Consider changing the type of parameter 'expression' in 'ExpressionHelper.GetMemberExpression&lt;TObject, TPropertyValue&gt;(Expression&lt;Func&lt;TObject, TPropertyValue&gt;&gt;, bool)' from 'Expression&lt;Func&lt;TObject, TPropertyValue&gt;&gt;' to its base type 'LambdaExpression'. This method appears to only require base class members in its implementation. Suppress this violation if there is a compelling reason to require the more derived type in the method signature.</Issue>
+            </Message>
+            <Message TypeName="DoNotNestGenericTypesInMemberSignatures" Category="Microsoft.Design" CheckId="CA1006" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="CriticalError" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Reflection" File="ExpressionHelper.cs" Line="27">Consider a design where 'ExpressionHelper.GetMemberExpression&lt;TObject, TPropertyValue&gt;(Expression&lt;Func&lt;TObject, TPropertyValue&gt;&gt;, bool)' doesn't nest generic type 'Expression&lt;Func&lt;TObject, TPropertyValue&gt;&gt;'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetProperty`1(System.Linq.Expressions.Expression`1&lt;System.Func`2&lt;!!0,System.Object&gt;&gt;)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotNestGenericTypesInMemberSignatures" Category="Microsoft.Design" CheckId="CA1006" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="CriticalError" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Reflection" File="ExpressionHelper.cs" Line="10">Consider a design where 'ExpressionHelper.GetProperty&lt;TObject&gt;(Expression&lt;Func&lt;TObject, object&gt;&gt;)' doesn't nest generic type 'Expression&lt;Func&lt;TObject, object&gt;&gt;'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetProperty`2(System.Linq.Expressions.Expression`1&lt;System.Func`2&lt;!!0,!!1&gt;&gt;)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotNestGenericTypesInMemberSignatures" Category="Microsoft.Design" CheckId="CA1006" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="CriticalError" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Reflection" File="ExpressionHelper.cs" Line="16">Consider a design where 'ExpressionHelper.GetProperty&lt;TObject, TPropertyValue&gt;(Expression&lt;Func&lt;TObject, TPropertyValue&gt;&gt;)' doesn't nest generic type 'Expression&lt;Func&lt;TObject, TPropertyValue&gt;&gt;'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="ExpressionNameVisitor" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#visit(System.Linq.Expressions.Expression)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="DoNotCastUnnecessarily" Category="Microsoft.Performance" CheckId="CA1800" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="NonBreaking">
+             <Issue Name="Parameter" Certainty="95" Level="Warning" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Reflection" File="ExpressionNameVisitor.cs" Line="38">'expression', a parameter, is cast to type 'BinaryExpression' multiple times in method 'ExpressionNameVisitor.visit(Expression)'. Cache the result of the 'as' operator or direct cast in order to eliminate the redundant castclass instruction.</Issue>
+             <Issue Name="Parameter" Certainty="95" Level="Warning" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Reflection" File="ExpressionNameVisitor.cs" Line="42">'expression', a parameter, is cast to type 'ConstantExpression' multiple times in method 'ExpressionNameVisitor.visit(Expression)'. Cache the result of the 'as' operator or direct cast in order to eliminate the redundant castclass instruction.</Issue>
+             <Issue Name="Parameter" Certainty="95" Level="Warning" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Reflection" File="ExpressionNameVisitor.cs" Line="53">'expression', a parameter, is cast to type 'LambdaExpression' multiple times in method 'ExpressionNameVisitor.visit(Expression)'. Cache the result of the 'as' operator or direct cast in order to eliminate the redundant castclass instruction.</Issue>
+             <Issue Name="Parameter" Certainty="95" Level="Warning" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Reflection" File="ExpressionNameVisitor.cs" Line="45">'expression', a parameter, is cast to type 'MemberExpression' multiple times in method 'ExpressionNameVisitor.visit(Expression)'. Cache the result of the 'as' operator or direct cast in order to eliminate the redundant castclass instruction.</Issue>
+             <Issue Name="Parameter" Certainty="95" Level="Warning" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Reflection" File="ExpressionNameVisitor.cs" Line="49">'expression', a parameter, is cast to type 'MethodCallExpression' multiple times in method 'ExpressionNameVisitor.visit(Expression)'. Cache the result of the 'as' operator or direct cast in order to eliminate the redundant castclass instruction.</Issue>
+             <Issue Name="Parameter" Certainty="95" Level="Warning" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Reflection" File="ExpressionNameVisitor.cs" Line="34">'expression', a parameter, is cast to type 'UnaryExpression' multiple times in method 'ExpressionNameVisitor.visit(Expression)'. Cache the result of the 'as' operator or direct cast in order to eliminate the redundant castclass instruction.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="ReflectionHelper" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#GetProperty`1(System.Linq.Expressions.Expression`1&lt;System.Func`2&lt;!!0,System.Object&gt;&gt;)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotNestGenericTypesInMemberSignatures" Category="Microsoft.Design" CheckId="CA1006" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="CriticalError" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Reflection" File="ReflectionHelper.cs" Line="11">Consider a design where 'ReflectionHelper.GetProperty&lt;T&gt;(Expression&lt;Func&lt;T, object&gt;&gt;)' doesn't nest generic type 'Expression&lt;Func&lt;T, object&gt;&gt;'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetProperty`1(System.String)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="GenericMethodsShouldProvideTypeParameter" Category="Microsoft.Design" CheckId="CA1004" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="75" Level="Warning">Consider a design where 'ReflectionHelper.GetProperty&lt;T&gt;(string)' doesn't require explicit type parameter 'T' in any call to it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="Maxfire.Core.Specifications">
+       <Types>
+        <Type Name="AndSpecification`1" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#IsSatisfiedBy(!0)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="0#" TypeName="ParameterNamesShouldMatchBaseDeclaration" Category="Microsoft.Naming" CheckId="CA1725" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Specifications" File="AndSpecification.cs" Line="15">In member 'AndSpecification&lt;T&gt;.IsSatisfiedBy(T)', change parameter name 'objectToTestSatisfaction' to 'candidate' in order to match the identifier as it has been declared in 'Specification&lt;T&gt;.IsSatisfiedBy(T)'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="ISpecification`1" Kind="Interface" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#And(Maxfire.Core.Specifications.ISpecification`1&lt;!0&gt;)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="And" TypeName="IdentifiersShouldNotMatchKeywords" Category="Microsoft.Naming" CheckId="CA1716" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error">Rename virtual/interface member 'ISpecification&lt;T&gt;.And(ISpecification&lt;T&gt;)' so that it no longer conflicts with the reserved language keyword 'And'. Using a reserved keyword as the name of a virtual/interface member makes it harder for consumers in other languages to override/implement the member.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Not()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Not" TypeName="IdentifiersShouldNotMatchKeywords" Category="Microsoft.Naming" CheckId="CA1716" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error">Rename virtual/interface member 'ISpecification&lt;T&gt;.Not()' so that it no longer conflicts with the reserved language keyword 'Not'. Using a reserved keyword as the name of a virtual/interface member makes it harder for consumers in other languages to override/implement the member.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Or(Maxfire.Core.Specifications.ISpecification`1&lt;!0&gt;)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Or" TypeName="IdentifiersShouldNotMatchKeywords" Category="Microsoft.Naming" CheckId="CA1716" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error">Rename virtual/interface member 'ISpecification&lt;T&gt;.Or(ISpecification&lt;T&gt;)' so that it no longer conflicts with the reserved language keyword 'Or'. Using a reserved keyword as the name of a virtual/interface member makes it harder for consumers in other languages to override/implement the member.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="NotSpecification`1" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#IsSatisfiedBy(!0)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="0#" TypeName="ParameterNamesShouldMatchBaseDeclaration" Category="Microsoft.Naming" CheckId="CA1725" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Specifications" File="NotSpecification.cs" Line="13">In member 'NotSpecification&lt;T&gt;.IsSatisfiedBy(T)', change parameter name 'objectToTestSatisfaction' to 'candidate' in order to match the identifier as it has been declared in 'Specification&lt;T&gt;.IsSatisfiedBy(T)'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="OrSpecification`1" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#IsSatisfiedBy(!0)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="0#" TypeName="ParameterNamesShouldMatchBaseDeclaration" Category="Microsoft.Naming" CheckId="CA1725" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Specifications" File="OrSpecification.cs" Line="15">In member 'OrSpecification&lt;T&gt;.IsSatisfiedBy(T)', change parameter name 'objectToTestSatisfaction' to 'candidate' in order to match the identifier as it has been declared in 'Specification&lt;T&gt;.IsSatisfiedBy(T)'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="Specification`1" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#op_Addition(Maxfire.Core.Specifications.Specification`1&lt;!0&gt;,Maxfire.Core.Specifications.Specification`1&lt;!0&gt;)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="OperatorOverloadsHaveNamedAlternates" Category="Microsoft.Usage" CheckId="CA2225" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="NonBreaking">
+             <Issue Certainty="50" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Specifications" File="Specification.cs" Line="28">Provide a method named 'Add' as a friendly alternate for operator 'Specification&lt;T&gt;.operator +(Specification&lt;T&gt;, Specification&lt;T&gt;)'.</Issue>
+            </Message>
+            <Message TypeName="OverloadOperatorEqualsOnOverloadingAddAndSubtract" Category="Microsoft.Design" CheckId="CA1013" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Specifications" File="Specification.cs" Line="28">Consider adding an overload of the equality operator for 'Specification&lt;T&gt;' that takes the same parameters as 'Specification&lt;T&gt;.operator +(Specification&lt;T&gt;, Specification&lt;T&gt;)'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#op_LogicalNot(Maxfire.Core.Specifications.Specification`1&lt;!0&gt;)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="OperatorOverloadsHaveNamedAlternates" Category="Microsoft.Usage" CheckId="CA2225" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="NonBreaking">
+             <Issue Certainty="50" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Specifications" File="Specification.cs" Line="33">Provide a method named 'LogicalNot' as a friendly alternate for operator 'Specification&lt;T&gt;.operator !(Specification&lt;T&gt;)'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#op_Multiply(Maxfire.Core.Specifications.Specification`1&lt;!0&gt;,Maxfire.Core.Specifications.Specification`1&lt;!0&gt;)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="OperatorOverloadsHaveNamedAlternates" Category="Microsoft.Usage" CheckId="CA2225" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="NonBreaking">
+             <Issue Certainty="50" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core\Specifications" File="Specification.cs" Line="23">Provide a method named 'Multiply' as a friendly alternate for operator 'Specification&lt;T&gt;.operator *(Specification&lt;T&gt;, Specification&lt;T&gt;)'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="System.Diagnostics.CodeAnalysis">
+       <Types>
+        <Type Name="AssertionConditionType" Kind="Enum" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#IS_FALSE" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="FALSE" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'FALSE' in member name 'AssertionConditionType.IS_FALSE' by changing it to 'False'.</Issue>
+            </Message>
+            <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error">Remove the underscores from member name 'AssertionConditionType.IS_FALSE'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#IS_NOT_NULL" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="NOT" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'NOT' in member name 'AssertionConditionType.IS_NOT_NULL' by changing it to 'Not'.</Issue>
+            </Message>
+            <Message Id="NULL" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'NULL' in member name 'AssertionConditionType.IS_NOT_NULL' by changing it to 'Null'.</Issue>
+            </Message>
+            <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error">Remove the underscores from member name 'AssertionConditionType.IS_NOT_NULL'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#IS_NULL" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="NULL" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'NULL' in member name 'AssertionConditionType.IS_NULL' by changing it to 'Null'.</Issue>
+            </Message>
+            <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error">Remove the underscores from member name 'AssertionConditionType.IS_NULL'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#IS_TRUE" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="TRUE" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'TRUE' in member name 'AssertionConditionType.IS_TRUE' by changing it to 'True'.</Issue>
+            </Message>
+            <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error">Remove the underscores from member name 'AssertionConditionType.IS_TRUE'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="ImplicitUseFlags" Kind="Enum" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="EnumsShouldHaveZeroValue" Category="Microsoft.Design" CheckId="CA1008" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+           <Issue Name="FlagsRename" Certainty="95" Level="CriticalError">In enum 'ImplicitUseFlags', change the name of 'ImplicitUseFlags.Default' to 'None'.</Issue>
+          </Message>
+          <Message Id="Flags" TypeName="UsePreferredTerms" Category="Microsoft.Naming" CheckId="CA1726" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+           <Issue Name="TypeNoAlternate" Certainty="95" Level="Error">Replace the term 'Flags' in type name 'ImplicitUseFlags' with an appropriate alternate or remove it entirely.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="MeansImplicitUseAttribute" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="AvoidUnsealedAttributes" Category="Microsoft.Performance" CheckId="CA1813" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+           <Issue Certainty="75" Level="Warning">Seal 'MeansImplicitUseAttribute', if possible.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#.ctor(System.Diagnostics.CodeAnalysis.ImplicitUseFlags)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="flags" TypeName="UsePreferredTerms" Category="Microsoft.Naming" CheckId="CA1726" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Name="MemberParameterNoAlternate" Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="JetBrains.Annotations.cs" Line="240">In member 'MeansImplicitUseAttribute.MeansImplicitUseAttribute(ImplicitUseFlags)', replace the term 'flags' in parameter name 'flags' with an appropriate alternate or remove it entirely.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Flags" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Flags" TypeName="UsePreferredTerms" Category="Microsoft.Naming" CheckId="CA1726" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Name="MemberNoAlternate" Certainty="95" Level="Error">Replace the term 'Flags' in member name 'MeansImplicitUseAttribute.Flags' with an appropriate alternate or remove it entirely.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="UsedImplicitlyAttribute" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="AvoidUnsealedAttributes" Category="Microsoft.Performance" CheckId="CA1813" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+           <Issue Certainty="75" Level="Warning">Seal 'UsedImplicitlyAttribute', if possible.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#.ctor(System.Diagnostics.CodeAnalysis.ImplicitUseFlags)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="flags" TypeName="UsePreferredTerms" Category="Microsoft.Naming" CheckId="CA1726" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Name="MemberParameterNoAlternate" Certainty="95" Level="Error" Path="c:\dev\projects\Maxfire\src\app\Maxfire.Core" File="JetBrains.Annotations.cs" Line="208">In member 'UsedImplicitlyAttribute.UsedImplicitlyAttribute(ImplicitUseFlags)', replace the term 'flags' in parameter name 'flags' with an appropriate alternate or remove it entirely.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Flags" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Flags" TypeName="UsePreferredTerms" Category="Microsoft.Naming" CheckId="CA1726" Status="Active" Created="2010-08-27 16:32:43Z" FixCategory="Breaking">
+             <Issue Name="MemberNoAlternate" Certainty="95" Level="Error">Replace the term 'Flags' in member name 'UsedImplicitlyAttribute.Flags' with an appropriate alternate or remove it entirely.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+ </Targets>
+ <Rules>
+  <Rule TypeName="AssembliesShouldHaveValidStrongNames" Category="Microsoft.Design" CheckId="CA2210">
+   <Name>Assemblies should have valid strong names</Name>
+   <Description>Either the assembly has no strong name, an invalid one, or the strong name is valid only because of the computer configuration. The assembly should not be deployed in this state. The most common causes of this are: 1) The assembly's contents were modified after it was signed. 2) The signing process failed. 3) The assembly was delay-signed. 4) A registry key existed that allowed the check to pass (where it would not have otherwise).</Description>
+   <Resolution Name="NoStrongName">Sign {0} with a strong name key.</Resolution>
+   <Owner />
+   <Url>http://msdn2.microsoft.com/ms182127(VS.90).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">CriticalError</MessageLevel>
+   <File Name="DesignRules.dll" Version="9.0.0.0" />
+  </Rule>
+  <Rule TypeName="AvoidNamespacesWithFewTypes" Category="Microsoft.Design" CheckId="CA1020">
+   <Name>Avoid namespaces with few types</Name>
+   <Description>A namespace should generally have more than five types.</Description>
+   <Resolution Name="Default">Consider merging the types defined in '{0}' with another namespace.</Resolution>
+   <Owner />
+   <Url>http://msdn2.microsoft.com/ms182130(VS.90).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="50">Warning</MessageLevel>
+   <File Name="DesignRules.dll" Version="9.0.0.0" />
+  </Rule>
+  <Rule TypeName="AvoidUnsealedAttributes" Category="Microsoft.Performance" CheckId="CA1813">
+   <Name>Avoid unsealed attributes</Name>
+   <Description>Seal attribute types for improved performance. Sealing attribute types speeds up performance during reflection on custom attributes.</Description>
+   <Resolution Name="Default">Seal {0}, if possible.</Resolution>
+   <Owner />
+   <Url>http://msdn2.microsoft.com/ms182267(VS.90).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="PerformanceRules.dll" Version="9.0.0.0" />
+  </Rule>
+  <Rule TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702">
+   <Name>Compound words should be cased correctly</Name>
+   <Description>Avoid creating compound words from terms which exist in the dictionary as discrete terms. Do not create a compound word such as 'StopWatch' or 'PopUp'. These terms are recognized in the dictionary and should be cased as 'Stopwatch' and 'Popup'.</Description>
+   <Resolution Name="MemberShouldBeDiscreteTerm">The compound word '{0}' in member name {1} exists as a discrete term. If your usage is intended to be single word, case it as '{2}' or strip the first token entirely if it represents any sort of Hungarian notation.</Resolution>
+   <Owner />
+   <Url>http://msdn2.microsoft.com/bb264474(VS.90).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="80">Error</MessageLevel>
+   <File Name="NamingRules.dll" Version="9.0.0.0" />
+  </Rule>
+  <Rule TypeName="ConsiderPassingBaseTypesAsParameters" Category="Microsoft.Design" CheckId="CA1011">
+   <Name>Consider passing base types as parameters</Name>
+   <Description>Using base types as parameters to methods improves re-use of these methods if you only use methods &amp; properties from the parameter's base class. E.g. use Stream instead of FileStream as a parameter when only calling Stream.Read(), this makes the method work on all kind of streams instead of just File streams.</Description>
+   <Resolution Name="Default">Consider changing the type of parameter {0} in {1} from {2} to its base type {3}. This method appears to only require base class members in its implementation. Suppress this violation if there is a compelling reason to require the more derived type in the method signature.</Resolution>
+   <Owner />
+   <Url>http://msdn2.microsoft.com/3hk32yyz(VS.90).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="50">Error</MessageLevel>
+   <File Name="DesignRules.dll" Version="9.0.0.0" />
+  </Rule>
+  <Rule TypeName="DefineAccessorsForAttributeArguments" Category="Microsoft.Design" CheckId="CA1019">
+   <Name>Define accessors for attribute arguments</Name>
+   <Description>Provide accessors for both named and positional arguments. Each positional argument on an attribute should declare a read-only property with the same name (but different casing). Each named argument should provide a read/write property with the same name (but different casing).</Description>
+   <Resolution Name="Default">Add a public read-only property accessor for positional argument {0} of Attribute {1}.</Resolution>
+   <Owner />
+   <Url>http://msdn2.microsoft.com/ms182136(VS.90).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="DesignRules.dll" Version="9.0.0.0" />
+  </Rule>
+  <Rule TypeName="DoNotCastUnnecessarily" Category="Microsoft.Performance" CheckId="CA1800">
+   <Name>Do not cast unnecessarily</Name>
+   <Description>Avoid duplicate casts where possible, since there is a cost associated with them.</Description>
+   <Resolution Name="Parameter">{0}, a parameter, is cast to type {1} multiple times in method {2}. Cache the result of the 'as' operator or direct cast in order to eliminate the redundant {3} instruction.</Resolution>
+   <Owner />
+   <Url>http://msdn2.microsoft.com/ms182271(VS.90).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Warning</MessageLevel>
+   <File Name="PerformanceRules.dll" Version="9.0.0.0" />
+  </Rule>
+  <Rule TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031">
+   <Name>Do not catch general exception types</Name>
+   <Description>You should not catch Exception or SystemException. Catching generic exception types can hide run-time problems from the library user, and can complicate debugging. You should catch only those exceptions that you can handle gracefully.</Description>
+   <Resolution Name="Default">Modify {0} to catch a more specific exception than {1} or rethrow the exception.</Resolution>
+   <Owner />
+   <Url>http://msdn2.microsoft.com/ms182137(VS.90).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">CriticalError</MessageLevel>
+   <File Name="DesignRules.dll" Version="9.0.0.0" />
+  </Rule>
+  <Rule TypeName="DoNotDeclareReadOnlyMutableReferenceTypes" Category="Microsoft.Security" CheckId="CA2104">
+   <Name>Do not declare read only mutable reference types</Name>
+   <Description>A read-only declaration for a mutable reference type does not prevent the field's instance data from being modified. For example, a read-only StringBuilder field declaration does not make sense, since the data encapsulated by the StringBuilder can be modified using the read-only reference.</Description>
+   <Resolution Name="Default">Remove the read-only designation from {0} or change the field to one that is an immutable reference type. If the reference type {1} is, in fact, immutable, exclude this message.</Resolution>
+   <Owner />
+   <Url>http://msdn2.microsoft.com/ms182302(VS.90).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="25">Error</MessageLevel>
+   <File Name="SecurityRules.dll" Version="9.0.0.0" />
+  </Rule>
+  <Rule TypeName="DoNotDeclareStaticMembersOnGenericTypes" Category="Microsoft.Design" CheckId="CA1000">
+   <Name>Do not declare static members on generic types</Name>
+   <Description>The syntax for calling static members on generic types is complex as the type parameter has to be specified for each call.</Description>
+   <Resolution Name="Default">Remove {0} from {1} or make it an instance member.</Resolution>
+   <Owner />
+   <Url>http://msdn2.microsoft.com/ms182139(VS.90).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="DesignRules.dll" Version="9.0.0.0" />
+  </Rule>
+  <Rule TypeName="DoNotNestGenericTypesInMemberSignatures" Category="Microsoft.Design" CheckId="CA1006">
+   <Name>Do not nest generic types in member signatures</Name>
+   <Description>Avoid API that require users to instantiate a generic type with another generic type as type argument. The syntax gets too complex.</Description>
+   <Resolution Name="Default">Consider a design where {0} doesn't nest generic type {1}.</Resolution>
+   <Owner />
+   <Url>http://msdn2.microsoft.com/ms182144(VS.90).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">CriticalError</MessageLevel>
+   <File Name="DesignRules.dll" Version="9.0.0.0" />
+  </Rule>
+  <Rule TypeName="DoNotPassTypesByReference" Category="Microsoft.Design" CheckId="CA1045">
+   <Name>Do not pass types by reference</Name>
+   <Description>Although there are legitimate times to use reference parameters, such use frequently indicates a design that does not conform to the design guidelines for managed code.</Description>
+   <Resolution Name="Default">Consider a design that does not require that {0} be a reference parameter.</Resolution>
+   <Owner />
+   <Url>http://msdn2.microsoft.com/ms182146(VS.90).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="DesignRules.dll" Version="9.0.0.0" />
+  </Rule>
+  <Rule TypeName="EnumsShouldHaveZeroValue" Category="Microsoft.Design" CheckId="CA1008">
+   <Name>Enums should have zero value</Name>
+   <Description>An enum should generally have a zero value. If the enum is not decorated with the Flags attribute, it should have a member with a value of zero that represents the empty state. Optionally, this value is named 'None'. For a Flags-attributed enum, a zero-valued member is optional and, if it exists, should always be named 'None'. This value should indicate that no values have been set in the enum. Using a zero-valued member for other purposes is contrary to the use of the Flags attribute in that the bitwise AND and OR operators are useless with the member.</Description>
+   <Resolution Name="FlagsRename">In enum {0}, change the name of {1} to 'None'.</Resolution>
+   <Owner />
+   <Url>http://msdn2.microsoft.com/ms182149(VS.90).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">CriticalError</MessageLevel>
+   <File Name="DesignRules.dll" Version="9.0.0.0" />
+  </Rule>
+  <Rule TypeName="GenericMethodsShouldProvideTypeParameter" Category="Microsoft.Design" CheckId="CA1004">
+   <Name>Generic methods should provide type parameter</Name>
+   <Description>Methods where the type parameter cannot be inferred from the parameters and therefore has to be defined in the method call are too difficult to understand. Methods with a formal parameter typed as the generic method type parameter support inference. Methods with no formal parameter typed as the generic method type parameter don't support inference.</Description>
+   <Resolution Name="Default">Consider a design where {0} doesn't require explicit type parameter {1} in any call to it.</Resolution>
+   <Owner />
+   <Url>http://msdn2.microsoft.com/ms182150(VS.90).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="DesignRules.dll" Version="9.0.0.0" />
+  </Rule>
+  <Rule TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709">
+   <Name>Identifiers should be cased correctly</Name>
+   <Description>Type, namespace, and member identifiers are Pascal-cased. Parameter identifiers are camel-cased. Two letter acronyms within these identifiers should be upper-cased, for example, use System.IO instead of System.Io. Acronyms of three or more letters should be Pascal-cased, for example, use System.Xml instead of System.XML. The pascal-casing convention capitalizes the first letter of each word, as in BackColor. The camel-casing convention formats the first letter of the first word in lowercase and capitalizes the first letter of all subsequent words, as in backgroundColor. Although it may be common practice for some two letter acronyms to not be fully capitalized, violations of this rule should not be excluded for this reason. For example, 'DbConnection', is common but incorrect; use DBConnection. A violation of this rule might be required for compatibility with existing, non-managed symbol schemes. In general, however, these symbols should not be visible outside the assembly that uses them.</Description>
+   <Resolution Name="Member">Correct the casing of '{0}' in member name {1} by changing it to '{2}'.</Resolution>
+   <Owner />
+   <Url>http://msdn2.microsoft.com/ms182240(VS.90).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="85">Error</MessageLevel>
+   <File Name="NamingRules.dll" Version="9.0.0.0" />
+  </Rule>
+  <Rule TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704">
+   <Name>Identifiers should be spelled correctly</Name>
+   <Description>The individual words that make up an identifier should not be abbreviated and should be spelled correctly. If this rule generates a false positive on a term that should be recognized, add the word to the FxCop custom dictionary.</Description>
+   <Resolution Name="Assembly">Correct the spelling of '{0}' in assembly name {1}.</Resolution>
+   <Resolution Name="Member">Correct the spelling of '{0}' in member name {1} or remove it entirely if it represents any sort of Hungarian notation.</Resolution>
+   <Resolution Name="MemberParameter">In method {0}, correct the spelling of '{1}' in parameter name {2} or remove it entirely if it represents any sort of Hungarian notation.</Resolution>
+   <Resolution Name="MemberParameterMoreMeaningfulName">In method {0}, consider providing a more meaningful name than parameter name {1}.</Resolution>
+   <Resolution Name="MethodTypeParameter">On method {0}, correct the spelling of '{1}' in generic type parameter name {2}.</Resolution>
+   <Resolution Name="Namespace">Correct the spelling of '{0}' in namespace name '{1}'.</Resolution>
+   <Owner />
+   <Url>http://msdn2.microsoft.com/bb264492(VS.90).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="75">CriticalWarning</MessageLevel>
+   <File Name="NamingRules.dll" Version="9.0.0.0" />
+  </Rule>
+  <Rule TypeName="IdentifiersShouldHaveCorrectSuffix" Category="Microsoft.Naming" CheckId="CA1710">
+   <Name>Identifiers should have correct suffix</Name>
+   <Description>Types that extend certain base types have specified name suffixes. Types that extend Attribute, for example, should be suffixed in 'Attribute', as in ObsoleteAttribute. This rules checks types that extend several base types, including Attribute, Exception, EventArgs, IMembershipPermission, Stream, and others.</Description>
+   <Resolution Name="Default">Rename {0} to end in '{1}'.</Resolution>
+   <Owner />
+   <Url>http://msdn2.microsoft.com/ms182244(VS.90).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="NamingRules.dll" Version="9.0.0.0" />
+  </Rule>
+  <Rule TypeName="IdentifiersShouldNotContainTypeNames" Category="Microsoft.Naming" CheckId="CA1720">
+   <Name>Identifiers should not contain type names</Name>
+   <Description>Avoid using language-specific types name in parameters and members and data type identifiers in parameters. Types names might not be intuitive for all developers. It is recommended that you select a generic name, such as 'value', instead. If this is not sufficient, be sure to use the type name as it is defined in the .NET Framework Library and avoid language-specific type names completely. Some examples of C#-specific type names are 'float' (use 'Single' if a generic name is not sufficient), and 'ulong' (use 'UInt64' if a generic name is not sufficient).</Description>
+   <Resolution Name="LanguageIndependentMemberParameter">In member {0}, consider replacing the data type identifier '{1}' in parameter name {2} with a more generic term, such as 'value'.</Resolution>
+   <Owner />
+   <Url>http://msdn2.microsoft.com/ms182234(VS.90).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="75">Error</MessageLevel>
+   <File Name="NamingRules.dll" Version="9.0.0.0" />
+  </Rule>
+  <Rule TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707">
+   <Name>Identifiers should not contain underscores</Name>
+   <Description>Do not use underscores when specifying identifiers. Some generated Visual Studio identifiers for applications contain underscore characters. Underscore characters should generally be avoided in public identifiers.</Description>
+   <Resolution Name="Member">Remove the underscores from member name {0}.</Resolution>
+   <Owner />
+   <Url>http://msdn2.microsoft.com/ms182245(VS.90).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="NamingRules.dll" Version="9.0.0.0" />
+  </Rule>
+  <Rule TypeName="IdentifiersShouldNotMatchKeywords" Category="Microsoft.Naming" CheckId="CA1716">
+   <Name>Identifiers should not match keywords</Name>
+   <Description>Identifiers which conflict with reserved language keywords should be avoided. Using a reserved keyword as an identifier makes it harder for consumers in other languages to use your API.</Description>
+   <Resolution Name="Member">Rename virtual/interface member {0} so that it no longer conflicts with the reserved language keyword '{1}'. Using a reserved keyword as the name of a virtual/interface member makes it harder for consumers in other languages to override/implement the member.</Resolution>
+   <Resolution Name="Type">Rename type {0} so that it no longer conflicts with the reserved language keyword '{1}'. Using a reserved keyword as the name of a type makes it harder for consumers in other languages to use the type.</Resolution>
+   <Owner />
+   <Url>http://msdn2.microsoft.com/ms182248(VS.90).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="NamingRules.dll" Version="9.0.0.0" />
+  </Rule>
+  <Rule TypeName="InitializeReferenceTypeStaticFieldsInline" Category="Microsoft.Performance" CheckId="CA1810">
+   <Name>Initialize reference type static fields inline</Name>
+   <Description>Static fields should be initialized when declared. Initializing static data in explicit static constructors results in less performant code.</Description>
+   <Resolution Name="Default">Initialize all static fields in {0} when those fields are declared and remove the explicit static constructor.</Resolution>
+   <Owner />
+   <Url>http://msdn2.microsoft.com/ms182275(VS.90).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="90">CriticalWarning</MessageLevel>
+   <File Name="PerformanceRules.dll" Version="9.0.0.0" />
+  </Rule>
+  <Rule TypeName="InstantiateArgumentExceptionsCorrectly" Category="Microsoft.Usage" CheckId="CA2208">
+   <Name>Instantiate argument exceptions correctly</Name>
+   <Description>String arguments passed to constructors of ArgumentException and its derived types should be correct. Types derived from ArgumentException have inconsistent constructor overloads with respect to the message and paramName parameters as compared to ArgumentException.</Description>
+   <Resolution Name="NoArguments">Call the {0} constructor that contains a message and/or paramName parameter.</Resolution>
+   <Owner />
+   <Url>http://msdn2.microsoft.com/ms182347(VS.90).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">CriticalError</MessageLevel>
+   <File Name="UsageRules.dll" Version="9.0.0.0" />
+  </Rule>
+  <Rule TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033">
+   <Name>Interface methods should be callable by child types</Name>
+   <Description>Explicit method implementations are defined with private accessibility. Classes that derive from classes with explicit method implementations and choose to re-declare them on the class will not be able to call into the base class implementation unless the base class has provided an alternate method with appropriate accessibility. When overriding a base class method that has been hidden by explicit interface implementation, in order to call into the base class implementation, a derived class must cast the base pointer to the relevant interface. When calling through this reference, however, the derived class implementation will actually be invoked, resulting in recursion and an eventual stack overflow.</Description>
+   <Resolution Name="Default">Make {0} sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of {1} and is visible to derived classes.</Resolution>
+   <Owner />
+   <Url>http://msdn2.microsoft.com/ms182153(VS.90).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="DesignRules.dll" Version="9.0.0.0" />
+  </Rule>
+  <Rule TypeName="MarkAssembliesWithClsCompliant" Category="Microsoft.Design" CheckId="CA1014">
+   <Name>Mark assemblies with CLSCompliantAttribute</Name>
+   <Description>Assemblies should explicitly state their CLS compliance using the CLSCompliant attribute. An assembly without this attribute is not CLS-compliant. Assemblies, modules, and types can be CLS-compliant even if some parts of the assembly, module, or type are not CLS-compliant. The following rules apply: 1) If the element is marked CLSCompliant, any noncompliant members must have the CLSCompliant attribute present with its argument set to false. 2) A comparable CLS-compliant alternative member must be supplied for each member that is not CLS-compliant.</Description>
+   <Resolution Name="Default">Mark {0} with CLSCompliant(true) because it exposes externally visible types.</Resolution>
+   <Owner />
+   <Url>http://msdn2.microsoft.com/ms182156(VS.90).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="DesignRules.dll" Version="9.0.0.0" />
+  </Rule>
+  <Rule TypeName="NonConstantFieldsShouldNotBeVisible" Category="Microsoft.Usage" CheckId="CA2211">
+   <Name>Non-constant fields should not be visible</Name>
+   <Description>Static fields should be constant unless you carefully manage access to the field using locks. Using static variables without making them thread safe can compromise execution state. This rule applies to managed code libraries. If the analyzed assembly is an application, it is usually safe to exclude violations of this rule.</Description>
+   <Resolution Name="Default">Consider making {0} non-public or a constant.</Resolution>
+   <Owner />
+   <Url>http://msdn2.microsoft.com/ms182353(VS.90).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="90">Warning</MessageLevel>
+   <File Name="UsageRules.dll" Version="9.0.0.0" />
+  </Rule>
+  <Rule TypeName="OperatorOverloadsHaveNamedAlternates" Category="Microsoft.Usage" CheckId="CA2225">
+   <Name>Operator overloads have named alternates</Name>
+   <Description>When redefining operators, implement named methods to provide access to the operator functionality from languages that do not support operator overloading. For example, the functionality of the '+' operator should also be accessible using an 'Add' method.</Description>
+   <Resolution Name="Default">Provide a method named '{0}' as a friendly alternate for operator {1}.</Resolution>
+   <Owner />
+   <Url>http://msdn2.microsoft.com/ms182355(VS.90).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="50">Error</MessageLevel>
+   <File Name="UsageRules.dll" Version="9.0.0.0" />
+  </Rule>
+  <Rule TypeName="OverloadOperatorEqualsOnOverloadingAddAndSubtract" Category="Microsoft.Design" CheckId="CA1013">
+   <Name>Overload operator equals on overloading add and subtract</Name>
+   <Description>When overloading the addition and subtraction operators, make sure that the equality operator (==) is defined in a consistent manner.</Description>
+   <Resolution Name="Default">Consider adding an overload of the equality operator for {0} that takes the same parameters as {1}.</Resolution>
+   <Owner />
+   <Url>http://msdn2.microsoft.com/ms182164(VS.90).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="75">Error</MessageLevel>
+   <File Name="DesignRules.dll" Version="9.0.0.0" />
+  </Rule>
+  <Rule TypeName="OverrideMethodsOnComparableTypes" Category="Microsoft.Design" CheckId="CA1036">
+   <Name>Override methods on comparable types</Name>
+   <Description>Types that implement IComparable should redefine Equals and comparison operators to keep the meanings of less than, greater than, and equals consistent throughout the type.</Description>
+   <Resolution Name="Equals">{0} should override Equals since it implements IComparable.</Resolution>
+   <Resolution Name="Operator">{0} should define operator '{1}' since it implements IComparable.</Resolution>
+   <Owner />
+   <Url>http://msdn2.microsoft.com/ms182163(VS.90).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="75">Error</MessageLevel>
+   <File Name="DesignRules.dll" Version="9.0.0.0" />
+  </Rule>
+  <Rule TypeName="ParameterNamesShouldMatchBaseDeclaration" Category="Microsoft.Naming" CheckId="CA1725">
+   <Name>Parameter names should match base declaration</Name>
+   <Description>For usability reasons, parameter names in overridden methods should match those of the base declaration.</Description>
+   <Resolution Name="Default">In member {0}, change parameter name {1} to {2} in order to match the identifier as it has been declared in {3}.</Resolution>
+   <Owner />
+   <Url>http://msdn2.microsoft.com/ms182251(VS.90).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="NamingRules.dll" Version="9.0.0.0" />
+  </Rule>
+  <Rule TypeName="ParameterNamesShouldNotMatchMemberNames" Category="Microsoft.Naming" CheckId="CA1719">
+   <Name>Parameter names should not match member names</Name>
+   <Description>Parameter names should be distinct from member names.</Description>
+   <Resolution Name="Default">Change either member or parameter name {0} so that one differs from the other.</Resolution>
+   <Owner />
+   <Url>http://msdn2.microsoft.com/ms182252(VS.90).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="NamingRules.dll" Version="9.0.0.0" />
+  </Rule>
+  <Rule TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801">
+   <Name>Review unused parameters</Name>
+   <Description>Review parameters in non-virtual methods that are not used in the method body to ensure no correctness exists around failure to access them. Unused parameters incur maintenance and performance costs. Sometimes a violation of this rule can point to an implementation bug in the method (i.e. the parameter should actually have been used in the method body). Exclude warnings of this rule if the parameter has to exist because of backward compatibility.</Description>
+   <Resolution Name="Default">Parameter {0} of {1} is never used. Remove the parameter or use it in the method body.</Resolution>
+   <Owner />
+   <Url>http://msdn2.microsoft.com/ms182268(VS.90).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Warning</MessageLevel>
+   <File Name="UsageRules.dll" Version="9.0.0.0" />
+  </Rule>
+  <Rule TypeName="SpecifyCultureInfo" Category="Microsoft.Globalization" CheckId="CA1304">
+   <Name>Specify CultureInfo</Name>
+   <Description>If an overload exists that takes a CultureInfo argument, it should always be called in favor of an overload that does not. The CultureInfo type contains culture-specific information required for performing numeric and string operations, such as casing, formatting, and string comparisons. In scenarios where conversion and parsing behavior should never change between cultures, specify CultureInfo.InvariantCulture, otherwise, specify CultureInfo.CurrentCulture.</Description>
+   <Resolution Name="Default">Because the behavior of {0} could vary based on the current user's locale settings, replace this call in {1} with a call to {2}. If the result of {2} will be displayed to the user, specify 'CultureInfo.CurrentCulture' as the 'CultureInfo' parameter. Otherwise, if the result will be stored and accessed by software, such as when it is persisted to disk or to a database, specify 'CultureInfo.InvariantCulture'.</Resolution>
+   <Owner />
+   <Url>http://msdn2.microsoft.com/ms182189(VS.90).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="GlobalizationRules.dll" Version="9.0.0.0" />
+  </Rule>
+  <Rule TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305">
+   <Name>Specify IFormatProvider</Name>
+   <Description>If an overload exists that takes an IFormatProvider argument, it should always be called in favor of an overload that does not. Some methods in the runtime convert a value to or from a string representation and take a string parameter that contains one or more characters, called format specifiers, which indicate how the value is to be converted. If the meaning of the format specifier varies by culture, a formatting object supplies the actual characters used in the string representation. In scenarios where sorting and comparison behavior should never change between cultures, specify CultureInfo.InvariantCulture, otherwise, specify CultureInfo.CurrentCulture.</Description>
+   <Resolution Name="Default">Because the behavior of {0} could vary based on the current user's locale settings, replace this call in {1} with a call to {2}. If the result of {2} will be displayed to the user, specify 'CultureInfo.CurrentCulture' as the 'IFormatProvider' parameter. Otherwise, if the result will be stored and accessed by software, such as when it is persisted to disk or to a database, specify 'CultureInfo.InvariantCulture'.</Resolution>
+   <Owner />
+   <Url>http://msdn2.microsoft.com/ms182190(VS.90).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="GlobalizationRules.dll" Version="9.0.0.0" />
+  </Rule>
+  <Rule TypeName="SpecifyStringComparison" Category="Microsoft.Globalization" CheckId="CA1307">
+   <Name>Specify StringComparison</Name>
+   <Description>If an overload exists that takes a StringComparison argument, it should always be called in favor of an overload that does not.</Description>
+   <Resolution Name="Default">{0} makes a call to {1} that does not explicitly provide a StringComparison. This should be replaced with a call to {2}.</Resolution>
+   <Owner />
+   <Url>http://msdn2.microsoft.com/bb386080(VS.90).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="GlobalizationRules.dll" Version="9.0.0.0" />
+  </Rule>
+  <Rule TypeName="StaticHolderTypesShouldBeSealed" Category="Microsoft.Design" CheckId="CA1052">
+   <Name>Static holder types should be sealed</Name>
+   <Description>Static holder types do not provide functionality that derived instances can extend. Inheriting from such a type indicates a flawed design.</Description>
+   <Resolution Name="Default">Mark {0} as sealed.</Resolution>
+   <Owner />
+   <Url>http://msdn2.microsoft.com/ms182168(VS.90).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="75">CriticalWarning</MessageLevel>
+   <File Name="DesignRules.dll" Version="9.0.0.0" />
+  </Rule>
+  <Rule TypeName="UseOrdinalStringComparison" Category="Microsoft.Globalization" CheckId="CA1309">
+   <Name>Use ordinal StringComparison</Name>
+   <Description>For non-linguistic comparisons, StringComparison.Ordinal or StringComparison.OrdinalIgnoreCase should be used instead of the linguistically-sensitive StringComparison.InvariantCulture.</Description>
+   <Resolution Name="StringComparison">{0} passes {1} as an argument to {2}. Replace this usage with StringComparison.Ordinal or StringComparison.OrdinalIgnoreCase if appropriate.</Resolution>
+   <Owner />
+   <Url>http://msdn2.microsoft.com/bb385972(VS.90).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="75">Error</MessageLevel>
+   <File Name="GlobalizationRules.dll" Version="9.0.0.0" />
+  </Rule>
+  <Rule TypeName="UsePreferredTerms" Category="Microsoft.Naming" CheckId="CA1726">
+   <Name>Use preferred terms</Name>
+   <Description>Use preferred terms over deprecated alternates.</Description>
+   <Resolution Name="MemberNoAlternate">Replace the term '{0}' in member name {1} with an appropriate alternate or remove it entirely.</Resolution>
+   <Resolution Name="MemberParameterNoAlternate">In member {0}, replace the term '{1}' in parameter name {2} with an appropriate alternate or remove it entirely.</Resolution>
+   <Resolution Name="TypeNoAlternate">Replace the term '{0}' in type name {1} with an appropriate alternate or remove it entirely.</Resolution>
+   <Owner />
+   <Url>http://msdn2.microsoft.com/ms182258(VS.90).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="NamingRules.dll" Version="9.0.0.0" />
+  </Rule>
+  <Rule TypeName="UsePropertiesWhereAppropriate" Category="Microsoft.Design" CheckId="CA1024">
+   <Name>Use properties where appropriate</Name>
+   <Description>Properties should be used instead of Get/Set methods in most situations. Methods are preferable to properties in the following situations: the operation is a conversion, is expensive or has an observable side-effect; the order of execution is important; calling the member twice in succession creates different results; a member is static but returns a mutable value; or the member returns an array.</Description>
+   <Resolution Name="Default">Change {0} to a property if appropriate.</Resolution>
+   <Owner />
+   <Url>http://msdn2.microsoft.com/ms182181(VS.90).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="DesignRules.dll" Version="9.0.0.0" />
+  </Rule>
+ </Rules>
+ <Localized>
+  <String Key="Category">Category</String>
+  <String Key="Certainty">Certainty</String>
+  <String Key="CollapseAll">Collapse All</String>
+  <String Key="CheckId">Check Id</String>
+  <String Key="Error">Error</String>
+  <String Key="Errors">error(s)</String>
+  <String Key="ExpandAll">Expand All</String>
+  <String Key="Help">Help</String>
+  <String Key="Line">Line</String>
+  <String Key="Messages">message(s)</String>
+  <String Key="LocationNotStoredInPdb">[Location not stored in Pdb]</String>
+  <String Key="Project">Project</String>
+  <String Key="Resolution">Resolution</String>
+  <String Key="Rule">Rule</String>
+  <String Key="RuleFile">Rule File</String>
+  <String Key="RuleDescription">Rule Description</String>
+  <String Key="Source">Source</String>
+  <String Key="Status">Status</String>
+  <String Key="Target">Target</String>
+  <String Key="Warning">Warning</String>
+  <String Key="Warnings">warning(s)</String>
+  <String Key="ReportTitle">Code Analysis Report</String>
+ </Localized>
+ <Exceptions>
+  <Exception Keyword="CA0055" Kind="AssemblyLoad">
+   <Type>Microsoft.FxCop.Common.AssemblyLoadException</Type>
+   <ExceptionMessage>Could not load Maxfire.Skat.dll.</ExceptionMessage>
+   <InnerType>Microsoft.FxCop.Sdk.FxCopException</InnerType>
+   <InnerExceptionMessage>The first successfully loaded assembly for this project was linked against v2.0.50727. 'Maxfire.Skat' was linked against v4.0.30319 and so cannot be analyzed from within the same project.</InnerExceptionMessage>
+   <InnerStackTrace>   at Microsoft.FxCop.Engines.Introspection.IntrospectionAnalysisEngine.CanLoadTargetFile(TargetFile target)
+   at Microsoft.FxCop.Common.EngineManager.LoadTargets(TargetFile target, Boolean resetCounts, String loadEngine)</InnerStackTrace>
+  </Exception>
+ </Exceptions>
+</FxCopReport>
