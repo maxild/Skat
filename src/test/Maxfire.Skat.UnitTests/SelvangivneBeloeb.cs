@@ -20,7 +20,7 @@
 			get { return - FradragPersonligIndkomst; }
 		}
 
-		public virtual decimal FradragPersonligIndkomst
+		private decimal FradragPersonligIndkomst
 		{
 			// TODO: iværksætter konto + atp eget bidrag
 			get { return PrivatTegnetPensionsindskud + AtpEgetBidrag; }
@@ -28,10 +28,10 @@
 
 		public virtual decimal NettoKapitalIndkomst
 		{
-			get { return Renteindt + AndenKapitalIndkomst; }
+			get { return Renteindt + AndenKapitalIndkomst - FradragKapitalIndkomst; }
 		}
 
-		public virtual decimal FradragKapitalIndkomst
+		private decimal FradragKapitalIndkomst
 		{
 			get { return Renteudg; }
 		}
