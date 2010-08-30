@@ -217,7 +217,7 @@ namespace Maxfire.Skat
 			// TODO: For ægtefæller er det summen, da ubenyttet grundbeløb kan overføres
 			var negativNettoKapitalIndkomstOverGrundbeloebet = (+(-nettoKapitalIndkomstTilBeskatning))
 				.DifferenceGreaterThan(negativNettoKapitalIndkomstGrundbeloeb);
-			var ligningsmaesigeFradrag = indkomster.Map(x => x.Skattegrundlag.LigningsmaessigeFradrag);
+			var ligningsmaesigeFradrag = indkomster.Map(x => x.Skattegrundlag.LigningsmaessigtFradrag);
 			return sats * (negativNettoKapitalIndkomstOverGrundbeloebet + ligningsmaesigeFradrag);
 		}
 

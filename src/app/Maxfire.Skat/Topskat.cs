@@ -198,7 +198,7 @@ namespace Maxfire.Skat
 			}
 			else
 			{
-				indexOfMaxGrundlag = indkomster[0].Skattegrundlag.LigningsmaessigeFradrag > indkomster[1].Skattegrundlag.LigningsmaessigeFradrag ? 0 : 1;
+				indexOfMaxGrundlag = indkomster[0].Skattegrundlag.LigningsmaessigtFradrag > indkomster[1].Skattegrundlag.LigningsmaessigtFradrag ? 0 : 1;
 			}
 			return indexOfMaxGrundlag;
 		}

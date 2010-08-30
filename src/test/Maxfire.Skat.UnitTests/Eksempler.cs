@@ -99,13 +99,13 @@ namespace Maxfire.Skat.UnitTests
 
 			indkomster[0].Selvangiven.PersonligIndkomst.ShouldEqual(368000 - indskudPaaPrivatTegnetKapitalPension);
 			indkomster[0].Selvangiven.NettoKapitalIndkomst.ShouldEqual(28500);
-			indkomster[0].Selvangiven.LigningsmaessigeFradrag.ShouldEqual(1400);     // eksl. beregnet beskæftigelsesfradrag
-			indkomster[0].Skattegrundlag.LigningsmaessigeFradrag.ShouldEqual(15000); // inkl. beregnet beskæftigelsesfradrag
+			indkomster[0].Selvangiven.LigningsmaessigtFradrag.ShouldEqual(1400);     // eksl. beregnet beskæftigelsesfradrag
+			indkomster[0].Skattegrundlag.LigningsmaessigtFradrag.ShouldEqual(15000); // inkl. beregnet beskæftigelsesfradrag
 
 			indkomster[1].Selvangiven.PersonligIndkomst.ShouldEqual(92000);
 			indkomster[1].Selvangiven.NettoKapitalIndkomst.ShouldEqual(18500);
-			indkomster[1].Selvangiven.LigningsmaessigeFradrag.ShouldEqual(3750);     // eksl. beregnet beskæftigelsesfradrag
-			indkomster[1].Skattegrundlag.LigningsmaessigeFradrag.ShouldEqual(8000);  // inkl. beregnet beskæftigelsesfradrag
+			indkomster[1].Selvangiven.LigningsmaessigtFradrag.ShouldEqual(3750);     // eksl. beregnet beskæftigelsesfradrag
+			indkomster[1].Skattegrundlag.LigningsmaessigtFradrag.ShouldEqual(8000);  // inkl. beregnet beskæftigelsesfradrag
 
 			var topskatBeregner = new TopskatBeregner(_skattelovRegistry);
 			var topskat = topskatBeregner.BeregnSkat(indkomster, SKATTE_AAR, getKommunaleSatserForGifte());
@@ -146,7 +146,7 @@ namespace Maxfire.Skat.UnitTests
 
 			indkomster[0].Selvangiven.PersonligIndkomst.ShouldEqual(358395);
 			indkomster[0].Selvangiven.NettoKapitalIndkomst.ShouldEqual(8500);
-			indkomster[0].Selvangiven.LigningsmaessigeFradrag.ShouldEqual(24600);
+			indkomster[0].Selvangiven.LigningsmaessigtFradrag.ShouldEqual(24600);
 
 			indkomster[0].Selvangiven.SkattepligtigIndkomst.ShouldEqual(342295);
 

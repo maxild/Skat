@@ -14,7 +14,7 @@
 			PersonligIndkomstAMIndkomst = personligIndkomstAMIndkomst;
 			PersonligIndkomst = personligIndkomst;
 			NettoKapitalIndkomst = nettoKapitalIndkomst;
-			LigningsmaessigeFradrag = ligningsmaessigeFradrag;
+			LigningsmaessigtFradrag = ligningsmaessigeFradrag;
 			SkattepligtigIndkomst = skattepligtigIndkomst;
 			KapitalPensionsindskud = kapitalPensionsindskud;
 			AktieIndkomst = aktieIndkomst;
@@ -23,9 +23,14 @@
 		public decimal PersonligIndkomstAMIndkomst { get; private set; }
 		public decimal PersonligIndkomst { get; private set; }
 		public decimal NettoKapitalIndkomst { get; private set; }
-		public decimal LigningsmaessigeFradrag { get; private set; }
+		public decimal LigningsmaessigtFradrag { get; private set; }
 		public decimal SkattepligtigIndkomst { get; private set; }
 		public decimal KapitalPensionsindskud { get; private set; }
 		public decimal AktieIndkomst { get; private set; }
+	}
+
+	public class SpecificeredeSkatteIndkomster
+	{
+
 	}
 }

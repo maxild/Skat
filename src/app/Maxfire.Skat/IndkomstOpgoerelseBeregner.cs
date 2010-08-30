@@ -12,11 +12,13 @@ namespace Maxfire.Skat
 			_skattelovRegistry = skattelovRegistry;
 		}
 
-		// TODO: Mangler aktieindkomst, restskat, fremførte underskud i selvangivne beløb
+		// TODO: Mangler restskat, fremførte underskud i selvangivne beløb
 		public ValueTuple<IPersonligeBeloeb> BeregnIndkomster(
 			IValueTuple<ISelvangivneBeloeb> selvangivneBeloeb, 
 			int skatteAar)
 		{
+			var specficeredeSelvangivneBeloeb = selvangivneBeloeb.Map(makeSpecificerede);
+
 			// Beregn de endogene beløb for AM-bidrag og beskæftigelsesfradrag
 			var amBidragBeregner = new AMBidragBeregner(_skattelovRegistry);
 			var amIndkomster = selvangivneBeloeb.Map(x => x.PersonligIndkomstAMIndkomst);
@@ -26,7 +28,13 @@ namespace Maxfire.Skat
 			
 			// TODO: make PersonligeBeloeb immutable, men gør det sideløbende med et beregnet eksempel med alle slags modregninger af underskud
 			return amBidrag.Map(index => 
-				(IPersonligeBeloeb)new PersonligeBeloeb(selvangivneBeloeb[index], amBidrag[index], beskaeftigelsesfradrag[index]));
+				(IPersonligeBeloeb)new PersonligeBeloeb(specficeredeSelvangivneBeloeb[index], amBidrag[index], beskaeftigelsesfradrag[index]));
+		}
+
+		private static ISpecficeredeSelvangivneBeloeb makeSpecificerede(ISelvangivneBeloeb selvangivneBeloeb)
+		{
+			var specficeredeSelvangivneBeloeb = selvangivneBeloeb as ISpecficeredeSelvangivneBeloeb;
+			return specficeredeSelvangivneBeloeb ?? new DefaultSpecificeredeSelvangivneBeloeb(selvangivneBeloeb);
 		}
 	}
 }

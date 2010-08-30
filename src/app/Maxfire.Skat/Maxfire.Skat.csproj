@@ -38,6 +38,7 @@
     <Compile Include="AktieindkomstSkat.cs" />
     <Compile Include="AMBidragBeregner.cs" />
     <Compile Include="Beloebsgraenser.cs" />
+    <Compile Include="DefaultSpecificeredeSelvangivneBeloeb.cs" />
     <Compile Include="Extensions\BeregnModregningerResultExtensions.cs" />
     <Compile Include="BeskaeftigelsesfradragBeregner.cs" />
     <Compile Include="Bundskat.cs" />
@@ -72,12 +73,13 @@
     <Compile Include="PersonligeBeloeb.cs" />
     <Compile Include="Kommuneskat.cs" />
     <Compile Include="PersonligIndkomstUnderskudBeregner.cs" />
+    <Compile Include="PersonligIndkomstValue.cs" />
     <Compile Include="Reflection\Accessor.cs" />
     <Compile Include="Reflection\Getter.cs" />
     <Compile Include="Reflection\IntrospectionOf.cs" />
     <Compile Include="Reflection\PropertyAccessor.cs" />
     <Compile Include="Reflection\Setter.cs" />
-    <Compile Include="SkatteIndkomster.cs" />
+    <Compile Include="DefaultSkatteIndkomster.cs" />
     <Compile Include="SkatterAfPersonligIndkomstBeregner.cs" />
     <Compile Include="SkatterAfSkattepligtigIndkomstBeregner.cs" />
     <Compile Include="SkatteModregner.cs" />
@@ -88,6 +90,7 @@
     <Compile Include="Sundhedsbidrag.cs" />
     <Compile Include="SkattepligtigIndkomstUnderskudBeregner.cs" />
     <Compile Include="SkattevaerdiOmregner.cs" />
+    <Compile Include="TextValuePairCollection.cs" />
     <Compile Include="ValueTuple.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Skatteberegner.cs" />

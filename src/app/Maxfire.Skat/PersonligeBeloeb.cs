@@ -1,35 +1,13 @@
 ﻿namespace Maxfire.Skat
 {
-	// TODO: Hvordan returneres indkomst opgørelsen inklusing AMBidrag og beskæftigelsesfradrag?
-	//public class PersonligIndkomstValue
-	//{
-	//    public PersonligIndkomstValue(decimal value)
-	//    {
-	//        FoerAMBidrag = value;
-	//        AMBidrag = null;
-	//    }
-	//    public PersonligIndkomstValue(decimal foerAMBidrag, decimal? amBidrag)
-	//    {
-	//        FoerAMBidrag = foerAMBidrag;
-	//        AMBidrag = amBidrag;
-	//    }
-
-	//    public decimal FoerAMBidrag { get; private set; }
-		
-	//    public decimal? AMBidrag { get; private set; }
-		
-	//    public decimal EfterAMBidrag { 
-	//        get
-	//        {
-	//            decimal efterAMBidrag = FoerAMBidrag;
-	//            if (AMBidrag.HasValue)
-	//            {
-	//                efterAMBidrag -= AMBidrag.Value;
-	//            }
-	//            return efterAMBidrag;				
-	//        }
-	//    }
-	//}
+	// TODO: Hele indkomst opgørelsen skal laves om (forbedres)
+	// 1) Modregninger skal indsættes i indkomst opgørelsen som
+	//    - overført fra ægtefælle/overført til ægtefælle
+	//    - årets underskud vs fremført underskud
+	//    - lav events ved modregning (handlers, Action<T>)
+	//    - Sørg for at indkomst opgørelsen er immutable, men dog at modregninger kan tilføjes (event sourcing)
+	//    - selvangivne beløb vs beregnede/skattegrundlag beløb
+	// 2) Se på skat hjemmeside for eksempler
 
 	/// <summary>
 	/// Input der varierer pr. person (personlig indkomst, nettokapitalindkomst, 
@@ -37,7 +15,7 @@
 	/// </summary>
 	internal class PersonligeBeloeb : IPersonligeBeloeb
 	{
-		public PersonligeBeloeb(ISelvangivneBeloeb selvangivneBeloeb, decimal amBidrag, decimal beskaeftigelsesfradrag)
+		public PersonligeBeloeb(ISpecficeredeSelvangivneBeloeb selvangivneBeloeb, decimal amBidrag, decimal beskaeftigelsesfradrag)
 		{
 			SelvangivneBeloeb = selvangivneBeloeb;
 			AMBidrag = amBidrag;
@@ -59,11 +37,10 @@
 		/// </summary>
 		public decimal PersonligIndkomstFoerAMBidrag
 		{
-			get 
-			{ 
-				return SelvangivneBeloeb.PersonligIndkomstAMIndkomst 
-				+ SelvangivneBeloeb.PersonligIndkomstEjAMIndkomst 
-				- SelvangivneBeloeb.FradragPersonligIndkomst; 
+			get
+			{
+				return SelvangivneBeloeb.PersonligIndkomstAMIndkomst
+				       + SelvangivneBeloeb.PersonligIndkomstEjAMIndkomst;
 			}
 		}
 
@@ -89,7 +66,7 @@
 				                                       	PersonligIndkomstAMIndkomst,
 				                                       	PersonligIndkomst,
 				                                       	NettoKapitalIndkomst,
-														SelvangivneBeloeb.LigningsmaessigeFradragMinusBeskaeftigelsesfradrag,
+														SelvangivneBeloeb.LigningsmaessigtFradragMinusBeskaeftigelsesfradrag,
 				                                       	SkattepligtigIndkomst,
 				                                       	KapitalPensionsindskud,
 				                                       	AktieIndkomst));
@@ -154,7 +131,7 @@
 
 		public decimal NettoKapitalIndkomst
 		{
-			get { return SelvangivneBeloeb.KapitalIndkomst - SelvangivneBeloeb.FradragKapitalIndkomst; }
+			get { return SelvangivneBeloeb.NettoKapitalIndkomst; }
 		}
 		
 		/// <summary>
@@ -222,7 +199,7 @@
 		/// </summary>
 		public decimal AktieIndkomst
 		{
-			get { return 0m; }
+			get { return SelvangivneBeloeb.AktieIndkomst; }
 		}
 
 		/// <summary>
@@ -232,7 +209,7 @@
 		{
 			get
 			{
-				return SelvangivneBeloeb.LigningsmaessigeFradragMinusBeskaeftigelsesfradrag
+				return SelvangivneBeloeb.LigningsmaessigtFradragMinusBeskaeftigelsesfradrag
 				       + Beskaeftigelsesfradrag;
 			}
 		}

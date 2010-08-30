@@ -17,7 +17,7 @@
 
 		public virtual decimal PersonligIndkomstEjAMIndkomst
 		{
-			get { return 0m; }
+			get { return - FradragPersonligIndkomst; }
 		}
 
 		public virtual decimal FradragPersonligIndkomst
@@ -26,7 +26,7 @@
 			get { return PrivatTegnetPensionsindskud + AtpEgetBidrag; }
 		}
 
-		public virtual decimal KapitalIndkomst
+		public virtual decimal NettoKapitalIndkomst
 		{
 			get { return Renteindt + AndenKapitalIndkomst; }
 		}
@@ -36,7 +36,7 @@
 			get { return Renteudg; }
 		}
 
-		public virtual decimal LigningsmaessigeFradragMinusBeskaeftigelsesfradrag
+		public virtual decimal LigningsmaessigtFradragMinusBeskaeftigelsesfradrag
 		{
 			get { return LigningsmaessigeFradrag; }
 		}

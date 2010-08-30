@@ -44,7 +44,9 @@ namespace Maxfire.Skat
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
 	public class PersonligIndkomstUnderskudBeregner
 	{
+// ReSharper disable MemberCanBeMadeStatic.Global
 		public void ModregningAfUnderskud(IValueTuple<IPersonligeBeloeb> indkomster)
+// ReSharper restore MemberCanBeMadeStatic.Global
 		{
 			// I. Årets underskud
 

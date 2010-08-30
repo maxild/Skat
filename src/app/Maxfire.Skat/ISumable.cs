@@ -1,6 +1,6 @@
 ﻿namespace Maxfire.Skat
 {
-	public interface ISumable<T>
+	public interface ISumable<out T>
 	{
 		T Sum();
 	}
