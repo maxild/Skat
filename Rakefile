@@ -137,7 +137,7 @@ namespace :build do
 			xunit.results_folder = ARCHIVE[:results]
 			xunit.test_results_filename = "#{name}UnitTestResults.xml"
 			xunit.test_stylesheet = File.join(ROOT, 'tools', 'xunit', 'xUnitSummary.xsl')
-			xunit.calculate_coverage = true
+			xunit.calculate_coverage = false
 			xunit.coverage_exclude_attrs << 'Maxfire.TestCommons.NoCoverageAttribute'
 			xunit.ncover_path = PATHS[:ncover]
 			coverage_results_filenames << xunit.coverage_results_filename = "#{name}UnitTestCoverage.xml"
