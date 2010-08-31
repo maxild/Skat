@@ -1,5 +1,10 @@
 ﻿namespace Maxfire.Skat
 {
+	// TODO:
+	// ISkatteIndkomster
+	// IPersonligeIndkomster
+	// ISkattepligtigeIndkomster
+
 	public interface IPersonligeBeloeb
 	{
 		ISkatteIndkomster Selvangiven { get; }

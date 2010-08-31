@@ -2,7 +2,7 @@
 
 namespace Maxfire.Skat
 {
-	public class SundhedsbidragBeregner
+	public class SundhedsbidragBeregner : SkattepligtigIndkomstSkatteberegner
 	{
 		private readonly ISkattelovRegistry _skattelovRegistry;
 
@@ -13,8 +13,8 @@ namespace Maxfire.Skat
 
 		public ValueTuple<decimal> BeregnSkat(IValueTuple<IPersonligeBeloeb> indkomster, int skatteAar)
 		{
-			var skattepligtigIndkomst = indkomster.Map(x => x.Skattegrundlag.SkattepligtigIndkomst);
-			return _skattelovRegistry.GetSundhedsbidragSkattesats(skatteAar) * (+skattepligtigIndkomst);
+			return BeregnSkatCore(indkomster,
+			                      () => _skattelovRegistry.GetSundhedsbidragSkattesats(skatteAar).ToTupleOfSize(indkomster.Size));
 		}
 	}
 }
