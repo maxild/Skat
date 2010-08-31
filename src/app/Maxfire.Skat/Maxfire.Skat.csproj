@@ -50,9 +50,13 @@
     <Compile Include="GroenCheckBeregner.cs" />
     <Compile Include="IndkomstOpgoerelseBeregner.cs" />
     <Compile Include="IPersonligeBeloeb.cs" />
+    <Compile Include="IPersonligeIndkomster.cs" />
     <Compile Include="ISelvangivneBeloeb.cs" />
     <Compile Include="ISkatteIndkomster.cs" />
     <Compile Include="ISkattelovRegistry.cs" />
+    <Compile Include="ISkattepligtigeIndkomster.cs" />
+    <Compile Include="ISpecficeredeSelvangivneBeloeb.cs" />
+    <Compile Include="ISpecificeredeSkatteIndkomster.cs" />
     <Compile Include="ISumable.cs" />
     <Compile Include="IKommunaleSatser.cs" />
     <Compile Include="Extensions\KommunaleSatserExtensions.cs" />
@@ -73,6 +77,7 @@
     <Compile Include="PersonfradragSkattevaerdiOmregner.cs" />
     <Compile Include="PersonligeBeloeb.cs" />
     <Compile Include="Kommuneskat.cs" />
+    <Compile Include="PersonligIndkomstSkatteberegner.cs" />
     <Compile Include="PersonligIndkomstUnderskudBeregner.cs" />
     <Compile Include="PersonligIndkomstValue.cs" />
     <Compile Include="Reflection\Accessor.cs" />
@@ -80,7 +85,6 @@
     <Compile Include="Reflection\IntrospectionOf.cs" />
     <Compile Include="Reflection\PropertyAccessor.cs" />
     <Compile Include="Reflection\Setter.cs" />
-    <Compile Include="DefaultSkatteIndkomster.cs" />
     <Compile Include="SkattepligtigIndkomstSkatteberegner.cs" />
     <Compile Include="SkatterAfPersonligIndkomstBeregner.cs" />
     <Compile Include="SkatterAfSkattepligtigIndkomstBeregner.cs" />

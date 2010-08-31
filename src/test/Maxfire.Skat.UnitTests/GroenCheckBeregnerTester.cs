@@ -45,7 +45,7 @@ namespace Maxfire.Skat.UnitTests
 			}
 
 			protected override ValueTuple<decimal> GetTopskattegrundlag(
-				IValueTuple<IPersonligeBeloeb> indkomster, 
+				IValueTuple<IPersonligeIndkomster> indkomster, 
 				decimal bundfradrag, 
 				decimal positivNettoKapitalIndkomstGrundbeloeb)
 			{
@@ -55,15 +55,17 @@ namespace Maxfire.Skat.UnitTests
 
 		class MockableGroenCheckBeregner : GroenCheckBeregner
 		{
-			private readonly Action<IValueTuple<IPersonligeBeloeb>, decimal, decimal> _action;
+			private readonly Action<IValueTuple<IPersonligeIndkomster>, decimal, decimal> _action;
 
-			public MockableGroenCheckBeregner(ISkattelovRegistry skattelovRegistry, Action<IValueTuple<IPersonligeBeloeb>, decimal, decimal> action) : base(skattelovRegistry)
+			public MockableGroenCheckBeregner(
+				ISkattelovRegistry skattelovRegistry, 
+				Action<IValueTuple<IPersonligeIndkomster>, decimal, decimal> action) : base(skattelovRegistry)
 			{
 				_action = action;
 			}
 
 			protected override ValueTuple<decimal> GetTopskattegrundlag(
-				IValueTuple<IPersonligeBeloeb> indkomster, 
+				IValueTuple<IPersonligeIndkomster> indkomster, 
 				decimal bundfradrag, 
 				decimal positivNettoKapitalIndkomstGrundbeloeb)
 			{
@@ -77,7 +79,7 @@ namespace Maxfire.Skat.UnitTests
 		{
 			const int skatteAar = 2010;
 			var beregner = new TestableGroenCheckBeregner(new FakeSkattelovRegistry(), () => 0);
-			var indkomster = new FakePersonligeBeloeb().ToTupleOfSize(1);
+			var indkomster = new FakePersonligeIndkomster().ToTupleOfSize(1);
 
 			var aftrapning = beregner.BeregnAftrapning(indkomster, skatteAar);
 
@@ -89,7 +91,7 @@ namespace Maxfire.Skat.UnitTests
 		{
 			const int skatteAar = 2010;
 			var beregner = new TestableGroenCheckBeregner(new FakeSkattelovRegistry(), () => 1000);
-			var indkomster = new FakePersonligeBeloeb().ToTupleOfSize(1);
+			var indkomster = new FakePersonligeIndkomster().ToTupleOfSize(1);
 
 			var aftrapning = beregner.BeregnAftrapning(indkomster, skatteAar);
 
@@ -102,7 +104,7 @@ namespace Maxfire.Skat.UnitTests
 			const int skatteAar = 2010;
 			var beregner = new TestableGroenCheckBeregner(new FakeSkattelovRegistry(), () => 0);
 			var personer = new Person(new DateTime(1970, 6, 3), 1).ToTuple<IPerson>();
-			var indkomster = new FakePersonligeBeloeb().ToTuple();
+			var indkomster = new FakePersonligeIndkomster().ToTuple();
 
 			var aftrapning = beregner.BeregnKompensation(personer, indkomster, skatteAar);
 
@@ -115,7 +117,7 @@ namespace Maxfire.Skat.UnitTests
 			const int skatteAar = 2010;
 			var beregner = new TestableGroenCheckBeregner(new FakeSkattelovRegistry(), () => 1000);
 			var personer = new Person(new DateTime(1970, 6, 3), 1).ToTuple<IPerson>();
-			var indkomster = new FakePersonligeBeloeb().ToTuple();
+			var indkomster = new FakePersonligeIndkomster().ToTuple();
 
 			var aftrapning = beregner.BeregnKompensation(personer, indkomster, skatteAar);
 
@@ -126,7 +128,7 @@ namespace Maxfire.Skat.UnitTests
 		public void TopskattegrundlagArguments()
 		{
 			const int skatteAar = 2010;
-			var indkomster = new FakePersonligeBeloeb().ToTuple();
+			var indkomster = new FakePersonligeIndkomster().ToTuple();
 			var beregner = new MockableGroenCheckBeregner(new FakeSkattelovRegistry(), (i, b, p) =>
 			                                                                           	{
 			                                                                           		ReferenceEquals(i, indkomster);

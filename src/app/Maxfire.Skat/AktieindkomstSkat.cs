@@ -64,15 +64,15 @@ namespace Maxfire.Skat
 			_skattelovRegistry = skattelovRegistry;
 		}
 
-		public ValueTuple<decimal> BeregnSkat(IValueTuple<IPersonligeBeloeb> indkomster, int skatteAar)
+		public ValueTuple<decimal> BeregnSkat(IValueTuple<IPersonligeIndkomster> indkomster, int skatteAar)
 		{
 			return indkomster.Map(indkomst => BeregnSkat(indkomst, skatteAar));
 		}
 
-		public decimal BeregnSkat(IPersonligeBeloeb indkomst, int skatteAar)
+		public decimal BeregnSkat(IPersonligeIndkomster indkomst, int skatteAar)
 		{
 			decimal beloebUnderLavesteProgressionsgraense
-				= Math.Min(_skattelovRegistry.GetAktieIndkomstLavesteProgressionsgraense(skatteAar), indkomst.Skattegrundlag.AktieIndkomst).NonNegative();
+				= Math.Min(_skattelovRegistry.GetAktieIndkomstLavesteProgressionsgraense(skatteAar), indkomst.AktieIndkomst).NonNegative();
 			return _skattelovRegistry.GetAktieIndkomstLavesteSkattesats(skatteAar) * beloebUnderLavesteProgressionsgraense;
 		}
 	}
@@ -89,16 +89,16 @@ namespace Maxfire.Skat
 			_skattelovRegistry = skattelovRegistry;
 		}
 
-		public ValueTuple<decimal> BeregnSkat(IValueTuple<IPersonligeBeloeb> indkomster, int skatteAar)
+		public ValueTuple<decimal> BeregnSkat(IValueTuple<IPersonligeIndkomster> indkomster, int skatteAar)
 		{
 			return indkomster.Map(indkomst => BeregnSkat(indkomst, skatteAar));
 		}
 
-		public decimal BeregnSkat(IPersonligeBeloeb indkomst, int skatteAar)
+		public decimal BeregnSkat(IPersonligeIndkomster indkomst, int skatteAar)
 		{
 			decimal beloebUnderProgressionsgraense 
 				= Math.Min(_skattelovRegistry.GetAktieIndkomstHoejesteProgressionsgraense(skatteAar),
-															  indkomst.Skattegrundlag.AktieIndkomst);
+															  indkomst.AktieIndkomst);
 			decimal beloebOverLavesteProgressionsgraenseOgUnderHoejesteProgressionsgraense 
 				= (beloebUnderProgressionsgraense - _skattelovRegistry.GetAktieIndkomstLavesteProgressionsgraense(skatteAar)).NonNegative();
 			return _skattelovRegistry.GetAktieIndkomstMellemsteSkattesats(skatteAar) * beloebOverLavesteProgressionsgraenseOgUnderHoejesteProgressionsgraense;
@@ -117,15 +117,15 @@ namespace Maxfire.Skat
 			_skattelovRegistry = skattelovRegistry;
 		}
 
-		public ValueTuple<decimal> BeregnSkat(IValueTuple<IPersonligeBeloeb> indkomster, int skatteAar)
+		public ValueTuple<decimal> BeregnSkat(IValueTuple<IPersonligeIndkomster> indkomster, int skatteAar)
 		{
 			return indkomster.Map(indkomst => BeregnSkat(indkomst, skatteAar));
 		}
 
-		public decimal BeregnSkat(IPersonligeBeloeb indkomst, int skatteAar)
+		public decimal BeregnSkat(IPersonligeIndkomster indkomst, int skatteAar)
 		{
 			decimal beloebOverHoejesteProgressionsgraense
-				= (indkomst.Skattegrundlag.AktieIndkomst - _skattelovRegistry.GetAktieIndkomstHoejesteProgressionsgraense(skatteAar)).NonNegative();
+				= (indkomst.AktieIndkomst - _skattelovRegistry.GetAktieIndkomstHoejesteProgressionsgraense(skatteAar)).NonNegative();
 			return _skattelovRegistry.GetAktieIndkomstHoejesteSkattesats(skatteAar) * beloebOverHoejesteProgressionsgraense;
 		}
 	}

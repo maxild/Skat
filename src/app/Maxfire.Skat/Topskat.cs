@@ -66,7 +66,7 @@ namespace Maxfire.Skat
 		}
 
 		public ValueTuple<decimal> BeregnSkat(
-			IValueTuple<IPersonligeBeloeb> indkomster, 
+			IValueTuple<IPersonligeIndkomster> indkomster, 
 			int skatteAar, 
 			IValueTuple<IKommunaleSatser> kommunaleSatser = null)
 		{
@@ -81,7 +81,7 @@ namespace Maxfire.Skat
 
 // ReSharper disable MemberCanBeMadeStatic.Global
 		public ValueTuple<decimal> BeregnGrundlag(
-			IValueTuple<IPersonligeBeloeb> indkomster, 
+			IValueTuple<IPersonligeIndkomster> indkomster, 
 			decimal topskatBundfradrag, 
 			decimal positivNettoKapitalIndkomstGrundbeloeb)
 // ReSharper restore MemberCanBeMadeStatic.Global
@@ -94,7 +94,7 @@ namespace Maxfire.Skat
 
 		// ReSharper disable MemberCanBeMadeStatic.Global
 		public ValueTuple<decimal> BeregnGrundlagForGroenCheck(
-			IValueTuple<IPersonligeBeloeb> indkomster, 
+			IValueTuple<IPersonligeIndkomster> indkomster, 
 			decimal topskatBundfradrag, 
 			decimal positivNettoKapitalIndkomstGrundbeloeb)
 		// ReSharper restore MemberCanBeMadeStatic.Global
@@ -111,17 +111,17 @@ namespace Maxfire.Skat
 		}
 
 		static ValueTuple<decimal> beregnGrundlagUdenPositivNettoKapitalIndkomst(
-			IValueTuple<IPersonligeBeloeb> indkomster, 
+			IValueTuple<IPersonligeIndkomster> indkomster, 
 			decimal topskatBundfradrag)
 		{
-			var personligIndkomst = indkomster.Map(x => x.Skattegrundlag.PersonligIndkomst);
-			var kapitalPensionsindskud = indkomster.Map(x => x.Skattegrundlag.KapitalPensionsindskud);
+			var personligIndkomst = indkomster.Map(x => x.PersonligIndkomst);
+			var kapitalPensionsindskud = indkomster.Map(x => x.KapitalPensionsindskud);
 			return personligIndkomst + kapitalPensionsindskud - topskatBundfradrag;
 		}
 
 // ReSharper disable MemberCanBeMadeStatic.Global
 		public ValueTuple<decimal> BeregnGrundlagUdenPositivNettoKapitalIndkomst(
-			IValueTuple<IPersonligeBeloeb> indkomster, 
+			IValueTuple<IPersonligeIndkomster> indkomster, 
 			decimal topskatBundfradrag)
 // ReSharper restore MemberCanBeMadeStatic.Global
 		{
@@ -130,7 +130,7 @@ namespace Maxfire.Skat
 
 // ReSharper disable MemberCanBeMadeStatic.Global
 		public ValueTuple<decimal> BeregnGrundlagAfPositivNettoKapitalIndkomst(
-			IValueTuple<IPersonligeBeloeb> indkomster, 
+			IValueTuple<IPersonligeIndkomster> indkomster, 
 			decimal topskatBundfradrag, 
 			decimal positivNettoKapitalIndkomstGrundbeloeb)
 // ReSharper restore MemberCanBeMadeStatic.Global
@@ -148,13 +148,13 @@ namespace Maxfire.Skat
 		}
 
 		private static ValueTuple<decimal> beregnGrundlagAfPositivNettoKapitalIndkomst(
-			IValueTuple<IPersonligeBeloeb> indkomster, 
+			IValueTuple<IPersonligeIndkomster> indkomster, 
 			decimal topskatBundfradrag, 
 			decimal positivNettoKapitalIndkomstGrundbeloeb, 
 			Func<int, ValueTuple<decimal>, 
 			ValueTuple<decimal>> fordelingsnoegleProvider)
 		{
-			var nettoKapitalIndkomst = indkomster.Map(x => x.Skattegrundlag.NettoKapitalIndkomst);
+			var nettoKapitalIndkomst = indkomster.Map(x => x.NettoKapitalIndkomst);
 			var nettoKapitalIndkomstTilBeskatning = nettoKapitalIndkomst.NedbringPositivtMedEvtNegativt();
 
 			var samletNettoKapitalIndkomstTilBeskatning = nettoKapitalIndkomstTilBeskatning.Sum() - indkomster.Size * positivNettoKapitalIndkomstGrundbeloeb;
@@ -180,7 +180,7 @@ namespace Maxfire.Skat
 		}
 
 		private static int getIndexOfMaxGrundlag(
-			IValueTuple<IPersonligeBeloeb> indkomster, 
+			IValueTuple<IPersonligeIndkomster> indkomster, 
 			ValueTuple<decimal> grundlagUdenPositivNettoKapitalIndkomst)
 		{
 			if (grundlagUdenPositivNettoKapitalIndkomst.Size == 1)
@@ -198,7 +198,7 @@ namespace Maxfire.Skat
 			}
 			else
 			{
-				indexOfMaxGrundlag = indkomster[0].Skattegrundlag.LigningsmaessigtFradrag > indkomster[1].Skattegrundlag.LigningsmaessigtFradrag ? 0 : 1;
+				indexOfMaxGrundlag = indkomster[0].LigningsmaessigtFradrag > indkomster[1].LigningsmaessigtFradrag ? 0 : 1;
 			}
 			return indexOfMaxGrundlag;
 		}

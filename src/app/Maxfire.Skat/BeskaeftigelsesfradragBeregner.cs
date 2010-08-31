@@ -11,17 +11,7 @@ namespace Maxfire.Skat
 			_skattelovRegistry = skattelovRegistry;
 		}
 
-		//public ValueTuple<decimal> BeregnFradrag(ValueTuple<SelvangivneBeloeb> selvangivneBeloeb, int skatteAar)
-		//{
-		//    return BeregnFradrag(selvangivneBeloeb.Map(x => x.PersonligIndkomstAMIndkomst), skatteAar);
-		//}
-
-		//public ValueTuple<decimal> BeregnFradrag(ValueTuple<PersonligeBeloeb> indkomster, int skatteAar)
-		//{
-		//    return BeregnFradrag(indkomster.Map(x => x.AMIndkomst), skatteAar);
-		//}
-
-		public ValueTuple<decimal> BeregnFradrag(ValueTuple<decimal > amIndkomster, int skatteAar)
+		public ValueTuple<decimal> BeregnFradrag(ValueTuple<decimal> amIndkomster, int skatteAar)
 		{
 			decimal sats = _skattelovRegistry.GetBeskaeftigelsesfradragSats(skatteAar);
 			decimal grundbeloeb = _skattelovRegistry.GetBeskaeftigelsesfradragGrundbeloeb(skatteAar);

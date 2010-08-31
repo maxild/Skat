@@ -11,7 +11,10 @@ namespace Maxfire.Skat
 			_skattelovRegistry = skattelovRegistry;
 		}
 
-		public ValueTuple<SkatterAfPersonligIndkomst> BeregnSkat(IValueTuple<IPersonligeBeloeb> indkomster, IValueTuple<IKommunaleSatser> kommunaleSatser, int skatteAar)
+		public ValueTuple<SkatterAfPersonligIndkomst> BeregnSkat(
+			IValueTuple<IPersonligeIndkomster> indkomster, 
+			IValueTuple<IKommunaleSatser> kommunaleSatser, 
+			int skatteAar)
 		{
 			var bundskatBeregner = new BundskatBeregner(_skattelovRegistry);
 			var bundskat = bundskatBeregner.BeregnSkat(indkomster, skatteAar);

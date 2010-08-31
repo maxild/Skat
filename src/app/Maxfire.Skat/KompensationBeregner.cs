@@ -94,7 +94,7 @@ namespace Maxfire.Skat
 		/// </summary>
 		public ValueTuple<decimal> BeregnKompensation(
 			IValueTuple<IPerson> personer,
-			IValueTuple<IPersonligeBeloeb> indkomster, 
+			IValueTuple<IPersonligeIndkomster> indkomster, 
 			IValueTuple<IKommunaleSatser> kommunaleSatser, 
 			int skatteAar)
 		{
@@ -128,7 +128,7 @@ namespace Maxfire.Skat
 		/// </summary>
 		public ValueTuple<decimal> GetBundSkattelettelse(
 			IValueTuple<IPerson> personer, 
-			IValueTuple<IPersonligeBeloeb> indkomster, 
+			IValueTuple<IPersonligeIndkomster> indkomster, 
 			int skatteAar)
 		{
 			var bundskatBeregner = new BundskatBeregner(_skattelovRegistry);
@@ -141,7 +141,7 @@ namespace Maxfire.Skat
 		/// Beregner skattelettelsen ved fjernelse af mellemskatten (pkt. 2 i PSL § 26, stk. 2).
 		/// </summary>
 		public ValueTuple<decimal> GetMellemSkattelettelse(
-			IValueTuple<IPersonligeBeloeb> indkomster, 
+			IValueTuple<IPersonligeIndkomster> indkomster, 
 			int skatteAar)
 		{
 			var mellemskatBeregner = new MellemskatBeregner(_skattelovRegistry);
@@ -153,7 +153,7 @@ namespace Maxfire.Skat
 		/// Beregner skattelettelsen af forøgelsen af topskattegrænsen (pkt. 3 i PSL § 26, stk. 2).
 		/// </summary>
 		public ValueTuple<decimal> GetTopSkattelettelse(
-			IValueTuple<IPersonligeBeloeb> indkomster, 
+			IValueTuple<IPersonligeIndkomster> indkomster, 
 			int skatteAar)
 		{
 			var topskatBeregner = new TopskatBeregner(_skattelovRegistry);
@@ -167,22 +167,24 @@ namespace Maxfire.Skat
 		/// <summary>
 		/// Beregner skattelettelsen af nedsættelsen af aktieindkomstskattesatsen (pkt. 4 i PSL § 26, stk. 2).
 		/// </summary>
-		public ValueTuple<decimal> GetAktieSkattelettelse(IValueTuple<IPersonligeBeloeb> indkomster)
+// ReSharper disable MemberCanBeMadeStatic.Global
+		public ValueTuple<decimal> GetAktieSkattelettelse(IValueTuple<IPersonligeIndkomster> indkomster)
+// ReSharper restore MemberCanBeMadeStatic.Global
 		{
-			return indkomster.Map(x => 0.01m * x.Skattegrundlag.AktieIndkomst);
+			return indkomster.Map(x => 0.01m * x.AktieIndkomst);
 		}
 
 		/// <summary>
 		/// Beregner skattelettelse af forhøjelsen af beskæftigelsesfradraget (pkt. 5 i PSL § 26, stk. 2).
 		/// </summary>
 		public ValueTuple<decimal> GetBeskaeftigelsesfradragSkattelettelse(
-			IValueTuple<IPersonligeBeloeb> indkomster, 
+			IValueTuple<IPersonligeIndkomster> indkomster, 
 			IValueTuple<IKommunaleSatser> kommunaleSatser, 
 			int skatteAar)
 		{
 			var skattesats = 0.08m + kommunaleSatser.Map(x => x.GetKommuneOgKirkeskattesats());
 			var beskaeftigelsesfradragBeregner = new BeskaeftigelsesfradragBeregner(_skattelovRegistry);
-			var amIndkomster = indkomster.Map(x => x.Skattegrundlag.PersonligIndkomstAMIndkomst);
+			var amIndkomster = indkomster.Map(x => x.AMIndkomst);
 			var beskaeftigelsesfradragMedTidligereSatsOgGrundbeloeb = beskaeftigelsesfradragBeregner.BeregnFradrag(amIndkomster, 0.0425m, 14200);
 			var beskaeftigelsesfradragMedNuvaerendeSatsOgGrundbeloeb = beskaeftigelsesfradragBeregner.BeregnFradrag(amIndkomster, skatteAar);
 			return skattesats * (beskaeftigelsesfradragMedNuvaerendeSatsOgGrundbeloeb - beskaeftigelsesfradragMedTidligereSatsOgGrundbeloeb);
@@ -207,24 +209,24 @@ namespace Maxfire.Skat
 		/// Beregn den samlede skatteskærpelse på fradragene
 		/// </summary>
 		public ValueTuple<decimal> GetSamletSkatteskaerpelsePaaFradragene(
-			IValueTuple<IPersonligeBeloeb> indkomster, 
+			IValueTuple<IPersonligeIndkomster> indkomster, 
 			int skatteAar)
 		{
 			decimal sats = 0.08m - _skattelovRegistry.GetSundhedsbidragSkattesats(skatteAar);
 			var negativNettoKapitalIndkomstGrundbeloeb = _skattelovRegistry.GetNegativNettoKapitalIndkomstGrundbeloeb(skatteAar);
-			var nettoKapitalIndkomst = indkomster.Map(x => x.Skattegrundlag.NettoKapitalIndkomst);
+			var nettoKapitalIndkomst = indkomster.Map(x => x.NettoKapitalIndkomst);
 			var nettoKapitalIndkomstTilBeskatning = nettoKapitalIndkomst.NedbringPositivtMedEvtNegativt();
 			// TODO: For ægtefæller er det summen, da ubenyttet grundbeløb kan overføres
 			var negativNettoKapitalIndkomstOverGrundbeloebet = (+(-nettoKapitalIndkomstTilBeskatning))
 				.DifferenceGreaterThan(negativNettoKapitalIndkomstGrundbeloeb);
-			var ligningsmaesigeFradrag = indkomster.Map(x => x.Skattegrundlag.LigningsmaessigtFradrag);
+			var ligningsmaesigeFradrag = indkomster.Map(x => x.LigningsmaessigtFradrag);
 			return sats * (negativNettoKapitalIndkomstOverGrundbeloebet + ligningsmaesigeFradrag);
 		}
 
 		public ValueTuple<ModregnSkatterResult<Skatter>> ModregnMedKompensation(
 			ValueTuple<Skatter> skatter, 
 			IValueTuple<IPerson> personer,
-			IValueTuple<IPersonligeBeloeb> indkomster, 
+			IValueTuple<IPersonligeIndkomster> indkomster, 
 			IValueTuple<IKommunaleSatser> kommunaleSatser, 
 			int skatteAar)
 		{

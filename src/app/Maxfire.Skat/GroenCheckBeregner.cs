@@ -32,7 +32,7 @@ namespace Maxfire.Skat
 		/// </summary>
 		public ValueTuple<decimal> BeregnKompensation(
 			IValueTuple<IPerson> personer, 
-			IValueTuple<IPersonligeBeloeb> indkomster, 
+			IValueTuple<IPersonligeIndkomster> indkomster, 
 			int skatteAar)
 		{
 			decimal kompensationPrVoksen = _skattelovRegistry.GetGroenCheckPrVoksen(skatteAar);
@@ -49,7 +49,7 @@ namespace Maxfire.Skat
 			return kompensation;
 		}
 
-		public ValueTuple<decimal> BeregnAftrapning(IValueTuple<IPersonligeBeloeb> indkomster, int skatteAar)
+		public ValueTuple<decimal> BeregnAftrapning(IValueTuple<IPersonligeIndkomster> indkomster, int skatteAar)
 		{
 			decimal bundfradrag = _skattelovRegistry.GetGroenCheckBundfradrag(skatteAar);
 			decimal aftrapningssats = _skattelovRegistry.GetGroenCheckAftrapningssats(skatteAar);
@@ -63,7 +63,7 @@ namespace Maxfire.Skat
 			return aftrapning;
 		}
 
-		protected virtual ValueTuple<decimal> GetTopskattegrundlag(IValueTuple<IPersonligeBeloeb> indkomster,
+		protected virtual ValueTuple<decimal> GetTopskattegrundlag(IValueTuple<IPersonligeIndkomster> indkomster,
 			decimal topskatBundfradrag, decimal positivNettoKapitalIndkomstGrundbeloeb)
 		{
 			var topskatBeregner = new TopskatBeregner(_skattelovRegistry);

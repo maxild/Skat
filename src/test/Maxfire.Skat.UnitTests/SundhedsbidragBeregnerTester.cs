@@ -16,10 +16,10 @@ namespace Maxfire.Skat.UnitTests
 		[Fact]
 		public void BeregnSkat()
 		{
-			var personligeBeloeb = new ValueTuple<IPersonligeBeloeb>(
-				new FakePersonligeBeloeb
+			var personligeBeloeb = new ValueTuple<ISkattepligtigeIndkomster>(
+				new FakeSkattepligtigeIndkomster()
 				{
-					PersonligIndkomst = 100
+					SkattepligtigIndkomst = 100
 				}
 			);
 

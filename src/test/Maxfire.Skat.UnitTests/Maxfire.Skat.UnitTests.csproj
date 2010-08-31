@@ -57,6 +57,9 @@
     <Compile Include="Eksempler.cs" />
     <Compile Include="AbstractFakeSkattelovRegistry.cs" />
     <Compile Include="FakePersonligeBeloeb.cs" />
+    <Compile Include="FakePersonligeIndkomster.cs" />
+    <Compile Include="FakeSkatteIndkomster.cs" />
+    <Compile Include="FakeSkattepligtigeIndkomster.cs" />
     <Compile Include="GroenCheckBeregnerTester.cs" />
     <Compile Include="KirkeskatBeregnerTester.cs" />
     <Compile Include="KommunaleSatser.cs" />

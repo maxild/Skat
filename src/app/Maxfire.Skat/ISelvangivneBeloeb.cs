@@ -21,17 +21,6 @@ namespace Maxfire.Skat
 		decimal AktieIndkomst { get; }
 	}
 
-	public interface ISpecficeredeSelvangivneBeloeb : ISelvangivneBeloeb
-	{
-		IBeloebCollection PersonligeIndkomsterAMIndkomster { get; }
-		IBeloebCollection PersonligeIndkomsterEjAMIndkomster { get; }
-		IBeloebCollection PersonligeIndkomster { get; }
-
-		IBeloebCollection NettoKapitalIndkomster { get; }
-
-		IBeloebCollection LigningsmaessigeFradragMinusBeskaeftigelsesfradrag { get; }
-	}
-
 	public static class SelvangivetBeloeb
 	{
 		public static ITextValuePair<decimal> Create(string text, decimal beloeb)

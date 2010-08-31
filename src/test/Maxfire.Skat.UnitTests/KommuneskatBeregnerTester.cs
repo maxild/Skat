@@ -8,10 +8,10 @@ namespace Maxfire.Skat.UnitTests
 		[Fact]
 		public void BeregnSkat()
 		{
-			var personligeBeloeb = new ValueTuple<IPersonligeBeloeb>(
-				new FakePersonligeBeloeb
+			var indkomster = new ValueTuple<ISkattepligtigeIndkomster>(
+				new FakeSkattepligtigeIndkomster()
 				{
-					PersonligIndkomst = 100
+					SkattepligtigIndkomst = 100
 				}
 			);
 
@@ -23,7 +23,7 @@ namespace Maxfire.Skat.UnitTests
 
 			var beregner = new KommuneskatBeregner();
 
-			var kommuneSkat = beregner.BeregnSkat(personligeBeloeb, kommunaleSatser);
+			var kommuneSkat = beregner.BeregnSkat(indkomster, kommunaleSatser);
 
 			kommuneSkat[0].ShouldEqual(25);
 		}

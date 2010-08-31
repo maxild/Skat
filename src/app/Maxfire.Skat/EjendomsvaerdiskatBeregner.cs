@@ -31,7 +31,7 @@ namespace Maxfire.Skat
 			IValueTuple<IPerson> ejere, 
 			ValueTuple<decimal> ejerandele, 
 			bool gift, 
-			IValueTuple<IPersonligeBeloeb> indkomster, 
+			IValueTuple<IPersonligeIndkomster> indkomster, 
 			int skatteAar)
 		{
 			decimal lavsats  = _registry.GetSkattesatsForUnderProgressionsgraense(skatteAar);
@@ -66,9 +66,9 @@ namespace Maxfire.Skat
 			// Særligt indkomstafhængigt nedslag for alderspensionister (..afhænger af om ejere er gift eller ugift!!!)
 			ValueTuple<decimal> pensionistNedslag;
 
-			var personligIndkomst = indkomster.Map(x => x.Skattegrundlag.PersonligIndkomst);
-			var nettoKapitalIndkomst = indkomster.Map(x => x.Skattegrundlag.NettoKapitalIndkomst);
-			var aktieIndkomst = indkomster.Map(x => x.Skattegrundlag.AktieIndkomst);
+			var personligIndkomst = indkomster.Map(x => x.PersonligIndkomst);
+			var nettoKapitalIndkomst = indkomster.Map(x => x.NettoKapitalIndkomst);
+			var aktieIndkomst = indkomster.Map(x => x.AktieIndkomst);
 
 			decimal maksPensionstNedslag = ejendomsoplysninger.IsFritidsbolig ? 2000 : 6000;
 			decimal pensionistNedslagFoerReduktion = (0.004m * ejendomsvaerdi).Loft(maksPensionstNedslag);
@@ -112,7 +112,7 @@ namespace Maxfire.Skat
 			return fordelingsnoegle * (ejendomsvaerdiskat - nedslagVedKoebSenest01071998) - pensionistNedslag;
 		}
 
-		private static bool skalHavePensionistNedslag(IValueTuple<IPerson> ejere, int skatteAar)
+		private static bool skalHavePensionistNedslag(IEnumerable<IPerson> ejere, int skatteAar)
 		{
 			return ejere.Any(ejer => skalHavePensionistNedslag(ejer, skatteAar));
 		}

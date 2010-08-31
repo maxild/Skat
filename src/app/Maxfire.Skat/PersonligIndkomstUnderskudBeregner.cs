@@ -46,7 +46,7 @@ namespace Maxfire.Skat
 	public class PersonligIndkomstUnderskudBeregner
 	{
 // ReSharper disable MemberCanBeMadeStatic.Global
-		public void ModregningAfUnderskud(IValueTuple<IPersonligeBeloeb> indkomster)
+		public void ModregningAfUnderskud(IValueTuple<IPersonligeIndkomster> indkomster)
 // ReSharper restore MemberCanBeMadeStatic.Global
 		{
 			// I. Årets underskud
@@ -62,7 +62,7 @@ namespace Maxfire.Skat
 			Action<decimal, int> aaretsUnderskudNulstiller 
 				= (value, index) => indkomster[index].ModregnetUnderskudPersonligIndkomst -= value;
 
-			var personligeIndkomster = indkomster.Map(x => x.Skattegrundlag.PersonligIndkomst);
+			var personligeIndkomster = indkomster.Map(x => x.PersonligIndkomst);
 			var aaretsUnderskud = +(-personligeIndkomster);
 
 			// Note: Vi modregner både i egen og ægtefælles personlige indkomst, omend egen muligvis er både redundant (pga underskud)
@@ -107,7 +107,7 @@ namespace Maxfire.Skat
 		}
 
 		private static ValueTuple<decimal> getRestunderskudEfterEgenOgOverfoertPersonligIndkomstModregning(
-			IValueTuple<IPersonligeBeloeb> indkomster, 
+			IValueTuple<IPersonligeIndkomster> indkomster, 
 			ValueTuple<decimal> underskud, 
 			Action<decimal, int> nulstilHandler)
 		{
@@ -138,11 +138,11 @@ namespace Maxfire.Skat
 		/// Modregning i personlige indkomst med tillæg af kapitalpensionsindskud
 		/// </summary>
 		private static ValueTuple<decimal> getRestunderskudEfterPersonligIndkomstModregning(
-			IValueTuple<IPersonligeBeloeb> indkomster, 
+			IValueTuple<IPersonligeIndkomster> indkomster, 
 			ValueTuple<decimal> underskud)
 		{
-			var personligeIndkomster = indkomster.Map(x => x.Skattegrundlag.PersonligIndkomst);
-			var kapitalPensionsindskud = indkomster.Map(x => x.Skattegrundlag.KapitalPensionsindskud);
+			var personligeIndkomster = indkomster.Map(x => x.PersonligIndkomst);
+			var kapitalPensionsindskud = indkomster.Map(x => x.KapitalPensionsindskud);
 
 			// Modregning i personlig indkomst
 			var modregnIndkomstResults = personligeIndkomster.ModregnUnderskud(underskud);
@@ -170,12 +170,12 @@ namespace Maxfire.Skat
 		}
 
 		private static ValueTuple<decimal> getRestunderskudEfterNettoKapitalIndkomstModregning(
-			IValueTuple<IPersonligeBeloeb> indkomster, 
+			IValueTuple<IPersonligeIndkomster> indkomster, 
 			ValueTuple<decimal> underskud, 
 			Action<decimal, int> nulstilHandler)
 		{
 			// Modregn underskud i egen (positive) nettokapitalindkomst
-			var nettokapitalindkomst = indkomster.Map(x => x.Skattegrundlag.NettoKapitalIndkomst);
+			var nettokapitalindkomst = indkomster.Map(x => x.NettoKapitalIndkomst);
 			var modregningEgenNettoKapitalIndkomst = getMuligModregning(nettokapitalindkomst, underskud);
 			
 			// TODO: Side-effekt

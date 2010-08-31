@@ -1,0 +1,20 @@
+﻿using Maxfire.Skat.Extensions;
+
+namespace Maxfire.Skat
+{
+	public abstract class PersonligIndkomstSkatteberegner
+	{
+		/// <summary>
+		/// Beregn bundskattegrundlaget under hensyn til evt. modregnet negativ negativ nettokapitalindkomst.
+		/// </summary>
+		public ValueTuple<decimal> BeregnBruttoGrundlag(IValueTuple<IPersonligeIndkomster> indkomster)
+		{
+			var personligIndkomst = indkomster.Map(x => x.PersonligIndkomst);
+			var nettoKapitalIndkomst = indkomster.Map(x => x.NettoKapitalIndkomst);
+
+			var nettoKapitalIndkomstEfterModregning = nettoKapitalIndkomst.NedbringPositivtMedEvtNegativt();
+
+			return personligIndkomst + (+nettoKapitalIndkomstEfterModregning);
+		}
+	}
+}

@@ -11,7 +11,7 @@ namespace Maxfire.Skat
 			_skattelovRegistry = skattelovRegistry;
 		}
 
-		public ValueTuple<decimal> BeregnSkat(IValueTuple<IPersonligeBeloeb> indkomster, int skatteAar)
+		public ValueTuple<decimal> BeregnSkat(IValueTuple<ISkattepligtigeIndkomster> indkomster, int skatteAar)
 		{
 			return BeregnSkatCore(indkomster,
 			                      () => _skattelovRegistry.GetSundhedsbidragSkattesats(skatteAar).ToTupleOfSize(indkomster.Size));

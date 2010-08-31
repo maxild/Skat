@@ -3,32 +3,8 @@ using Maxfire.Core;
 
 namespace Maxfire.Skat
 {
-	public interface ISkatteIndkomster
+	public interface ISkatteIndkomster : IPersonligeIndkomster, ISkattepligtigeIndkomster
 	{
-		decimal PersonligIndkomstAMIndkomst { get; }
-		decimal PersonligIndkomst { get; }
-
-		decimal NettoKapitalIndkomst { get; }
-		
-		decimal LigningsmaessigtFradrag { get; }
-
-		decimal SkattepligtigIndkomst { get; }
-		
-		decimal KapitalPensionsindskud { get; }
-		decimal AktieIndkomst { get; }
-	}
-
-	public interface ISpecificeredeSkatteIndkomster : ISkatteIndkomster
-	{
-		IPersonligIndkomstBeloebCollection PersonligeIndkomsterAMIndkomster { get; }
-		IPersonligIndkomstBeloebCollection PersonligeIndkomsterEjAMIndkomster { get; }
-		IPersonligIndkomstBeloebCollection PersonligeIndkomster { get; }
-
-		IBeloebCollection NettoKapitalIndkomster { get; }
-
-		IBeloebCollection LigningsmaessigeFradrag { get; }
-
-		IBeloebCollection SkattepligtigIndkomster { get; }
 	}
 
 	public interface ISumableEnumerable<out TItem, out TValue>: IEnumerable<TItem>, ISumable<TValue>
@@ -47,6 +23,9 @@ namespace Maxfire.Skat
 		}
 	}
 
+	/// <summary>
+	/// Adapter that wraps collection of ITextValuePair<decimal> in an IBeloebCollection instance.
+	/// </summary>
 	public class BeloebCollection : TextValuePairCollection<ITextValuePair<decimal>>, IBeloebCollection
 	{
 		public BeloebCollection(IEnumerable<ITextValuePair<decimal>> items)

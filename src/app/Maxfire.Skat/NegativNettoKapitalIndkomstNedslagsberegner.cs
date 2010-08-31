@@ -40,7 +40,7 @@ namespace Maxfire.Skat
 		}
 
 		public ValueTuple<ModregnSkatterResult<Skatter>> ModregnMedNedslag(
-			IValueTuple<IPersonligeBeloeb> indkomster, 
+			IValueTuple<IPersonligeIndkomster> indkomster, 
 			ValueTuple<Skatter> skatter, 
 			int skatteAar)
 		{
@@ -48,9 +48,9 @@ namespace Maxfire.Skat
 			return ModregnMedNedslag(skatter, nedslag);
 		}
 
-		public ValueTuple<decimal> BeregnNedslag(IValueTuple<IPersonligeBeloeb> indkomster, int skatteAar)
+		public ValueTuple<decimal> BeregnNedslag(IValueTuple<IPersonligeIndkomster> indkomster, int skatteAar)
 		{
-			var nettoKapitalIndkomst = indkomster.Map(x => x.Skattegrundlag.NettoKapitalIndkomst);
+			var nettoKapitalIndkomst = indkomster.Map(x => x.NettoKapitalIndkomst);
 			var nettoKapitalIndkomstEfterModregning = nettoKapitalIndkomst.NedbringPositivtMedEvtNegativt();
 			var grundbeloeb = _skattelovRegistry.GetNegativNettoKapitalIndkomstGrundbeloeb(skatteAar);
 			var negativNettoKapitalIndkomstEfterModregningDerIkkeOverstigerGrundbeloeb

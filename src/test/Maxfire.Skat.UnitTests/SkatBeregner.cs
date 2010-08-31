@@ -1,6 +1,4 @@
-﻿using Maxfire.Skat.Extensions;
-
-namespace Maxfire.Skat.UnitTests
+﻿namespace Maxfire.Skat.UnitTests
 {
 	public class SkatBeregner
 	{
@@ -12,7 +10,7 @@ namespace Maxfire.Skat.UnitTests
 		}
 
 		public ValueTuple<Skatter> BeregnSkat(
-			IValueTuple<IPersonligeBeloeb> indkomster, 
+			IValueTuple<ISkatteIndkomster> indkomster, 
 			IValueTuple<IKommunaleSatser> kommunaleSatser, 
 			int skatteAar)
 		{
@@ -22,8 +20,7 @@ namespace Maxfire.Skat.UnitTests
 			var skatAfSkattepligtigIndkomstBeregner = new SkatterAfSkattepligtigIndkomstBeregner(_skattelovRegistry);
 			var skatterAfSkattepligtigIndkomst = skatAfSkattepligtigIndkomstBeregner.BeregnSkat(indkomster, kommunaleSatser, skatteAar);
 
-			return skatterAfPersonligIndkomst.Map(index =>
-			                                      new Skatter(skatterAfPersonligIndkomst[index], skatterAfSkattepligtigIndkomst[index]));
+			return SkatteUtility.CombineSkat(skatterAfPersonligIndkomst, skatterAfSkattepligtigIndkomst);
 		}
 	}
 }

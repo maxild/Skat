@@ -6,10 +6,10 @@ namespace Maxfire.Skat
 	public abstract class SkattepligtigIndkomstSkatteberegner
 	{
 		protected virtual ValueTuple<decimal> BeregnSkatCore(
-			IValueTuple<IPersonligeBeloeb> indkomster, 
+			IValueTuple<ISkattepligtigeIndkomster> indkomster, 
 			Func<ValueTuple<decimal>> skattesatsProvider)
 		{
-			var skattepligtigIndkomst = indkomster.Map(x => x.Skattegrundlag.SkattepligtigIndkomst);
+			var skattepligtigIndkomst = indkomster.Map(x => x.SkattepligtigIndkomst);
 			var skattesats = skattesatsProvider();
 			return skattesats * (+skattepligtigIndkomst);
 		}

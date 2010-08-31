@@ -115,28 +115,28 @@ namespace Maxfire.Skat.UnitTests
 		[Fact]
 		public void BundSkattelettelse()
 		{
-			var bundSkattelettelse = _kompensationBeregner.GetBundSkattelettelse(_personer, _indkomster, SKATTE_AAR);
+			var bundSkattelettelse = _kompensationBeregner.GetBundSkattelettelse(_personer, _indkomster.Map(x => x.Skattegrundlag), SKATTE_AAR);
 			bundSkattelettelse[0].ShouldEqual(4848);
 		}
 
 		[Fact]
 		public void MellemSkattelettelse()
 		{
-			var mellemSkattelettelse = _kompensationBeregner.GetMellemSkattelettelse(_indkomster, SKATTE_AAR);
+			var mellemSkattelettelse = _kompensationBeregner.GetMellemSkattelettelse(_indkomster.Map(x => x.Skattegrundlag), SKATTE_AAR);
 			mellemSkattelettelse[0].ShouldEqual(312);
 		}
 
 		[Fact]
 		public void TopSkattelettelse()
 		{
-			var topSkattelettelse = _kompensationBeregner.GetTopSkattelettelse(_indkomster, SKATTE_AAR);
+			var topSkattelettelse = _kompensationBeregner.GetTopSkattelettelse(_indkomster.Map(x => x.Skattegrundlag), SKATTE_AAR);
 			topSkattelettelse[0].ShouldEqual(780);
 		}
 
 		[Fact]
 		public void AktieSkattelettelse()
 		{
-			var aktieSkattelettelse = _kompensationBeregner.GetAktieSkattelettelse(_indkomster);
+			var aktieSkattelettelse = _kompensationBeregner.GetAktieSkattelettelse(_indkomster.Map(x => x.Skattegrundlag));
 			aktieSkattelettelse[0].ShouldEqual(80);
 		}
 
@@ -144,7 +144,7 @@ namespace Maxfire.Skat.UnitTests
 		public void BeskaeftigelsesfradragSkattelettelse()
 		{
 			var beskaeftigelsesfradragSkattelettelse = _kompensationBeregner.GetBeskaeftigelsesfradragSkattelettelse(
-				_indkomster, _kommunaleSatser, SKATTE_AAR);
+				_indkomster.Map(x => x.Skattegrundlag), _kommunaleSatser, SKATTE_AAR);
 			beskaeftigelsesfradragSkattelettelse[0].ShouldEqual(603);
 		}
 
@@ -160,14 +160,14 @@ namespace Maxfire.Skat.UnitTests
 		[Fact]
 		public void SamletSkatteskaerpelsePaaFradragene()
 		{
-			var samletSkatteskaerpelsePaaFradragene = _kompensationBeregner.GetSamletSkatteskaerpelsePaaFradragene(_indkomster, SKATTE_AAR);
+			var samletSkatteskaerpelsePaaFradragene = _kompensationBeregner.GetSamletSkatteskaerpelsePaaFradragene(_indkomster.Map(x => x.Skattegrundlag), SKATTE_AAR);
 			samletSkatteskaerpelsePaaFradragene[0].ShouldEqual(7301.25m);
 		}
 
 		[Fact]
 		public void Kompensation()
 		{
-			var kompenstion =_kompensationBeregner.BeregnKompensation(_personer, _indkomster, _kommunaleSatser, SKATTE_AAR);
+			var kompenstion = _kompensationBeregner.BeregnKompensation(_personer, _indkomster.Map(x => x.Skattegrundlag), _kommunaleSatser, SKATTE_AAR);
 			kompenstion[0].ShouldEqual(1386.19m);
 		}
 	}

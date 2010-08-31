@@ -55,12 +55,12 @@ namespace Maxfire.Skat
 		/// <param name="skatteAar">Skatteåret</param>
 		/// <returns>Resultatet</returns>
 		public ValueTuple<ModregnUnderskudResult> ModregningAfUnderskud(
-			IValueTuple<IPersonligeBeloeb> indkomster, 
+			IValueTuple<ISkattepligtigeIndkomster> indkomster, 
 			ValueTuple<SkatterAfPersonligIndkomst> skatter, 
 			IValueTuple<IKommunaleSatser> kommunaleSatser, 
 			int skatteAar)
 		{
-			var skattepligtigeIndkomster = indkomster.Map(x => x.Skattegrundlag.SkattepligtigIndkomst);
+			var skattepligtigeIndkomster = indkomster.Map(x => x.SkattepligtigIndkomst);
 			
 			// I. Årets underskud
 			var aaretsUnderskud = +(-skattepligtigeIndkomster);
@@ -75,7 +75,7 @@ namespace Maxfire.Skat
 
 			// II. Fremført underskud
 			var fremfoertUnderskud = indkomster.Map(x => x.FremfoertUnderskudSkattepligtigIndkomst);
-			var skattepligtigeIndkomsterEfterModregningAfAaretsUnderskud = indkomster.Map(x => x.Skattegrundlag.SkattepligtigIndkomst);
+			var skattepligtigeIndkomsterEfterModregningAfAaretsUnderskud = indkomster.Map(x => x.SkattepligtigIndkomst);
 			var modregningSkatter = modregnAaretsUnderskudResult.Map(x => x.ModregningSkatter);
 
 			Action<decimal, int> fremfoertUnderskudNulstilHandler = 
@@ -91,7 +91,7 @@ namespace Maxfire.Skat
 		}
 
 		private ValueTuple<BeregnModregningerResult> modregnEgenOgAegtefaelleUnderskudOgUnderskudsvaerdi(
-			IValueTuple<IPersonligeBeloeb> indkomster, 
+			IValueTuple<ISkattepligtigeIndkomster> indkomster, 
 			ValueTuple<decimal> skattepligtigeIndkomster, 
 			ValueTuple<SkatterAfPersonligIndkomst> skatter, 
 			ValueTuple<decimal> underskud, 
@@ -128,7 +128,7 @@ namespace Maxfire.Skat
 
 			// Modregn i ægtefælles skattepligtig indkomst og skatter
 			var modregningSkatter = modregnEgetUnderskudResult.Map(x => x.ModregningSkatter);
-			var skattepligtigeIndkomsterEfterEgenModregning = indkomster.Map(x => x.Skattegrundlag.SkattepligtigIndkomst);
+			var skattepligtigeIndkomsterEfterEgenModregning = indkomster.Map(x => x.SkattepligtigIndkomst);
 			var overfoertUnderskud = restunderskud.Swap();
 
 			var modregnOverfoertUnderskudResult = modregnUnderskudOgUnderskudsvaerdi(skattepligtigeIndkomsterEfterEgenModregning,
