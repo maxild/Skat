@@ -1,4 +1,5 @@
 using System;
+using Maxfire.Core;
 using Maxfire.Core.Extensions;
 using Maxfire.Skat.Extensions;
 
@@ -50,6 +51,14 @@ namespace Maxfire.Skat
 		{
 			// I. Årets underskud
 
+			// Note: Skal både holde styr på (rest-)underskud hos kilden og modregninger i hhv. personligindkomst, kapitalpensionsindskud og nettokapitalindkomst.
+			// Når den ene ægtefælle overfører negativ personlig indkomst til den anden ægtefælle
+			// så skal også den der overføres _fra_ have sin personlige indkomst justeret med det
+			// udnyttede underskud. Også til sidst hvis underskuddet ikke kan udnyttes fuldt ud
+			// skal overførsel af negativ personlig indkomst til 'underskud_til_fremførsel'.
+			// Den personlige indkomst kan altså ikke være negativ efter modregning er gennemført, 
+			// idet der sker fuld overførsel til enten ægtefælle eller 'underskud_til_fremførsel' 
+			// nulstiller den.
 			Action<decimal, int> aaretsUnderskudNulstiller 
 				= (value, index) => indkomster[index].ModregnetUnderskudPersonligIndkomst -= value;
 
@@ -57,11 +66,13 @@ namespace Maxfire.Skat
 			var aaretsUnderskud = +(-personligeIndkomster);
 
 			// Note: Vi modregner både i egen og ægtefælles personlige indkomst, omend egen muligvis er både redundant (pga underskud)
-			// og forkert idet det er uvist om egne indskud på kapitalpension skal modregnes initial i dette trin.
+			// og forkert idet det er uvist om egne indskud på kapitalpension skal modregnes initialt i dette trin.
+
+			// modregning i egen og ægtefælles positive personlige indkomst
 			var aaretsRestunderskud = getRestunderskudEfterEgenOgOverfoertPersonligIndkomstModregning(indkomster,
 				aaretsUnderskud, aaretsUnderskudNulstiller);
 
-			// Modregning i ægtefællers samlede nettokapitalindkomst
+			// modregning i ægtefællers samlede positive nettokapitalindkomst
 			aaretsRestunderskud = getRestunderskudEfterNettoKapitalIndkomstModregning(indkomster, 
 				aaretsRestunderskud, aaretsUnderskudNulstiller);
 
@@ -83,7 +94,7 @@ namespace Maxfire.Skat
 			var fremfoertRestunderskud = getRestunderskudEfterNettoKapitalIndkomstModregning(indkomster,
 				fremfoertUnderskud, fremfoertUnderskudNulstiller);
 
-			// modregning i egen og ægtefælles personlige indkomst
+			// modregning i egen og ægtefælles positive personlige indkomst
 			fremfoertRestunderskud = getRestunderskudEfterEgenOgOverfoertPersonligIndkomstModregning(indkomster,
 				fremfoertRestunderskud, fremfoertUnderskudNulstiller);
 
@@ -203,9 +214,8 @@ namespace Maxfire.Skat
 			ValueTuple<decimal> underskud)
 		{
 			var samletkapitalindkomst = nettokapitalindkomst.Sum();
-			// TODO: Make overloads of Min, Max, Path.Combine in Maxfire.Core
 			return nettokapitalindkomst.Map((kapitalindkomst, index) => 
-				Math.Min(Math.Min(kapitalindkomst, samletkapitalindkomst), underskud[index]).NonNegative());
+				Numbers.Min(kapitalindkomst, samletkapitalindkomst, underskud[index]).NonNegative());
 		}
 	}
 }

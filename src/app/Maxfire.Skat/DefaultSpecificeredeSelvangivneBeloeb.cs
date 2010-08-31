@@ -2,6 +2,9 @@
 
 namespace Maxfire.Skat
 {
+	/// <summary>
+	/// Adapter that wraps an ISelvangivneBeloeb so that i behaves like an ISpecficeredeSelvangivneBeloeb
+	/// </summary>
 	internal class DefaultSpecificeredeSelvangivneBeloeb : ISpecficeredeSelvangivneBeloeb
 	{
 		private readonly ISelvangivneBeloeb _selvangivneBeloeb;
