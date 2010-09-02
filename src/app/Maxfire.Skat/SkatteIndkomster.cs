@@ -80,28 +80,18 @@ namespace Maxfire.Skat
 			KapitalPensionsindskud = selvangivneBeloeb.KapitalPensionsindskud;
 		}
 
-		/// <summary>
-		/// Den del af den personlige indkomst (før AM-bidrag), der er 
-		/// grundlag for beregningen af arbejdsmarkedsbidrag (AM-bidrag).
-		/// </summary>
 		private decimal? _amIndkomst;
 		public decimal AMIndkomst
 		{
 			get { return _amIndkomst ?? (_amIndkomst = _personligeIndkomsterAM.Sum(x => x.Value.FoerAMBidrag)).Value; }
 		}
 
-		/// <summary>
-		/// Personlig indkomst (før AM-bidrag), der bygger på de selvangivne beløb (dvs. før modregning).
-		/// </summary>
 		private decimal? _personligIndkomstFoerAMBidrag;
 		public decimal PersonligIndkomstFoerAMBidrag
 		{
 			get { return _personligIndkomstFoerAMBidrag ?? (_personligIndkomstFoerAMBidrag = _personligeIndkomsterAM.Sum(x => x.Value.FoerAMBidrag) + _personligeIndkomsterEjAM.Sum(x => x.Value.FoerAMBidrag)).Value; }
 		}
 
-		/// <summary>
-		/// Personlig indkomst (efter AM-bidrag), der bygger på de selvangivne beløb (dvs. før modregning).
-		/// </summary>
 		private decimal? _personligIndkomst;
 		public decimal PersonligIndkomst
 		{
@@ -118,21 +108,11 @@ namespace Maxfire.Skat
 			get { return _personligeIndkomsterFremfoertUnderskud.Sum(x => x.Value.FoerAMBidrag); }
 		}
 		
-		/// <summary>
-		/// Modregninger i den personlige indkomst, der har betydning for skatteberegningen.
-		/// </summary>
-		/// <remarks>
-		/// Disse modregninger skyldes overførsler mellem ægtefæller 
-		/// baseret på negativ personlig indkomst hos en af ægtefællerne.
-		/// </remarks>
 		public decimal PersonligIndkomstModregninger
 		{
 			get { return _personligeIndkomsterModregninger.Sum(x => x.Value.FoerAMBidrag); }
 		}
 
-		/// <summary>
-		/// Personlig indkomst (efter AM-bidrag) vedr. bund-, mellem og topskat (dvs. efter modregning).
-		/// </summary>
 		public decimal PersonligIndkomstSkattegrundlag
 		{
 			get { return PersonligIndkomst + PersonligIndkomstModregninger; }
@@ -167,11 +147,11 @@ namespace Maxfire.Skat
 			}
 		}
 
-		public void TilfoejUnderskudTilFremfoerselForPersonligIndkomst(string text, decimal overfoertUnderskud)
+		public void FremfoerUnderskudForPersonligIndkomst(string text, decimal uudnyttetUnderskud)
 		{
-			if (overfoertUnderskud > 0)
+			if (uudnyttetUnderskud > 0)
 			{
-				_personligeIndkomsterUnderskudTilFremfoersel.AddTextValue(text, overfoertUnderskud);
+				_personligeIndkomsterUnderskudTilFremfoersel.AddTextValue(text, uudnyttetUnderskud);
 			}
 		}
 
@@ -243,7 +223,6 @@ namespace Maxfire.Skat
 			get { return _skattepligtigeIndkomsterFremfoertUnderskud.Sum(x => x.Value); }
 		}
 
-		// TODO: Part of interface and maybe rename to SkattepligtigIndkomstModregnetUnderskud
 		public decimal SkattepligtigIndkomstModregninger
 		{
 			get { return _skattepligtigeIndkomsterModregninger.Sum(x => x.Value); }
@@ -283,11 +262,11 @@ namespace Maxfire.Skat
 			}
 		}
 
-		public void TilfoejUnderskudTilFremfoerselForSkattepligtigIndkomst(string text, decimal overfoertUnderskud)
+		public void FremfoerUnderskudForSkattepligtigIndkomst(string text, decimal uudnyttetUnderskud)
 		{
-			if (overfoertUnderskud > 0)
+			if (uudnyttetUnderskud > 0)
 			{
-				_skattepligtigeIndkomsterUnderskudTilFremfoersel.AddTextValue(text, overfoertUnderskud);
+				_skattepligtigeIndkomsterUnderskudTilFremfoersel.AddTextValue(text, uudnyttetUnderskud);
 			}
 		}
 

@@ -115,7 +115,7 @@ namespace Maxfire.Skat
 					// Nulstil underskuddet
 					nulstilHandler("egen", underskud[index], index);
 					// Fremførsel af resterende underskud
-					indkomster[index].TilfoejUnderskudTilFremfoerselForSkattepligtigIndkomst("", restunderskud[index]);
+					indkomster[index].FremfoerUnderskudForSkattepligtigIndkomst("", restunderskud[index]);
 				});
 
 				return modregnEgetUnderskudResult;
@@ -141,7 +141,7 @@ namespace Maxfire.Skat
 			(modregningIndkomsterEgetUnderskud + modregningIndkomsterOverfoertUnderskud).Each((modregningIndkomst, index) =>
 			{
 				nulstilHandler("ægtefælles", underskud[index], index);
-				indkomster[index].TilfoejUnderskudTilFremfoerselForSkattepligtigIndkomst("", tilbagefoertUnderskud[index]);
+				indkomster[index].FremfoerUnderskudForSkattepligtigIndkomst("", tilbagefoertUnderskud[index]);
 			});
 
 			return modregnEgetUnderskudResult + modregnOverfoertUnderskudResult.SwapUnderskud();

@@ -294,7 +294,7 @@ namespace Maxfire.Skat.UnitTests
 			var selvangivneBeloeb = new ValueTuple<ISelvangivneBeloeb>(
 				new SelvangivneBeloeb
 					{
-						Bruttoloen = 360000,
+						Pension = 360000,
 						NettoKapitalIndkomst = -310000,
 						LigningsmaessigtFradrag = 80000
 					});
@@ -407,7 +407,7 @@ namespace Maxfire.Skat.UnitTests
 			var selvangivneBeloeb = new ValueTuple<ISelvangivneBeloeb>(
 				new SelvangivneBeloeb
 				{
-					Bruttoloen = 360000,
+					Pension = 360000,
 					NettoKapitalIndkomst = -400000,
 					LigningsmaessigtFradrag = 50000
 				});
@@ -468,7 +468,7 @@ namespace Maxfire.Skat.UnitTests
 				new SelvangivneBeloeb
 				{
 					SkattepligtigIndkomstFremfoertUnderskud = 12000,
-					Bruttoloen = 170000,
+					Pension = 170000,
 					NettoKapitalIndkomst = -30000,
 					LigningsmaessigtFradrag = 10000
 				});
@@ -497,7 +497,7 @@ namespace Maxfire.Skat.UnitTests
 			modregningUnderskud[0].ShouldEqual(12000);
 			underskudTilFremfoersel[0].ShouldEqual(0);
 			indkomster[0].SkattepligtigIndkomstUnderskudTilFremfoersel.ShouldEqual(0);
-			indkomster[0].SkattepligtigIndkomstModregninger.ShouldEqual(12000);
+			indkomster[0].SkattepligtigIndkomstModregninger.ShouldEqual(-12000);
 			// Hele modregningen sker i indkomst
 			modregningSkatter[0].ShouldEqual(SkatterAfPersonligIndkomst.Nul);
 			
@@ -532,7 +532,7 @@ namespace Maxfire.Skat.UnitTests
 				new SelvangivneBeloeb
 				{
 					SkattepligtigIndkomstFremfoertUnderskud = 500000,
-					Bruttoloen = 360000,
+					Pension = 360000,
 					NettoKapitalIndkomst = -10000,
 					LigningsmaessigtFradrag = 50000
 				});
@@ -680,7 +680,7 @@ namespace Maxfire.Skat.UnitTests
 				},
 				new SelvangivneBeloeb
 				{
-					Bruttoloen = 260000,
+					Pension = 260000,
 					LigningsmaessigtFradrag = 8000
 				});
 
@@ -707,10 +707,10 @@ namespace Maxfire.Skat.UnitTests
 			var skatterAfPersonligIndkomstEfterModregningAfUnderskud = modregnResults.Map(x => x.ModregnedeSkatter);
 
 			// Skattepligtig indkomst efter modregning og fremførsel af underskud
-			indkomster[0].SkattepligtigIndkomstModregninger.ShouldEqual(-53000);
+			indkomster[0].SkattepligtigIndkomstModregninger.ShouldEqual(53000);
 			indkomster[0].SkattepligtigIndkomstSkattegrundlag.ShouldEqual(0);
 			indkomster[0].SkattepligtigIndkomstUnderskudTilFremfoersel.ShouldEqual(0);
-			indkomster[1].SkattepligtigIndkomstModregninger.ShouldEqual(53000);
+			indkomster[1].SkattepligtigIndkomstModregninger.ShouldEqual(-53000);
 			indkomster[1].SkattepligtigIndkomstSkattegrundlag.ShouldEqual(199000);
 			indkomster[1].SkattepligtigIndkomstUnderskudTilFremfoersel.ShouldEqual(0);
 
@@ -770,13 +770,13 @@ namespace Maxfire.Skat.UnitTests
 			var selvangivneBeloeb = new ValueTuple<ISelvangivneBeloeb>(
 				new SelvangivneBeloeb
 				{
-					Bruttoloen = 50000,
+					Pension = 50000,
 					NettoKapitalIndkomst = -58000,
 					LigningsmaessigtFradrag = 13000
 				},
 				new SelvangivneBeloeb
 				{
-					Bruttoloen = 260000,
+					Pension = 260000,
 					NettoKapitalIndkomst = -4000,
 					LigningsmaessigtFradrag = 8000
 				});
@@ -808,10 +808,10 @@ namespace Maxfire.Skat.UnitTests
 			// Skattepligtig indkomst efter modregning og fremførsel af underskud
 			indkomster[0].SkattepligtigIndkomstSkattegrundlag.ShouldEqual(0);
 			indkomster[0].SkattepligtigIndkomstUnderskudTilFremfoersel.ShouldEqual(0);
-			indkomster[0].SkattepligtigIndkomstModregninger.ShouldEqual(-21000); // ikke muligt at dekomponere i modregning i hhv indkomst og skatter
+			indkomster[0].SkattepligtigIndkomstModregninger.ShouldEqual(21000); // ikke muligt at dekomponere i modregning i hhv indkomst og skatter
 			indkomster[1].SkattepligtigIndkomstSkattegrundlag.ShouldEqual(248000 - 13195.73m);
 			indkomster[1].SkattepligtigIndkomstUnderskudTilFremfoersel.ShouldEqual(0);
-			indkomster[1].SkattepligtigIndkomstModregninger.ShouldEqual(13195.73m);
+			indkomster[1].SkattepligtigIndkomstModregninger.ShouldEqual(-13195.73m);
 
 			var modregningUnderskudSkattepligtigIndkomst = modregnResults.Map(x => x.ModregningUnderskudSkattepligtigIndkomst);
 			var modregningUnderskudSkatter = modregnResults.Map(x => x.ModregningUnderskudSkatter);
@@ -875,7 +875,7 @@ namespace Maxfire.Skat.UnitTests
 				},
 				new SelvangivneBeloeb
 				{
-					Bruttoloen = 160000,
+					Pension = 160000,
 					NettoKapitalIndkomst = -128000,
 					LigningsmaessigtFradrag = 20000
 				});
@@ -908,10 +908,10 @@ namespace Maxfire.Skat.UnitTests
 			// Skattepligtig indkomst efter modregning og fremførsel af underskud
 			indkomster[0].SkattepligtigIndkomstSkattegrundlag.ShouldEqual(0);
 			indkomster[0].SkattepligtigIndkomstUnderskudTilFremfoersel.ShouldEqual(0);
-			indkomster[0].SkattepligtigIndkomstModregninger.ShouldEqual(-25000);
+			indkomster[0].SkattepligtigIndkomstModregninger.ShouldEqual(25000);
 			indkomster[1].SkattepligtigIndkomstSkattegrundlag.ShouldEqual(0);
 			indkomster[1].SkattepligtigIndkomstUnderskudTilFremfoersel.ShouldEqual(0);
-			indkomster[1].SkattepligtigIndkomstModregninger.ShouldEqual(12000); 
+			indkomster[1].SkattepligtigIndkomstModregninger.ShouldEqual(-12000); 
 
 			// Der er ingen underskud til fremførsel
 			modregningUnderskudSkattepligtigIndkomst[0].ShouldEqual(12000);
@@ -956,13 +956,13 @@ namespace Maxfire.Skat.UnitTests
 			var selvangivneBeloeb = new ValueTuple<ISelvangivneBeloeb>(
 				new SelvangivneBeloeb
 				{
-					Bruttoloen = 110000,
+					Pension = 110000,
 					NettoKapitalIndkomst = -200000,
 					LigningsmaessigtFradrag = 4000
 				},
 				new SelvangivneBeloeb
 				{
-					Bruttoloen = 375000,
+					Pension = 375000,
 					NettoKapitalIndkomst = -320000,
 					LigningsmaessigtFradrag = 31000
 				});
@@ -998,10 +998,10 @@ namespace Maxfire.Skat.UnitTests
 			
 			// Skattepligtig indkomst efter modregning af underskud mellem ægtefæller
 			indkomster[0].SkattepligtigIndkomstSkattegrundlag.ShouldEqual(0);
-			indkomster[0].SkattepligtigIndkomstModregninger.ShouldEqual(-94000);
+			indkomster[0].SkattepligtigIndkomstModregninger.ShouldEqual(94000);
 			indkomster[0].SkattepligtigIndkomstUnderskudTilFremfoersel.ShouldEqual(0);
 			indkomster[1].SkattepligtigIndkomstSkattegrundlag.ShouldEqual(0);
-			indkomster[1].SkattepligtigIndkomstModregninger.ShouldEqual(24000);
+			indkomster[1].SkattepligtigIndkomstModregninger.ShouldEqual(-24000);
 			indkomster[1].SkattepligtigIndkomstUnderskudTilFremfoersel.ShouldEqual(0);
 			
 			var modregningUnderskudSkattepligtigIndkomst = modregnResults.Map(x => x.ModregningUnderskudSkattepligtigIndkomst);
@@ -1056,7 +1056,7 @@ namespace Maxfire.Skat.UnitTests
 				},
 				new SelvangivneBeloeb
 				{
-					Bruttoloen = 23000,
+					Pension = 23000,
 					NettoKapitalIndkomst = -4000,
 					LigningsmaessigtFradrag = 20000
 				});
@@ -1091,10 +1091,10 @@ namespace Maxfire.Skat.UnitTests
 			
 			// Skattepligtig indkomst efter modregning af underskud mellem ægtefæller
 			indkomster[0].SkattepligtigIndkomstSkattegrundlag.ShouldEqual(0);
-			indkomster[0].SkattepligtigIndkomstModregninger.ShouldEqual(-2000);
+			indkomster[0].SkattepligtigIndkomstModregninger.ShouldEqual(2000);
 			indkomster[0].SkattepligtigIndkomstUnderskudTilFremfoersel.ShouldEqual(0);
 			indkomster[1].SkattepligtigIndkomstSkattegrundlag.ShouldEqual(0);
-			indkomster[1].SkattepligtigIndkomstModregninger.ShouldEqual(-1000);
+			indkomster[1].SkattepligtigIndkomstModregninger.ShouldEqual(1000);
 			indkomster[1].SkattepligtigIndkomstUnderskudTilFremfoersel.ShouldEqual(0);
 
 			var modregningUnderskudSkattepligtigIndkomst = modregnResults.Map(x => x.ModregningUnderskudSkattepligtigIndkomst);
@@ -1149,13 +1149,13 @@ namespace Maxfire.Skat.UnitTests
 				new SelvangivneBeloeb
 				{
 					SkattepligtigIndkomstFremfoertUnderskud = 500000,
-					Bruttoloen = 200000,
+					Pension = 200000,
 					NettoKapitalIndkomst = -20000,
 					LigningsmaessigtFradrag = 7000
 				},
 				new SelvangivneBeloeb
 				{
-					Bruttoloen = 100000,
+					Pension = 100000,
 					NettoKapitalIndkomst = -30000,
 					LigningsmaessigtFradrag = 3000
 				});
@@ -1189,10 +1189,10 @@ namespace Maxfire.Skat.UnitTests
 
 			// Skattepligtig indkomst efter modregning af underskud mellem ægtefæller
 			indkomster[0].SkattepligtigIndkomstSkattegrundlag.ShouldEqual(0);
-			indkomster[0].SkattepligtigIndkomstModregninger.ShouldEqual(173000);
+			indkomster[0].SkattepligtigIndkomstModregninger.ShouldEqual(-173000);
 			indkomster[0].SkattepligtigIndkomstUnderskudTilFremfoersel.ShouldEqual(213174.35m);
 			indkomster[1].SkattepligtigIndkomstSkattegrundlag.ShouldEqual(0);
-			indkomster[1].SkattepligtigIndkomstModregninger.ShouldEqual(67000);
+			indkomster[1].SkattepligtigIndkomstModregninger.ShouldEqual(-67000);
 			indkomster[1].SkattepligtigIndkomstUnderskudTilFremfoersel.ShouldEqual(0);
 
 			var summenAfAaretsOgFremfoertUnderskud = modregnResults.Map(x => x.Underskud);
@@ -1240,14 +1240,14 @@ namespace Maxfire.Skat.UnitTests
 			var selvangivneBeloeb = new ValueTuple<ISelvangivneBeloeb>(
 				new SelvangivneBeloeb
 				{
-					Bruttoloen = 24000,
+					Pension = 24000,
 					NettoKapitalIndkomst = -16000,
 					LigningsmaessigtFradrag = 10000
 				},
 				new SelvangivneBeloeb
 				{
 					SkattepligtigIndkomstFremfoertUnderskud = 290000,
-					Bruttoloen = 250000
+					Pension = 250000
 				});
 
 			var kommunaleSatser = getKommunaleSatserForGifte();
@@ -1280,10 +1280,10 @@ namespace Maxfire.Skat.UnitTests
 
 			// Skattepligtig indkomst efter modregning af underskud mellem ægtefæller
 			indkomster[0].SkattepligtigIndkomstSkattegrundlag.ShouldEqual(0);
-			indkomster[0].SkattepligtigIndkomstModregninger.ShouldEqual(-2000);
+			indkomster[0].SkattepligtigIndkomstModregninger.ShouldEqual(2000);
 			indkomster[0].SkattepligtigIndkomstUnderskudTilFremfoersel.ShouldEqual(0);
 			indkomster[1].SkattepligtigIndkomstSkattegrundlag.ShouldEqual(0);
-			indkomster[1].SkattepligtigIndkomstModregninger.ShouldEqual(250000);
+			indkomster[1].SkattepligtigIndkomstModregninger.ShouldEqual(-250000);
 			indkomster[1].SkattepligtigIndkomstUnderskudTilFremfoersel.ShouldEqual(0);
 
 			var summenAfAaretsOgFremfoertUnderskud = modregnResults.Map(x => x.Underskud);
@@ -1337,14 +1337,14 @@ namespace Maxfire.Skat.UnitTests
 				new SelvangivneBeloeb
 				{
 					SkattepligtigIndkomstFremfoertUnderskud = 120000 + 970000,
-					Bruttoloen = 800000,
+					Pension = 800000,
 					NettoKapitalIndkomst = 10000,
 					LigningsmaessigtFradrag = 15000
 				},
 				new SelvangivneBeloeb
 				{
 					SkattepligtigIndkomstFremfoertUnderskud = 100000 + 80000,
-					Bruttoloen = 9000,
+					Pension = 9000,
 					NettoKapitalIndkomst = -64000,
 					LigningsmaessigtFradrag = 15000
 				});
@@ -1380,10 +1380,10 @@ namespace Maxfire.Skat.UnitTests
 
 			// Skattepligtig indkomst efter modregning af underskud mellem ægtefæller
 			indkomster[0].SkattepligtigIndkomstSkattegrundlag.ShouldEqual(0);
-			indkomster[0].SkattepligtigIndkomstModregninger.ShouldEqual(68595.23m + 726404.77m);
+			indkomster[0].SkattepligtigIndkomstModregninger.ShouldEqual(-(68595.23m + 726404.77m));
 			indkomster[0].SkattepligtigIndkomstUnderskudTilFremfoersel.ShouldEqual(7088.57m);
 			indkomster[1].SkattepligtigIndkomstSkattegrundlag.ShouldEqual(0);
-			indkomster[1].SkattepligtigIndkomstModregninger.ShouldEqual(-70000);
+			indkomster[1].SkattepligtigIndkomstModregninger.ShouldEqual(70000);
 			indkomster[1].SkattepligtigIndkomstUnderskudTilFremfoersel.ShouldEqual(180000);
 			
 			var summenAfAaretsOgFremfoertUnderskud = modregnResults.Map(x => x.Underskud);
@@ -1549,7 +1549,7 @@ namespace Maxfire.Skat.UnitTests
 				new SelvangivneBeloeb
 				{
 					PersonligIndkomstFremfoertUnderskud = 215000,
-					Bruttoloen = 230000,
+					Pension = 230000,
 					PrivatTegnetKapitalPensionsindskud = 30000,
 					NettoKapitalIndkomst = 10000,
 					LigningsmaessigtFradrag = 12000
@@ -1614,7 +1614,7 @@ namespace Maxfire.Skat.UnitTests
 				{
 					PersonligIndkomstFremfoertUnderskud = 30000,
 					SkattepligtigIndkomstFremfoertUnderskud = 30000,
-					Bruttoloen = 200000,
+					Pension = 200000,
 					NettoKapitalIndkomst = 10000
 				});
 
@@ -1678,7 +1678,7 @@ namespace Maxfire.Skat.UnitTests
 				new SelvangivneBeloeb
 				{
 					PersonligIndkomstFremfoertUnderskud = 300000,
-					Bruttoloen = 200000,
+					Pension = 200000,
 					ArbejdsgiverAdminKapitalPensionsindskud = 30000,
 					NettoKapitalIndkomst = 10000,
 					LigningsmaessigtFradrag = 7000
@@ -1871,7 +1871,7 @@ namespace Maxfire.Skat.UnitTests
 				},
 				new SelvangivneBeloeb 
 				{
-					Bruttoloen = 360000,
+					Pension = 360000,
 					LigningsmaessigtFradrag = 9000
 				});
 
@@ -1950,7 +1950,7 @@ namespace Maxfire.Skat.UnitTests
 				},
 				new SelvangivneBeloeb
 				{
-					Bruttoloen = 40000,
+					Pension = 40000,
 					PrivatTegnetKapitalPensionsindskud = 30000,
 					NettoKapitalIndkomst = 110000
 				});
@@ -2027,7 +2027,7 @@ namespace Maxfire.Skat.UnitTests
 				new SelvangivneBeloeb
 				{
 					PersonligIndkomstFremfoertUnderskud = 18000,
-					Bruttoloen = 610000,
+					Pension = 610000,
 					NettoKapitalIndkomst = -30000,
 					LigningsmaessigtFradrag = 8200
 				},

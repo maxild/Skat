@@ -83,7 +83,7 @@ namespace Maxfire.Skat
 			{
 				indkomster[index].NedbringUnderskudForPersonligIndkomst(
 					"Overførsel af årets uudnyttede underskud til næste skatteår", underskud);
-				indkomster[index].TilfoejUnderskudTilFremfoerselForPersonligIndkomst(
+				indkomster[index].FremfoerUnderskudForPersonligIndkomst(
 					"Årets uudnyttede underskud", underskud);
 			});
 
@@ -108,7 +108,7 @@ namespace Maxfire.Skat
 			{
 				indkomster[index].NedbringFremfoertUnderskudForPersonligIndkomst(
 					"Overførsel af tidligere skatteårs uudnyttede underskud til næste skatteår", underskud);
-				indkomster[index].TilfoejUnderskudTilFremfoerselForPersonligIndkomst(
+				indkomster[index].FremfoerUnderskudForPersonligIndkomst(
 					"Tidligere skatteårs uudnyttede underskud", underskud);
 			});
 		}
@@ -155,7 +155,7 @@ namespace Maxfire.Skat
 			var modregnIndkomstResults = personligeIndkomster.ModregnUnderskud(underskud);
 
 			modregnIndkomstResults.Each((modregnIndkomstResult, index) => 
-				indkomster[index].NedbringUnderskudForPersonligIndkomst("Overførsel fra ægtefælle", -modregnIndkomstResult.UdnyttetUnderskud));
+				indkomster[index].NedbringPersonligIndkomst("Overførsel fra ægtefælle", modregnIndkomstResult.UdnyttetUnderskud));
 
 			var restunderskud = modregnIndkomstResults.Map(x => x.IkkeUdnyttetUnderskud);
 

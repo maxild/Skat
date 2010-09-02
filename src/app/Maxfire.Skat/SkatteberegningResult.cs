@@ -2,7 +2,7 @@ namespace Maxfire.Skat
 {
 	public class SkatteberegningResult
 	{
-		public SkatteberegningResult(IValueTuple<SkatteIndkomster> indkomster, ValueTuple<Skatter> skatter)
+		public SkatteberegningResult(IValueTuple<ISpecificeredeSkatteIndkomster> indkomster, ValueTuple<Skatter> skatter)
 		{
 			Skatter = skatter;
 		}

@@ -11,7 +11,7 @@ namespace Maxfire.Skat
 			_skattelovRegistry = skattelovRegistry;
 		}
 
-		public ValueTuple<SkatteIndkomster> BeregnIndkomster(
+		public IValueTuple<ISpecificeredeSkatteIndkomster> BeregnIndkomster(
 			IValueTuple<ISelvangivneBeloeb> selvangivneBeloeb, 
 			int skatteAar)
 		{
