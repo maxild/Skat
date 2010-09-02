@@ -66,8 +66,8 @@ namespace Maxfire.Skat
 			// Særligt indkomstafhængigt nedslag for alderspensionister (..afhænger af om ejere er gift eller ugift!!!)
 			ValueTuple<decimal> pensionistNedslag;
 
-			var personligIndkomst = indkomster.Map(x => x.PersonligIndkomst);
-			var nettoKapitalIndkomst = indkomster.Map(x => x.NettoKapitalIndkomst);
+			var personligIndkomst = indkomster.Map(x => x.PersonligIndkomstSkattegrundlag);
+			var nettoKapitalIndkomst = indkomster.Map(x => x.NettoKapitalIndkomstSkattegrundlag);
 			var aktieIndkomst = indkomster.Map(x => x.AktieIndkomst);
 
 			decimal maksPensionstNedslag = ejendomsoplysninger.IsFritidsbolig ? 2000 : 6000;

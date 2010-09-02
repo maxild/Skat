@@ -19,7 +19,7 @@ namespace Maxfire.Skat
 			)
 		{
 			var indkomstOpgoerelseBeregner = new IndkomstOpgoerelseBeregner(_skattelovRegistry);
-			ValueTuple<IPersonligeBeloeb> indkomster = indkomstOpgoerelseBeregner.BeregnIndkomster(selvangivneBeloeb, skatteAar);
+			var indkomster = indkomstOpgoerelseBeregner.BeregnIndkomster(selvangivneBeloeb, skatteAar);
 
 			//
 			// TODO: Ejendomsværdiskat (springes over, da den kan insættes hvorsomhelst)
@@ -31,7 +31,7 @@ namespace Maxfire.Skat
 
 			// Beregn bundskat, mellemskat og topskat samt aktieskat
 			var skatterAfPersonligIndkomstBeregner = new SkatterAfPersonligIndkomstBeregner(_skattelovRegistry);
-			var skatterAfPersonligIndkomst = skatterAfPersonligIndkomstBeregner.BeregnSkat(indkomster.Map(x => x.Skattegrundlag), kommunaleSatser, skatteAar);
+			var skatterAfPersonligIndkomst = skatterAfPersonligIndkomstBeregner.BeregnSkat(indkomster, kommunaleSatser, skatteAar);
 
 			// Modregning af negativ skattepligtig indkomst
 			var skattepligtigIndkomstUnderskudBeregner = new SkattepligtigIndkomstUnderskudBeregner(_skattelovRegistry);
@@ -40,7 +40,7 @@ namespace Maxfire.Skat
 
 			// Beregn sundhedsbidrag samt kommuneskat og kirkeskat
 			var skatterAfSkattepligtigIndkomstBeregner = new SkatterAfSkattepligtigIndkomstBeregner(_skattelovRegistry);
-			var skatterAfSkattepligtigIndkomst = skatterAfSkattepligtigIndkomstBeregner.BeregnSkat(indkomster.Map(x => x.Skattegrundlag), kommunaleSatser, skatteAar);
+			var skatterAfSkattepligtigIndkomst = skatterAfSkattepligtigIndkomstBeregner.BeregnSkat(indkomster, kommunaleSatser, skatteAar);
 
 			var skatterFoerPersonfradrag = SkatteUtility.CombineSkat(skatterAfPersonligIndkomstEfterModregningAfUnderskud,
 																	skatterAfSkattepligtigIndkomst);

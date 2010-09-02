@@ -6,7 +6,7 @@
 		IBeloebCollection PersonligeIndkomsterEjAMIndkomster { get; }
 		IBeloebCollection PersonligeIndkomster { get; }
 
-		IBeloebCollection NettoKapitalIndkomster { get; }
+		IBeloebCollection KapitalIndkomster { get; }
 
 		IBeloebCollection LigningsmaessigeFradragMinusBeskaeftigelsesfradrag { get; }
 	}

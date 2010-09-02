@@ -24,6 +24,11 @@ namespace Maxfire.Skat
 			get { return _selvangivneBeloeb.PersonligIndkomstEjAMIndkomst; }
 		}
 
+		public decimal PersonligIndkomstFremfoertUnderskud
+		{
+			get { return _selvangivneBeloeb.PersonligIndkomstFremfoertUnderskud; }
+		}
+
 		public decimal NettoKapitalIndkomst
 		{
 			get { return _selvangivneBeloeb.NettoKapitalIndkomst; }
@@ -32,6 +37,11 @@ namespace Maxfire.Skat
 		public decimal LigningsmaessigtFradragMinusBeskaeftigelsesfradrag
 		{
 			get { return _selvangivneBeloeb.LigningsmaessigtFradragMinusBeskaeftigelsesfradrag; }
+		}
+
+		public decimal SkattepligtigIndkomstFremfoertUnderskud
+		{
+			get { return _selvangivneBeloeb.SkattepligtigIndkomstFremfoertUnderskud; }
 		}
 
 		public decimal KapitalPensionsindskud
@@ -51,7 +61,7 @@ namespace Maxfire.Skat
 			{
 				return _personligeIndkomsterAMIndkomster ??
 				       (_personligeIndkomsterAMIndkomster =
-				        SelvangivneBeloeb.Create(SelvangivetBeloeb.Create("AM-Indkomst", PersonligIndkomstAMIndkomst)));
+				        SelvangivneBeloeb.Create(Beloeb.Create("AM-Indkomst", PersonligIndkomstAMIndkomst)));
 			}
 		}
 
@@ -62,7 +72,7 @@ namespace Maxfire.Skat
 			{
 				return _personligeIndkomsterEjAMIndkomster ??
 					   (_personligeIndkomsterEjAMIndkomster =
-						SelvangivneBeloeb.Create(SelvangivetBeloeb.Create("Ej AM-Indkomst", PersonligIndkomstEjAMIndkomst)));
+						SelvangivneBeloeb.Create(Beloeb.Create("Ej AM-Indkomst", PersonligIndkomstEjAMIndkomst)));
 			}
 		}
 
@@ -78,13 +88,13 @@ namespace Maxfire.Skat
 		}
 
 		private IBeloebCollection _nettoKapitalIndkomster;
-		public IBeloebCollection NettoKapitalIndkomster
+		public IBeloebCollection KapitalIndkomster
 		{
 			get
 			{
 				return _nettoKapitalIndkomster ??
 				       (_nettoKapitalIndkomster =
-				        SelvangivneBeloeb.Create(SelvangivetBeloeb.Create("Nettokapitalindkomst", NettoKapitalIndkomst)));
+				        SelvangivneBeloeb.Create(Beloeb.Create("Nettokapitalindkomst", NettoKapitalIndkomst)));
 			}
 		}
 
@@ -95,9 +105,11 @@ namespace Maxfire.Skat
 			{
 				return _ligningsmaessigeFradragMinusBeskaeftigelsesfradrag ??
 				       (_ligningsmaessigeFradragMinusBeskaeftigelsesfradrag =
-				        SelvangivneBeloeb.Create(SelvangivetBeloeb.Create("Ligningsmæssige fradrag, ekskl. beskæftigelsesfradrag",
+				        SelvangivneBeloeb.Create(Beloeb.Create("Ligningsmæssige fradrag, ekskl. beskæftigelsesfradrag",
 				                                                          LigningsmaessigtFradragMinusBeskaeftigelsesfradrag)));
 			}
 		}
+
+
 	}
 }

@@ -7,6 +7,10 @@ namespace Maxfire.Skat
 	{
 	}
 
+	public interface ISkatteIndkomsterModregning : ISkatteIndkomster, IPersonligeIndkomsterModregning, ISkattepligtigeIndkomsterModregning
+	{
+	}
+
 	public interface ISumableEnumerable<out TItem, out TValue>: IEnumerable<TItem>, ISumable<TValue>
 	{
 	}
@@ -24,7 +28,7 @@ namespace Maxfire.Skat
 	}
 
 	/// <summary>
-	/// Adapter that wraps collection of ITextValuePair<decimal> in an IBeloebCollection instance.
+	/// Adapter that wraps collection of ITextValuePair&lt;decimal&gt; in an IBeloebCollection instance.
 	/// </summary>
 	public class BeloebCollection : TextValuePairCollection<ITextValuePair<decimal>>, IBeloebCollection
 	{

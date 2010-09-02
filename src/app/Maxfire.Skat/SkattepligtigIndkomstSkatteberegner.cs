@@ -9,7 +9,7 @@ namespace Maxfire.Skat
 			IValueTuple<ISkattepligtigeIndkomster> indkomster, 
 			Func<ValueTuple<decimal>> skattesatsProvider)
 		{
-			var skattepligtigIndkomst = indkomster.Map(x => x.SkattepligtigIndkomst);
+			var skattepligtigIndkomst = indkomster.Map(x => x.SkattepligtigIndkomstSkattegrundlag);
 			var skattesats = skattesatsProvider();
 			return skattesats * (+skattepligtigIndkomst);
 		}

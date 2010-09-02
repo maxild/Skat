@@ -2,7 +2,6 @@ using Maxfire.Skat.Extensions;
 
 namespace Maxfire.Skat
 {
-	// TODO: Benyt denne i eksempler
 	public class IndkomstOpgoerelseBeregner
 	{
 		private readonly ISkattelovRegistry _skattelovRegistry;
@@ -12,23 +11,17 @@ namespace Maxfire.Skat
 			_skattelovRegistry = skattelovRegistry;
 		}
 
-		// TODO: Mangler restskat, fremførte underskud i selvangivne beløb
-		public ValueTuple<IPersonligeBeloeb> BeregnIndkomster(
+		public ValueTuple<SkatteIndkomster> BeregnIndkomster(
 			IValueTuple<ISelvangivneBeloeb> selvangivneBeloeb, 
 			int skatteAar)
 		{
 			var specficeredeSelvangivneBeloeb = selvangivneBeloeb.Map(makeSpecificerede);
 
-			// Beregn de endogene beløb for AM-bidrag og beskæftigelsesfradrag
 			var amBidragBeregner = new AMBidragBeregner(_skattelovRegistry);
-			var amIndkomster = selvangivneBeloeb.Map(x => x.PersonligIndkomstAMIndkomst);
-			var amBidrag = amBidragBeregner.BeregnSkat(amIndkomster, skatteAar);
 			var beskaeftigelsesfradragBeregner = new BeskaeftigelsesfradragBeregner(_skattelovRegistry);
-			var beskaeftigelsesfradrag = beskaeftigelsesfradragBeregner.BeregnFradrag(amIndkomster, skatteAar);
-			
-			// TODO: make PersonligeBeloeb immutable, men gør det sideløbende med et beregnet eksempel med alle slags modregninger af underskud
-			return amBidrag.Map(index => 
-				(IPersonligeBeloeb)new PersonligeBeloeb(specficeredeSelvangivneBeloeb[index], amBidrag[index], beskaeftigelsesfradrag[index]));
+
+			return specficeredeSelvangivneBeloeb.Map(x => 
+				new SkatteIndkomster(x, amBidragBeregner, beskaeftigelsesfradragBeregner, skatteAar));
 		}
 
 		private static ISpecficeredeSelvangivneBeloeb makeSpecificerede(ISelvangivneBeloeb selvangivneBeloeb)

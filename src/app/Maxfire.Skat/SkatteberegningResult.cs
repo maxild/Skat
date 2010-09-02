@@ -2,13 +2,13 @@ namespace Maxfire.Skat
 {
 	public class SkatteberegningResult
 	{
-		public SkatteberegningResult(IValueTuple<IPersonligeBeloeb> beloeb, ValueTuple<Skatter> skatter)
+		public SkatteberegningResult(IValueTuple<SkatteIndkomster> indkomster, ValueTuple<Skatter> skatter)
 		{
-			Beloeb = beloeb;
 			Skatter = skatter;
 		}
 
-		public IValueTuple<IPersonligeBeloeb> Beloeb { get; private set; }
+		// TODO: Uncomment this and change it
+		//public IValueTuple<IPersonligeBeloeb> Beloeb { get; private set; }
 		
 		// TODO: Hvad med topskattegrundlag?
 

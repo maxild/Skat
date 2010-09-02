@@ -50,7 +50,7 @@ namespace Maxfire.Skat
 
 		public ValueTuple<decimal> BeregnNedslag(IValueTuple<IPersonligeIndkomster> indkomster, int skatteAar)
 		{
-			var nettoKapitalIndkomst = indkomster.Map(x => x.NettoKapitalIndkomst);
+			var nettoKapitalIndkomst = indkomster.Map(x => x.NettoKapitalIndkomstSkattegrundlag);
 			var nettoKapitalIndkomstEfterModregning = nettoKapitalIndkomst.NedbringPositivtMedEvtNegativt();
 			var grundbeloeb = _skattelovRegistry.GetNegativNettoKapitalIndkomstGrundbeloeb(skatteAar);
 			var negativNettoKapitalIndkomstEfterModregningDerIkkeOverstigerGrundbeloeb

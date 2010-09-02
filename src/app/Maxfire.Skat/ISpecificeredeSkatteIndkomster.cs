@@ -1,12 +1,10 @@
 ﻿namespace Maxfire.Skat
 {
-	public interface ISpecificeredeSkatteIndkomster : ISkatteIndkomster
+	public interface ISpecificeredeSkatteIndkomster : ISkatteIndkomsterModregning
 	{
-		IPersonligIndkomstBeloebCollection PersonligeIndkomsterAMIndkomster { get; }
-		IPersonligIndkomstBeloebCollection PersonligeIndkomsterEjAMIndkomster { get; }
 		IPersonligIndkomstBeloebCollection PersonligeIndkomster { get; }
 
-		IBeloebCollection NettoKapitalIndkomster { get; }
+		IBeloebCollection KapitalIndkomster { get; }
 
 		IBeloebCollection LigningsmaessigeFradrag { get; }
 

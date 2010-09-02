@@ -3,25 +3,26 @@ using Maxfire.Core;
 
 namespace Maxfire.Skat
 {
-	// TODO: Fremførte underskud ikke understøttet
+	// TODO: Mangler restskat i selvangivne beløb
+	// TODO: Mangler nogle 'standard' fradrag i den personlige indkomst såsom iværksætter konto + atp eget bidrag + private tegnet pensionsindskud
 	public interface ISelvangivneBeloeb
 	{
 		decimal PersonligIndkomstAMIndkomst { get; }
 		decimal PersonligIndkomstEjAMIndkomst { get; }
+		decimal PersonligIndkomstFremfoertUnderskud { get; }
 
 		decimal NettoKapitalIndkomst { get; }
 		
 		decimal LigningsmaessigtFradragMinusBeskaeftigelsesfradrag { get; }
+		
+		decimal SkattepligtigIndkomstFremfoertUnderskud { get; }
 
 		decimal KapitalPensionsindskud { get; }
-
-		// TODO: Dette er et kendt fradrag i den personlige indkomst, skal det slettes og klienten have ansvaret for indkomst opgørelsen mht. dette fradrag?
-		//decimal PrivatTegnetPensionsindskud { get; }
 
 		decimal AktieIndkomst { get; }
 	}
 
-	public static class SelvangivetBeloeb
+	public static class Beloeb
 	{
 		public static ITextValuePair<decimal> Create(string text, decimal beloeb)
 		{

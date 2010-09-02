@@ -1,7 +1,14 @@
-﻿namespace Maxfire.Skat
+﻿using Maxfire.Core;
+
+namespace Maxfire.Skat
 {
 	public class PersonligIndkomstValue
 	{
+		public static ITextValuePair<PersonligIndkomstValue> Create(string text, decimal foerAMBidrag, decimal? amBidrag = null)
+		{
+			return new TextValuePair<PersonligIndkomstValue>(text, new PersonligIndkomstValue(foerAMBidrag, amBidrag));
+		}
+
 		public PersonligIndkomstValue(decimal foerAMBidrag, decimal? amBidrag = null)
 		{
 			FoerAMBidrag = foerAMBidrag;

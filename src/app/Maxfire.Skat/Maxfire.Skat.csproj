@@ -48,8 +48,8 @@
     <Compile Include="Extensions\NumberExtensions.cs" />
     <Compile Include="Extensions\ValueTupleInterfaceExtensions.cs" />
     <Compile Include="GroenCheckBeregner.cs" />
+    <Compile Include="IAMIndkomstSkatteberegner.cs" />
     <Compile Include="IndkomstOpgoerelseBeregner.cs" />
-    <Compile Include="IPersonligeBeloeb.cs" />
     <Compile Include="IPersonligeIndkomster.cs" />
     <Compile Include="ISelvangivneBeloeb.cs" />
     <Compile Include="ISkatteIndkomster.cs" />
@@ -75,7 +75,6 @@
     <Compile Include="Extensions\PersonExtensions.cs" />
     <Compile Include="PersonFradragBeregner.cs" />
     <Compile Include="PersonfradragSkattevaerdiOmregner.cs" />
-    <Compile Include="PersonligeBeloeb.cs" />
     <Compile Include="Kommuneskat.cs" />
     <Compile Include="PersonligIndkomstSkatteberegner.cs" />
     <Compile Include="PersonligIndkomstUnderskudBeregner.cs" />
@@ -85,6 +84,7 @@
     <Compile Include="Reflection\IntrospectionOf.cs" />
     <Compile Include="Reflection\PropertyAccessor.cs" />
     <Compile Include="Reflection\Setter.cs" />
+    <Compile Include="SkatteIndkomster.cs" />
     <Compile Include="SkattepligtigIndkomstSkatteberegner.cs" />
     <Compile Include="SkatterAfPersonligIndkomstBeregner.cs" />
     <Compile Include="SkatterAfSkattepligtigIndkomstBeregner.cs" />

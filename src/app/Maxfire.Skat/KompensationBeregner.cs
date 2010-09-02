@@ -214,7 +214,7 @@ namespace Maxfire.Skat
 		{
 			decimal sats = 0.08m - _skattelovRegistry.GetSundhedsbidragSkattesats(skatteAar);
 			var negativNettoKapitalIndkomstGrundbeloeb = _skattelovRegistry.GetNegativNettoKapitalIndkomstGrundbeloeb(skatteAar);
-			var nettoKapitalIndkomst = indkomster.Map(x => x.NettoKapitalIndkomst);
+			var nettoKapitalIndkomst = indkomster.Map(x => x.NettoKapitalIndkomstSkattegrundlag);
 			var nettoKapitalIndkomstTilBeskatning = nettoKapitalIndkomst.NedbringPositivtMedEvtNegativt();
 			// TODO: For ægtefæller er det summen, da ubenyttet grundbeløb kan overføres
 			var negativNettoKapitalIndkomstOverGrundbeloebet = (+(-nettoKapitalIndkomstTilBeskatning))

@@ -55,34 +55,33 @@ namespace Maxfire.Skat
 		/// <param name="skatteAar">Skatteåret</param>
 		/// <returns>Resultatet</returns>
 		public ValueTuple<ModregnUnderskudResult> ModregningAfUnderskud(
-			IValueTuple<ISkattepligtigeIndkomster> indkomster, 
+			IValueTuple<ISkattepligtigeIndkomsterModregning> indkomster, 
 			ValueTuple<SkatterAfPersonligIndkomst> skatter, 
 			IValueTuple<IKommunaleSatser> kommunaleSatser, 
 			int skatteAar)
 		{
-			var skattepligtigeIndkomster = indkomster.Map(x => x.SkattepligtigIndkomst);
-			
 			// I. Årets underskud
-			var aaretsUnderskud = +(-skattepligtigeIndkomster);
+			var aaretsUnderskud = indkomster.Map(x => x.SkattepligtigIndkomstAaretsUnderskud);
 
-			Action<decimal, int> aaretsUnderskudNulstilHandler = 
-				(value, index) => indkomster[index].ModregnetUnderskudSkattepligtigIndkomst -= value;
+			Action<string, decimal, int> aaretsUnderskudNulstilHandler = 
+				(text, value, index) => indkomster[index].NedbringUnderskudForSkattepligtigIndkomst(
+					string.Format("Overførsel af årets underskud til {0} skattepligtige indkomst og skatter", text), value);
 
 			var modregnAaretsUnderskudResult 
-				= modregnEgenOgAegtefaelleUnderskudOgUnderskudsvaerdi(indkomster, skattepligtigeIndkomster,
+				= modregnEgenOgAegtefaelleUnderskudOgUnderskudsvaerdi(indkomster, 
 						skatter, aaretsUnderskud, kommunaleSatser, skatteAar,
 							aaretsUnderskudNulstilHandler);
 
 			// II. Fremført underskud
-			var fremfoertUnderskud = indkomster.Map(x => x.FremfoertUnderskudSkattepligtigIndkomst);
-			var skattepligtigeIndkomsterEfterModregningAfAaretsUnderskud = indkomster.Map(x => x.SkattepligtigIndkomst);
+			var fremfoertUnderskud = indkomster.Map(x => x.SkattepligtigIndkomstFremfoertUnderskud);
 			var modregningSkatter = modregnAaretsUnderskudResult.Map(x => x.ModregningSkatter);
 
-			Action<decimal, int> fremfoertUnderskudNulstilHandler = 
-				(value, index) => indkomster[index].FremfoertUnderskudSkattepligtigIndkomst -= value;
+			Action<string, decimal, int> fremfoertUnderskudNulstilHandler = 
+				(text, value, index) => indkomster[index].NedbringFremfoertUnderskudForSkattepligtigIndkomst(
+					string.Format("Overførsel af fremført underskud til {0} skattepligtige indkomst og skatter", text), value);
 
 			var modregnFremfoertUnderskudResult
-				= modregnEgenOgAegtefaelleUnderskudOgUnderskudsvaerdi(indkomster, skattepligtigeIndkomsterEfterModregningAfAaretsUnderskud, 
+				= modregnEgenOgAegtefaelleUnderskudOgUnderskudsvaerdi(indkomster,
 						skatter - modregningSkatter, fremfoertUnderskud, kommunaleSatser, skatteAar,
 							fremfoertUnderskudNulstilHandler);
 
@@ -91,36 +90,32 @@ namespace Maxfire.Skat
 		}
 
 		private ValueTuple<BeregnModregningerResult> modregnEgenOgAegtefaelleUnderskudOgUnderskudsvaerdi(
-			IValueTuple<ISkattepligtigeIndkomster> indkomster, 
-			ValueTuple<decimal> skattepligtigeIndkomster, 
+			IValueTuple<ISkattepligtigeIndkomsterModregning> indkomster, 
 			ValueTuple<SkatterAfPersonligIndkomst> skatter, 
 			ValueTuple<decimal> underskud, 
 			IValueTuple<IKommunaleSatser> kommunaleSatser,
 			int skatteAar,
-			Action<decimal, int> nulstilHandler)
+			Action<string, decimal, int> nulstilHandler)
 		{
+			var skattepligtigeIndkomster = indkomster.Map(x => x.SkattepligtigIndkomstSkattegrundlag);
+
 			// Modregn i egen skattepligtig indkomst og skatter
 			var modregnEgetUnderskudResult = modregnUnderskudOgUnderskudsvaerdi(skattepligtigeIndkomster, skatter, underskud, kommunaleSatser, skatteAar);
 
 			var restunderskud = modregnEgetUnderskudResult.Map((x, index) => x.GetRestunderskud(underskud[index]));
 			var modregningIndkomster = modregnEgetUnderskudResult.Map(x => x.ModregningUnderskudSkattepligtigIndkomst);
 
-			// Note: Side-effekter...skal fjernes
-			modregningIndkomster.Each((modregningIndkomst, index) =>
-			{
-				// Modregn i den skattepligtige indkomst
-				indkomster[index].ModregnetUnderskudSkattepligtigIndkomst += modregningIndkomst;
-			});
+			modregningIndkomster.Each((modregningIndkomst, index) => 
+				indkomster[index].NedbringSkattepligtigIndkomst("", modregningIndkomst));
 
 			if (skatter.Size == 1)
 			{
-				// Note: Side-effekter...skal fjernes
 				modregningIndkomster.Each((modregningIndkomst, index) =>
 				{
 					// Nulstil underskuddet
-					nulstilHandler(underskud[index], index);
+					nulstilHandler("egen", underskud[index], index);
 					// Fremførsel af resterende underskud
-					indkomster[index].UnderskudSkattepligtigIndkomstTilFremfoersel += restunderskud[index];
+					indkomster[index].TilfoejUnderskudTilFremfoerselForSkattepligtigIndkomst("", restunderskud[index]);
 				});
 
 				return modregnEgetUnderskudResult;
@@ -128,7 +123,7 @@ namespace Maxfire.Skat
 
 			// Modregn i ægtefælles skattepligtig indkomst og skatter
 			var modregningSkatter = modregnEgetUnderskudResult.Map(x => x.ModregningSkatter);
-			var skattepligtigeIndkomsterEfterEgenModregning = indkomster.Map(x => x.SkattepligtigIndkomst);
+			var skattepligtigeIndkomsterEfterEgenModregning = indkomster.Map(x => x.SkattepligtigIndkomstSkattegrundlag);
 			var overfoertUnderskud = restunderskud.Swap();
 
 			var modregnOverfoertUnderskudResult = modregnUnderskudOgUnderskudsvaerdi(skattepligtigeIndkomsterEfterEgenModregning,
@@ -140,20 +135,13 @@ namespace Maxfire.Skat
 			var modregningIndkomsterEgetUnderskud = modregnEgetUnderskudResult.Map(x => x.ModregningUnderskudSkattepligtigIndkomst);
 			var modregningIndkomsterOverfoertUnderskud = modregnOverfoertUnderskudResult.Map(x => x.ModregningUnderskudSkattepligtigIndkomst);
 
-			// Note: Side-effekter...skal fjernes
-			modregningIndkomsterOverfoertUnderskud.Each((modregningIndkomst, index) =>
-			{
-				// Modregn i den skattepligtige indkomst
-				indkomster[index].ModregnetUnderskudSkattepligtigIndkomst += modregningIndkomst;
-			});
+			modregningIndkomsterOverfoertUnderskud.Each((modregningIndkomst, index) => 
+				indkomster[index].NedbringSkattepligtigIndkomst("", modregningIndkomst));
 
-			// Note: Side-effekter...skal fjernes
 			(modregningIndkomsterEgetUnderskud + modregningIndkomsterOverfoertUnderskud).Each((modregningIndkomst, index) =>
 			{
-				// Nulstil underskuddet
-				nulstilHandler(underskud[index], index);
-				// Fremførsel af resterende underskud
-				indkomster[index].UnderskudSkattepligtigIndkomstTilFremfoersel += tilbagefoertUnderskud[index];
+				nulstilHandler("ægtefælles", underskud[index], index);
+				indkomster[index].TilfoejUnderskudTilFremfoerselForSkattepligtigIndkomst("", tilbagefoertUnderskud[index]);
 			});
 
 			return modregnEgetUnderskudResult + modregnOverfoertUnderskudResult.SwapUnderskud();

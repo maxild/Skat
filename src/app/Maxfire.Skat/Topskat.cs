@@ -114,8 +114,8 @@ namespace Maxfire.Skat
 			IValueTuple<IPersonligeIndkomster> indkomster, 
 			decimal topskatBundfradrag)
 		{
-			var personligIndkomst = indkomster.Map(x => x.PersonligIndkomst);
-			var kapitalPensionsindskud = indkomster.Map(x => x.KapitalPensionsindskud);
+			var personligIndkomst = indkomster.Map(x => x.PersonligIndkomstSkattegrundlag);
+			var kapitalPensionsindskud = indkomster.Map(x => x.KapitalPensionsindskudSkattegrundlag);
 			return personligIndkomst + kapitalPensionsindskud - topskatBundfradrag;
 		}
 
@@ -154,7 +154,7 @@ namespace Maxfire.Skat
 			Func<int, ValueTuple<decimal>, 
 			ValueTuple<decimal>> fordelingsnoegleProvider)
 		{
-			var nettoKapitalIndkomst = indkomster.Map(x => x.NettoKapitalIndkomst);
+			var nettoKapitalIndkomst = indkomster.Map(x => x.NettoKapitalIndkomstSkattegrundlag);
 			var nettoKapitalIndkomstTilBeskatning = nettoKapitalIndkomst.NedbringPositivtMedEvtNegativt();
 
 			var samletNettoKapitalIndkomstTilBeskatning = nettoKapitalIndkomstTilBeskatning.Sum() - indkomster.Size * positivNettoKapitalIndkomstGrundbeloeb;
