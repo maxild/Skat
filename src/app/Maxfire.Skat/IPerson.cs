@@ -7,4 +7,11 @@ namespace Maxfire.Skat
 		DateTime Foedselsdato { get; }
 		int AntalBoern { get; }
 	}
+
+	public interface ISpecificeredePerson : IPerson
+	{
+		string Skattekommune { get; }
+		bool Gift { get; }
+		bool MedlemAfFolkekirken { get; }
+	}
 }

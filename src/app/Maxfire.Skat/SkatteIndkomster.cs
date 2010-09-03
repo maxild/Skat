@@ -319,17 +319,17 @@ namespace Maxfire.Skat
 
 		public IBeloebCollection KapitalIndkomster
 		{
-			get { return null; }
+			get { return new BeloebCollection(_kapitalIndkomster.Concat(_kapitalIndkomstModregninger)); }
 		}
 
 		public IBeloebCollection LigningsmaessigeFradrag
 		{
-			get { return null; }
+			get { return new BeloebCollection(_ligningsmaessigeFradrag); }
 		}
 
-		public IBeloebCollection SkattepligtigIndkomster
+		public IBeloebCollection SkattepligtigeIndkomster
 		{
-			get { return null; }
+			get { return new BeloebCollection(_skattepligtigeIndkomster.Concat(_skattepligtigeIndkomsterModregninger)); }
 		}
 	}
 

@@ -38,6 +38,7 @@
     <Compile Include="AktieindkomstSkat.cs" />
     <Compile Include="AMBidragBeregner.cs" />
     <Compile Include="Beloebsgraenser.cs" />
+    <Compile Include="DefaultSpecificeredeKommunaleSatser.cs" />
     <Compile Include="DefaultSpecificeredeSelvangivneBeloeb.cs" />
     <Compile Include="Extensions\BeregnModregningerResultExtensions.cs" />
     <Compile Include="BeskaeftigelsesfradragBeregner.cs" />

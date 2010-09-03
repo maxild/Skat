@@ -11,4 +11,9 @@
 		decimal Kommuneskattesats { get; }
 		decimal Kirkeskattesats { get; }
 	}
+
+	public interface ISpecficeredeKommunaleSatser : IKommunaleSatser
+	{
+		string Skattekommune { get; }
+	}
 }

@@ -18,6 +18,10 @@ namespace Maxfire.Skat
 			int skatteAar
 			)
 		{
+			ValueTuple<ISpecficeredeKommunaleSatser> specificeredeKommunaleSatser = kommunaleSatser.Map(makeSpecificerede);
+			ValueTuple<ISpecificeredePerson> specificeredePersoner =
+				personer.Map((person, index) => makeSpecificerede(person, specificeredeKommunaleSatser[index]));
+			
 			var indkomstOpgoerelseBeregner = new IndkomstOpgoerelseBeregner(_skattelovRegistry);
 			var indkomster = indkomstOpgoerelseBeregner.BeregnIndkomster(selvangivneBeloeb, skatteAar);
 
@@ -63,7 +67,19 @@ namespace Maxfire.Skat
 			// 11: Beregn grøn check
 			//
 
-			return new SkatteberegningResult(indkomster, skatterEfterPersonfradrag);
+			return new SkatteberegningResult(specificeredePersoner, indkomster, skatterEfterPersonfradrag);
+		}
+
+		private static ISpecficeredeKommunaleSatser makeSpecificerede(IKommunaleSatser kommunaleSatser)
+		{
+			var specficeredeKommunaleSatser = kommunaleSatser as ISpecficeredeKommunaleSatser;
+			return specficeredeKommunaleSatser ?? new DefaultSpecificeredeKommunaleSatser(kommunaleSatser, "Ukendt");
+		}
+
+		private static ISpecificeredePerson makeSpecificerede(IPerson person, ISpecficeredeKommunaleSatser kommunaleSatser)
+		{
+			// TODO
+			return null;
 		}
 	}
 }

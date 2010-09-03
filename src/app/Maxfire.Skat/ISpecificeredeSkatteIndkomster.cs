@@ -8,6 +8,6 @@
 
 		IBeloebCollection LigningsmaessigeFradrag { get; }
 
-		IBeloebCollection SkattepligtigIndkomster { get; }
+		IBeloebCollection SkattepligtigeIndkomster { get; }
 	}
 }
