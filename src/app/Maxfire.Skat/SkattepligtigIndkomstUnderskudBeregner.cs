@@ -166,7 +166,7 @@ namespace Maxfire.Skat
 			var modregningSkatter = modregningSkatterResult.Map(x => x.UdnyttedeSkattevaerdier);
 			restunderskud = modregningSkatterResult.Map(x => x.IkkeUdnyttetFradrag);
 			
-			return skattepligtigeIndkomster.Map(index => 
+			return restunderskud.MapByIndex(index => 
 				new BeregnModregningerResult(modregningSkattepligtigIndkomst[index], modregningSkatter[index], 
 					underskud[index] - restunderskud[index]));
 		}

@@ -29,7 +29,7 @@ namespace Maxfire.Skat.Extensions
 			return new ValueTuple<TItem>(list);
 		}
 
-		public static ValueTuple<TItem> Map<TParent, TItem>(
+		public static ValueTuple<TItem> MapByIndex<TParent, TItem>(
 			this IValueTuple<TParent> tuple,
 			Func<int, TItem> projectionWithIndex)
 		{

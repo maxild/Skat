@@ -60,7 +60,7 @@
 			get { return PrivatTegnetKapitalPensionsindskud + ArbejdsgiverAdminKapitalPensionsindskud; }
 		}
 
-		private decimal PrivatTegnetPensionsindskud
+		public decimal PrivatTegnetPensionsindskud
 		{
 			get { return PrivatTegnetKapitalPensionsindskud + PrivatTegnetRatePensionsindskud; }
 		}

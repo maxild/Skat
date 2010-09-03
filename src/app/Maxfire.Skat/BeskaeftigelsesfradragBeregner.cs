@@ -2,7 +2,14 @@ using Maxfire.Skat.Extensions;
 
 namespace Maxfire.Skat
 {
-	// TODO: grundlaget er forkert her
+	////////////////////////////////////////////////////////////////////////////////
+	// Man kan kun opnå beskæftigelsesfradrag hvis man betaler AM-bidrag, dvs. hvis
+	// ens AM-indkomst er større end nul.
+	//
+	// Beskæftigelsesfradraget er på 4,25 pct. (2010) af AM-bidragspligtig indkomst 
+	// minus eventuelt bidrag og præmier til privattegnede pensionsordninger.
+	// Fradraget bliver beregnet automatisk af SKAT og er højst 13.600 kr. (2010)
+	////////////////////////////////////////////////////////////////////////////////
 	public class BeskaeftigelsesfradragBeregner : IAMIndkomstSkatteberegner
 	{
 		private readonly ISkattelovRegistry _skattelovRegistry;
@@ -12,37 +19,58 @@ namespace Maxfire.Skat
 			_skattelovRegistry = skattelovRegistry;
 		}
 
-		public ValueTuple<decimal> BeregnFradrag(ValueTuple<decimal> amIndkomster, int skatteAar)
+		public ValueTuple<decimal> BeregnFradrag(IValueTuple<IArbejdsmarkedIndkomster> indkomster, int skatteAar)
 		{
-			decimal sats = _skattelovRegistry.GetBeskaeftigelsesfradragSats(skatteAar);
-			decimal grundbeloeb = _skattelovRegistry.GetBeskaeftigelsesfradragGrundbeloeb(skatteAar);
-			return BeregnFradrag(amIndkomster, sats, grundbeloeb);
+			dynamic x = GetSatsAndGrundbeloeb(skatteAar);
+			return BeregnFradrag(indkomster, x.Sats, x.Grundbeloeb);
 		}
 
-		public decimal BeregnFradrag(decimal amIndkomst, int skatteAar)
+		public decimal BeregnFradrag(IArbejdsmarkedIndkomster indkomster, int skatteAar)
 		{
-			decimal sats = _skattelovRegistry.GetBeskaeftigelsesfradragSats(skatteAar);
-			decimal grundbeloeb = _skattelovRegistry.GetBeskaeftigelsesfradragGrundbeloeb(skatteAar);
-			return BeregnFradrag(amIndkomst, sats, grundbeloeb);
+			dynamic x = GetSatsAndGrundbeloeb(skatteAar);
+			return BeregnFradrag(indkomster, x.Sats, x.Grundbeloeb);
+		}
+
+		private object GetSatsAndGrundbeloeb(int skatteAar)
+		{
+			return new
+			{
+				Sats = _skattelovRegistry.GetBeskaeftigelsesfradragSats(skatteAar), 
+				Grundbeloeb = _skattelovRegistry.GetBeskaeftigelsesfradragGrundbeloeb(skatteAar)
+			};
 		}
 
 // ReSharper disable MemberCanBeMadeStatic.Global
-		public ValueTuple<decimal> BeregnFradrag(ValueTuple<decimal> amIndkomster, decimal sats, decimal grundbeloeb)
+		public ValueTuple<decimal> BeregnFradrag(
+			IValueTuple<IArbejdsmarkedIndkomster> indkomster, 
+			decimal sats, 
+			decimal grundbeloeb)
 // ReSharper restore MemberCanBeMadeStatic.Global
 		{
-			return amIndkomster.Map((decimal amIndkomst) => sats * amIndkomst.NonNegative()).Loft(grundbeloeb);
+			return indkomster.Map(indkomst => BeregnFradrag(indkomst, sats, grundbeloeb));
 		}
 
 // ReSharper disable MemberCanBeMadeStatic.Global
-		public decimal BeregnFradrag(decimal amIndkomst, decimal sats, decimal grundbeloeb)
+		public decimal BeregnFradrag(IArbejdsmarkedIndkomster indkomster, decimal sats, decimal grundbeloeb)
 // ReSharper restore MemberCanBeMadeStatic.Global
 		{
-			return (sats * amIndkomst.NonNegative()).Loft(grundbeloeb);
+			return BeregnFradrag(indkomster.Arbejdsindkomst.NonNegative(), sats, grundbeloeb);
 		}
 
-		decimal IAMIndkomstSkatteberegner.Beregn(decimal amIndkomst, int skatteAr)
+		private static decimal BeregnFradrag(decimal grundlag, decimal sats, decimal grundbeloeb)
 		{
-			return BeregnFradrag(amIndkomst, skatteAr);
+			return (sats * grundlag.NonNegative()).Loft(grundbeloeb);
+		}
+
+		decimal IAMIndkomstSkatteberegner.Beregn(decimal grundlag, int skatteAar)
+		{
+			dynamic x = GetSatsAndGrundbeloeb(skatteAar);
+			return BeregnFradrag(grundlag, x.Sats, x.Grundbeloeb);
+		}
+
+		decimal IAMIndkomstSkatteberegner.Beregn(IArbejdsmarkedIndkomster indkomster, int skatteAar)
+		{
+			return BeregnFradrag(indkomster, skatteAar);
 		}
 	}
 }

@@ -4,6 +4,11 @@
 	{
 		public decimal AMIndkomst { get; set; }
 
+		public decimal Arbejdsindkomst
+		{
+			get { return AMIndkomst; }
+		}
+
 		public decimal PersonligIndkomstFoerAMBidrag
 		{
 			get { return PersonligIndkomst; }

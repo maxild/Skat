@@ -34,7 +34,7 @@ namespace Maxfire.Skat
 			var aktieindkomstskatHoejesteTrinBeregner = new AktieindkomstskatHoejesteTrinBeregner(_skattelovRegistry);
 			var aktieindkomstskatHoejesteTrin = aktieindkomstskatHoejesteTrinBeregner.BeregnSkat(indkomster, skatteAar);
 
-			return bundskat.Map(index =>
+			return bundskat.MapByIndex(index =>
 					new SkatterAfPersonligIndkomst(bundskat[index], mellemskat[index], topskat[index],
 					                               aktieindkomstskatLavesteTrin[index],
 					                               aktieindkomstskatMellemsteTrin[index] + aktieindkomstskatHoejesteTrin[index]));

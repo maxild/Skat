@@ -49,6 +49,11 @@ namespace Maxfire.Skat
 			get { return _selvangivneBeloeb.KapitalPensionsindskud; }
 		}
 
+		public decimal PrivatTegnetPensionsindskud
+		{
+			get { return _selvangivneBeloeb.PrivatTegnetPensionsindskud; }
+		}
+
 		public decimal AktieIndkomst
 		{
 			get { return _selvangivneBeloeb.AktieIndkomst; }
@@ -61,7 +66,7 @@ namespace Maxfire.Skat
 			{
 				return _personligeIndkomsterAMIndkomster ??
 				       (_personligeIndkomsterAMIndkomster =
-				        SelvangivneBeloeb.Create(Beloeb.Create("AM-Indkomst", PersonligIndkomstAMIndkomst)));
+					   PersonligIndkomstAMIndkomst != 0 ? SelvangivneBeloeb.Create(Beloeb.Create("AM-Indkomst", PersonligIndkomstAMIndkomst)) : BeloebCollection.Empty);
 			}
 		}
 
@@ -72,7 +77,7 @@ namespace Maxfire.Skat
 			{
 				return _personligeIndkomsterEjAMIndkomster ??
 					   (_personligeIndkomsterEjAMIndkomster =
-						SelvangivneBeloeb.Create(Beloeb.Create("Ej AM-Indkomst", PersonligIndkomstEjAMIndkomst)));
+					   PersonligIndkomstEjAMIndkomst != 0 ? SelvangivneBeloeb.Create(Beloeb.Create("Ej AM-Indkomst", PersonligIndkomstEjAMIndkomst)) : BeloebCollection.Empty);
 			}
 		}
 
@@ -94,7 +99,7 @@ namespace Maxfire.Skat
 			{
 				return _nettoKapitalIndkomster ??
 				       (_nettoKapitalIndkomster =
-				        SelvangivneBeloeb.Create(Beloeb.Create("Nettokapitalindkomst", NettoKapitalIndkomst)));
+					   NettoKapitalIndkomst != 0 ? SelvangivneBeloeb.Create(Beloeb.Create("Nettokapitalindkomst", NettoKapitalIndkomst)) : BeloebCollection.Empty);
 			}
 		}
 
@@ -105,8 +110,8 @@ namespace Maxfire.Skat
 			{
 				return _ligningsmaessigeFradragMinusBeskaeftigelsesfradrag ??
 				       (_ligningsmaessigeFradragMinusBeskaeftigelsesfradrag =
-				        SelvangivneBeloeb.Create(Beloeb.Create("Ligningsmæssige fradrag, ekskl. beskæftigelsesfradrag",
-				                                                          LigningsmaessigtFradragMinusBeskaeftigelsesfradrag)));
+				        LigningsmaessigtFradragMinusBeskaeftigelsesfradrag != 0 ? SelvangivneBeloeb.Create(Beloeb.Create("Ligningsmæssige fradrag, ekskl. beskæftigelsesfradrag",
+						LigningsmaessigtFradragMinusBeskaeftigelsesfradrag)) : BeloebCollection.Empty);
 			}
 		}
 

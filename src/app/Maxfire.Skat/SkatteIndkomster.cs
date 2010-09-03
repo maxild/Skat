@@ -26,6 +26,8 @@ namespace Maxfire.Skat
 		private readonly List<ITextValuePair<decimal>> _skattepligtigeIndkomsterModregninger = new List<ITextValuePair<decimal>>();
 		private readonly List<ITextValuePair<decimal>> _skattepligtigeIndkomsterUnderskudTilFremfoersel = new List<ITextValuePair<decimal>>();
 
+		private readonly ISpecficeredeSelvangivneBeloeb _selvangivneBeloeb;
+
 		public SkatteIndkomster(
 			ISpecficeredeSelvangivneBeloeb selvangivneBeloeb, 
 			IAMIndkomstSkatteberegner amBidragBeregner, 
@@ -33,7 +35,23 @@ namespace Maxfire.Skat
 			int skatteAar)
 		{
 			selvangivneBeloeb.ThrowIfNull("selvangivneBeloeb");
-			
+
+			_selvangivneBeloeb = selvangivneBeloeb;
+
+			InitPersonligeIndkomster(selvangivneBeloeb, amBidragBeregner, skatteAar);
+
+			InitKapitalIndkomster(selvangivneBeloeb);
+
+			InitLigningsmaessigeFradrag(selvangivneBeloeb, beskaeftigelsesfradragBeregner, skatteAar);
+
+			InitSkattepligtigIndkomst(selvangivneBeloeb);
+		}
+
+		private void InitPersonligeIndkomster(
+			ISpecficeredeSelvangivneBeloeb selvangivneBeloeb, 
+			IAMIndkomstSkatteberegner amBidragBeregner, 
+			int skatteAar)
+		{
 			foreach (var item in selvangivneBeloeb.PersonligeIndkomsterAMIndkomster)
 			{
 				decimal amIndkomst = item.Value;
@@ -43,31 +61,41 @@ namespace Maxfire.Skat
 			
 			foreach (var item in selvangivneBeloeb.PersonligeIndkomsterEjAMIndkomster)
 			{
-				_personligeIndkomsterAM.AddTextValue(item.Text, item.Value);
+				_personligeIndkomsterEjAM.AddTextValue(item.Text, item.Value);
 			}
 
 			if (selvangivneBeloeb.PersonligIndkomstFremfoertUnderskud > 0)
 			{
 				_personligeIndkomsterFremfoertUnderskud.AddTextValue(
-					"Underskud i personlig indkomst fra tidligere år", 
+					"Underskud i personlig indkomst fra tidligere år",
 					selvangivneBeloeb.PersonligIndkomstFremfoertUnderskud);
 			}
+		}
 
+		private void InitKapitalIndkomster(ISpecficeredeSelvangivneBeloeb selvangivneBeloeb)
+		{
 			foreach (var item in selvangivneBeloeb.KapitalIndkomster)
 			{
 				_kapitalIndkomster.Add(item);
 			}
+		}
 
+		private void InitLigningsmaessigeFradrag(ISpecficeredeSelvangivneBeloeb selvangivneBeloeb, IAMIndkomstSkatteberegner beskaeftigelsesfradragBeregner, int skatteAar)
+		{
 			foreach (var item in selvangivneBeloeb.LigningsmaessigeFradragMinusBeskaeftigelsesfradrag)
 			{
 				_ligningsmaessigeFradrag.Add(item);
 			}
-			decimal beskaeftigelsesfradrag = beskaeftigelsesfradragBeregner.Beregn(selvangivneBeloeb.PersonligIndkomstAMIndkomst, skatteAar);
-			_ligningsmaessigeFradrag.AddTextValue("Beskæftigelsesfradrag", beskaeftigelsesfradrag);
 
+			decimal beskaeftigelsesfradrag = beskaeftigelsesfradragBeregner.Beregn(Arbejdsindkomst, skatteAar);
+			_ligningsmaessigeFradrag.AddTextValue("Beskæftigelsesfradrag", beskaeftigelsesfradrag);
+		}
+
+		private void InitSkattepligtigIndkomst(ISpecficeredeSelvangivneBeloeb selvangivneBeloeb)
+		{
 			_skattepligtigeIndkomster.AddTextValue("Personlig indkomst", PersonligIndkomst);
 			_skattepligtigeIndkomster.AddTextValue("Nettokapitalindkomst", NettoKapitalIndkomst);
-			_skattepligtigeIndkomster.AddTextValue("Ligningsmæssigt fradrag", -LigningsmaessigtFradrag);
+			_skattepligtigeIndkomster.AddTextValue("Ligningsmæssige fradrag", -LigningsmaessigtFradrag);
 
 			if (selvangivneBeloeb.SkattepligtigIndkomstFremfoertUnderskud > 0)
 			{
@@ -75,15 +103,17 @@ namespace Maxfire.Skat
 					"Underskud i skattepligtig indkomst fra tidligere år.",
 					selvangivneBeloeb.SkattepligtigIndkomstFremfoertUnderskud);
 			}
-
-			AktieIndkomst = selvangivneBeloeb.AktieIndkomst;
-			KapitalPensionsindskud = selvangivneBeloeb.KapitalPensionsindskud;
 		}
 
 		private decimal? _amIndkomst;
 		public decimal AMIndkomst
 		{
 			get { return _amIndkomst ?? (_amIndkomst = _personligeIndkomsterAM.Sum(x => x.Value.FoerAMBidrag)).Value; }
+		}
+
+		public decimal Arbejdsindkomst
+		{
+			get { return AMIndkomst - _selvangivneBeloeb.PrivatTegnetPensionsindskud; }
 		}
 
 		private decimal? _personligIndkomstFoerAMBidrag;
@@ -185,7 +215,10 @@ namespace Maxfire.Skat
 			get { return _ligningsmaessigtFradrag ?? (_ligningsmaessigtFradrag = _ligningsmaessigeFradrag.Sum(x => x.Value)).Value; }
 		}
 
-		public decimal KapitalPensionsindskud { get; private set; }
+		public decimal KapitalPensionsindskud
+		{
+			get { return _selvangivneBeloeb.KapitalPensionsindskud; }
+		}
 		
 		public decimal KapitalPensionsindskudSkattegrundlag
 		{
@@ -205,7 +238,10 @@ namespace Maxfire.Skat
 			}
 		}
 
-		public decimal AktieIndkomst { get; private set; }
+		public decimal AktieIndkomst
+		{
+			get { return _selvangivneBeloeb.AktieIndkomst; }
+		}
 
 		private decimal? _skattepligtigIndkomst;
 		public decimal SkattepligtigIndkomst

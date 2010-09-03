@@ -2,6 +2,7 @@
 {
 	public interface IAMIndkomstSkatteberegner
 	{
-		decimal Beregn(decimal amIndkomst, int skatteAar);
+		decimal Beregn(decimal grundlag, int skatteAar);
+		decimal Beregn(IArbejdsmarkedIndkomster indkomster, int skatteAar);
 	}
 }

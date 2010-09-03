@@ -1,6 +1,7 @@
 ﻿namespace Maxfire.Skat
 {
-	public interface IPersonligeIndkomster
+	// AM-bidragspligtig indkomst
+	public interface IArbejdsmarkedIndkomster
 	{
 		/// <summary>
 		/// Den del af den personlige indkomst (før AM-bidrag), der er 
@@ -8,6 +9,14 @@
 		/// </summary>
 		decimal AMIndkomst { get; }
 
+		/// <summary>
+		/// Grundlaget for beskæftigelsesfradrag.
+		/// </summary>
+		decimal Arbejdsindkomst { get; }
+	}
+
+	public interface IPersonligeIndkomster : IArbejdsmarkedIndkomster
+	{
 		/// <summary>
 		/// Personlig indkomst (før AM-bidrag), der bygger på de selvangivne beløb (dvs. før modregning).
 		/// </summary>

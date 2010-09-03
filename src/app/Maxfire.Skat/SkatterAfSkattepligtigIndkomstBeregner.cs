@@ -25,7 +25,7 @@ namespace Maxfire.Skat
 			var kirkeskatBeregner = new KirkeskatBeregner();
 			var kirkeskat = kirkeskatBeregner.BeregnSkat(indkomster, kommunaleSatser);
 
-			return sundhedsbidrag.Map(index => 
+			return sundhedsbidrag.MapByIndex(index => 
 				new SkatterAfSkattepligtigIndkomst(sundhedsbidrag[index], kommuneskat[index], kirkeskat[index]));
 		}
 	}

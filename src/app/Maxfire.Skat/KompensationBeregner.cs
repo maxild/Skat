@@ -184,9 +184,8 @@ namespace Maxfire.Skat
 		{
 			var skattesats = 0.08m + kommunaleSatser.Map(x => x.GetKommuneOgKirkeskattesats());
 			var beskaeftigelsesfradragBeregner = new BeskaeftigelsesfradragBeregner(_skattelovRegistry);
-			var amIndkomster = indkomster.Map(x => x.AMIndkomst);
-			var beskaeftigelsesfradragMedTidligereSatsOgGrundbeloeb = beskaeftigelsesfradragBeregner.BeregnFradrag(amIndkomster, 0.0425m, 14200);
-			var beskaeftigelsesfradragMedNuvaerendeSatsOgGrundbeloeb = beskaeftigelsesfradragBeregner.BeregnFradrag(amIndkomster, skatteAar);
+			var beskaeftigelsesfradragMedTidligereSatsOgGrundbeloeb = beskaeftigelsesfradragBeregner.BeregnFradrag(indkomster, 0.0425m, 14200);
+			var beskaeftigelsesfradragMedNuvaerendeSatsOgGrundbeloeb = beskaeftigelsesfradragBeregner.BeregnFradrag(indkomster, skatteAar);
 			return skattesats * (beskaeftigelsesfradragMedNuvaerendeSatsOgGrundbeloeb - beskaeftigelsesfradragMedTidligereSatsOgGrundbeloeb);
 		}
 
