@@ -1,6 +1,6 @@
 ﻿namespace Maxfire.Skat
 {
-	public interface ISpecficeredeSelvangivneBeloeb : ISelvangivneBeloeb
+	public interface ISpecificeredeSelvangivneBeloeb : ISelvangivneBeloeb
 	{
 		IBeloebCollection PersonligeIndkomsterAMIndkomster { get; }
 		IBeloebCollection PersonligeIndkomsterEjAMIndkomster { get; }

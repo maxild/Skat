@@ -16,19 +16,19 @@ namespace Maxfire.Skat.Beregnere
 			IValueTuple<ISelvangivneBeloeb> selvangivneBeloeb, 
 			int skatteAar)
 		{
-			var specficeredeSelvangivneBeloeb = selvangivneBeloeb.Map(makeSpecificerede);
+			var specificeredeSelvangivneBeloeb = selvangivneBeloeb.Map(makeSpecificerede);
 
 			var amBidragBeregner = new AMBidragBeregner(_skattelovRegistry);
 			var beskaeftigelsesfradragBeregner = new BeskaeftigelsesfradragBeregner(_skattelovRegistry);
 
-			return specficeredeSelvangivneBeloeb.Map(x => 
+			return specificeredeSelvangivneBeloeb.Map(x => 
 				new SkatteIndkomster(x, amBidragBeregner, beskaeftigelsesfradragBeregner, skatteAar));
 		}
 
-		private static ISpecficeredeSelvangivneBeloeb makeSpecificerede(ISelvangivneBeloeb selvangivneBeloeb)
+		private static ISpecificeredeSelvangivneBeloeb makeSpecificerede(ISelvangivneBeloeb selvangivneBeloeb)
 		{
-			var specficeredeSelvangivneBeloeb = selvangivneBeloeb as ISpecficeredeSelvangivneBeloeb;
-			return specficeredeSelvangivneBeloeb ?? new DefaultSpecificeredeSelvangivneBeloeb(selvangivneBeloeb);
+			var specificeredeSelvangivneBeloeb = selvangivneBeloeb as ISpecificeredeSelvangivneBeloeb;
+			return specificeredeSelvangivneBeloeb ?? new DefaultSpecificeredeSelvangivneBeloeb(selvangivneBeloeb);
 		}
 	}
 }

@@ -27,10 +27,10 @@ namespace Maxfire.Skat.Internal
 		private readonly List<ITextValuePair<decimal>> _skattepligtigeIndkomsterModregninger = new List<ITextValuePair<decimal>>();
 		private readonly List<ITextValuePair<decimal>> _skattepligtigeIndkomsterUnderskudTilFremfoersel = new List<ITextValuePair<decimal>>();
 
-		private readonly ISpecficeredeSelvangivneBeloeb _selvangivneBeloeb;
+		private readonly ISpecificeredeSelvangivneBeloeb _selvangivneBeloeb;
 
 		public SkatteIndkomster(
-			ISpecficeredeSelvangivneBeloeb selvangivneBeloeb, 
+			ISpecificeredeSelvangivneBeloeb selvangivneBeloeb, 
 			IAMIndkomstSkatteberegner amBidragBeregner, 
 			IAMIndkomstSkatteberegner beskaeftigelsesfradragBeregner,
 			int skatteAar)
@@ -49,7 +49,7 @@ namespace Maxfire.Skat.Internal
 		}
 
 		private void InitPersonligeIndkomster(
-			ISpecficeredeSelvangivneBeloeb selvangivneBeloeb, 
+			ISpecificeredeSelvangivneBeloeb selvangivneBeloeb, 
 			IAMIndkomstSkatteberegner amBidragBeregner, 
 			int skatteAar)
 		{
@@ -73,7 +73,7 @@ namespace Maxfire.Skat.Internal
 			}
 		}
 
-		private void InitKapitalIndkomster(ISpecficeredeSelvangivneBeloeb selvangivneBeloeb)
+		private void InitKapitalIndkomster(ISpecificeredeSelvangivneBeloeb selvangivneBeloeb)
 		{
 			foreach (var item in selvangivneBeloeb.KapitalIndkomster)
 			{
@@ -81,7 +81,7 @@ namespace Maxfire.Skat.Internal
 			}
 		}
 
-		private void InitLigningsmaessigeFradrag(ISpecficeredeSelvangivneBeloeb selvangivneBeloeb, IAMIndkomstSkatteberegner beskaeftigelsesfradragBeregner, int skatteAar)
+		private void InitLigningsmaessigeFradrag(ISpecificeredeSelvangivneBeloeb selvangivneBeloeb, IAMIndkomstSkatteberegner beskaeftigelsesfradragBeregner, int skatteAar)
 		{
 			foreach (var item in selvangivneBeloeb.LigningsmaessigeFradragMinusBeskaeftigelsesfradrag)
 			{
@@ -92,7 +92,7 @@ namespace Maxfire.Skat.Internal
 			_ligningsmaessigeFradrag.AddTextValue("Beskæftigelsesfradrag", beskaeftigelsesfradrag);
 		}
 
-		private void InitSkattepligtigIndkomst(ISpecficeredeSelvangivneBeloeb selvangivneBeloeb)
+		private void InitSkattepligtigIndkomst(ISpecificeredeSelvangivneBeloeb selvangivneBeloeb)
 		{
 			_skattepligtigeIndkomster.AddTextValue("Personlig indkomst", PersonligIndkomst);
 			_skattepligtigeIndkomster.AddTextValue("Nettokapitalindkomst", NettoKapitalIndkomst);

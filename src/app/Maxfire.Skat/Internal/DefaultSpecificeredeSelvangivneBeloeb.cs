@@ -1,12 +1,11 @@
 ﻿using System.Linq;
-using Maxfire.Skat.Beregnere;
 
 namespace Maxfire.Skat.Internal
 {
 	/// <summary>
-	/// Adapter that wraps an ISelvangivneBeloeb so that i behaves like an ISpecficeredeSelvangivneBeloeb
+	/// Adapter that wraps an ISelvangivneBeloeb so that i behaves like an ISpecificeredeSelvangivneBeloeb
 	/// </summary>
-	internal class DefaultSpecificeredeSelvangivneBeloeb : ISpecficeredeSelvangivneBeloeb
+	internal class DefaultSpecificeredeSelvangivneBeloeb : ISpecificeredeSelvangivneBeloeb
 	{
 		private readonly ISelvangivneBeloeb _selvangivneBeloeb;
 

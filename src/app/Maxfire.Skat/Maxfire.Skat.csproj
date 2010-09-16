@@ -67,7 +67,7 @@
     <Compile Include="ISkattelovRegistry.cs" />
     <Compile Include="Beregnere\ISkattepligtigeIndkomster.cs" />
     <Compile Include="ISpecficeredeKommunaleSatser.cs" />
-    <Compile Include="ISpecficeredeSelvangivneBeloeb.cs" />
+    <Compile Include="ISpecificeredeSelvangivneBeloeb.cs" />
     <Compile Include="ISpecificeredeSkatteyder.cs" />
     <Compile Include="ISpecificeredeSkatteIndkomster.cs" />
     <Compile Include="ISumable.cs" />
