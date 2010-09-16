@@ -1,4 +1,6 @@
-﻿namespace Maxfire.Skat.UnitTests
+﻿using Maxfire.Skat.Beregnere;
+
+namespace Maxfire.Skat.UnitTests
 {
 	public class FakePersonligeIndkomster : IPersonligeIndkomster
 	{

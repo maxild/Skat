@@ -1,3 +1,4 @@
+using Maxfire.Skat.Beregnere;
 using Maxfire.Skat.Extensions;
 using Maxfire.Skat.Internal;
 

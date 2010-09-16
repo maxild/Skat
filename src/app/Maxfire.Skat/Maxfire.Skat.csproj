@@ -35,28 +35,36 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="AktieindkomstSkat.cs" />
-    <Compile Include="AMBidragBeregner.cs" />
-    <Compile Include="Beloebsgraenser.cs" />
+    <Compile Include="Beregnere\BeloebCollection.cs" />
+    <Compile Include="Beregnere\AktieindkomstSkat.cs" />
+    <Compile Include="Beregnere\AMBidragBeregner.cs" />
+    <Compile Include="Beregnere\Beloebsgraenser.cs" />
+    <Compile Include="Beregnere\IArbejdsmarkedIndkomster.cs" />
+    <Compile Include="Beregnere\IPersonligeIndkomsterModregning.cs" />
+    <Compile Include="IBeloebCollection.cs" />
+    <Compile Include="IPersonligIndkomstBeloebCollection.cs" />
+    <Compile Include="ISkatteIndkomsterModregning.cs" />
+    <Compile Include="ISumableEnumerable.cs" />
+    <Compile Include="IValueTuple.cs" />
     <Compile Include="Internal\DefaultSpecificeredeKommunaleSatser.cs" />
     <Compile Include="Internal\DefaultSpecificeredeSelvangivneBeloeb.cs" />
     <Compile Include="Internal\DefaultSpecificeredeSkatteyder.cs" />
     <Compile Include="Extensions\BeregnModregningerResultExtensions.cs" />
-    <Compile Include="BeskaeftigelsesfradragBeregner.cs" />
-    <Compile Include="Bundskat.cs" />
+    <Compile Include="Beregnere\BeskaeftigelsesfradragBeregner.cs" />
+    <Compile Include="Beregnere\BundskatBeregner.cs" />
     <Compile Include="DefaultSkattelovRegistry.cs" />
     <Compile Include="Extensions\DecimalExtensions.cs" />
-    <Compile Include="EjendomsvaerdiskatBeregner.cs" />
+    <Compile Include="Beregnere\EjendomsvaerdiskatBeregner.cs" />
     <Compile Include="Extensions\NumberExtensions.cs" />
     <Compile Include="Extensions\ValueTupleInterfaceExtensions.cs" />
-    <Compile Include="GroenCheckBeregner.cs" />
-    <Compile Include="IAMIndkomstSkatteberegner.cs" />
-    <Compile Include="IndkomstOpgoerelseBeregner.cs" />
-    <Compile Include="IPersonligeIndkomster.cs" />
+    <Compile Include="Beregnere\GroenCheckBeregner.cs" />
+    <Compile Include="Beregnere\IAMIndkomstSkatteberegner.cs" />
+    <Compile Include="Beregnere\IndkomstOpgoerelseBeregner.cs" />
+    <Compile Include="Beregnere\IPersonligeIndkomster.cs" />
     <Compile Include="ISelvangivneBeloeb.cs" />
     <Compile Include="ISkatteIndkomster.cs" />
     <Compile Include="ISkattelovRegistry.cs" />
-    <Compile Include="ISkattepligtigeIndkomster.cs" />
+    <Compile Include="Beregnere\ISkattepligtigeIndkomster.cs" />
     <Compile Include="ISpecficeredeKommunaleSatser.cs" />
     <Compile Include="ISpecficeredeSelvangivneBeloeb.cs" />
     <Compile Include="ISpecificeredeSkatteyder.cs" />
@@ -64,49 +72,50 @@
     <Compile Include="ISumable.cs" />
     <Compile Include="IKommunaleSatser.cs" />
     <Compile Include="Extensions\KommunaleSatserExtensions.cs" />
-    <Compile Include="KirkeskatBeregner.cs" />
-    <Compile Include="KompensationBeregner.cs" />
-    <Compile Include="Mellemskat.cs" />
-    <Compile Include="ModregnIndkomstResult.cs" />
-    <Compile Include="Modregning.cs" />
-    <Compile Include="ModregnPersonfradragResult.cs" />
-    <Compile Include="ModregnSkatterResult.cs" />
-    <Compile Include="ModregnSkatterResultEx.cs" />
+    <Compile Include="Beregnere\KirkeskatBeregner.cs" />
+    <Compile Include="Beregnere\KompensationBeregner.cs" />
+    <Compile Include="Beregnere\MellemskatBeregner.cs" />
+    <Compile Include="Beregnere\ModregnIndkomstResult.cs" />
+    <Compile Include="Beregnere\Modregning.cs" />
+    <Compile Include="Beregnere\ModregnPersonfradragResult.cs" />
+    <Compile Include="Beregnere\ModregnSkatterResult.cs" />
+    <Compile Include="Beregnere\ModregnSkatterResultEx.cs" />
     <Compile Include="Extensions\ModregnSkatterResultExtensions.cs" />
-    <Compile Include="ModregnUnderskudResult.cs" />
-    <Compile Include="NegativNettoKapitalIndkomstNedslagsberegner.cs" />
+    <Compile Include="Beregnere\ModregnUnderskudResult.cs" />
+    <Compile Include="Beregnere\NegativNettoKapitalIndkomstNedslagsberegner.cs" />
     <Compile Include="ISkatteyder.cs" />
     <Compile Include="Extensions\PersonExtensions.cs" />
-    <Compile Include="PersonFradragBeregner.cs" />
-    <Compile Include="PersonfradragSkattevaerdiOmregner.cs" />
-    <Compile Include="Kommuneskat.cs" />
-    <Compile Include="PersonligIndkomstSkatteberegner.cs" />
-    <Compile Include="PersonligIndkomstUnderskudBeregner.cs" />
+    <Compile Include="Beregnere\PersonFradragBeregner.cs" />
+    <Compile Include="Beregnere\PersonfradragSkattevaerdiOmregner.cs" />
+    <Compile Include="Beregnere\KommuneskatBeregner.cs" />
+    <Compile Include="Beregnere\PersonligIndkomstSkatteberegner.cs" />
+    <Compile Include="Beregnere\PersonligIndkomstUnderskudBeregner.cs" />
     <Compile Include="PersonligIndkomstValue.cs" />
+    <Compile Include="Beregnere\PersonligIndkomstBeloebCollection.cs" />
     <Compile Include="Reflection\Accessor.cs" />
     <Compile Include="Reflection\Getter.cs" />
     <Compile Include="Reflection\IntrospectionOf.cs" />
     <Compile Include="Reflection\PropertyAccessor.cs" />
     <Compile Include="Reflection\Setter.cs" />
-    <Compile Include="SkatteIndkomster.cs" />
-    <Compile Include="SkattepligtigIndkomstSkatteberegner.cs" />
-    <Compile Include="SkatterAfPersonligIndkomstBeregner.cs" />
-    <Compile Include="SkatterAfSkattepligtigIndkomstBeregner.cs" />
-    <Compile Include="SkatteModregner.cs" />
+    <Compile Include="Beregnere\SkatteIndkomster.cs" />
+    <Compile Include="Beregnere\SkattepligtigIndkomstSkatteberegner.cs" />
+    <Compile Include="Beregnere\SkatterAfPersonligIndkomstBeregner.cs" />
+    <Compile Include="Beregnere\SkatterAfSkattepligtigIndkomstBeregner.cs" />
+    <Compile Include="Beregnere\SkatteModregner.cs" />
     <Compile Include="Skatter.cs" />
-    <Compile Include="SkatterAfPersonligIndkomst.cs" />
-    <Compile Include="SkatterAfSkattepligtigIndkomst.cs" />
-    <Compile Include="SkatteUtility.cs" />
-    <Compile Include="Sundhedsbidrag.cs" />
-    <Compile Include="SkattepligtigIndkomstUnderskudBeregner.cs" />
-    <Compile Include="SkattevaerdiOmregner.cs" />
-    <Compile Include="TextValuePairCollection.cs" />
+    <Compile Include="Beregnere\SkatterAfPersonligIndkomst.cs" />
+    <Compile Include="Beregnere\SkatterAfSkattepligtigIndkomst.cs" />
+    <Compile Include="Beregnere\SkatteUtility.cs" />
+    <Compile Include="Beregnere\SundhedsbidragBeregner.cs" />
+    <Compile Include="Beregnere\SkattepligtigIndkomstUnderskudBeregner.cs" />
+    <Compile Include="Beregnere\SkattevaerdiOmregner.cs" />
+    <Compile Include="Beregnere\TextValuePairCollection.cs" />
     <Compile Include="ValueTuple.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Skatteberegner.cs" />
-    <Compile Include="SkatteberegningInput.cs" />
+    <Compile Include="Obsolete\SkatteberegningInput.cs" />
     <Compile Include="SkatteberegningResult.cs" />
-    <Compile Include="Topskat.cs" />
+    <Compile Include="Beregnere\TopskatBeregner.cs" />
     <Compile Include="Extensions\ValueTupleExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -115,6 +124,7 @@
     </Reference>
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

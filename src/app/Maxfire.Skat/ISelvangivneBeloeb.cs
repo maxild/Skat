@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Maxfire.Core;
+using Maxfire.Skat.Beregnere;
 
 namespace Maxfire.Skat
 {

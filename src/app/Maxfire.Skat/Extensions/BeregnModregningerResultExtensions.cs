@@ -1,4 +1,6 @@
-﻿namespace Maxfire.Skat.Extensions
+﻿using Maxfire.Skat.Beregnere;
+
+namespace Maxfire.Skat.Extensions
 {
 	public static class BeregnModregningerResultExtensions
 	{

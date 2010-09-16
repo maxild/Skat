@@ -1,4 +1,5 @@
 using System;
+using Maxfire.Skat.Beregnere;
 using Maxfire.TestCommons.AssertExtensions;
 using Xunit;
 

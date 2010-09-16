@@ -10,15 +10,6 @@ namespace Maxfire.Skat
 	// The projection T --> IValueTuple<T> preserves the direction of assignment compatibility. That is
 	// we can assign an IValueTuple<Derived> to a consumer expection an IValueTuple<Base>, because 
 	// assignment compatibility is preserved.
-	public interface IValueTuple<out T> : IEnumerable<T> 
-	{
-		T this[int index] { get; }
-		T PartnerOf(int index);
-		int Size { get; }
-		bool AllZero();
-		T Sum();
-		IValueTuple<T> Swap();
-	}
 
 	/// <summary>
 	/// In mathematics and computer science a tuple represents the notion of an ordered list of 

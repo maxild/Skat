@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Maxfire.Core;
+using Maxfire.Skat.Beregnere;
 
 namespace Maxfire.Skat.Extensions
 {
