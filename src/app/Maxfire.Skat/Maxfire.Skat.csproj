@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Beloeb.cs" />
+    <Compile Include="Civilstand.cs" />
     <Compile Include="Internal\BeloebCollection.cs" />
     <Compile Include="Beregnere\AktieindkomstSkatBeregnere.cs" />
     <Compile Include="Beregnere\AMBidragBeregner.cs" />

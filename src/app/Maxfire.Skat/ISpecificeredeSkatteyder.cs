@@ -8,6 +8,6 @@
 		
 		decimal Kirkeskattesats { get; }
 		
-		bool Gift { get; }
+		Civilstand Civilstand { get; }
 	}
 }

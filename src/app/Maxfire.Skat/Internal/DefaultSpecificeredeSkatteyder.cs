@@ -7,8 +7,7 @@ namespace Maxfire.Skat.Internal
 	{
 		private readonly ISkatteyder _skatteyder;
 		private readonly ISpecficeredeKommunaleSatser _kommunaleSatser;
-		private readonly bool _gift;
-
+		
 		public DefaultSpecificeredeSkatteyder(
 			ISkatteyder skatteyder, 
 			ISpecficeredeKommunaleSatser kommunaleSatser, 
@@ -16,7 +15,7 @@ namespace Maxfire.Skat.Internal
 		{
 			_skatteyder = skatteyder;
 			_kommunaleSatser = kommunaleSatser;
-			_gift = gift;
+			Civilstand = gift ? Civilstand.Gift : Civilstand.Ugift;
 		}
 
 		public bool MedlemAfFolkekirken
@@ -49,9 +48,6 @@ namespace Maxfire.Skat.Internal
 			get { return _kommunaleSatser.GetKirkeskattesatsFor(_skatteyder); }
 		}
 
-		public bool Gift
-		{
-			get { return _gift; }
-		}
+		public Civilstand Civilstand { get; private set; }
 	}
 }
