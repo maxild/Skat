@@ -3,18 +3,18 @@ namespace Maxfire.Skat
 	public class SkatteberegningResult
 	{
 		public SkatteberegningResult(
-			IValueTuple<ISpecificeredePerson> personer,
-			IValueTuple<ISpecificeredeSkatteIndkomster> indkomster, 
-			ValueTuple<Skatter> skatter)
+			ISpecificeredeSkatteyder skatteyder,
+			ISpecificeredeSkatteIndkomster indkomster, 
+			Skatter skatter)
 		{
-			Personer = personer;
+			Skatteyder = skatteyder;
 			Indkomster = indkomster;
 			Skatter = skatter;
 		}
 
-		public IValueTuple<ISpecificeredePerson> Personer { get; private set; }
+		public ISpecificeredeSkatteyder Skatteyder { get; private set; }
 
-		public IValueTuple<ISpecificeredeSkatteIndkomster> Indkomster { get; private set; }
+		public ISpecificeredeSkatteIndkomster Indkomster { get; private set; }
 		
 		// TODO: Hvad med topskattegrundlag?
 
@@ -27,7 +27,7 @@ namespace Maxfire.Skat
 
 		//public decimal GroenCheck { get; set; }
 
-		public ValueTuple<Skatter> Skatter { get; private set; }
+		public Skatter Skatter { get; private set; }
 
 		// TODO: Mangler
 		//  - grøn check

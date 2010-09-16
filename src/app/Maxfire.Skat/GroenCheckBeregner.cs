@@ -31,7 +31,7 @@ namespace Maxfire.Skat
 		/// Beregn den skattefrie kompensation, der også kaldes  "grøn check", fremsat i L 198.
 		/// </summary>
 		public ValueTuple<decimal> BeregnKompensation(
-			IValueTuple<IPerson> personer, 
+			IValueTuple<ISkatteyder> skatteydere, 
 			IValueTuple<IPersonligeIndkomster> indkomster, 
 			int skatteAar)
 		{
@@ -39,8 +39,8 @@ namespace Maxfire.Skat
 			decimal kompensationPrBarn = _skattelovRegistry.GetGroenCheckPrBarn(skatteAar);
 			
 			// TODO: Maksimalt 2 børn pr husstand eller voksen???? men hvilke børn tæller ikke hos hvilken person/voksen
-			var fuldKompensation = kompensationPrVoksen.ToTupleOfSize(personer.Size) 
-				+ personer.Map(p => p.AntalBoern * kompensationPrBarn);
+			var fuldKompensation = kompensationPrVoksen.ToTupleOfSize(skatteydere.Size) 
+				+ skatteydere.Map(p => p.AntalBoern * kompensationPrBarn);
 
 			var fuldAftrapning = BeregnAftrapning(indkomster, skatteAar);
 

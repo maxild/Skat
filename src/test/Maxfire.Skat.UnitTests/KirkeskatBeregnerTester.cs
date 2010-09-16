@@ -1,4 +1,5 @@
-﻿using Maxfire.TestCommons.AssertExtensions;
+﻿using System;
+using Maxfire.TestCommons.AssertExtensions;
 using Xunit;
 
 namespace Maxfire.Skat.UnitTests
@@ -8,24 +9,58 @@ namespace Maxfire.Skat.UnitTests
 		[Fact]
 		public void BeregnSkat()
 		{
-			var personligeBeloeb = new ValueTuple<ISkattepligtigeIndkomster>(
+			var skatteydere = new ValueTuple<ISkatteyder>(
+				new Skatteyder(new DateTime(1970, 6, 3), medlemAfFolkekirken: true)
+			);
+
+			var indkomster = new ValueTuple<ISkattepligtigeIndkomster>(
 				new FakeSkattepligtigeIndkomster
-					{
-						SkattepligtigIndkomst = 100
-					}
-				);
+				{
+					SkattepligtigIndkomst = 100
+				}
+			);
 
 			var kommunaleSatser = new ValueTuple<IKommunaleSatser>(
 				new KommunaleSatser
 				{
 					Kirkeskattesats = 0.01m
-				});
+				}
+			);
 
 			var beregner = new KirkeskatBeregner();
 
-			var kommuneSkat = beregner.BeregnSkat(personligeBeloeb, kommunaleSatser);
+			var kommuneSkat = beregner.BeregnSkat(skatteydere, indkomster, kommunaleSatser);
 
 			kommuneSkat[0].ShouldEqual(1);
+		}
+
+
+		[Fact]
+		public void BeregnNulSkat()
+		{
+			var skatteydere = new ValueTuple<ISkatteyder>(
+				new Skatteyder(new DateTime(1970, 6, 3), medlemAfFolkekirken: false)
+			);
+
+			var indkomster = new ValueTuple<ISkattepligtigeIndkomster>(
+				new FakeSkattepligtigeIndkomster
+				{
+					SkattepligtigIndkomst = 100
+				}
+			);
+
+			var kommunaleSatser = new ValueTuple<IKommunaleSatser>(
+				new KommunaleSatser
+				{
+					Kirkeskattesats = 0.01m
+				}
+			);
+
+			var beregner = new KirkeskatBeregner();
+
+			var kommuneSkat = beregner.BeregnSkat(skatteydere, indkomster, kommunaleSatser);
+
+			kommuneSkat[0].ShouldEqual(0);
 		}
 	}
 }

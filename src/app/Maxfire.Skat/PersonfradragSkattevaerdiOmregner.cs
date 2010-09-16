@@ -6,13 +6,17 @@ namespace Maxfire.Skat
 	{
 		private readonly Skatter _skattesatser;
 
-		public PersonfradragSkattevaerdiOmregner(IKommunaleSatser kommunaleSatser, ISkattelovRegistry skattelovRegistry, int skatteAar)
+		public PersonfradragSkattevaerdiOmregner(
+			ISkatteyder skatteyder, 
+			IKommunaleSatser kommunaleSatser, 
+			ISkattepligtigIndkomstRegistry skattelovRegistry, 
+			int skatteAar)
 		{
 			_skattesatser = new Skatter(
 				bundskat: skattelovRegistry.GetBundSkattesats(skatteAar),
 				sundhedsbidrag: skattelovRegistry.GetSundhedsbidragSkattesats(skatteAar),
 				kommuneskat: kommunaleSatser.Kommuneskattesats,
-				kirkeskat: kommunaleSatser.Kirkeskattesats);
+				kirkeskat: kommunaleSatser.GetKirkeskattesatsFor(skatteyder));
 		}
 
 		public Skatter BeregnSkattevaerdier(decimal personfradrag)

@@ -38,8 +38,9 @@
     <Compile Include="AktieindkomstSkat.cs" />
     <Compile Include="AMBidragBeregner.cs" />
     <Compile Include="Beloebsgraenser.cs" />
-    <Compile Include="DefaultSpecificeredeKommunaleSatser.cs" />
-    <Compile Include="DefaultSpecificeredeSelvangivneBeloeb.cs" />
+    <Compile Include="Internal\DefaultSpecificeredeKommunaleSatser.cs" />
+    <Compile Include="Internal\DefaultSpecificeredeSelvangivneBeloeb.cs" />
+    <Compile Include="Internal\DefaultSpecificeredeSkatteyder.cs" />
     <Compile Include="Extensions\BeregnModregningerResultExtensions.cs" />
     <Compile Include="BeskaeftigelsesfradragBeregner.cs" />
     <Compile Include="Bundskat.cs" />
@@ -56,7 +57,9 @@
     <Compile Include="ISkatteIndkomster.cs" />
     <Compile Include="ISkattelovRegistry.cs" />
     <Compile Include="ISkattepligtigeIndkomster.cs" />
+    <Compile Include="ISpecficeredeKommunaleSatser.cs" />
     <Compile Include="ISpecficeredeSelvangivneBeloeb.cs" />
+    <Compile Include="ISpecificeredeSkatteyder.cs" />
     <Compile Include="ISpecificeredeSkatteIndkomster.cs" />
     <Compile Include="ISumable.cs" />
     <Compile Include="IKommunaleSatser.cs" />
@@ -72,7 +75,7 @@
     <Compile Include="Extensions\ModregnSkatterResultExtensions.cs" />
     <Compile Include="ModregnUnderskudResult.cs" />
     <Compile Include="NegativNettoKapitalIndkomstNedslagsberegner.cs" />
-    <Compile Include="IPerson.cs" />
+    <Compile Include="ISkatteyder.cs" />
     <Compile Include="Extensions\PersonExtensions.cs" />
     <Compile Include="PersonFradragBeregner.cs" />
     <Compile Include="PersonfradragSkattevaerdiOmregner.cs" />

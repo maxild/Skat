@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace Maxfire.Skat
+namespace Maxfire.Skat.Internal
 {
 	/// <summary>
 	/// Adapter that wraps an ISelvangivneBeloeb so that i behaves like an ISpecficeredeSelvangivneBeloeb

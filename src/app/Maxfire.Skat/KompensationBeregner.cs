@@ -93,7 +93,7 @@ namespace Maxfire.Skat
 		/// Beregn det nedslag i skatten der gives som følge af PSL § 26 (kompensationsordning fra forårspakke 2.0)
 		/// </summary>
 		public ValueTuple<decimal> BeregnKompensation(
-			IValueTuple<IPerson> personer,
+			IValueTuple<ISkatteyder> skatteydere,
 			IValueTuple<IPersonligeIndkomster> indkomster, 
 			IValueTuple<IKommunaleSatser> kommunaleSatser, 
 			int skatteAar)
@@ -106,12 +106,12 @@ namespace Maxfire.Skat
 			// der opgøres efter stk 2 og 3 for den enkelte ægtefælle. Herefter fordeles forskelsbeløbet ift. størrelsen af det beløb, der
 			// for hver af ægtefællerne medregnes efter stk 2, nr. 7 (dvs. Skatteskærpelse på fradragene)
 
-			var bundSkattelettelse = GetBundSkattelettelse(personer, indkomster, skatteAar);
+			var bundSkattelettelse = GetBundSkattelettelse(skatteydere, indkomster, skatteAar);
 			var mellemSkattelettelse = GetMellemSkattelettelse(indkomster, skatteAar);
 			var topSkattelettelse = GetTopSkattelettelse(indkomster, skatteAar);
 			var aktieSkattelettelse = GetAktieSkattelettelse(indkomster);
 			var beskaeftigelsesfradragSkattelettelse = GetBeskaeftigelsesfradragSkattelettelse(indkomster, kommunaleSatser, skatteAar);
-			var personfradragSkatteskaerpelse = GetPersonfradragSkatteskaerpelse(personer, kommunaleSatser, skatteAar);
+			var personfradragSkatteskaerpelse = GetPersonfradragSkatteskaerpelse(skatteydere, kommunaleSatser, skatteAar);
 			var samletSkatteskaerpelsePaaFradagene = GetSamletSkatteskaerpelsePaaFradragene(indkomster, skatteAar);
 
 			var samletSkattelettelse = +(bundSkattelettelse + mellemSkattelettelse 
@@ -127,13 +127,13 @@ namespace Maxfire.Skat
 		/// Beregner skattelettelsen af nedsættelsen af bundskattesatsen (pkt. 1 i PSL § 26, stk. 2).
 		/// </summary>
 		public ValueTuple<decimal> GetBundSkattelettelse(
-			IValueTuple<IPerson> personer, 
+			IValueTuple<ISkatteyder> skatteydere, 
 			IValueTuple<IPersonligeIndkomster> indkomster, 
 			int skatteAar)
 		{
 			var bundskatBeregner = new BundskatBeregner(_skattelovRegistry);
 			var bundLettelseBundfradrag 
-				= personer.Map(person => _skattelovRegistry.GetBundLettelseBundfradrag(skatteAar, person.GetAlder(skatteAar), personer.Size > 1));
+				= skatteydere.Map(skatteyder => _skattelovRegistry.GetBundLettelseBundfradrag(skatteAar, skatteyder.GetAlder(skatteAar), skatteydere.Size > 1));
 			return 0.015m * bundskatBeregner.BeregnBruttoGrundlag(indkomster).DifferenceGreaterThan(bundLettelseBundfradrag);
 		}
 
@@ -193,14 +193,14 @@ namespace Maxfire.Skat
 		/// Beregn skatteskærpelsen af nulreguleringen af personfradraget (pkt. 6 i PSL § 26, stk. 2).
 		/// </summary>
 		public ValueTuple<decimal> GetPersonfradragSkatteskaerpelse(
-			IValueTuple<IPerson> personer, 
+			IValueTuple<ISkatteyder> skatteydere, 
 			IValueTuple<IKommunaleSatser> kommunaleSatser, 
 			int skatteAar)
 		{
 			var personfradragBeregner = new PersonfradragBeregner(_skattelovRegistry);
-			var personfradragSkaerpelse = personer.Map(person => 
-				_skattelovRegistry.GetPersonfradragSkaerpelse(skatteAar, person.GetAlder(skatteAar), personer.Size > 1));
-			return personfradragBeregner.BeregnSkattevaerdierAfPersonfradrag(kommunaleSatser, skatteAar, personfradragSkaerpelse)
+			var personfradragSkaerpelse = skatteydere.Map(skatteyder => 
+				_skattelovRegistry.GetPersonfradragSkaerpelse(skatteAar, skatteyder.GetAlder(skatteAar), skatteydere.Size > 1));
+			return personfradragBeregner.BeregnSkattevaerdierAfPersonfradrag(skatteydere, kommunaleSatser, skatteAar, personfradragSkaerpelse)
 				.Map(x => x.Sum());
 		}
 
@@ -224,12 +224,12 @@ namespace Maxfire.Skat
 
 		public ValueTuple<ModregnSkatterResult<Skatter>> ModregnMedKompensation(
 			ValueTuple<Skatter> skatter, 
-			IValueTuple<IPerson> personer,
+			IValueTuple<ISkatteyder> skatteydere,
 			IValueTuple<IPersonligeIndkomster> indkomster, 
 			IValueTuple<IKommunaleSatser> kommunaleSatser, 
 			int skatteAar)
 		{
-			var kompensation = BeregnKompensation(personer, indkomster, kommunaleSatser, skatteAar);
+			var kompensation = BeregnKompensation(skatteydere, indkomster, kommunaleSatser, skatteAar);
 			var skatteModeregner = getSkatteModregner();
 			return skatteModeregner.Modregn(skatter, kompensation);
 		}

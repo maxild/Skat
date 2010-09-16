@@ -1,4 +1,5 @@
 using Maxfire.Skat.Extensions;
+using Maxfire.Skat.Internal;
 
 namespace Maxfire.Skat
 {
@@ -11,16 +12,16 @@ namespace Maxfire.Skat
 			_skattelovRegistry = skattelovRegistry;
 		}
 
-		public SkatteberegningResult Beregn(
-			IValueTuple<IPerson> personer, 
+		public ValueTuple<SkatteberegningResult> Beregn(
+			IValueTuple<ISkatteyder> skatteydere, 
 			IValueTuple<ISelvangivneBeloeb> selvangivneBeloeb,
 			IValueTuple<IKommunaleSatser> kommunaleSatser,
 			int skatteAar
 			)
 		{
 			ValueTuple<ISpecficeredeKommunaleSatser> specificeredeKommunaleSatser = kommunaleSatser.Map(makeSpecificerede);
-			ValueTuple<ISpecificeredePerson> specificeredePersoner =
-				personer.Map((person, index) => makeSpecificerede(person, specificeredeKommunaleSatser[index]));
+			ValueTuple<ISpecificeredeSkatteyder> specificeredeSkatteydere =
+				skatteydere.Map((skatteyder, index) => makeSpecificerede(skatteyder, specificeredeKommunaleSatser[index], gift: skatteydere.Size > 1));
 			
 			var indkomstOpgoerelseBeregner = new IndkomstOpgoerelseBeregner(_skattelovRegistry);
 			var indkomster = indkomstOpgoerelseBeregner.BeregnIndkomster(selvangivneBeloeb, skatteAar);
@@ -44,7 +45,7 @@ namespace Maxfire.Skat
 
 			// Beregn sundhedsbidrag samt kommuneskat og kirkeskat
 			var skatterAfSkattepligtigIndkomstBeregner = new SkatterAfSkattepligtigIndkomstBeregner(_skattelovRegistry);
-			var skatterAfSkattepligtigIndkomst = skatterAfSkattepligtigIndkomstBeregner.BeregnSkat(indkomster, kommunaleSatser, skatteAar);
+			var skatterAfSkattepligtigIndkomst = skatterAfSkattepligtigIndkomstBeregner.BeregnSkat(specificeredeSkatteydere, indkomster, kommunaleSatser, skatteAar);
 
 			var skatterFoerPersonfradrag = SkatteUtility.CombineSkat(skatterAfPersonligIndkomstEfterModregningAfUnderskud,
 																	skatterAfSkattepligtigIndkomst);
@@ -52,7 +53,7 @@ namespace Maxfire.Skat
 
 			// Nedbring skatter med værdien af personfradraget
 			var personfradragBeregner = new PersonfradragBeregner(_skattelovRegistry);
-			var modregnPersonfradragResults = personfradragBeregner.ModregningAfPersonfradrag(personer, skatterFoerPersonfradrag, kommunaleSatser, skatteAar);
+			var modregnPersonfradragResults = personfradragBeregner.ModregningAfPersonfradrag(specificeredeSkatteydere, skatterFoerPersonfradrag, kommunaleSatser, skatteAar);
 			var skatterEfterPersonfradrag = modregnPersonfradragResults.Map(x => x.ModregnedeSkatter);
 
 			//
@@ -67,7 +68,7 @@ namespace Maxfire.Skat
 			// 11: Beregn grøn check
 			//
 
-			return new SkatteberegningResult(specificeredePersoner, indkomster, skatterEfterPersonfradrag);
+			return specificeredeSkatteydere.Map((skatteyder, index) => new SkatteberegningResult(skatteyder, indkomster[index], skatterEfterPersonfradrag[index]));
 		}
 
 		private static ISpecficeredeKommunaleSatser makeSpecificerede(IKommunaleSatser kommunaleSatser)
@@ -76,10 +77,9 @@ namespace Maxfire.Skat
 			return specficeredeKommunaleSatser ?? new DefaultSpecificeredeKommunaleSatser(kommunaleSatser, "Ukendt");
 		}
 
-		private static ISpecificeredePerson makeSpecificerede(IPerson person, ISpecficeredeKommunaleSatser kommunaleSatser)
+		private static ISpecificeredeSkatteyder makeSpecificerede(ISkatteyder skatteyder, ISpecficeredeKommunaleSatser kommunaleSatser, bool gift)
 		{
-			// TODO
-			return null;
+			return new DefaultSpecificeredeSkatteyder(skatteyder, kommunaleSatser, gift);
 		}
 	}
 }

@@ -10,6 +10,7 @@
 		}
 
 		public ValueTuple<Skatter> BeregnSkat(
+			IValueTuple<ISkatteyder> skatteydere,
 			IValueTuple<ISkatteIndkomster> indkomster, 
 			IValueTuple<IKommunaleSatser> kommunaleSatser, 
 			int skatteAar)
@@ -18,7 +19,7 @@
 			var skatterAfPersonligIndkomst = skatAfPersonligIndkomstBeregner.BeregnSkat(indkomster, kommunaleSatser, skatteAar);
 
 			var skatAfSkattepligtigIndkomstBeregner = new SkatterAfSkattepligtigIndkomstBeregner(_skattelovRegistry);
-			var skatterAfSkattepligtigIndkomst = skatAfSkattepligtigIndkomstBeregner.BeregnSkat(indkomster, kommunaleSatser, skatteAar);
+			var skatterAfSkattepligtigIndkomst = skatAfSkattepligtigIndkomstBeregner.BeregnSkat(skatteydere, indkomster, kommunaleSatser, skatteAar);
 
 			return SkatteUtility.CombineSkat(skatterAfPersonligIndkomst, skatterAfSkattepligtigIndkomst);
 		}

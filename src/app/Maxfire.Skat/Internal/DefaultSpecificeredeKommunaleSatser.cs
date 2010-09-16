@@ -1,4 +1,4 @@
-﻿namespace Maxfire.Skat
+﻿namespace Maxfire.Skat.Internal
 {
 	internal class DefaultSpecificeredeKommunaleSatser : ISpecficeredeKommunaleSatser
 	{

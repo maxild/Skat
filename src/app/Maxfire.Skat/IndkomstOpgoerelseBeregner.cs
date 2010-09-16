@@ -1,4 +1,5 @@
 using Maxfire.Skat.Extensions;
+using Maxfire.Skat.Internal;
 
 namespace Maxfire.Skat
 {

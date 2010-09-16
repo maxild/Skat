@@ -12,6 +12,7 @@ namespace Maxfire.Skat
 		}
 
 		public ValueTuple<SkatterAfSkattepligtigIndkomst> BeregnSkat(
+			IValueTuple<ISkatteyder> skatteydere,
 			IValueTuple<ISkattepligtigeIndkomster> indkomster, 
 			IValueTuple<IKommunaleSatser> kommunaleSatser, 
 			int skatteAar)
@@ -23,7 +24,7 @@ namespace Maxfire.Skat
 			var kommuneskat = kommuneskatBeregner.BeregnSkat(indkomster, kommunaleSatser);
 
 			var kirkeskatBeregner = new KirkeskatBeregner();
-			var kirkeskat = kirkeskatBeregner.BeregnSkat(indkomster, kommunaleSatser);
+			var kirkeskat = kirkeskatBeregner.BeregnSkat(skatteydere, indkomster, kommunaleSatser);
 
 			return sundhedsbidrag.MapByIndex(index => 
 				new SkatterAfSkattepligtigIndkomst(sundhedsbidrag[index], kommuneskat[index], kirkeskat[index]));

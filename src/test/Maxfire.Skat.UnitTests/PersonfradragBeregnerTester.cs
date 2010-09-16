@@ -35,7 +35,7 @@ namespace Maxfire.Skat.UnitTests
 		[Fact]
 		public void BeregnSkattevaerdierAfPersonfradrag()
 		{
-			var personer = new ValueTuple<IPerson>(new Person(new DateTime(1970, 6, 3)));
+			var skatteydere = new ValueTuple<ISkatteyder>(new Skatteyder(new DateTime(1970, 6, 3), medlemAfFolkekirken: true));
 
 			var kommunaleSatser = new ValueTuple<IKommunaleSatser>(
 				new KommunaleSatser
@@ -44,7 +44,7 @@ namespace Maxfire.Skat.UnitTests
 					Kirkeskattesats = 0.01m
 				});
 
-			var skattevaerdier = _personfradragBeregner.BeregnSkattevaerdierAfPersonfradrag(personer, kommunaleSatser, 2010);
+			var skattevaerdier = _personfradragBeregner.BeregnSkattevaerdierAfPersonfradrag(skatteydere, kommunaleSatser, 2010);
 
 			skattevaerdier[0].Sundhedsbidrag.ShouldEqual(10);
 			skattevaerdier[0].Bundskat.ShouldEqual(5);
@@ -53,11 +53,9 @@ namespace Maxfire.Skat.UnitTests
 		}
 
 		[Fact]
-		public void FuldUdnyttelseAfSkattevaerdiPaaSelveSkatten_Ugift()
+		public void BeregnSkattevaerdierAfPersonfradragIkkeMedlemAfFolkekirken()
 		{
-			var skatter = new ValueTuple<Skatter>(new Skatter(sundhedsbidrag: 100, kommuneskat: 500, bundskat: 200, kirkeskat: 50));
-
-			var personer = new ValueTuple<IPerson>(new Person(new DateTime(1970, 6, 3)));
+			var skatteydere = new ValueTuple<ISkatteyder>(new Skatteyder(new DateTime(1970, 6, 3), medlemAfFolkekirken: false));
 
 			var kommunaleSatser = new ValueTuple<IKommunaleSatser>(
 				new KommunaleSatser
@@ -66,7 +64,29 @@ namespace Maxfire.Skat.UnitTests
 					Kirkeskattesats = 0.01m
 				});
 
-			var modregnResults = _personfradragBeregner.ModregningAfPersonfradrag(personer, skatter, kommunaleSatser, 2010);
+			var skattevaerdier = _personfradragBeregner.BeregnSkattevaerdierAfPersonfradrag(skatteydere, kommunaleSatser, 2010);
+
+			skattevaerdier[0].Sundhedsbidrag.ShouldEqual(10);
+			skattevaerdier[0].Bundskat.ShouldEqual(5);
+			skattevaerdier[0].Kommuneskat.ShouldEqual(25);
+			skattevaerdier[0].Kirkeskat.ShouldEqual(0);
+		}
+
+		[Fact]
+		public void FuldUdnyttelseAfSkattevaerdiPaaSelveSkatten_Ugift()
+		{
+			var skatter = new ValueTuple<Skatter>(new Skatter(sundhedsbidrag: 100, kommuneskat: 500, bundskat: 200, kirkeskat: 50));
+
+			var skatteydere = new ValueTuple<ISkatteyder>(new Skatteyder(new DateTime(1970, 6, 3), medlemAfFolkekirken: true));
+
+			var kommunaleSatser = new ValueTuple<IKommunaleSatser>(
+				new KommunaleSatser
+				{
+					Kommuneskattesats = 0.25m,
+					Kirkeskattesats = 0.01m
+				});
+
+			var modregnResults = _personfradragBeregner.ModregningAfPersonfradrag(skatteydere, skatter, kommunaleSatser, 2010);
 
 			var modregninger = modregnResults.Map(x => x.UdnyttedeSkattevaerdier);
 			var modregnedeSkatter = modregnResults.Map(x => x.ModregnedeSkatter);
@@ -92,7 +112,8 @@ namespace Maxfire.Skat.UnitTests
 		{
 			var skatter = new ValueTuple<Skatter>(new Skatter(sundhedsbidrag: 5, kommuneskat: 500, bundskat: 200, kirkeskat: 50));
 
-			var personer = new ValueTuple<IPerson>(new Person(new DateTime(1970, 6, 3)));
+			var skatteydere = new ValueTuple<ISkatteyder>(
+				new Skatteyder(new DateTime(1970, 6, 3), medlemAfFolkekirken: true));
 
 			var kommunaleSatser = new ValueTuple<IKommunaleSatser>(
 				new KommunaleSatser
@@ -101,7 +122,7 @@ namespace Maxfire.Skat.UnitTests
 					Kirkeskattesats = 0.01m
 				});
 
-			var modregnResults = _personfradragBeregner.ModregningAfPersonfradrag(personer, skatter, kommunaleSatser, 2010);
+			var modregnResults = _personfradragBeregner.ModregningAfPersonfradrag(skatteydere, skatter, kommunaleSatser, 2010);
 			var modregnedeSkatter = modregnResults.Map(x => x.ModregnedeSkatter);
 
 			// Resterende skatteværdi af personfradrag mht. sundhedsbidrag på 5 overvæltes i reduktionen af bundskat
@@ -116,7 +137,7 @@ namespace Maxfire.Skat.UnitTests
 		{
 			var skatter = new ValueTuple<Skatter>(new Skatter(sundhedsbidrag: 5, kommuneskat: 20, bundskat: 2));
 
-			var personer = new ValueTuple<IPerson>(new Person(new DateTime(1970, 6, 3)));
+			var skatteydere = new ValueTuple<ISkatteyder>(new Skatteyder(new DateTime(1970, 6, 3), medlemAfFolkekirken: true));
 
 			var kommunaleSatser = new ValueTuple<IKommunaleSatser>(
 				new KommunaleSatser
@@ -125,7 +146,7 @@ namespace Maxfire.Skat.UnitTests
 					Kirkeskattesats = 0.01m
 				});
 
-			var modregnResults = _personfradragBeregner.ModregningAfPersonfradragEgneSkatter(personer, skatter, kommunaleSatser, 2010);
+			var modregnResults = _personfradragBeregner.ModregningAfPersonfradragEgneSkatter(skatteydere, skatter, kommunaleSatser, 2010);
 			var modregnedeSkatter = modregnResults.Map(x => x.ModregnedeSkatter);
 			var modregninger = modregnResults.Map(x => x.UdnyttedeSkattevaerdier);
 
@@ -148,20 +169,17 @@ namespace Maxfire.Skat.UnitTests
 				new Skatter(sundhedsbidrag: 5, kommuneskat: 20, bundskat: 2),
 				new Skatter(sundhedsbidrag: 100, kommuneskat: 500, bundskat: 200));
 
-			var personer = new Person(new DateTime(1970, 6, 3)).ToTupleOfSize<IPerson>(2);
+			var skatteydere = new ValueTuple<ISkatteyder>(
+				new Skatteyder(new DateTime(1970, 6, 3), medlemAfFolkekirken: true),
+				new Skatteyder(new DateTime(1970, 6, 3), medlemAfFolkekirken: false));
 
-			var kommunaleSatser = new ValueTuple<IKommunaleSatser>(
-				new KommunaleSatser
-				{
-					Kommuneskattesats = 0.25m,
-					Kirkeskattesats = 0.01m
-				},
-				new KommunaleSatser
-				{
-					Kommuneskattesats = 0.25m
-				});
+			var kommunaleSatser = new KommunaleSatser
+			                      	{
+			                      		Kommuneskattesats = 0.25m,
+			                      		Kirkeskattesats = 0.01m
+			                      	}.ToTupleOfSize(2);
 
-			var modregnResults = _personfradragBeregner.ModregningAfPersonfradrag(personer, skatter, kommunaleSatser, 2010);
+			var modregnResults = _personfradragBeregner.ModregningAfPersonfradrag(skatteydere, skatter, kommunaleSatser, 2010);
 			var modregnedeSkatter = modregnResults.Map(x => x.ModregnedeSkatter);
 
 			// Skatterne nulstilles af værdien af personfradraget,
