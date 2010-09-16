@@ -5,11 +5,11 @@ namespace Maxfire.Skat
 		public SkatteberegningResult(
 			ISpecificeredeSkatteyder skatteyder,
 			ISpecificeredeSkatteIndkomster indkomster, 
-			Skatter skatter)
+			IndkomstSkatter indkomstSkatter)
 		{
 			Skatteyder = skatteyder;
 			Indkomster = indkomster;
-			Skatter = skatter;
+			IndkomstSkatter = indkomstSkatter;
 		}
 
 		public ISpecificeredeSkatteyder Skatteyder { get; private set; }
@@ -27,7 +27,7 @@ namespace Maxfire.Skat
 
 		//public decimal GroenCheck { get; set; }
 
-		public Skatter Skatter { get; private set; }
+		public IndkomstSkatter IndkomstSkatter { get; private set; }
 
 		// TODO: Mangler
 		//  - grøn check

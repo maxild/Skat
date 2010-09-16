@@ -71,28 +71,28 @@ namespace Maxfire.Skat.UnitTests
 		public void FuldUdnyttelse_ModregnMedNedslag_Ugift()
 		{
 			var nedslag = new ValueTuple<decimal>(10);
-			var skatter = new ValueTuple<Skatter>(new Skatter(bundskat: 1000));
+			var skatter = new ValueTuple<IndkomstSkatter>(new IndkomstSkatter(bundskat: 1000));
 
 			var negativNettoKapitalIndkomstNedslagBeregner = new NegativNettoKapitalIndkomstNedslagBeregner(new FakeSkattelovRegistry());
 			var modregnResults = negativNettoKapitalIndkomstNedslagBeregner.ModregnMedNedslag(skatter, nedslag);
 
 			modregnResults[0].UdnyttetSkattevaerdi.ShouldEqual(10);
 			modregnResults[0].IkkeUdnyttetSkattevaerdi.ShouldEqual(0);
-			modregnResults[0].ModregnedeSkatter.ShouldEqual(new Skatter(bundskat: 990));
+			modregnResults[0].ModregnedeSkatter.ShouldEqual(new IndkomstSkatter(bundskat: 990));
 		}
 
 		[Fact]
 		public void DelvisUdnyttelse_ModregnMedNedslag_Ugift()
 		{
 			var nedslag = new ValueTuple<decimal>(2000);
-			var skatter = new ValueTuple<Skatter>(new Skatter(bundskat: 1000));
+			var skatter = new ValueTuple<IndkomstSkatter>(new IndkomstSkatter(bundskat: 1000));
 
 			var negativNettoKapitalIndkomstNedslagBeregner = new NegativNettoKapitalIndkomstNedslagBeregner(new FakeSkattelovRegistry());
 			var modregnResults = negativNettoKapitalIndkomstNedslagBeregner.ModregnMedNedslag(skatter, nedslag);
 
 			modregnResults[0].UdnyttetSkattevaerdi.ShouldEqual(1000);
 			modregnResults[0].IkkeUdnyttetSkattevaerdi.ShouldEqual(1000);
-			modregnResults[0].ModregnedeSkatter.ShouldEqual(Skatter.Nul);
+			modregnResults[0].ModregnedeSkatter.ShouldEqual(IndkomstSkatter.Nul);
 		}
 
 		[Fact]
@@ -183,34 +183,34 @@ namespace Maxfire.Skat.UnitTests
 		public void FuldUdnyttelseUdenOverfoersel_Gift()
 		{
 			var nedslag = new ValueTuple<decimal>(10, 30);
-			var skatter = new ValueTuple<Skatter>(new Skatter(bundskat: 1000), new Skatter(bundskat: 1000));
+			var skatter = new ValueTuple<IndkomstSkatter>(new IndkomstSkatter(bundskat: 1000), new IndkomstSkatter(bundskat: 1000));
 
 			var negativNettoKapitalIndkomstNedslagBeregner = new NegativNettoKapitalIndkomstNedslagBeregner(new FakeSkattelovRegistry());
 			var modregnResults = negativNettoKapitalIndkomstNedslagBeregner.ModregnMedNedslag(skatter, nedslag);
 
 			modregnResults[0].UdnyttetSkattevaerdi.ShouldEqual(10);
 			modregnResults[0].IkkeUdnyttetSkattevaerdi.ShouldEqual(0);
-			modregnResults[0].ModregnedeSkatter.ShouldEqual(new Skatter(bundskat: 990));
+			modregnResults[0].ModregnedeSkatter.ShouldEqual(new IndkomstSkatter(bundskat: 990));
 			modregnResults[1].UdnyttetSkattevaerdi.ShouldEqual(30);
 			modregnResults[1].IkkeUdnyttetSkattevaerdi.ShouldEqual(0);
-			modregnResults[1].ModregnedeSkatter.ShouldEqual(new Skatter(bundskat: 970));
+			modregnResults[1].ModregnedeSkatter.ShouldEqual(new IndkomstSkatter(bundskat: 970));
 		}
 
 		[Fact]
 		public void DelvisUdnyttelseOgOverfoersel_ModregnMedNedslag_Gift()
 		{
 			var nedslag = new ValueTuple<decimal>(2000, 500);
-			var skatter = new ValueTuple<Skatter>(new Skatter(bundskat: 1000), new Skatter(bundskat: 1000));
+			var skatter = new ValueTuple<IndkomstSkatter>(new IndkomstSkatter(bundskat: 1000), new IndkomstSkatter(bundskat: 1000));
 
 			var negativNettoKapitalIndkomstNedslagBeregner = new NegativNettoKapitalIndkomstNedslagBeregner(new FakeSkattelovRegistry());
 			var modregnResults = negativNettoKapitalIndkomstNedslagBeregner.ModregnMedNedslag(skatter, nedslag);
 
 			modregnResults[0].UdnyttetSkattevaerdi.ShouldEqual(1000); // udnyttet i egne skatter
 			modregnResults[0].IkkeUdnyttetSkattevaerdi.ShouldEqual(500); // de resterende 500 er overført
-			modregnResults[0].ModregnedeSkatter.ShouldEqual(Skatter.Nul);
+			modregnResults[0].ModregnedeSkatter.ShouldEqual(IndkomstSkatter.Nul);
 			modregnResults[1].UdnyttetSkattevaerdi.ShouldEqual(1000); // eget nedslag + overført nedslag
 			modregnResults[1].IkkeUdnyttetSkattevaerdi.ShouldEqual(0);
-			modregnResults[1].ModregnedeSkatter.ShouldEqual(Skatter.Nul);
+			modregnResults[1].ModregnedeSkatter.ShouldEqual(IndkomstSkatter.Nul);
 		}
 	}
 }

@@ -5,19 +5,18 @@ using Maxfire.Skat.Extensions;
 
 namespace Maxfire.Skat
 {
-	// TODO: Rename to PersonSkatter (or IndkomstSkatter, or SkatterAfIndkomst)
 	/// <summary>
-	/// De samlede skatter
+	/// De samlede indkomst skatter
 	/// </summary>
-	public class Skatter : IEquatable<Skatter>, ISumable<decimal>
+	public class IndkomstSkatter : IEquatable<IndkomstSkatter>, ISumable<decimal>
 	{
-		public static readonly Skatter Nul = new Skatter();
+		public static readonly IndkomstSkatter Nul = new IndkomstSkatter();
 		
-		public Skatter()
+		public IndkomstSkatter()
 		{
 		}
 
-		public Skatter(decimal sundhedsbidrag = 0, decimal kommuneskat = 0, decimal kirkeskat = 0, 
+		public IndkomstSkatter(decimal sundhedsbidrag = 0, decimal kommuneskat = 0, decimal kirkeskat = 0, 
 			decimal bundskat = 0, decimal mellemskat = 0, decimal topskat = 0, 
 			decimal aktieindkomstskatUnderGrundbeloebet = 0, decimal aktieindkomstskatOverGrundbeloebet = 0)
 		{
@@ -31,7 +30,7 @@ namespace Maxfire.Skat
 			AktieindkomstskatOverGrundbeloebet = aktieindkomstskatOverGrundbeloebet;
 		}
 
-		public Skatter(SkatterAfPersonligIndkomst skatterAfPersonligIndkomst, SkatterAfSkattepligtigIndkomst skatterAfSkattepligtigIndkomst)
+		public IndkomstSkatter(SkatterAfPersonligIndkomst skatterAfPersonligIndkomst, SkatterAfSkattepligtigIndkomst skatterAfSkattepligtigIndkomst)
 		{
 			Sundhedsbidrag = skatterAfSkattepligtigIndkomst.Sundhedsbidrag;
 			Kommuneskat = skatterAfSkattepligtigIndkomst.Kommuneskat;
@@ -104,9 +103,9 @@ namespace Maxfire.Skat
 				+ KommunalIndkomstskatOgKirkeskat + Aktieindkomstskat;
 		}
 
-		public Skatter RoundMoney()
+		public IndkomstSkatter RoundMoney()
 		{
-			return new Skatter
+			return new IndkomstSkatter
 			{
 				Kommuneskat = Kommuneskat.RoundMoney(),
 				Kirkeskat = Kirkeskat.RoundMoney(),
@@ -158,10 +157,10 @@ namespace Maxfire.Skat
 
 		public override bool Equals(object obj)
 		{
-			return Equals(obj as Skatter);
+			return Equals(obj as IndkomstSkatter);
 		}
 
-		public bool Equals(Skatter other)
+		public bool Equals(IndkomstSkatter other)
 		{
 			if (other == null)
 			{
@@ -178,9 +177,9 @@ namespace Maxfire.Skat
 				AktieindkomstskatOverGrundbeloebet == other.AktieindkomstskatOverGrundbeloebet);
 		}
 
-		public static Skatter operator+(Skatter lhs, Skatter rhs)
+		public static IndkomstSkatter operator+(IndkomstSkatter lhs, IndkomstSkatter rhs)
 		{
-			return new Skatter
+			return new IndkomstSkatter
 			{
 				Kirkeskat = lhs.Kirkeskat + rhs.Kirkeskat,
 				Kommuneskat = lhs.Kommuneskat + rhs.Kommuneskat,
@@ -193,9 +192,9 @@ namespace Maxfire.Skat
 			};
 		}
 
-		public static Skatter operator -(Skatter lhs, Skatter rhs)
+		public static IndkomstSkatter operator -(IndkomstSkatter lhs, IndkomstSkatter rhs)
 		{
-			return new Skatter
+			return new IndkomstSkatter
 			{
 				Kirkeskat = lhs.Kirkeskat - rhs.Kirkeskat,
 				Kommuneskat = lhs.Kommuneskat - rhs.Kommuneskat,
@@ -208,9 +207,9 @@ namespace Maxfire.Skat
 			};
 		}
 
-		public static Skatter operator *(decimal lhs, Skatter rhs)
+		public static IndkomstSkatter operator *(decimal lhs, IndkomstSkatter rhs)
 		{
-			return new Skatter
+			return new IndkomstSkatter
 			{
 				Kirkeskat = lhs * rhs.Kirkeskat,
 				Kommuneskat = lhs * rhs.Kommuneskat,
@@ -223,7 +222,7 @@ namespace Maxfire.Skat
 			};
 		}
 
-		public static Skatter operator *(Skatter lhs, decimal rhs)
+		public static IndkomstSkatter operator *(IndkomstSkatter lhs, decimal rhs)
 		{
 			return rhs * lhs;
 		}

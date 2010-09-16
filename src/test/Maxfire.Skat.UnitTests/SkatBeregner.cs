@@ -11,7 +11,7 @@ namespace Maxfire.Skat.UnitTests
 			_skattelovRegistry = skattelovRegistry;
 		}
 
-		public ValueTuple<Skatter> BeregnSkat(
+		public ValueTuple<IndkomstSkatter> BeregnSkat(
 			IValueTuple<ISkatteyder> skatteydere,
 			IValueTuple<ISkatteIndkomster> indkomster, 
 			IValueTuple<IKommunaleSatser> kommunaleSatser, 

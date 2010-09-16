@@ -105,7 +105,7 @@
     <Compile Include="Beregnere\SkatterAfSkattepligtigIndkomstBeregner.cs" />
     <Compile Include="Beregnere\SkatteModregner.cs" />
     <Compile Include="SelvangivneBeloeb.cs" />
-    <Compile Include="Skatter.cs" />
+    <Compile Include="IndkomstSkatter.cs" />
     <Compile Include="Beregnere\SkatterAfPersonligIndkomst.cs" />
     <Compile Include="Beregnere\SkatterAfSkattepligtigIndkomst.cs" />
     <Compile Include="Beregnere\SkatteUtility.cs" />

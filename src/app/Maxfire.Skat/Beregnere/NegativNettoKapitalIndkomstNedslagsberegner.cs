@@ -39,9 +39,9 @@ namespace Maxfire.Skat.Beregnere
 			_skattelovRegistry = skattelovRegistry;
 		}
 
-		public ValueTuple<ModregnSkatterResult<Skatter>> ModregnMedNedslag(
+		public ValueTuple<ModregnSkatterResult<IndkomstSkatter>> ModregnMedNedslag(
 			IValueTuple<IPersonligeIndkomster> indkomster, 
-			ValueTuple<Skatter> skatter, 
+			ValueTuple<IndkomstSkatter> skatter, 
 			int skatteAar)
 		{
 			var nedslag = BeregnNedslag(indkomster, skatteAar);
@@ -63,8 +63,8 @@ namespace Maxfire.Skat.Beregnere
 		}
 
 // ReSharper disable MemberCanBeMadeStatic.Global
-		public ValueTuple<ModregnSkatterResult<Skatter>> ModregnMedNedslag(
-			ValueTuple<Skatter> skatter, 
+		public ValueTuple<ModregnSkatterResult<IndkomstSkatter>> ModregnMedNedslag(
+			ValueTuple<IndkomstSkatter> skatter, 
 			ValueTuple<decimal> nedslag)
 // ReSharper restore MemberCanBeMadeStatic.Global
 		{
@@ -75,7 +75,7 @@ namespace Maxfire.Skat.Beregnere
 
 			if (skatter.Size == 1)
 			{
-				return new ModregnSkatterResult<Skatter>(skatter[0], nedslag[0], modregningerFraEgetNedslag[0]).ToTuple();
+				return new ModregnSkatterResult<IndkomstSkatter>(skatter[0], nedslag[0], modregningerFraEgetNedslag[0]).ToTuple();
 			}
 
 			// Modregn evt. uudnyttet nedslag i ægtefælles skatter
@@ -92,19 +92,19 @@ namespace Maxfire.Skat.Beregnere
 
 			//...sådan at IkkeUdnyttetSkattevaerdi er korrekt på den returnerede værdi
 			return skatter.Map((skat, index) =>
-				new ModregnSkatterResult<Skatter>(skat, nedslag[index] + overfortUdnyttetNedslag[index],
+				new ModregnSkatterResult<IndkomstSkatter>(skat, nedslag[index] + overfortUdnyttetNedslag[index],
 					modregningerFraEgetNedslag[index] + modregningerFraOverfoertNedslag[index]));
 		}
 
-		private static SkatteModregner<Skatter> getSkatteModregner()
+		private static SkatteModregner<IndkomstSkatter> getSkatteModregner()
 		{
-			return new SkatteModregner<Skatter>(
-				Modregning<Skatter>.Af(x => x.Bundskat),
-				Modregning<Skatter>.Af(x => x.Topskat),
-				Modregning<Skatter>.Af(x => x.Sundhedsbidrag),
-				Modregning<Skatter>.Af(x => x.AktieindkomstskatOverGrundbeloebet),
-				Modregning<Skatter>.Af(x => x.Kommuneskat),
-				Modregning<Skatter>.Af(x => x.Kirkeskat)
+			return new SkatteModregner<IndkomstSkatter>(
+				Modregning<IndkomstSkatter>.Af(x => x.Bundskat),
+				Modregning<IndkomstSkatter>.Af(x => x.Topskat),
+				Modregning<IndkomstSkatter>.Af(x => x.Sundhedsbidrag),
+				Modregning<IndkomstSkatter>.Af(x => x.AktieindkomstskatOverGrundbeloebet),
+				Modregning<IndkomstSkatter>.Af(x => x.Kommuneskat),
+				Modregning<IndkomstSkatter>.Af(x => x.Kirkeskat)
 			);
 		}
 	}

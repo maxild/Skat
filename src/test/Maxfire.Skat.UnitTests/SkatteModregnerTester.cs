@@ -10,11 +10,11 @@ namespace Maxfire.Skat.UnitTests
 		[Fact]
 		public void FuldModregningAfPositivSkattevaerdi()
 		{
-			var skatter = new Skatter(bundskat: 800, topskat: 1000, mellemskat: 500);
+			var skatter = new IndkomstSkatter(bundskat: 800, topskat: 1000, mellemskat: 500);
 
-			var skatteModregner = new SkatteModregner<Skatter>(
-				Modregning<Skatter>.Af(x => x.Bundskat),
-				Modregning<Skatter>.Af(x => x.Mellemskat));
+			var skatteModregner = new SkatteModregner<IndkomstSkatter>(
+				Modregning<IndkomstSkatter>.Af(x => x.Bundskat),
+				Modregning<IndkomstSkatter>.Af(x => x.Mellemskat));
 
 			var modregnResult = skatteModregner.Modregn(skatter, 1000);
 
@@ -33,11 +33,11 @@ namespace Maxfire.Skat.UnitTests
 		[Fact]
 		public void DelvisModregningAfPositivSkattevaerdi()
 		{
-			var skatter = new Skatter(bundskat: 800, topskat: 1000, mellemskat: 500);
+			var skatter = new IndkomstSkatter(bundskat: 800, topskat: 1000, mellemskat: 500);
 
-			var skatteModregner = new SkatteModregner<Skatter>(
-				Modregning<Skatter>.Af(x => x.Bundskat),
-				Modregning<Skatter>.Af(x => x.Mellemskat));
+			var skatteModregner = new SkatteModregner<IndkomstSkatter>(
+				Modregning<IndkomstSkatter>.Af(x => x.Bundskat),
+				Modregning<IndkomstSkatter>.Af(x => x.Mellemskat));
 
 			var modregnResult = skatteModregner.Modregn(skatter, 3000);
 
@@ -56,11 +56,11 @@ namespace Maxfire.Skat.UnitTests
 		[Fact]
 		public void ModregningAfNegativSkattevaerdi()
 		{
-			var skatter = new Skatter(bundskat: 800, topskat: 1000, mellemskat: 500);
+			var skatter = new IndkomstSkatter(bundskat: 800, topskat: 1000, mellemskat: 500);
 
-			var skatteModregner = new SkatteModregner<Skatter>(
-				Modregning<Skatter>.Af(x => x.Bundskat),
-				Modregning<Skatter>.Af(x => x.Mellemskat));
+			var skatteModregner = new SkatteModregner<IndkomstSkatter>(
+				Modregning<IndkomstSkatter>.Af(x => x.Bundskat),
+				Modregning<IndkomstSkatter>.Af(x => x.Mellemskat));
 
 			var modregnResult = skatteModregner.Modregn(skatter, -140);
 

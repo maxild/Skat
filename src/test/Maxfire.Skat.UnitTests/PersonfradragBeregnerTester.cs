@@ -76,7 +76,7 @@ namespace Maxfire.Skat.UnitTests
 		[Fact]
 		public void FuldUdnyttelseAfSkattevaerdiPaaSelveSkatten_Ugift()
 		{
-			var skatter = new ValueTuple<Skatter>(new Skatter(sundhedsbidrag: 100, kommuneskat: 500, bundskat: 200, kirkeskat: 50));
+			var skatter = new ValueTuple<IndkomstSkatter>(new IndkomstSkatter(sundhedsbidrag: 100, kommuneskat: 500, bundskat: 200, kirkeskat: 50));
 
 			var skatteydere = new ValueTuple<ISkatteyder>(new Skatteyder(new DateTime(1970, 6, 3), medlemAfFolkekirken: true));
 
@@ -111,7 +111,7 @@ namespace Maxfire.Skat.UnitTests
 		[Fact]
 		public void DelvisUdnyttelseAfSkattevaerdiPåSelveSkatten_Ugift()
 		{
-			var skatter = new ValueTuple<Skatter>(new Skatter(sundhedsbidrag: 5, kommuneskat: 500, bundskat: 200, kirkeskat: 50));
+			var skatter = new ValueTuple<IndkomstSkatter>(new IndkomstSkatter(sundhedsbidrag: 5, kommuneskat: 500, bundskat: 200, kirkeskat: 50));
 
 			var skatteydere = new ValueTuple<ISkatteyder>(
 				new Skatteyder(new DateTime(1970, 6, 3), medlemAfFolkekirken: true));
@@ -136,7 +136,7 @@ namespace Maxfire.Skat.UnitTests
 		[Fact]
 		public void ModregningAfPersonfradragEgneSkatter()
 		{
-			var skatter = new ValueTuple<Skatter>(new Skatter(sundhedsbidrag: 5, kommuneskat: 20, bundskat: 2));
+			var skatter = new ValueTuple<IndkomstSkatter>(new IndkomstSkatter(sundhedsbidrag: 5, kommuneskat: 20, bundskat: 2));
 
 			var skatteydere = new ValueTuple<ISkatteyder>(new Skatteyder(new DateTime(1970, 6, 3), medlemAfFolkekirken: true));
 
@@ -166,9 +166,9 @@ namespace Maxfire.Skat.UnitTests
 		[Fact]
 		public void DelvisUdnyttelseAfSkattevaerdierOgModregningHosAegtefaelle()
 		{
-			var skatter = new ValueTuple<Skatter>(
-				new Skatter(sundhedsbidrag: 5, kommuneskat: 20, bundskat: 2),
-				new Skatter(sundhedsbidrag: 100, kommuneskat: 500, bundskat: 200));
+			var skatter = new ValueTuple<IndkomstSkatter>(
+				new IndkomstSkatter(sundhedsbidrag: 5, kommuneskat: 20, bundskat: 2),
+				new IndkomstSkatter(sundhedsbidrag: 100, kommuneskat: 500, bundskat: 200));
 
 			var skatteydere = new ValueTuple<ISkatteyder>(
 				new Skatteyder(new DateTime(1970, 6, 3), medlemAfFolkekirken: true),

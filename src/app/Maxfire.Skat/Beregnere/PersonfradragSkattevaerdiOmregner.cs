@@ -4,7 +4,7 @@ namespace Maxfire.Skat.Beregnere
 {
 	public class PersonfradragSkattevaerdiOmregner : ISkattevaerdiOmregner
 	{
-		private readonly Skatter _skattesatser;
+		private readonly IndkomstSkatter _skattesatser;
 
 		public PersonfradragSkattevaerdiOmregner(
 			ISkatteyder skatteyder, 
@@ -12,14 +12,14 @@ namespace Maxfire.Skat.Beregnere
 			ISkattepligtigIndkomstRegistry skattelovRegistry, 
 			int skatteAar)
 		{
-			_skattesatser = new Skatter(
+			_skattesatser = new IndkomstSkatter(
 				bundskat: skattelovRegistry.GetBundSkattesats(skatteAar),
 				sundhedsbidrag: skattelovRegistry.GetSundhedsbidragSkattesats(skatteAar),
 				kommuneskat: kommunaleSatser.Kommuneskattesats,
 				kirkeskat: kommunaleSatser.GetKirkeskattesatsFor(skatteyder));
 		}
 
-		public Skatter BeregnSkattevaerdier(decimal personfradrag)
+		public IndkomstSkatter BeregnSkattevaerdier(decimal personfradrag)
 		{
 			var skattevaerdier = _skattesatser * personfradrag;
 			return skattevaerdier.RoundMoney();

@@ -3,9 +3,9 @@
 	// TODO: Fjern denne type
 	public class ModregnPersonfradragResult
 	{
-		public ModregnPersonfradragResult(Skatter skatter, Skatter modregninger, Skatter ikkeUdnyttedeSkattevaerdier)
+		public ModregnPersonfradragResult(IndkomstSkatter indkomstSkatter, IndkomstSkatter modregninger, IndkomstSkatter ikkeUdnyttedeSkattevaerdier)
 		{
-			Skatter = skatter;
+			IndkomstSkatter = indkomstSkatter;
 			UdnyttedeSkattevaerdier = modregninger;
 			IkkeUdnyttedeSkattevaerdier = ikkeUdnyttedeSkattevaerdier;
 		}
@@ -13,19 +13,19 @@
 		/// <summary>
 		/// Størrelsen af de skatter, der skal modregnes i.
 		/// </summary>
-		public Skatter Skatter { get; private set; }
+		public IndkomstSkatter IndkomstSkatter { get; private set; }
 		
 		/// <summary>
 		/// De udnyttede skatteværdier, der svarer til modregningerne i skatterne.
 		/// </summary>
-		public Skatter UdnyttedeSkattevaerdier { get; private set; }
+		public IndkomstSkatter UdnyttedeSkattevaerdier { get; private set; }
 
 		/// <summary>
 		/// Skatternes størrelse efter modregning.
 		/// </summary>
-		public Skatter ModregnedeSkatter
+		public IndkomstSkatter ModregnedeIndkomstSkatter
 		{
-			get { return Skatter - UdnyttedeSkattevaerdier; }
+			get { return IndkomstSkatter - UdnyttedeSkattevaerdier; }
 		}
 
 		/// <summary>
@@ -47,6 +47,6 @@
 		/// <summary>
 		/// De ikke udnyttede skatteværdier.
 		/// </summary>
-		public Skatter IkkeUdnyttedeSkattevaerdier { get; private set; } // Note: Den er særlig for personfradrag
+		public IndkomstSkatter IkkeUdnyttedeSkattevaerdier { get; private set; } // Note: Den er særlig for personfradrag
 	}
 }

@@ -222,8 +222,8 @@ namespace Maxfire.Skat.Beregnere
 			return sats * (negativNettoKapitalIndkomstOverGrundbeloebet + ligningsmaesigeFradrag);
 		}
 
-		public ValueTuple<ModregnSkatterResult<Skatter>> ModregnMedKompensation(
-			ValueTuple<Skatter> skatter, 
+		public ValueTuple<ModregnSkatterResult<IndkomstSkatter>> ModregnMedKompensation(
+			ValueTuple<IndkomstSkatter> skatter, 
 			IValueTuple<ISkatteyder> skatteydere,
 			IValueTuple<IPersonligeIndkomster> indkomster, 
 			IValueTuple<IKommunaleSatser> kommunaleSatser, 
@@ -234,15 +234,15 @@ namespace Maxfire.Skat.Beregnere
 			return skatteModeregner.Modregn(skatter, kompensation);
 		}
 
-		private static SkatteModregner<Skatter> getSkatteModregner()
+		private static SkatteModregner<IndkomstSkatter> getSkatteModregner()
 		{
-			return new SkatteModregner<Skatter>(
-				Modregning<Skatter>.Af(x => x.Bundskat),
-				Modregning<Skatter>.Af(x => x.Topskat),
-				Modregning<Skatter>.Af(x => x.Sundhedsbidrag),
-				Modregning<Skatter>.Af(x => x.AktieindkomstskatOverGrundbeloebet),
-				Modregning<Skatter>.Af(x => x.Kommuneskat),
-				Modregning<Skatter>.Af(x => x.Kirkeskat)
+			return new SkatteModregner<IndkomstSkatter>(
+				Modregning<IndkomstSkatter>.Af(x => x.Bundskat),
+				Modregning<IndkomstSkatter>.Af(x => x.Topskat),
+				Modregning<IndkomstSkatter>.Af(x => x.Sundhedsbidrag),
+				Modregning<IndkomstSkatter>.Af(x => x.AktieindkomstskatOverGrundbeloebet),
+				Modregning<IndkomstSkatter>.Af(x => x.Kommuneskat),
+				Modregning<IndkomstSkatter>.Af(x => x.Kirkeskat)
 			);
 		}
 	}
