@@ -1,8 +1,4 @@
-﻿using System.Collections.Generic;
-using Maxfire.Core;
-using Maxfire.Skat.Beregnere;
-
-namespace Maxfire.Skat
+﻿namespace Maxfire.Skat
 {
 	// TODO: Mangler restskat i selvangivne beløb
 	public interface ISelvangivneBeloeb
@@ -58,25 +54,5 @@ namespace Maxfire.Skat
 		decimal PrivatTegnetPensionsindskud { get; }
 
 		decimal AktieIndkomst { get; }
-	}
-
-	public static class Beloeb
-	{
-		public static ITextValuePair<decimal> Create(string text, decimal beloeb)
-		{
-			return new TextValuePair<decimal>(text, beloeb);
-		}
-	}
-
-	public static class SelvangivneBeloeb
-	{
-		public static IBeloebCollection Create(params ITextValuePair<decimal>[] selvangivneBeloeb)
-		{
-			return new BeloebCollection(selvangivneBeloeb);
-		}
-		public static IBeloebCollection Create(IEnumerable<ITextValuePair<decimal>> selvangivneBeloeb)
-		{
-			return new BeloebCollection(selvangivneBeloeb);
-		}
 	}
 }

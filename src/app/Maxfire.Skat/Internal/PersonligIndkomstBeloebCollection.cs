@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Maxfire.Core;
+using Maxfire.Skat.Beregnere;
 
-namespace Maxfire.Skat.Beregnere
+namespace Maxfire.Skat.Internal
 {
-	public class PersonligIndkomstBeloebCollection : TextValuePairCollection<ITextValuePair<PersonligIndkomstValue>>, IPersonligIndkomstBeloebCollection
+	internal class PersonligIndkomstBeloebCollection : TextValuePairCollection<ITextValuePair<PersonligIndkomstValue>>, IPersonligIndkomstBeloebCollection
 	{
 		public static readonly PersonligIndkomstBeloebCollection Empty = new PersonligIndkomstBeloebCollection(Enumerable.Empty<ITextValuePair<PersonligIndkomstValue>>());
 

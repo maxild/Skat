@@ -1,4 +1,4 @@
-namespace Maxfire.Skat.Beregnere
+namespace Maxfire.Skat.Obsolete
 {
 	// TODO: Denne fil skal slettes, men nedenfor er en huskeliste
 

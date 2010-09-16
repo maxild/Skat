@@ -2,11 +2,12 @@
 using System.Linq;
 using Maxfire.Core;
 using Maxfire.Core.Extensions;
+using Maxfire.Skat.Beregnere;
 using Maxfire.Skat.Extensions;
 
-namespace Maxfire.Skat.Beregnere
+namespace Maxfire.Skat.Internal
 {
-	public class SkatteIndkomster : ISpecificeredeSkatteIndkomster
+	internal class SkatteIndkomster : ISpecificeredeSkatteIndkomster
 	{
 		private readonly List<ITextValuePair<PersonligIndkomstValue>> _personligeIndkomsterAM = new List<ITextValuePair<PersonligIndkomstValue>>();
 		private readonly List<ITextValuePair<PersonligIndkomstValue>> _personligeIndkomsterEjAM = new List<ITextValuePair<PersonligIndkomstValue>>();

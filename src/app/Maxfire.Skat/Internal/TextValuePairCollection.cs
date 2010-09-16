@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Maxfire.Skat.Beregnere
+namespace Maxfire.Skat.Internal
 {
-	public abstract class TextValuePairCollection<TValue> : ISumableEnumerable<TValue, decimal>
+	internal abstract class TextValuePairCollection<TValue> : ISumableEnumerable<TValue, decimal>
 	{
 		private readonly IEnumerable<TValue> _items;
 		private readonly Func<TValue, decimal> _beloebSelector;
