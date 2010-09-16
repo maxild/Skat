@@ -4,7 +4,6 @@
 	{
 		IBeloebCollection PersonligeIndkomsterAMIndkomster { get; }
 		IBeloebCollection PersonligeIndkomsterEjAMIndkomster { get; }
-		IBeloebCollection PersonligeIndkomster { get; }
 
 		IBeloebCollection KapitalIndkomster { get; }
 
