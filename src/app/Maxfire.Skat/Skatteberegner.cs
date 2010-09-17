@@ -43,19 +43,22 @@ namespace Maxfire.Skat
 			var skattepligtigIndkomstUnderskudBeregner = new SkattepligtigIndkomstUnderskudBeregner(_skattelovRegistry);
 			var modregnResults = skattepligtigIndkomstUnderskudBeregner.ModregningAfUnderskud(indkomster, skatterAfPersonligIndkomst, kommunaleSatser, skatteAar);
 			var skatterAfPersonligIndkomstEfterModregningAfUnderskud = modregnResults.Map(x => x.ModregnedeSkatter);
+			var underskudSkattepligtigIndkomst = SkatteUtility.CombineSkat(modregnResults.Map(x => x.ModregningSkatter));
 
 			// Beregn sundhedsbidrag samt kommuneskat og kirkeskat
 			var skatterAfSkattepligtigIndkomstBeregner = new SkatterAfSkattepligtigIndkomstBeregner(_skattelovRegistry);
 			var skatterAfSkattepligtigIndkomst = skatterAfSkattepligtigIndkomstBeregner.BeregnSkat(specificeredeSkatteydere, indkomster, kommunaleSatser, skatteAar);
 
-			var skatterFoerPersonfradrag = SkatteUtility.CombineSkat(skatterAfPersonligIndkomstEfterModregningAfUnderskud,
+			var skatterFoerNedslag = SkatteUtility.CombineSkat(skatterAfPersonligIndkomst, skatterAfSkattepligtigIndkomst);
+			var skatterEfterModregningAfUnderskud = SkatteUtility.CombineSkat(skatterAfPersonligIndkomstEfterModregningAfUnderskud,
 																	skatterAfSkattepligtigIndkomst);
 			
 
 			// Nedbring skatter med værdien af personfradraget
 			var personfradragBeregner = new PersonfradragBeregner(_skattelovRegistry);
-			var modregnPersonfradragResults = personfradragBeregner.ModregningAfPersonfradrag(specificeredeSkatteydere, skatterFoerPersonfradrag, kommunaleSatser, skatteAar);
-			var skatterEfterPersonfradrag = modregnPersonfradragResults.Map(x => x.ModregnedeSkatter);
+			var modregnPersonfradragResults = personfradragBeregner.ModregningAfPersonfradrag(
+								specificeredeSkatteydere, skatterEfterModregningAfUnderskud, kommunaleSatser, skatteAar);
+			var personfradrag = modregnPersonfradragResults.Map(x => x.UdnyttedeSkattevaerdier);
 
 			//
 			// 9: Bestem nedslaget i (forårspakke 2.0)
@@ -68,8 +71,12 @@ namespace Maxfire.Skat
 			//
 			// 11: Beregn grøn check
 			//
+			
+			var indkomstSkatter = skatterFoerNedslag.Map((skatter, index) => 
+				new SpecificeredeIndkomstSkatter(skatter, underskudSkattepligtigIndkomst[index], personfradrag[index]));
 
-			return specificeredeSkatteydere.Map((skatteyder, index) => new SkatteberegningResult(skatteyder, indkomster[index], skatterEfterPersonfradrag[index]));
+			return specificeredeSkatteydere.Map((skatteyder, index) => 
+				new SkatteberegningResult(skatteyder, indkomster[index], indkomstSkatter[index]));
 		}
 
 		private static ISpecficeredeKommunaleSatser makeSpecificerede(IKommunaleSatser kommunaleSatser)
