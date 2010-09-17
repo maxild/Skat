@@ -11,7 +11,7 @@ namespace Maxfire.Skat.Beregnere
 			_skattelovRegistry = skattelovRegistry;
 		}
 
-		public ValueTuple<SkatterAfPersonligIndkomst> BeregnSkat(
+		public ValueTuple<IndkomstSkatterAfPersonligIndkomst> BeregnSkat(
 			IValueTuple<IPersonligeIndkomster> indkomster, 
 			IValueTuple<IKommunaleSatser> kommunaleSatser, 
 			int skatteAar)
@@ -35,7 +35,7 @@ namespace Maxfire.Skat.Beregnere
 			var aktieindkomstskatHoejesteTrin = aktieindkomstskatHoejesteTrinBeregner.BeregnSkat(indkomster, skatteAar);
 
 			return bundskat.MapByIndex(index =>
-					new SkatterAfPersonligIndkomst(bundskat[index], mellemskat[index], topskat[index],
+					new IndkomstSkatterAfPersonligIndkomst(bundskat[index], mellemskat[index], topskat[index],
 					                               aktieindkomstskatLavesteTrin[index],
 					                               aktieindkomstskatMellemsteTrin[index] + aktieindkomstskatHoejesteTrin[index]));
 		}

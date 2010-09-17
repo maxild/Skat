@@ -6,7 +6,7 @@
 	public class BeregnModregningerResult
 	{
 		public BeregnModregningerResult(decimal modregningSkattepligtigIndkomst, 
-			SkatterAfPersonligIndkomst modregningSkatter, decimal modregningUnderskud)
+			IndkomstSkatterAfPersonligIndkomst modregningSkatter, decimal modregningUnderskud)
 		{
 			ModregningUnderskudSkattepligtigIndkomst = modregningSkattepligtigIndkomst;
 			ModregningSkatter = modregningSkatter;
@@ -21,7 +21,7 @@
 		/// <summary>
 		/// Modregninger i skatterne.
 		/// </summary>
-		public SkatterAfPersonligIndkomst ModregningSkatter { get; private set; }
+		public IndkomstSkatterAfPersonligIndkomst ModregningSkatter { get; private set; }
 
 		/// <summary>
 		/// Modregninger i skatter omregnet til underskud.
@@ -56,7 +56,7 @@
 	public class ModregnUnderskudResult
 	{
 		public ModregnUnderskudResult(decimal underskud, decimal modregningUnderskud, decimal modregningSkattepligtigIndkomst, 
-			SkatterAfPersonligIndkomst skatter, SkatterAfPersonligIndkomst modregningSkatter)
+			IndkomstSkatterAfPersonligIndkomst skatter, IndkomstSkatterAfPersonligIndkomst modregningSkatter)
 		{
 			Underskud = underskud;
 			ModregningUnderskud = modregningUnderskud;
@@ -103,17 +103,17 @@
 		/// <summary>
 		/// Størrelsen af de modregninger af skatteværdier, der kan rummes i skatterne.
 		/// </summary>
-		public SkatterAfPersonligIndkomst ModregningSkatter { get; private set; }
+		public IndkomstSkatterAfPersonligIndkomst ModregningSkatter { get; private set; }
 
 		/// <summary>
 		/// Skatterne inden modregning af underskudsværdi.
 		/// </summary>
-		public SkatterAfPersonligIndkomst Skatter { get; private set; }
+		public IndkomstSkatterAfPersonligIndkomst Skatter { get; private set; }
 
 		/// <summary>
 		/// Skatterne efter modregning af underskudsværdi.
 		/// </summary>
-		public SkatterAfPersonligIndkomst ModregnedeSkatter
+		public IndkomstSkatterAfPersonligIndkomst ModregnedeSkatter
 		{
 			get { return Skatter - ModregningSkatter; }
 		}

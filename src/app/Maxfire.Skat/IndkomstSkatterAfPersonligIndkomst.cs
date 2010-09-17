@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace Maxfire.Skat.Beregnere
+namespace Maxfire.Skat
 {
 	/// <summary>
 	/// Indkomstskatter til staten, der beregnes på baggrund af den personlige indkomst og
@@ -15,15 +15,15 @@ namespace Maxfire.Skat.Beregnere
 	/// Det er i disse skatter, der sker modregning af underskudsværdier (skatteværdier) 
 	/// af negativ skattepligtig indkomst, jf. PSL § 13, stk. 1 og 2.
 	/// </remarks>
-	public class SkatterAfPersonligIndkomst : IEquatable<SkatterAfPersonligIndkomst>, ISumable<decimal>
+	public class IndkomstSkatterAfPersonligIndkomst : IEquatable<IndkomstSkatterAfPersonligIndkomst>, ISumable<decimal>
 	{
-		public static readonly SkatterAfPersonligIndkomst Nul = new SkatterAfPersonligIndkomst();
+		public static readonly IndkomstSkatterAfPersonligIndkomst Nul = new IndkomstSkatterAfPersonligIndkomst();
 
-		public SkatterAfPersonligIndkomst()
+		public IndkomstSkatterAfPersonligIndkomst()
 		{
 		}
 
-		public SkatterAfPersonligIndkomst(decimal bundskat=0, decimal mellemskat=0, decimal topskat=0,
+		public IndkomstSkatterAfPersonligIndkomst(decimal bundskat=0, decimal mellemskat=0, decimal topskat=0,
 			decimal aktieindkomstskatUnderGrundbeloebet=0, decimal aktieindkomstskatOverGrundbeloebet=0)
 		{
 			Bundskat = bundskat;
@@ -112,10 +112,10 @@ namespace Maxfire.Skat.Beregnere
 
 		public override bool Equals(object obj)
 		{
-			return Equals(obj as SkatterAfPersonligIndkomst);
+			return Equals(obj as IndkomstSkatterAfPersonligIndkomst);
 		}
 
-		public bool Equals(SkatterAfPersonligIndkomst other)
+		public bool Equals(IndkomstSkatterAfPersonligIndkomst other)
 		{
 			if (other == null)
 			{
@@ -129,9 +129,9 @@ namespace Maxfire.Skat.Beregnere
 				AktieindkomstskatOverGrundbeloebet == other.AktieindkomstskatOverGrundbeloebet);
 		}
 
-		public static SkatterAfPersonligIndkomst operator +(SkatterAfPersonligIndkomst lhs, SkatterAfPersonligIndkomst rhs)
+		public static IndkomstSkatterAfPersonligIndkomst operator +(IndkomstSkatterAfPersonligIndkomst lhs, IndkomstSkatterAfPersonligIndkomst rhs)
 		{
-			return new SkatterAfPersonligIndkomst
+			return new IndkomstSkatterAfPersonligIndkomst
 			{
 				Bundskat = lhs.Bundskat + rhs.Bundskat,
 				Mellemskat = lhs.Mellemskat + rhs.Mellemskat,
@@ -141,9 +141,9 @@ namespace Maxfire.Skat.Beregnere
 			};
 		}
 
-		public static SkatterAfPersonligIndkomst operator -(SkatterAfPersonligIndkomst lhs, SkatterAfPersonligIndkomst rhs)
+		public static IndkomstSkatterAfPersonligIndkomst operator -(IndkomstSkatterAfPersonligIndkomst lhs, IndkomstSkatterAfPersonligIndkomst rhs)
 		{
-			return new SkatterAfPersonligIndkomst
+			return new IndkomstSkatterAfPersonligIndkomst
 			{
 				Bundskat = lhs.Bundskat - rhs.Bundskat,
 				Mellemskat = lhs.Mellemskat - rhs.Mellemskat,
@@ -153,9 +153,9 @@ namespace Maxfire.Skat.Beregnere
 			};
 		}
 
-		public static SkatterAfPersonligIndkomst operator *(decimal lhs, SkatterAfPersonligIndkomst rhs)
+		public static IndkomstSkatterAfPersonligIndkomst operator *(decimal lhs, IndkomstSkatterAfPersonligIndkomst rhs)
 		{
-			return new SkatterAfPersonligIndkomst
+			return new IndkomstSkatterAfPersonligIndkomst
 			{
 				Bundskat = lhs * rhs.Bundskat,
 				Mellemskat = lhs * rhs.Mellemskat,
@@ -165,7 +165,7 @@ namespace Maxfire.Skat.Beregnere
 			};
 		}
 
-		public static SkatterAfPersonligIndkomst operator *(SkatterAfPersonligIndkomst lhs, decimal rhs)
+		public static IndkomstSkatterAfPersonligIndkomst operator *(IndkomstSkatterAfPersonligIndkomst lhs, decimal rhs)
 		{
 			return rhs * lhs;
 		}

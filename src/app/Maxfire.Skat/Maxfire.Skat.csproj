@@ -106,13 +106,14 @@
     <Compile Include="Beregnere\SkatteModregner.cs" />
     <Compile Include="SelvangivneBeloeb.cs" />
     <Compile Include="IndkomstSkatter.cs" />
-    <Compile Include="Beregnere\SkatterAfPersonligIndkomst.cs" />
+    <Compile Include="IndkomstSkatterAfPersonligIndkomst.cs" />
     <Compile Include="Beregnere\SkatterAfSkattepligtigIndkomst.cs" />
     <Compile Include="Beregnere\SkatteUtility.cs" />
     <Compile Include="Beregnere\SundhedsbidragBeregner.cs" />
     <Compile Include="Beregnere\SkattepligtigIndkomstUnderskudBeregner.cs" />
     <Compile Include="Beregnere\SkattevaerdiOmregner.cs" />
     <Compile Include="Internal\TextValuePairCollection.cs" />
+    <Compile Include="SpecificeredeIndkomstSkatter.cs" />
     <Compile Include="ValueTuple.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Skatteberegner.cs" />

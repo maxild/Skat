@@ -56,7 +56,7 @@ namespace Maxfire.Skat.Beregnere
 		/// <returns>Resultatet</returns>
 		public ValueTuple<ModregnUnderskudResult> ModregningAfUnderskud(
 			IValueTuple<ISkattepligtigeIndkomsterModregning> indkomster, 
-			ValueTuple<SkatterAfPersonligIndkomst> skatter, 
+			ValueTuple<IndkomstSkatterAfPersonligIndkomst> skatter, 
 			IValueTuple<IKommunaleSatser> kommunaleSatser, 
 			int skatteAar)
 		{
@@ -91,7 +91,7 @@ namespace Maxfire.Skat.Beregnere
 
 		private ValueTuple<BeregnModregningerResult> modregnEgenOgAegtefaelleUnderskudOgUnderskudsvaerdi(
 			IValueTuple<ISkattepligtigeIndkomsterModregning> indkomster, 
-			ValueTuple<SkatterAfPersonligIndkomst> skatter, 
+			ValueTuple<IndkomstSkatterAfPersonligIndkomst> skatter, 
 			ValueTuple<decimal> underskud, 
 			IValueTuple<IKommunaleSatser> kommunaleSatser,
 			int skatteAar,
@@ -149,7 +149,7 @@ namespace Maxfire.Skat.Beregnere
 
 		private ValueTuple<BeregnModregningerResult> modregnUnderskudOgUnderskudsvaerdi(
 			ValueTuple<decimal> skattepligtigeIndkomster, 
-			ValueTuple<SkatterAfPersonligIndkomst> skatter, 
+			ValueTuple<IndkomstSkatterAfPersonligIndkomst> skatter, 
 			ValueTuple<decimal> underskud, 
 			IValueTuple<IKommunaleSatser> kommunaleSatser, 
 			int skatteAar) 
@@ -171,18 +171,18 @@ namespace Maxfire.Skat.Beregnere
 					underskud[index] - restunderskud[index]));
 		}
 
-		private static SkatteModregner<SkatterAfPersonligIndkomst> getSkattepligtigIndkomstUnderskudModregner()
+		private static SkatteModregner<IndkomstSkatterAfPersonligIndkomst> getSkattepligtigIndkomstUnderskudModregner()
 		{
-			return new SkatteModregner<SkatterAfPersonligIndkomst>(
-				Modregning<SkatterAfPersonligIndkomst>.Af(x => x.Bundskat),
-				Modregning<SkatterAfPersonligIndkomst>.Af(x => x.Mellemskat),
-				Modregning<SkatterAfPersonligIndkomst>.Af(x => x.Topskat),
-				Modregning<SkatterAfPersonligIndkomst>.Af(x => x.AktieindkomstskatOverGrundbeloebet)
+			return new SkatteModregner<IndkomstSkatterAfPersonligIndkomst>(
+				Modregning<IndkomstSkatterAfPersonligIndkomst>.Af(x => x.Bundskat),
+				Modregning<IndkomstSkatterAfPersonligIndkomst>.Af(x => x.Mellemskat),
+				Modregning<IndkomstSkatterAfPersonligIndkomst>.Af(x => x.Topskat),
+				Modregning<IndkomstSkatterAfPersonligIndkomst>.Af(x => x.AktieindkomstskatOverGrundbeloebet)
 			);
 		}
 
-		private static ValueTuple<ModregnSkatterResultEx<SkatterAfPersonligIndkomst>> modregnUnderskudsvaerdi(
-			ValueTuple<SkatterAfPersonligIndkomst> skatter,
+		private static ValueTuple<ModregnSkatterResultEx<IndkomstSkatterAfPersonligIndkomst>> modregnUnderskudsvaerdi(
+			ValueTuple<IndkomstSkatterAfPersonligIndkomst> skatter,
 			ValueTuple<decimal> underskud,
 			IValueTuple<SkattevaerdiOmregner> skattevaerdiOmregnere)
 		{

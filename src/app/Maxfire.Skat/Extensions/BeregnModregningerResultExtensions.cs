@@ -14,7 +14,7 @@ namespace Maxfire.Skat.Extensions
 		}
 		
 		public static ValueTuple<ModregnUnderskudResult> ToModregnResult(this ValueTuple<BeregnModregningerResult> beregnModregningerResults, 
-		                                                                 ValueTuple<SkatterAfPersonligIndkomst> skatter, ValueTuple<decimal> underskud)
+		                                                                 ValueTuple<IndkomstSkatterAfPersonligIndkomst> skatter, ValueTuple<decimal> underskud)
 		{
 			return beregnModregningerResults.Map((result, index) =>
 			                                     new ModregnUnderskudResult(underskud[index], result.ModregningUnderskud, result.ModregningUnderskudSkattepligtigIndkomst, skatter[index], result.ModregningSkatter));

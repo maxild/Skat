@@ -30,7 +30,7 @@ namespace Maxfire.Skat
 			AktieindkomstskatOverGrundbeloebet = aktieindkomstskatOverGrundbeloebet;
 		}
 
-		public IndkomstSkatter(SkatterAfPersonligIndkomst skatterAfPersonligIndkomst, SkatterAfSkattepligtigIndkomst skatterAfSkattepligtigIndkomst)
+		public IndkomstSkatter(IndkomstSkatterAfPersonligIndkomst skatterAfPersonligIndkomst, SkatterAfSkattepligtigIndkomst skatterAfSkattepligtigIndkomst)
 		{
 			Sundhedsbidrag = skatterAfSkattepligtigIndkomst.Sundhedsbidrag;
 			Kommuneskat = skatterAfSkattepligtigIndkomst.Kommuneskat;

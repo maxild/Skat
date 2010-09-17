@@ -4,7 +4,7 @@ namespace Maxfire.Skat.Beregnere
 {
 	public static class SkatteUtility
 	{
-		public static ValueTuple<IndkomstSkatter> CombineSkat(ValueTuple<SkatterAfPersonligIndkomst> skatterAfPersonligeIndkomster, ValueTuple<SkatterAfSkattepligtigIndkomst> skatterAfSkattepligtigeIndkomster)
+		public static ValueTuple<IndkomstSkatter> CombineSkat(ValueTuple<IndkomstSkatterAfPersonligIndkomst> skatterAfPersonligeIndkomster, ValueTuple<SkatterAfSkattepligtigIndkomst> skatterAfSkattepligtigeIndkomster)
 		{
 			return skatterAfPersonligeIndkomster.Size == 1 ?
 				new IndkomstSkatter(skatterAfPersonligeIndkomster[0], skatterAfSkattepligtigeIndkomster[0]).ToTuple() 
@@ -15,7 +15,7 @@ namespace Maxfire.Skat.Beregnere
 				);
 		}
 
-		public static ValueTuple<IndkomstSkatter> CombineSkat(ValueTuple<SkatterAfPersonligIndkomst> skatterAfPersonligeIndkomster)
+		public static ValueTuple<IndkomstSkatter> CombineSkat(ValueTuple<IndkomstSkatterAfPersonligIndkomst> skatterAfPersonligeIndkomster)
 		{
 			return skatterAfPersonligeIndkomster.Size == 1 ?
 				new IndkomstSkatter(skatterAfPersonligeIndkomster[0], SkatterAfSkattepligtigIndkomst.Nul).ToTuple()
@@ -26,15 +26,9 @@ namespace Maxfire.Skat.Beregnere
 				);
 		}
 
-		public static ValueTuple<IndkomstSkatter> CombineSkat(ValueTuple<SkatterAfSkattepligtigIndkomst> skatterAfSkattepligtigeIndkomster)
+		public static IndkomstSkatter CombineSkat(IndkomstSkatterAfPersonligIndkomst skatterAfPersonligIndkomst)
 		{
-			return skatterAfSkattepligtigeIndkomster.Size == 1 ?
-				new IndkomstSkatter(SkatterAfPersonligIndkomst.Nul, skatterAfSkattepligtigeIndkomster[0]).ToTuple()
-				:
-				new ValueTuple<IndkomstSkatter>(
-					new IndkomstSkatter(SkatterAfPersonligIndkomst.Nul, skatterAfSkattepligtigeIndkomster[0]),
-					new IndkomstSkatter(SkatterAfPersonligIndkomst.Nul, skatterAfSkattepligtigeIndkomster[1])
-				);
+			return new IndkomstSkatter(skatterAfPersonligIndkomst, SkatterAfSkattepligtigIndkomst.Nul);
 		}
 	}
 }

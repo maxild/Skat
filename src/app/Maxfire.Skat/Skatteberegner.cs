@@ -43,7 +43,7 @@ namespace Maxfire.Skat
 			var skattepligtigIndkomstUnderskudBeregner = new SkattepligtigIndkomstUnderskudBeregner(_skattelovRegistry);
 			var modregnResults = skattepligtigIndkomstUnderskudBeregner.ModregningAfUnderskud(indkomster, skatterAfPersonligIndkomst, kommunaleSatser, skatteAar);
 			var skatterAfPersonligIndkomstEfterModregningAfUnderskud = modregnResults.Map(x => x.ModregnedeSkatter);
-			var underskudSkattepligtigIndkomst = SkatteUtility.CombineSkat(modregnResults.Map(x => x.ModregningSkatter));
+			var underskudSkattepligtigIndkomst = modregnResults.Map(x => x.ModregningSkatter);
 
 			// Beregn sundhedsbidrag samt kommuneskat og kirkeskat
 			var skatterAfSkattepligtigIndkomstBeregner = new SkatterAfSkattepligtigIndkomstBeregner(_skattelovRegistry);
