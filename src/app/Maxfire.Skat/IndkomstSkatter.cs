@@ -226,5 +226,20 @@ namespace Maxfire.Skat
 		{
 			return rhs * lhs;
 		}
+
+		public static IndkomstSkatter operator -(IndkomstSkatter operand)
+		{
+			return new IndkomstSkatter
+			{
+				Kirkeskat = -operand.Kirkeskat,
+				Kommuneskat = -operand.Kommuneskat,
+				Sundhedsbidrag = -operand.Sundhedsbidrag,
+				Bundskat = -operand.Bundskat,
+				Mellemskat = -operand.Mellemskat,
+				Topskat = -operand.Topskat,
+				AktieindkomstskatUnderGrundbeloebet = -operand.AktieindkomstskatUnderGrundbeloebet,
+				AktieindkomstskatOverGrundbeloebet = -operand.AktieindkomstskatOverGrundbeloebet
+			};
+		}
 	}
 }

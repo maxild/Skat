@@ -114,5 +114,15 @@ namespace Maxfire.Skat.Beregnere
 		{
 			return rhs * lhs;
 		}
+
+		public static SkatterAfSkattepligtigIndkomst operator -(SkatterAfSkattepligtigIndkomst operand)
+		{
+			return new SkatterAfSkattepligtigIndkomst
+			{
+				Kirkeskat = -operand.Kirkeskat,
+				Kommuneskat = -operand.Kommuneskat,
+				Sundhedsbidrag = -operand.Sundhedsbidrag
+			};
+		}
 	}
 }

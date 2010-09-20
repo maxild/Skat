@@ -169,5 +169,17 @@ namespace Maxfire.Skat
 		{
 			return rhs * lhs;
 		}
+
+		public static IndkomstSkatterAfPersonligIndkomst operator -(IndkomstSkatterAfPersonligIndkomst operand)
+		{
+			return new IndkomstSkatterAfPersonligIndkomst
+			{
+				Bundskat = -operand.Bundskat,
+				Mellemskat = -operand.Mellemskat,
+				Topskat = -operand.Topskat,
+				AktieindkomstskatUnderGrundbeloebet = -operand.AktieindkomstskatUnderGrundbeloebet,
+				AktieindkomstskatOverGrundbeloebet = -operand.AktieindkomstskatOverGrundbeloebet
+			};
+		}
 	}
 }
