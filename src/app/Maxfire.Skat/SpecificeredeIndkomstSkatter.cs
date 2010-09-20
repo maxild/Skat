@@ -2,15 +2,16 @@
 
 namespace Maxfire.Skat
 {
-	// TODO: Skatteloft nedslag i topskatten
-	public class SpecificeredeIndkomstSkatter
+	public class SpecificeredeIndkomstSkatter : ISumable<decimal>
 	{
 		public SpecificeredeIndkomstSkatter(
-			IndkomstSkatter brutto, 
+			IndkomstSkatter brutto,
+			decimal skatteloftNedslag,
 			IndkomstSkatterAfPersonligIndkomst underskudSkattepligtigIndkomst, 
 			IndkomstSkatter personfradrag)
 		{
 			Brutto = brutto;
+			SkatteloftNedslag = skatteloftNedslag;
 			UnderskudSkattepligtigIndkomst = underskudSkattepligtigIndkomst;
 			Personfradrag = personfradrag;
 		}
@@ -31,13 +32,28 @@ namespace Maxfire.Skat
 		public IndkomstSkatter Personfradrag { get; private set; }
 
 		/// <summary>
+		/// Nedslag i topskatten som følge af (det skrå) skatteloft.
+		/// </summary>
+		public decimal SkatteloftNedslag { get; private set; }
+		
+		/// <summary>
 		/// Skatter i alt, dvs. indkomstskatterne efter diverse nedslag (modregninger, personfradrag mv.).
 		/// </summary>
 		// TODO: Rename to IAlt???
 		public IndkomstSkatter Netto
 		{
-			// TODO: Skatteloft: - new IndkomstSkatter(topskat: skatteloft);
-			get { return Brutto - SkatteUtility.CombineSkat(UnderskudSkattepligtigIndkomst) - Personfradrag; }
+			get
+			{
+				return Brutto 
+					- SkatteUtility.CombineSkat(UnderskudSkattepligtigIndkomst) 
+					- new IndkomstSkatter(topskat: SkatteloftNedslag) 
+					- Personfradrag;
+			}
+		}
+
+		public decimal Sum()
+		{
+			return Netto.Sum();
 		}
 	}
 }

@@ -104,8 +104,8 @@ namespace Maxfire.Skat.UnitTests
 			var topskatBeregner = new TopskatBeregner(_skattelovRegistry);
 			var topskat = topskatBeregner.BeregnSkat(indkomster, SKATTE_AAR, getKommunaleSatserForGifte());
 
-			topskat[0].ShouldEqual(7395);
-			topskat[1].ShouldEqual(2775);
+			topskat[0].Topskat.ShouldEqual(7395);
+			topskat[1].Topskat.ShouldEqual(2775);
 		}
 
 		[Fact]

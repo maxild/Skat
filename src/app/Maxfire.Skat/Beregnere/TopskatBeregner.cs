@@ -65,7 +65,7 @@ namespace Maxfire.Skat.Beregnere
 			_skattelovRegistry = skattelovRegistry;
 		}
 
-		public ValueTuple<decimal> BeregnSkat(
+		public ValueTuple<TopskatResult> BeregnSkat(
 			IValueTuple<IPersonligeIndkomster> indkomster, 
 			int skatteAar, 
 			IValueTuple<IKommunaleSatser> kommunaleSatser = null)
@@ -73,9 +73,17 @@ namespace Maxfire.Skat.Beregnere
 			decimal topskatBundfradrag = _skattelovRegistry.GetTopskatBundfradrag(skatteAar);
 			decimal positivNettoKapitalIndkomstGrundbeloeb = _skattelovRegistry.GetPositivNettoKapitalIndkomstGrundbeloeb(skatteAar);
 
-			var topskatteGrundlag = BeregnGrundlag(indkomster, topskatBundfradrag, positivNettoKapitalIndkomstGrundbeloeb);
+			var grundlagUdenPositivNettoKapitalIndkomst 
+				= BeregnGrundlagUdenPositivNettoKapitalIndkomst(indkomster, topskatBundfradrag);
+			var grundlagAfPositivNettoKapitalIndkomst 
+				= BeregnGrundlagAfPositivNettoKapitalIndkomst(indkomster, topskatBundfradrag, positivNettoKapitalIndkomstGrundbeloeb);
 
-			return beregnSkatUnderSkatteloft(topskatteGrundlag, kommunaleSatser, skatteAar);
+			return grundlagUdenPositivNettoKapitalIndkomst.Map((grundlagAfPersonligIndkomst, index) =>
+				new TopskatResult(_skattelovRegistry, 
+								  skatteAar,
+								  kommunaleSatser != null ? kommunaleSatser[index] : null,
+								  grundlagAfPersonligIndkomst,
+								  grundlagAfPositivNettoKapitalIndkomst[index]));
 		}
 
 
@@ -151,13 +159,13 @@ namespace Maxfire.Skat.Beregnere
 			IValueTuple<IPersonligeIndkomster> indkomster, 
 			decimal topskatBundfradrag, 
 			decimal positivNettoKapitalIndkomstGrundbeloeb, 
-			Func<int, ValueTuple<decimal>, 
-			ValueTuple<decimal>> fordelingsnoegleProvider)
+			Func<int, ValueTuple<decimal>, ValueTuple<decimal>> fordelingsnoegleProvider)
 		{
 			var nettoKapitalIndkomst = indkomster.Map(x => x.NettoKapitalIndkomstSkattegrundlag);
 			var nettoKapitalIndkomstTilBeskatning = nettoKapitalIndkomst.NedbringPositivtMedEvtNegativt();
 
-			var samletNettoKapitalIndkomstTilBeskatning = nettoKapitalIndkomstTilBeskatning.Sum() - indkomster.Size * positivNettoKapitalIndkomstGrundbeloeb;
+			var samletNettoKapitalIndkomstTilBeskatning 
+				= nettoKapitalIndkomstTilBeskatning.Sum() - indkomster.Size * positivNettoKapitalIndkomstGrundbeloeb;
 
 			if (samletNettoKapitalIndkomstTilBeskatning <= 0)
 			{
@@ -201,32 +209,6 @@ namespace Maxfire.Skat.Beregnere
 				indexOfMaxGrundlag = indkomster[0].LigningsmaessigtFradrag > indkomster[1].LigningsmaessigtFradrag ? 0 : 1;
 			}
 			return indexOfMaxGrundlag;
-		}
-
-		private ValueTuple<decimal> beregnSkatUnderSkatteloft(
-			ValueTuple<decimal> grundlag, 
-			IValueTuple<IKommunaleSatser> kommunaleSatser, 
-			int skatteAar)
-		{
-			decimal bundskattesats = _skattelovRegistry.GetBundSkattesats(skatteAar);
-			decimal mellemskattesats = _skattelovRegistry.GetMellemSkattesats(skatteAar);
-			decimal topskattesats = _skattelovRegistry.GetTopSkattesats(skatteAar);
-			decimal sundhedsbidragsats = _skattelovRegistry.GetSundhedsbidragSkattesats(skatteAar);
-			var kommunaleskattesatser = kommunaleSatser != null ? 
-				kommunaleSatser.Map(x => x.Kommuneskattesats) : 
-				0.0m.ToTupleOfSize(grundlag.Size);
-
-			decimal fastsats = bundskattesats + mellemskattesats + topskattesats + sundhedsbidragsats;
-			var skattesatser = fastsats + kommunaleskattesatser;
-
-			decimal skatteloftsats = _skattelovRegistry.GetSkatteloftSkattesats(skatteAar);
-			var nedslagssatsen = +(skattesatser - skatteloftsats);
-
-			var topskattesatsen = +(topskattesats - nedslagssatsen);
-
-			var topskat = topskattesatsen * grundlag;
-
-			return topskat.RoundMoney();
 		}
 	}
 }

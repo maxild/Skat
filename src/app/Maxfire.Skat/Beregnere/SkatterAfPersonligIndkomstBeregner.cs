@@ -16,6 +16,15 @@ namespace Maxfire.Skat.Beregnere
 			IValueTuple<IKommunaleSatser> kommunaleSatser, 
 			int skatteAar)
 		{
+			var skatterAfPersonligIndkomstResults = BeregnSkatResult(indkomster, kommunaleSatser, skatteAar);
+			return skatterAfPersonligIndkomstResults.Map(x => x.SkatterAfPersonligIndkomst);
+		}
+
+		public ValueTuple<SkatterAfPersonligIndkomstResult> BeregnSkatResult(
+			IValueTuple<IPersonligeIndkomster> indkomster,
+			IValueTuple<IKommunaleSatser> kommunaleSatser,
+			int skatteAar)
+		{
 			var bundskatBeregner = new BundskatBeregner(_skattelovRegistry);
 			var bundskat = bundskatBeregner.BeregnSkat(indkomster, skatteAar);
 
@@ -23,7 +32,7 @@ namespace Maxfire.Skat.Beregnere
 			var mellemskat = mellemskatBeregner.BeregnSkat(indkomster, skatteAar);
 
 			var topskatBeregner = new TopskatBeregner(_skattelovRegistry);
-			var topskat = topskatBeregner.BeregnSkat(indkomster, skatteAar, kommunaleSatser);
+			var topskatResults = topskatBeregner.BeregnSkat(indkomster, skatteAar, kommunaleSatser);
 
 			var aktieindkomstskatLavesteTrinBeregner = new AktieindkomstskatLavesteTrinBeregner(_skattelovRegistry);
 			var aktieindkomstskatLavesteTrin = aktieindkomstskatLavesteTrinBeregner.BeregnSkat(indkomster, skatteAar);
@@ -35,9 +44,14 @@ namespace Maxfire.Skat.Beregnere
 			var aktieindkomstskatHoejesteTrin = aktieindkomstskatHoejesteTrinBeregner.BeregnSkat(indkomster, skatteAar);
 
 			return bundskat.MapByIndex(index =>
-					new IndkomstSkatterAfPersonligIndkomst(bundskat[index], mellemskat[index], topskat[index],
-					                               aktieindkomstskatLavesteTrin[index],
-					                               aktieindkomstskatMellemsteTrin[index] + aktieindkomstskatHoejesteTrin[index]));
+				new SkatterAfPersonligIndkomstResult(
+					new IndkomstSkatterAfPersonligIndkomst(
+						bundskat[index],
+						mellemskat[index],
+						topskatResults[index].Topskat,
+						aktieindkomstskatLavesteTrin[index],
+						aktieindkomstskatMellemsteTrin[index] + aktieindkomstskatHoejesteTrin[index]),
+					topskatResults[index]));
 		}
 	}
 }

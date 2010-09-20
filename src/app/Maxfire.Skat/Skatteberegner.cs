@@ -37,7 +37,9 @@ namespace Maxfire.Skat
 
 			// Beregn bundskat, mellemskat og topskat samt aktieskat
 			var skatterAfPersonligIndkomstBeregner = new SkatterAfPersonligIndkomstBeregner(_skattelovRegistry);
-			var skatterAfPersonligIndkomst = skatterAfPersonligIndkomstBeregner.BeregnSkat(indkomster, kommunaleSatser, skatteAar);
+			var skatterAfPersonligIndkomstResults = skatterAfPersonligIndkomstBeregner.BeregnSkatResult(indkomster, kommunaleSatser, skatteAar);
+			var skatterAfPersonligIndkomst = skatterAfPersonligIndkomstResults.Map(x => x.SkatterAfPersonligIndkomst);
+			var topskatResults = skatterAfPersonligIndkomstResults.Map(x => x.TopskatResult);
 
 			// Modregning af negativ skattepligtig indkomst
 			var skattepligtigIndkomstUnderskudBeregner = new SkattepligtigIndkomstUnderskudBeregner(_skattelovRegistry);
@@ -60,6 +62,9 @@ namespace Maxfire.Skat
 								specificeredeSkatteydere, skatterEfterModregningAfUnderskud, kommunaleSatser, skatteAar);
 			var personfradrag = modregnPersonfradragResults.Map(x => x.UdnyttedeSkattevaerdier);
 
+			// Nedbring topskat med skatteloft
+			var skatteloftNedslag = topskatResults.Map(x => x.SkatteloftNedslag);
+
 			//
 			// 9: Bestem nedslaget i (forårspakke 2.0)
 			//
@@ -73,7 +78,8 @@ namespace Maxfire.Skat
 			//
 			
 			var indkomstSkatter = skatterFoerNedslag.Map((skatter, index) => 
-				new SpecificeredeIndkomstSkatter(skatter, underskudSkattepligtigIndkomst[index], personfradrag[index]));
+				new SpecificeredeIndkomstSkatter(skatter, skatteloftNedslag[index], 
+					underskudSkattepligtigIndkomst[index], personfradrag[index]));
 
 			return specificeredeSkatteydere.Map((skatteyder, index) => 
 				new SkatteberegningResult(skatteyder, indkomster[index], indkomstSkatter[index]));

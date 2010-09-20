@@ -66,7 +66,9 @@ namespace Maxfire.Skat.UnitTests
 			var topskat = _topskatBeregner.BeregnSkat(indkomster, 2009);
 
 			// 15 pct af (336000 + 32000 + 28500 - 347200)
-			topskat[0].ShouldEqual(7395);
+			topskat[0].Topskat.ShouldEqual(7395);
+			topskat[0].SkatteloftNedslag.ShouldEqual(0);
+			topskat[0].TopskatEfterNedslag.ShouldEqual(7395);
 		}
 
 		[Fact]
@@ -90,11 +92,13 @@ namespace Maxfire.Skat.UnitTests
 			var topskat = _topskatBeregner.BeregnSkat(indkomster, 2009, kommunaleSatser);
 
 			// (15 pct - 5,04 pct) af (336000 + 32000 + 28500 - 347200)
-			topskat[0].ShouldEqual(4910.28m);
+			topskat[0].Topskat.ShouldEqual(7395);
+			topskat[0].SkatteloftNedslag.ShouldEqual(2484.72m);
+			topskat[0].TopskatEfterNedslag.ShouldEqual(4910.28m);
 		}
 
 		[Fact]
-		public void UdenSkatteloft_Gift()
+		public void MedSkatteloft_Gift()
 		{
 			var indkomster = new ValueTuple<IPersonligeIndkomster>(
 				new FakePersonligeIndkomster
@@ -123,13 +127,18 @@ namespace Maxfire.Skat.UnitTests
 			var topskat = _topskatBeregner.BeregnSkat(indkomster, 2009, kommunaleSatser);
 
 			// (15 pct - 5,04 pct) af (336000 + 32000 + 28500 - 347200), idet uudnyttet bundfradrag ikke kan overføres til ægtefælle
-			topskat[0].ShouldEqual(4910.28m);
+			topskat[0].Topskat.ShouldEqual(7395);
+			topskat[0].SkatteloftNedslag.ShouldEqual(2484.72m);
+			topskat[0].TopskatEfterNedslag.ShouldEqual(4910.28m);
+			//topskat[0].SkatteloftNedslag.ShouldEqual(0);
 			// (15 pct - 3,04 pct) af 18500, idet nettokapitalindkomst beskattes hos den med størst grundlag
-			topskat[1].ShouldEqual(2212.60m);
+			topskat[1].Topskat.ShouldEqual(2775);
+			topskat[1].SkatteloftNedslag.ShouldEqual(562.40m);
+			topskat[1].TopskatEfterNedslag.ShouldEqual(2212.60m);
 		}
 
 		[Fact]
-		public void MedSkatteloft_Gift()
+		public void UdenSkatteloft_Gift()
 		{
 			var indkomster = new ValueTuple<IPersonligeIndkomster>(
 				new FakePersonligeIndkomster
@@ -147,8 +156,12 @@ namespace Maxfire.Skat.UnitTests
 
 			var topskat = _topskatBeregner.BeregnSkat(indkomster, 2009);
 
-			topskat[0].ShouldEqual(7395);
-			topskat[1].ShouldEqual(2775);
+			topskat[0].Topskat.ShouldEqual(7395);
+			topskat[0].SkatteloftNedslag.ShouldEqual(0);
+			topskat[0].TopskatEfterNedslag.ShouldEqual(7395);
+			topskat[1].Topskat.ShouldEqual(2775);
+			topskat[1].SkatteloftNedslag.ShouldEqual(0);
+			topskat[1].TopskatEfterNedslag.ShouldEqual(2775);
 		}
 	}
 }
