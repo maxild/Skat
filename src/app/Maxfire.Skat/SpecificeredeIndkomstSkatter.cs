@@ -22,7 +22,7 @@ namespace Maxfire.Skat
 		public IndkomstSkatter Brutto { get; private set; }
 
 		/// <summary>
-		/// Modregnet skatteværdi af underskud i skattepligtig indkomst.
+		/// Modregnet skatteværdi af underskud i skattepligtig indkomst (negativt beløb såfremt modregninger finder sted).
 		/// </summary>
 		public IndkomstSkatterAfPersonligIndkomst UnderskudSkattepligtigIndkomst { get; private set; }
 
@@ -32,7 +32,7 @@ namespace Maxfire.Skat
 		public IndkomstSkatter Personfradrag { get; private set; }
 
 		/// <summary>
-		/// Nedslag i topskatten som følge af (det skrå) skatteloft.
+		/// Nedslag i topskatten som følge af (det skrå) skatteloft (negativt beløb såfremt skatteloft udnyttes).
 		/// </summary>
 		public decimal SkatteloftNedslag { get; private set; }
 		
@@ -45,9 +45,9 @@ namespace Maxfire.Skat
 			get
 			{
 				return Brutto 
-					- SkatteUtility.CombineSkat(UnderskudSkattepligtigIndkomst) 
-					- new IndkomstSkatter(topskat: SkatteloftNedslag) 
-					- Personfradrag;
+					+ SkatteUtility.CombineSkat(UnderskudSkattepligtigIndkomst) 
+					+ new IndkomstSkatter(topskat: SkatteloftNedslag) 
+					+ Personfradrag;
 			}
 		}
 
