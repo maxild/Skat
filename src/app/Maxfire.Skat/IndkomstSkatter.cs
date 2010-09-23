@@ -16,9 +16,9 @@ namespace Maxfire.Skat
 		{
 		}
 
-		public IndkomstSkatter(decimal sundhedsbidrag = 0, decimal kommuneskat = 0, decimal kirkeskat = 0, 
-			decimal bundskat = 0, decimal mellemskat = 0, decimal topskat = 0, 
-			decimal aktieindkomstskatUnderGrundbeloebet = 0, decimal aktieindkomstskatOverGrundbeloebet = 0)
+		public IndkomstSkatter(decimal sundhedsbidrag = 0m, decimal kommuneskat = 0m, decimal kirkeskat = 0m, 
+			decimal bundskat = 0m, decimal mellemskat = 0m, decimal topskat = 0m, 
+			decimal aktieindkomstskatUnderGrundbeloebet = 0m, decimal aktieindkomstskatOverGrundbeloebet = 0m)
 		{
 			Sundhedsbidrag = sundhedsbidrag;
 			Kommuneskat = kommuneskat;
