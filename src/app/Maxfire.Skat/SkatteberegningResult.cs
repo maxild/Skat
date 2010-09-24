@@ -7,14 +7,18 @@ namespace Maxfire.Skat
 	public class SkatteberegningResult
 	{
 		public SkatteberegningResult(
+			int skatteAar,
 			ISpecificeredeSkatteyder skatteyder,
 			ISpecificeredeSkatteIndkomster indkomster, 
 			SpecificeredeIndkomstSkatter indkomstSkatter)
 		{
+			SkatteAar = skatteAar;
 			Skatteyder = skatteyder;
 			Indkomster = indkomster;
 			IndkomstSkatter = indkomstSkatter;
 		}
+
+		public int SkatteAar { get; private set; }
 
 		/// <summary>
 		/// Personoplysninger om skatteyderen.

@@ -82,7 +82,7 @@ namespace Maxfire.Skat
 					underskudSkattepligtigIndkomst[index], personfradrag[index]));
 
 			return specificeredeSkatteydere.Map((skatteyder, index) => 
-				new SkatteberegningResult(skatteyder, indkomster[index], indkomstSkatter[index]));
+				new SkatteberegningResult(skatteAar, skatteyder, indkomster[index], indkomstSkatter[index]));
 		}
 
 		private static ISpecficeredeKommunaleSatser makeSpecificerede(IKommunaleSatser kommunaleSatser)
