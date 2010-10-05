@@ -19,16 +19,16 @@ namespace Maxfire.Skat
 	/// </summary>
 	public class ValueTuple<T> : IValueTuple<T>, IEquatable<IValueTuple<T>>
 	{
-		private readonly IList<T> _list;
+		private readonly T[] _list;
 
 		public ValueTuple(T first)
 		{
-			_list = new List<T> { first };
+			_list = new [] { first };
 		}
 
 		public ValueTuple(T first, T second)
 		{
-			_list = new List<T> { first, second };
+			_list = new [] { first, second };
 		}
 
 		public ValueTuple(int size, Func<T> creator)
@@ -37,17 +37,18 @@ namespace Maxfire.Skat
 			{
 				throw new ArgumentException("A ValueTuple must contain either one or two elements");
 			}
-			_list = new List<T>(size);
+			_list = new T[size];
 			for (int i = 0; i < size; i++)
 			{
-				_list.Add(creator());
+				_list[i] = creator();
 			}
 		}
 
-		public ValueTuple(IList<T> list)
+		public ValueTuple(IEnumerable<T> collection)
 		{
-			list.ThrowIfNull("list");
-			if (list.Count != 1 && list.Count != 2)
+			collection.ThrowIfNull("list");
+			var list = collection.ToArray();
+			if (list.Length != 1 && list.Length != 2)
 			{
 				throw new ArgumentException("A ValueTuple must contain either one or two elements");
 			}
@@ -116,7 +117,7 @@ namespace Maxfire.Skat
 
 		public int Size
 		{
-			get { return _list.Count; }
+			get { return _list.Length; }
 		}
 
 		public bool AllZero()
@@ -162,7 +163,7 @@ namespace Maxfire.Skat
 
 		public IEnumerator<T> GetEnumerator()
 		{
-			return _list.GetEnumerator();
+			return _list.OfType<T>().GetEnumerator();
 		}
 
 		IEnumerator IEnumerable.GetEnumerator()
