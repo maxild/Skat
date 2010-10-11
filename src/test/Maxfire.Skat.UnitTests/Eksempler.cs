@@ -2125,7 +2125,7 @@ namespace Maxfire.Skat.UnitTests
 
 		private static ISkatteyder getPerson()
 		{
-			return new Skatteyder(new DateTime(1970, 6, 3), medlemAfFolkekirken: true);
+			return new Skatteyder(new DateTime(1970, 6, 3), MedlemAfFolkekirken.Ja);
 		}
 
 		private static ValueTuple<ISkatteyder> getPersonerForUgift()

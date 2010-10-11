@@ -11,7 +11,7 @@ namespace Maxfire.Skat.UnitTests
 		public void BeregnSkat()
 		{
 			var skatteydere = new ValueTuple<ISkatteyder>(
-				new Skatteyder(new DateTime(1970, 6, 3), medlemAfFolkekirken: true)
+				new Skatteyder(new DateTime(1970, 6, 3), MedlemAfFolkekirken.Ja)
 			);
 
 			var indkomster = new ValueTuple<ISkattepligtigeIndkomster>(
@@ -40,7 +40,7 @@ namespace Maxfire.Skat.UnitTests
 		public void BeregnNulSkat()
 		{
 			var skatteydere = new ValueTuple<ISkatteyder>(
-				new Skatteyder(new DateTime(1970, 6, 3), medlemAfFolkekirken: false)
+				new Skatteyder(new DateTime(1970, 6, 3), MedlemAfFolkekirken.Nej)
 			);
 
 			var indkomster = new ValueTuple<ISkattepligtigeIndkomster>(

@@ -40,7 +40,7 @@ namespace Maxfire.Skat.Beregnere
 			
 			// TODO: Maksimalt 2 børn pr husstand eller voksen???? men hvilke børn tæller ikke hos hvilken person/voksen
 			var fuldKompensation = kompensationPrVoksen.ToTupleOfSize(skatteydere.Size) 
-				+ skatteydere.Map(p => p.AntalBoern * kompensationPrBarn);
+				+ skatteydere.Map(p => (int)p.AntalBoern * kompensationPrBarn);
 
 			var fuldAftrapning = BeregnAftrapning(indkomster, skatteAar);
 

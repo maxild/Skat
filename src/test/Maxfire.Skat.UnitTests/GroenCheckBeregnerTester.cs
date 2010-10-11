@@ -104,7 +104,7 @@ namespace Maxfire.Skat.UnitTests
 		{
 			const int skatteAar = 2010;
 			var beregner = new TestableGroenCheckBeregner(new FakeSkattelovRegistry(), () => 0);
-			var skatteydere = new Skatteyder(new DateTime(1970, 6, 3), medlemAfFolkekirken: false, antalBoern: 1).ToTuple<ISkatteyder>();
+			var skatteydere = new Skatteyder(new DateTime(1970, 6, 3), MedlemAfFolkekirken.Nej, AntalBoern.Et).ToTuple<ISkatteyder>();
 			var indkomster = new FakePersonligeIndkomster().ToTuple();
 
 			var aftrapning = beregner.BeregnKompensation(skatteydere, indkomster, skatteAar);
@@ -112,12 +112,11 @@ namespace Maxfire.Skat.UnitTests
 			aftrapning[0].ShouldEqual(1600);
 		}
 
-		[Fact]
 		public void DelvisKompensation()
 		{
 			const int skatteAar = 2010;
 			var beregner = new TestableGroenCheckBeregner(new FakeSkattelovRegistry(), () => 1000);
-			var skatteydere = new Skatteyder(new DateTime(1970, 6, 3), medlemAfFolkekirken: false, antalBoern: 1).ToTuple<ISkatteyder>();
+			var skatteydere = new Skatteyder(new DateTime(1970, 6, 3), MedlemAfFolkekirken.Nej, AntalBoern.Et).ToTuple<ISkatteyder>();
 			var indkomster = new FakePersonligeIndkomster().ToTuple();
 
 			var aftrapning = beregner.BeregnKompensation(skatteydere, indkomster, skatteAar);

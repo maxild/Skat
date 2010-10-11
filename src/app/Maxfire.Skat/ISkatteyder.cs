@@ -4,8 +4,8 @@ namespace Maxfire.Skat
 {
 	public interface ISkatteyder
 	{
-		bool MedlemAfFolkekirken { get; }
+		MedlemAfFolkekirken MedlemAfFolkekirken { get; }
 		DateTime Foedselsdato { get; }
-		int AntalBoern { get; }
+		AntalBoern AntalBoern { get; }
 	}
 }

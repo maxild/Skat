@@ -35,6 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AntalBoern.cs" />
     <Compile Include="Beloeb.cs" />
     <Compile Include="Beregnere\SkatterAfPersonligIndkomstResult.cs" />
     <Compile Include="Beregnere\TopskatResult.cs" />
@@ -42,6 +43,7 @@
     <Compile Include="Internal\BeloebCollection.cs" />
     <Compile Include="Beregnere\AktieindkomstSkatBeregnere.cs" />
     <Compile Include="Beregnere\AMBidragBeregner.cs" />
+    <Compile Include="MedlemAfFolkekirken.cs" />
     <Compile Include="Obsolete\Beloebsgraenser.cs" />
     <Compile Include="Beregnere\IArbejdsmarkedIndkomster.cs" />
     <Compile Include="Beregnere\IPersonligeIndkomsterModregning.cs" />

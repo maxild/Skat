@@ -36,7 +36,7 @@ namespace Maxfire.Skat.UnitTests
 		[Fact]
 		public void BeregnSkattevaerdierAfPersonfradrag()
 		{
-			var skatteydere = new ValueTuple<ISkatteyder>(new Skatteyder(new DateTime(1970, 6, 3), medlemAfFolkekirken: true));
+			var skatteydere = new ValueTuple<ISkatteyder>(new Skatteyder(new DateTime(1970, 6, 3), MedlemAfFolkekirken.Ja));
 
 			var kommunaleSatser = new ValueTuple<IKommunaleSatser>(
 				new KommunaleSatser
@@ -56,7 +56,7 @@ namespace Maxfire.Skat.UnitTests
 		[Fact]
 		public void BeregnSkattevaerdierAfPersonfradragIkkeMedlemAfFolkekirken()
 		{
-			var skatteydere = new ValueTuple<ISkatteyder>(new Skatteyder(new DateTime(1970, 6, 3), medlemAfFolkekirken: false));
+			var skatteydere = new ValueTuple<ISkatteyder>(new Skatteyder(new DateTime(1970, 6, 3), MedlemAfFolkekirken.Nej));
 
 			var kommunaleSatser = new ValueTuple<IKommunaleSatser>(
 				new KommunaleSatser
@@ -78,7 +78,7 @@ namespace Maxfire.Skat.UnitTests
 		{
 			var skatter = new ValueTuple<IndkomstSkatter>(new IndkomstSkatter(sundhedsbidrag: 100, kommuneskat: 500, bundskat: 200, kirkeskat: 50));
 
-			var skatteydere = new ValueTuple<ISkatteyder>(new Skatteyder(new DateTime(1970, 6, 3), medlemAfFolkekirken: true));
+			var skatteydere = new ValueTuple<ISkatteyder>(new Skatteyder(new DateTime(1970, 6, 3), MedlemAfFolkekirken.Ja));
 
 			var kommunaleSatser = new ValueTuple<IKommunaleSatser>(
 				new KommunaleSatser
@@ -114,7 +114,7 @@ namespace Maxfire.Skat.UnitTests
 			var skatter = new ValueTuple<IndkomstSkatter>(new IndkomstSkatter(sundhedsbidrag: 5, kommuneskat: 500, bundskat: 200, kirkeskat: 50));
 
 			var skatteydere = new ValueTuple<ISkatteyder>(
-				new Skatteyder(new DateTime(1970, 6, 3), medlemAfFolkekirken: true));
+				new Skatteyder(new DateTime(1970, 6, 3), MedlemAfFolkekirken.Ja));
 
 			var kommunaleSatser = new ValueTuple<IKommunaleSatser>(
 				new KommunaleSatser
@@ -138,7 +138,7 @@ namespace Maxfire.Skat.UnitTests
 		{
 			var skatter = new ValueTuple<IndkomstSkatter>(new IndkomstSkatter(sundhedsbidrag: 5, kommuneskat: 20, bundskat: 2));
 
-			var skatteydere = new ValueTuple<ISkatteyder>(new Skatteyder(new DateTime(1970, 6, 3), medlemAfFolkekirken: true));
+			var skatteydere = new ValueTuple<ISkatteyder>(new Skatteyder(new DateTime(1970, 6, 3), MedlemAfFolkekirken.Ja));
 
 			var kommunaleSatser = new ValueTuple<IKommunaleSatser>(
 				new KommunaleSatser
@@ -171,8 +171,8 @@ namespace Maxfire.Skat.UnitTests
 				new IndkomstSkatter(sundhedsbidrag: 100, kommuneskat: 500, bundskat: 200));
 
 			var skatteydere = new ValueTuple<ISkatteyder>(
-				new Skatteyder(new DateTime(1970, 6, 3), medlemAfFolkekirken: true),
-				new Skatteyder(new DateTime(1970, 6, 3), medlemAfFolkekirken: false));
+				new Skatteyder(new DateTime(1970, 6, 3), MedlemAfFolkekirken.Ja),
+				new Skatteyder(new DateTime(1970, 6, 3), MedlemAfFolkekirken.Nej));
 
 			var kommunaleSatser = new KommunaleSatser
 			                      	{

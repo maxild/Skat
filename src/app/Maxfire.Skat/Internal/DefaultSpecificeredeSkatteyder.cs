@@ -18,7 +18,7 @@ namespace Maxfire.Skat.Internal
 			Civilstand = gift ? Civilstand.Gift : Civilstand.Ugift;
 		}
 
-		public bool MedlemAfFolkekirken
+		public MedlemAfFolkekirken MedlemAfFolkekirken
 		{
 			get { return _skatteyder.MedlemAfFolkekirken; }
 		}
@@ -28,7 +28,7 @@ namespace Maxfire.Skat.Internal
 			get { return _skatteyder.Foedselsdato; }
 		}
 
-		public int AntalBoern
+		public AntalBoern AntalBoern
 		{
 			get { return _skatteyder.AntalBoern; }
 		}

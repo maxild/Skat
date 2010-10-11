@@ -77,7 +77,7 @@ namespace Maxfire.Skat.UnitTests
 			const decimal loen = 400000;
 			var skattelovRegistry = new FakeSkattelovRegistry();
 
-			_personer = new ValueTuple<ISkatteyder>(new Skatteyder(new DateTime(1970, 6, 3), medlemAfFolkekirken: false));
+			_personer = new ValueTuple<ISkatteyder>(new Skatteyder(new DateTime(1970, 6, 3), MedlemAfFolkekirken.Nej));
 
 			_indkomster = new ValueTuple<FakePersonligeIndkomster>(
 				new FakePersonligeIndkomster
