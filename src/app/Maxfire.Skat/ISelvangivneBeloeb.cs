@@ -48,7 +48,7 @@
 		/// </summary>
 		/// <remarks>
 		/// Fradrages i AM-indkomsten inden opgørelse af arbejdsindkomsten, der benyttes som
-		/// grundlag for besjkæftigelsesfradraget.
+		/// grundlag for beskæftigelsesfradraget.
 		/// Fradrages i den personlige indkomst inden skatteberegningen.
 		/// </remarks>
 		decimal PrivatTegnetPensionsindskud { get; }
