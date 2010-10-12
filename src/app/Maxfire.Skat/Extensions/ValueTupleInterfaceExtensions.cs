@@ -1,34 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace Maxfire.Skat.Extensions
 {
 	public static class ValueTupleInterfaceExtensions
 	{
-		public static ValueTuple<TItem> Map<TParent, TItem>(
-			this IValueTuple<TParent> tuple,
-			Func<TParent, TItem> projection)
+		[DebuggerStepThrough]
+		public static ValueTuple<TResult> Map<T, TResult>(
+			this IValueTuple<T> tuple,
+			Func<T, TResult> projection)
 		{
-			var list = new List<TItem>(tuple.Size);
+			var list = new List<TResult>(tuple.Size);
 			for (int i = 0; i < tuple.Size; i++)
 			{
 				list.Add(projection(tuple[i]));
 			}
-			return new ValueTuple<TItem>(list);
+			return new ValueTuple<TResult>(list);
 		}
 
-		public static ValueTuple<TItem> Map<TParent, TItem>(
-			this IValueTuple<TParent> tuple,
-			Func<TParent, int, TItem> projectionWithIndex)
+		[DebuggerStepThrough]
+		public static ValueTuple<TResult> Map<T, TResult>(
+			this IValueTuple<T> tuple,
+			Func<T, int, TResult> projectionWithIndex)
 		{
-			var list = new List<TItem>(tuple.Size);
+			var list = new List<TResult>(tuple.Size);
 			for (int i = 0; i < tuple.Size; i++)
 			{
 				list.Add(projectionWithIndex(tuple[i], i));
 			}
-			return new ValueTuple<TItem>(list);
+			return new ValueTuple<TResult>(list);
 		}
 
+		[DebuggerStepThrough]
 		public static ValueTuple<TItem> MapByIndex<TParent, TItem>(
 			this IValueTuple<TParent> tuple,
 			Func<int, TItem> projectionWithIndex)
