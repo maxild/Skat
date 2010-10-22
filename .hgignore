@@ -1,8 +1,6 @@
 syntax: glob
-Obj
-obj
-Bin
-bin
+[Oo]bj
+[Bb]in
 *.user
 *.suo
 *.Cache
