@@ -1,0 +1,13 @@
+syntax: glob
+Obj
+obj
+Bin
+bin
+*.user
+*.suo
+*.Cache
+*.cache
+*.log 
+_ReSharper.*
+*.resharper
+archive
