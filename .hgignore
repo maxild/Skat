@@ -10,4 +10,5 @@ bin
 *.log 
 _ReSharper.*
 *.resharper
+src\CommonAssemblyInfo.cs
 archive
