@@ -1,0 +1,11 @@
+[Oo]bj
+[Bb]in
+*.user
+*.suo
+*.Cache
+*.cache
+*.log
+_ReSharper.*
+*.resharper
+src\CommonAssemblyInfo.cs
+archive
