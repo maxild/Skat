@@ -1,6 +1,6 @@
 using Maxfire.Skat.Extensions;
-using Maxfire.TestCommons.AssertExtensions;
 using Xunit;
+using Shouldly;
 
 namespace Maxfire.Skat.UnitTests
 {
@@ -51,8 +51,8 @@ namespace Maxfire.Skat.UnitTests
 
 			var modregnet = tuple.NedbringPositivtMedEvtNegativt();
 
-			modregnet[0].ShouldEqual(-1);
-			modregnet[1].ShouldEqual(0);
+			modregnet[0].ShouldBe(-1);
+			modregnet[1].ShouldBe(0);
 		}
 
 		[Fact]
@@ -62,24 +62,24 @@ namespace Maxfire.Skat.UnitTests
 
 			var modregnet = tuple.NedbringPositivtMedEvtNegativt();
 
-			modregnet[0].ShouldEqual(0);
-			modregnet[1].ShouldEqual(1);
+			modregnet[0].ShouldBe(0);
+			modregnet[1].ShouldBe(1);
 		}
 
 		[Fact]
 		public void NedbringPositivtMedEvtNegativt_IngenOverfoersel()
 		{
 			var tuple = new ValueTuple<decimal>(1, 2);
-			tuple.NedbringPositivtMedEvtNegativt().ShouldEqual(tuple);
+			tuple.NedbringPositivtMedEvtNegativt().ShouldBe(tuple);
 
 			tuple = new ValueTuple<decimal>(-1, -2);
-			tuple.NedbringPositivtMedEvtNegativt().ShouldEqual(tuple);
+			tuple.NedbringPositivtMedEvtNegativt().ShouldBe(tuple);
 
 			tuple = new ValueTuple<decimal>(0, 2);
-			tuple.NedbringPositivtMedEvtNegativt().ShouldEqual(tuple);
+			tuple.NedbringPositivtMedEvtNegativt().ShouldBe(tuple);
 
 			tuple = new ValueTuple<decimal>(2, 0);
-			tuple.NedbringPositivtMedEvtNegativt().ShouldEqual(tuple);
+			tuple.NedbringPositivtMedEvtNegativt().ShouldBe(tuple);
 		}
 
 		[Fact]
@@ -88,8 +88,8 @@ namespace Maxfire.Skat.UnitTests
 			var bruttoGrundlag = new ValueTuple<decimal>(1000, 500);
 			var udnyttetBundfradrag = bruttoGrundlag.BeregnSambeskattetBundfradrag(600);
 
-			udnyttetBundfradrag[0].ShouldEqual(700);
-			udnyttetBundfradrag[1].ShouldEqual(500);
+			udnyttetBundfradrag[0].ShouldBe(700);
+			udnyttetBundfradrag[1].ShouldBe(500);
 		}
 
 		[Fact]
@@ -98,8 +98,8 @@ namespace Maxfire.Skat.UnitTests
 			var bruttoGrundlag = new ValueTuple<decimal>(1000, 500);
 			var udnyttetBundfradrag = bruttoGrundlag.BeregnSambeskattetBundfradrag(750);
 
-			udnyttetBundfradrag[0].ShouldEqual(1000);
-			udnyttetBundfradrag[1].ShouldEqual(500);
+			udnyttetBundfradrag[0].ShouldBe(1000);
+			udnyttetBundfradrag[1].ShouldBe(500);
 		}
 
 		[Fact]
@@ -108,8 +108,8 @@ namespace Maxfire.Skat.UnitTests
 			var bruttoGrundlag = new ValueTuple<decimal>(1000, 500);
 			var udnyttetBundfradrag = bruttoGrundlag.BeregnSambeskattetBundfradrag(900);
 
-			udnyttetBundfradrag[0].ShouldEqual(1000);
-			udnyttetBundfradrag[1].ShouldEqual(800);
+			udnyttetBundfradrag[0].ShouldBe(1000);
+			udnyttetBundfradrag[1].ShouldBe(800);
 		}
 
 		[Fact]
@@ -118,8 +118,8 @@ namespace Maxfire.Skat.UnitTests
 			var bruttoGrundlag = new ValueTuple<decimal>(1000, 500);
 			var udnyttetBundfradrag = bruttoGrundlag.BeregnSambeskattetBundfradrag(400);
 
-			udnyttetBundfradrag[0].ShouldEqual(400);
-			udnyttetBundfradrag[1].ShouldEqual(400);
+			udnyttetBundfradrag[0].ShouldBe(400);
+			udnyttetBundfradrag[1].ShouldBe(400);
 		}
 
 		[Fact]
@@ -128,8 +128,8 @@ namespace Maxfire.Skat.UnitTests
 			var bruttoGrundlag = new ValueTuple<decimal>(200, 100);
 			var grundlag = bruttoGrundlag.NedbringMedSambeskattetBundfradrag(150);
 
-			grundlag[0].ShouldEqual(0);
-			grundlag[1].ShouldEqual(0);
+			grundlag[0].ShouldBe(0);
+			grundlag[1].ShouldBe(0);
 		}
 
 		[Fact]
@@ -138,8 +138,8 @@ namespace Maxfire.Skat.UnitTests
 			var bruttoGrundlag = new ValueTuple<decimal>(200, 100);
 			var grundlag = bruttoGrundlag.NedbringMedSambeskattetBundfradrag(125);
 
-			grundlag[0].ShouldEqual(50);
-			grundlag[1].ShouldEqual(0);
+			grundlag[0].ShouldBe(50);
+			grundlag[1].ShouldBe(0);
 		}
 
 		[Fact]
@@ -148,8 +148,8 @@ namespace Maxfire.Skat.UnitTests
 			var bruttoGrundlag = new ValueTuple<decimal>(200, 100);
 			var grundlag = bruttoGrundlag.NedbringMedSambeskattetBundfradrag(175);
 
-			grundlag[0].ShouldEqual(0);
-			grundlag[1].ShouldEqual(-50);
+			grundlag[0].ShouldBe(0);
+			grundlag[1].ShouldBe(-50);
 		}
 
 		[Fact]
@@ -160,8 +160,8 @@ namespace Maxfire.Skat.UnitTests
 
 			var result = lhs + rhs;
 
-			result[0].ShouldEqual(3);
-			result[1].ShouldEqual(6);
+			result[0].ShouldBe(3);
+			result[1].ShouldBe(6);
 		}
 
 		[Fact]
@@ -172,8 +172,8 @@ namespace Maxfire.Skat.UnitTests
 
 			var result = lhs - rhs;
 
-			result[0].ShouldEqual(-1);
-			result[1].ShouldEqual(-2);
+			result[0].ShouldBe(-1);
+			result[1].ShouldBe(-2);
 		}
 
 		[Fact]
@@ -184,8 +184,8 @@ namespace Maxfire.Skat.UnitTests
 
 			var result = lhs * rhs;
 
-			result[0].ShouldEqual(2);
-			result[1].ShouldEqual(8);
+			result[0].ShouldBe(2);
+			result[1].ShouldBe(8);
 		}
 
 		[Fact]
@@ -196,8 +196,8 @@ namespace Maxfire.Skat.UnitTests
 
 			var result = lhs / rhs;
 
-			result[0].ShouldEqual(0.5m);
-			result[1].ShouldEqual(0.5m);
+			result[0].ShouldBe(0.5m);
+			result[1].ShouldBe(0.5m);
 		}
 
 		[Fact]
@@ -206,8 +206,8 @@ namespace Maxfire.Skat.UnitTests
 			var tuple = new ValueTuple<decimal>(1, 2);
 			var result = -tuple;
 
-			result[0].ShouldEqual(-1);
-			result[1].ShouldEqual(-2);
+			result[0].ShouldBe(-1);
+			result[1].ShouldBe(-2);
 		}
 
 		[Fact]
@@ -216,8 +216,8 @@ namespace Maxfire.Skat.UnitTests
 			var tuple = new ValueTuple<decimal>(-1, 2);
 			var result = +tuple;
 
-			result[0].ShouldEqual(0);
-			result[1].ShouldEqual(2);
+			result[0].ShouldBe(0);
+			result[1].ShouldBe(2);
 		}
 	}
 }

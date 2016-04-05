@@ -1,7 +1,7 @@
 using System;
 using Maxfire.Skat.Beregnere;
 using Maxfire.Skat.Extensions;
-using Maxfire.TestCommons.AssertExtensions;
+using Shouldly;
 using Xunit;
 
 namespace Maxfire.Skat.UnitTests
@@ -47,10 +47,10 @@ namespace Maxfire.Skat.UnitTests
 
 			var skattevaerdier = _personfradragBeregner.BeregnSkattevaerdierAfPersonfradrag(skatteydere, kommunaleSatser, 2010);
 
-			skattevaerdier[0].Sundhedsbidrag.ShouldEqual(10);
-			skattevaerdier[0].Bundskat.ShouldEqual(5);
-			skattevaerdier[0].Kommuneskat.ShouldEqual(25);
-			skattevaerdier[0].Kirkeskat.ShouldEqual(1);
+			skattevaerdier[0].Sundhedsbidrag.ShouldBe(10);
+			skattevaerdier[0].Bundskat.ShouldBe(5);
+			skattevaerdier[0].Kommuneskat.ShouldBe(25);
+			skattevaerdier[0].Kirkeskat.ShouldBe(1);
 		}
 
 		[Fact]
@@ -67,10 +67,10 @@ namespace Maxfire.Skat.UnitTests
 
 			var skattevaerdier = _personfradragBeregner.BeregnSkattevaerdierAfPersonfradrag(skatteydere, kommunaleSatser, 2010);
 
-			skattevaerdier[0].Sundhedsbidrag.ShouldEqual(10);
-			skattevaerdier[0].Bundskat.ShouldEqual(5);
-			skattevaerdier[0].Kommuneskat.ShouldEqual(25);
-			skattevaerdier[0].Kirkeskat.ShouldEqual(0);
+			skattevaerdier[0].Sundhedsbidrag.ShouldBe(10);
+			skattevaerdier[0].Bundskat.ShouldBe(5);
+			skattevaerdier[0].Kommuneskat.ShouldBe(25);
+			skattevaerdier[0].Kirkeskat.ShouldBe(0);
 		}
 
 		[Fact]
@@ -92,20 +92,20 @@ namespace Maxfire.Skat.UnitTests
 			var modregninger = modregnResults.Map(x => x.UdnyttedeSkattevaerdier);
 			var modregnedeSkatter = modregnResults.Map(x => x.ModregnedeSkatter);
 
-			modregnResults[0].UdnyttetFradrag.ShouldEqual(100);
-			modregnResults[0].IkkeUdnyttetFradrag.ShouldEqual(0);
-			modregnResults[0].UdnyttetSkattevaerdi.ShouldEqual(41);
-			modregnResults[0].IkkeUdnyttetSkattevaerdi.ShouldEqual(0);
+			modregnResults[0].UdnyttetFradrag.ShouldBe(100);
+			modregnResults[0].IkkeUdnyttetFradrag.ShouldBe(0);
+			modregnResults[0].UdnyttetSkattevaerdi.ShouldBe(41);
+			modregnResults[0].IkkeUdnyttetSkattevaerdi.ShouldBe(0);
 
-			modregninger[0].Sundhedsbidrag.ShouldEqual(10);
-			modregninger[0].Bundskat.ShouldEqual(5);
-			modregninger[0].Kommuneskat.ShouldEqual(25);
-			modregninger[0].Kirkeskat.ShouldEqual(1);
+			modregninger[0].Sundhedsbidrag.ShouldBe(10);
+			modregninger[0].Bundskat.ShouldBe(5);
+			modregninger[0].Kommuneskat.ShouldBe(25);
+			modregninger[0].Kirkeskat.ShouldBe(1);
 
-			modregnedeSkatter[0].Sundhedsbidrag.ShouldEqual(90);
-			modregnedeSkatter[0].Bundskat.ShouldEqual(195);
-			modregnedeSkatter[0].Kommuneskat.ShouldEqual(475);
-			modregnedeSkatter[0].Kirkeskat.ShouldEqual(49);
+			modregnedeSkatter[0].Sundhedsbidrag.ShouldBe(90);
+			modregnedeSkatter[0].Bundskat.ShouldBe(195);
+			modregnedeSkatter[0].Kommuneskat.ShouldBe(475);
+			modregnedeSkatter[0].Kirkeskat.ShouldBe(49);
 		}
 
 		[Fact]
@@ -127,10 +127,10 @@ namespace Maxfire.Skat.UnitTests
 			var modregnedeSkatter = modregnResults.Map(x => x.ModregnedeSkatter);
 
 			// Resterende skatteværdi af personfradrag mht. sundhedsbidrag på 5 overvæltes i reduktionen af bundskat
-			modregnedeSkatter[0].Sundhedsbidrag.ShouldEqual(0);
-			modregnedeSkatter[0].Bundskat.ShouldEqual(190); // <-- reduktion her
-			modregnedeSkatter[0].Kommuneskat.ShouldEqual(475);
-			modregnedeSkatter[0].Kirkeskat.ShouldEqual(49);
+			modregnedeSkatter[0].Sundhedsbidrag.ShouldBe(0);
+			modregnedeSkatter[0].Bundskat.ShouldBe(190); // <-- reduktion her
+			modregnedeSkatter[0].Kommuneskat.ShouldBe(475);
+			modregnedeSkatter[0].Kirkeskat.ShouldBe(49);
 		}
 
 		[Fact]
@@ -151,16 +151,16 @@ namespace Maxfire.Skat.UnitTests
 			var modregnedeSkatter = modregnResults.Map(x => x.ModregnedeSkatter);
 			var modregninger = modregnResults.Map(x => x.UdnyttedeSkattevaerdier);
 
-			modregnResults[0].Skattevaerdi.ShouldEqual(41);
-			modregnResults[0].IkkeUdnyttetSkattevaerdi.ShouldEqual(14);
-			modregnResults[0].UdnyttetSkattevaerdi.ShouldEqual(27);
+			modregnResults[0].Skattevaerdi.ShouldBe(41);
+			modregnResults[0].IkkeUdnyttetSkattevaerdi.ShouldBe(14);
+			modregnResults[0].UdnyttetSkattevaerdi.ShouldBe(27);
 
-			modregninger.ShouldEqual(skatter);
+			modregninger.ShouldBe(skatter);
 
-			modregnedeSkatter[0].Sundhedsbidrag.ShouldEqual(0);
-			modregnedeSkatter[0].Bundskat.ShouldEqual(0);
-			modregnedeSkatter[0].Kommuneskat.ShouldEqual(0);
-			modregnedeSkatter[0].Kirkeskat.ShouldEqual(0);
+			modregnedeSkatter[0].Sundhedsbidrag.ShouldBe(0);
+			modregnedeSkatter[0].Bundskat.ShouldBe(0);
+			modregnedeSkatter[0].Kommuneskat.ShouldBe(0);
+			modregnedeSkatter[0].Kirkeskat.ShouldBe(0);
 		}
 
 		[Fact]
@@ -184,16 +184,16 @@ namespace Maxfire.Skat.UnitTests
 			var modregnedeSkatter = modregnResults.Map(x => x.ModregnedeSkatter);
 
 			// Skatterne nulstilles af værdien af personfradraget,
-			modregnedeSkatter[0].Sundhedsbidrag.ShouldEqual(0);
-			modregnedeSkatter[0].Bundskat.ShouldEqual(0);
-			modregnedeSkatter[0].Kommuneskat.ShouldEqual(0);
-			modregnedeSkatter[0].Kirkeskat.ShouldEqual(0);
+			modregnedeSkatter[0].Sundhedsbidrag.ShouldBe(0);
+			modregnedeSkatter[0].Bundskat.ShouldBe(0);
+			modregnedeSkatter[0].Kommuneskat.ShouldBe(0);
+			modregnedeSkatter[0].Kirkeskat.ShouldBe(0);
 
 			// og det uudnyttede personfradrag overføres til ægtefællen
-			modregnedeSkatter[1].Sundhedsbidrag.ShouldEqual(90 - 3.42m);
-			modregnedeSkatter[1].Bundskat.ShouldEqual(195 - 1.71m);
-			modregnedeSkatter[1].Kommuneskat.ShouldEqual(475 - 8.54m);
-			modregnedeSkatter[1].Kirkeskat.ShouldEqual(0);
+			modregnedeSkatter[1].Sundhedsbidrag.ShouldBe(90 - 3.42m);
+			modregnedeSkatter[1].Bundskat.ShouldBe(195 - 1.71m);
+			modregnedeSkatter[1].Kommuneskat.ShouldBe(475 - 8.54m);
+			modregnedeSkatter[1].Kirkeskat.ShouldBe(0);
 		}
 	}
 }

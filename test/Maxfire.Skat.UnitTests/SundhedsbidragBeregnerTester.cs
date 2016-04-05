@@ -1,5 +1,5 @@
 using Maxfire.Skat.Beregnere;
-using Maxfire.TestCommons.AssertExtensions;
+using Shouldly;
 using Xunit;
 
 namespace Maxfire.Skat.UnitTests
@@ -28,7 +28,7 @@ namespace Maxfire.Skat.UnitTests
 
 			var sundhedsbidrag = sundhedsbidragBeregner.BeregnSkat(personligeBeloeb, 2010);
 
-			sundhedsbidrag[0].ShouldEqual(8);
+			sundhedsbidrag[0].ShouldBe(8);
 		}
 	}
 }

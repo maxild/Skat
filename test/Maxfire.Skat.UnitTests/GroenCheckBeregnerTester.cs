@@ -1,7 +1,7 @@
 using System;
 using Maxfire.Skat.Beregnere;
 using Maxfire.Skat.Extensions;
-using Maxfire.TestCommons.AssertExtensions;
+using Shouldly;
 using Xunit;
 
 namespace Maxfire.Skat.UnitTests
@@ -78,64 +78,65 @@ namespace Maxfire.Skat.UnitTests
 		[Fact]
 		public void IngenAftrapning()
 		{
-			const int skatteAar = 2010;
+			const int SKATTE_AAR = 2010;
 			var beregner = new TestableGroenCheckBeregner(new FakeSkattelovRegistry(), () => 0);
 			var indkomster = new FakePersonligeIndkomster().ToTupleOfSize(1);
 
-			var aftrapning = beregner.BeregnAftrapning(indkomster, skatteAar);
+			var aftrapning = beregner.BeregnAftrapning(indkomster, SKATTE_AAR);
 
-			aftrapning[0].ShouldEqual(0);
+			aftrapning[0].ShouldBe(0);
 		}
 
 		[Fact]
 		public void Aftrapning()
 		{
-			const int skatteAar = 2010;
+			const int SKATTE_AAR = 2010;
 			var beregner = new TestableGroenCheckBeregner(new FakeSkattelovRegistry(), () => 1000);
 			var indkomster = new FakePersonligeIndkomster().ToTupleOfSize(1);
 
-			var aftrapning = beregner.BeregnAftrapning(indkomster, skatteAar);
+			var aftrapning = beregner.BeregnAftrapning(indkomster, SKATTE_AAR);
 
-			aftrapning[0].ShouldEqual(75);
+			aftrapning[0].ShouldBe(75);
 		}
 
 		[Fact]
 		public void FuldKompensation()
 		{
-			const int skatteAar = 2010;
+			const int SKATTE_AAR = 2010;
 			var beregner = new TestableGroenCheckBeregner(new FakeSkattelovRegistry(), () => 0);
 			var skatteydere = new Skatteyder(new DateTime(1970, 6, 3), MedlemAfFolkekirken.Nej, AntalBoern.Et).ToTuple<ISkatteyder>();
 			var indkomster = new FakePersonligeIndkomster().ToTuple();
 
-			var aftrapning = beregner.BeregnKompensation(skatteydere, indkomster, skatteAar);
+			var aftrapning = beregner.BeregnKompensation(skatteydere, indkomster, SKATTE_AAR);
 
-			aftrapning[0].ShouldEqual(1600);
+			aftrapning[0].ShouldBe(1600);
 		}
 
+        [Fact]
 		public void DelvisKompensation()
 		{
-			const int skatteAar = 2010;
+			const int SKATTE_AAR = 2010;
 			var beregner = new TestableGroenCheckBeregner(new FakeSkattelovRegistry(), () => 1000);
 			var skatteydere = new Skatteyder(new DateTime(1970, 6, 3), MedlemAfFolkekirken.Nej, AntalBoern.Et).ToTuple<ISkatteyder>();
 			var indkomster = new FakePersonligeIndkomster().ToTuple();
 
-			var aftrapning = beregner.BeregnKompensation(skatteydere, indkomster, skatteAar);
+			var aftrapning = beregner.BeregnKompensation(skatteydere, indkomster, SKATTE_AAR);
 
-			aftrapning[0].ShouldEqual(1525);
+			aftrapning[0].ShouldBe(1525);
 		}
 
 		[Fact]
 		public void TopskattegrundlagArguments()
 		{
-			const int skatteAar = 2010;
+			const int SKATTE_AAR = 2010;
 			var indkomster = new FakePersonligeIndkomster().ToTuple();
 			var beregner = new MockableGroenCheckBeregner(new FakeSkattelovRegistry(), (i, b, p) =>
 			                                                                           	{
-			                                                                           		ReferenceEquals(i, indkomster);
-			                                                                           		b.ShouldEqual(362800);
-			                                                                           		p.ShouldEqual(40000);
+			                                                                           		ReferenceEquals(i, indkomster).ShouldBeTrue();
+			                                                                           		b.ShouldBe(362800);
+			                                                                           		p.ShouldBe(40000);
 			                                                                           	});
-			beregner.BeregnAftrapning(indkomster, skatteAar);
+			beregner.BeregnAftrapning(indkomster, SKATTE_AAR);
 		}
 	}
 }

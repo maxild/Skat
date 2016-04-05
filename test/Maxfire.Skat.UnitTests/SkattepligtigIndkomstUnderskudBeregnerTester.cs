@@ -1,4 +1,3 @@
-using Maxfire.TestCommons.AssertExtensions;
 using Xunit;
 
 namespace Maxfire.Skat.UnitTests
@@ -27,7 +26,7 @@ namespace Maxfire.Skat.UnitTests
 
 		//    //var modregnResult = x.Beregn(indkomster, skatter, kommunaleSatser);
 
-		//    indkomster[0].SkattepligtigIndkomst.ShouldEqual(-30000);
+		//    indkomster[0].SkattepligtigIndkomst.ShouldBe(-30000);
 
 		//}
 	}

@@ -1,6 +1,6 @@
 using System;
 using Maxfire.Skat.Beregnere;
-using Maxfire.TestCommons.AssertExtensions;
+using Shouldly;
 using Xunit;
 
 namespace Maxfire.Skat.UnitTests
@@ -8,7 +8,7 @@ namespace Maxfire.Skat.UnitTests
 	public class KompensationBeregnerTester
 	{
 		const int SKATTE_AAR = 2016;
-		
+
 		class FakeSkattelovRegistry : AbstractFakeSkattelovRegistry
 		{
 			public override decimal GetAMBidragSkattesats(int skatteAar)
@@ -74,7 +74,7 @@ namespace Maxfire.Skat.UnitTests
 
 		public KompensationBeregnerTester()
 		{
-			const decimal loen = 400000;
+			const decimal LOEN = 400000;
 			var skattelovRegistry = new FakeSkattelovRegistry();
 
 			_personer = new ValueTuple<ISkatteyder>(new Skatteyder(new DateTime(1970, 6, 3), MedlemAfFolkekirken.Nej));
@@ -82,8 +82,8 @@ namespace Maxfire.Skat.UnitTests
 			_indkomster = new ValueTuple<FakePersonligeIndkomster>(
 				new FakePersonligeIndkomster
 				{
-					AMIndkomst = loen,
-					PersonligIndkomst = (1 - 0.08m) * loen, // TODO: Indkomstopgørelse mangler i programmet
+					AMIndkomst = LOEN,
+					PersonligIndkomst = (1 - 0.08m) * LOEN, // TODO: Indkomstopgørelse mangler i programmet
 					NettoKapitalIndkomst = -110000,
 					LigningsmaessigtFradrag = 60000, // NOTE: Ligningsmæssige fradrag eksl. beskæftigelsesfradrag
 					AktieIndkomst = 8000
@@ -94,19 +94,19 @@ namespace Maxfire.Skat.UnitTests
 				{
 					Kommuneskattesats = 0.255m
 				});
-			
+
 			var amBidragBeregner = new AMBidragBeregner(skattelovRegistry);
 			var amBidrag = amBidragBeregner.BeregnSkat(_indkomster, SKATTE_AAR);
 
-			_indkomster[0].PersonligIndkomst.ShouldEqual(368000);
-			amBidrag[0].ShouldEqual(32000);
+			_indkomster[0].PersonligIndkomst.ShouldBe(368000);
+			amBidrag[0].ShouldBe(32000);
 
 			var beskaeftigelsesfradragBeregner = new BeskaeftigelsesfradragBeregner(skattelovRegistry);
 			var beskaeftigelsesfradrag = beskaeftigelsesfradragBeregner.BeregnFradrag(_indkomster, SKATTE_AAR);
 
-			beskaeftigelsesfradrag[0].ShouldEqual(16000);
+			beskaeftigelsesfradrag[0].ShouldBe(16000);
 			_indkomster[0].LigningsmaessigtFradrag += beskaeftigelsesfradrag[0]; // TODO: Indkomstopgørelse mangler i programmet
-			_indkomster[0].LigningsmaessigtFradrag.ShouldEqual(76000);
+			_indkomster[0].LigningsmaessigtFradrag.ShouldBe(76000);
 
 			_kompensationBeregner = new KompensationBeregner(skattelovRegistry);
 		}
@@ -115,28 +115,28 @@ namespace Maxfire.Skat.UnitTests
 		public void BundSkattelettelse()
 		{
 			var bundSkattelettelse = _kompensationBeregner.GetBundSkattelettelse(_personer, _indkomster, SKATTE_AAR);
-			bundSkattelettelse[0].ShouldEqual(4848);
+			bundSkattelettelse[0].ShouldBe(4848);
 		}
 
 		[Fact]
 		public void MellemSkattelettelse()
 		{
 			var mellemSkattelettelse = _kompensationBeregner.GetMellemSkattelettelse(_indkomster, SKATTE_AAR);
-			mellemSkattelettelse[0].ShouldEqual(312);
+			mellemSkattelettelse[0].ShouldBe(312);
 		}
 
 		[Fact]
 		public void TopSkattelettelse()
 		{
 			var topSkattelettelse = _kompensationBeregner.GetTopSkattelettelse(_indkomster, SKATTE_AAR);
-			topSkattelettelse[0].ShouldEqual(780);
+			topSkattelettelse[0].ShouldBe(780);
 		}
 
 		[Fact]
 		public void AktieSkattelettelse()
 		{
 			var aktieSkattelettelse = _kompensationBeregner.GetAktieSkattelettelse(_indkomster);
-			aktieSkattelettelse[0].ShouldEqual(80);
+			aktieSkattelettelse[0].ShouldBe(80);
 		}
 
 		[Fact]
@@ -144,7 +144,7 @@ namespace Maxfire.Skat.UnitTests
 		{
 			var beskaeftigelsesfradragSkattelettelse = _kompensationBeregner.GetBeskaeftigelsesfradragSkattelettelse(
 				_indkomster, _kommunaleSatser, SKATTE_AAR);
-			beskaeftigelsesfradragSkattelettelse[0].ShouldEqual(603);
+			beskaeftigelsesfradragSkattelettelse[0].ShouldBe(603);
 		}
 
 		[Fact]
@@ -153,23 +153,23 @@ namespace Maxfire.Skat.UnitTests
 			var personfradragSkatteskaerpelse = _kompensationBeregner.GetPersonfradragSkatteskaerpelse(_personer,
 			                                                                                           _kommunaleSatser,
 			                                                                                           SKATTE_AAR);
-			personfradragSkatteskaerpelse[0].ShouldEqual(707.94m);
+			personfradragSkatteskaerpelse[0].ShouldBe(707.94m);
 		}
 
 		[Fact]
 		public void SamletSkatteskaerpelsePaaFradragene()
 		{
-			var samletSkatteskaerpelsePaaFradragene 
+			var samletSkatteskaerpelsePaaFradragene
 				= _kompensationBeregner.GetSamletSkatteskaerpelsePaaFradragene(_indkomster, SKATTE_AAR);
-			samletSkatteskaerpelsePaaFradragene[0].ShouldEqual(7301.25m);
+			samletSkatteskaerpelsePaaFradragene[0].ShouldBe(7301.25m);
 		}
 
 		[Fact]
 		public void Kompensation()
 		{
-			var kompenstion 
+			var kompenstion
 				= _kompensationBeregner.BeregnKompensation(_personer, _indkomster, _kommunaleSatser, SKATTE_AAR);
-			kompenstion[0].ShouldEqual(1386.19m);
+			kompenstion[0].ShouldBe(1386.19m);
 		}
 	}
 }

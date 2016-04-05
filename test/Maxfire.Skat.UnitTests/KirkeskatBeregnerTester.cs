@@ -1,6 +1,6 @@
 ﻿using System;
 using Maxfire.Skat.Beregnere;
-using Maxfire.TestCommons.AssertExtensions;
+using Shouldly;
 using Xunit;
 
 namespace Maxfire.Skat.UnitTests
@@ -32,7 +32,7 @@ namespace Maxfire.Skat.UnitTests
 
 			var kommuneSkat = beregner.BeregnSkat(skatteydere, indkomster, kommunaleSatser);
 
-			kommuneSkat[0].ShouldEqual(1);
+			kommuneSkat[0].ShouldBe(1);
 		}
 
 
@@ -61,7 +61,7 @@ namespace Maxfire.Skat.UnitTests
 
 			var kommuneSkat = beregner.BeregnSkat(skatteydere, indkomster, kommunaleSatser);
 
-			kommuneSkat[0].ShouldEqual(0);
+			kommuneSkat[0].ShouldBe(0);
 		}
 	}
 }

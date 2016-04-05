@@ -1,8 +1,9 @@
 ﻿using System;
+using System.IO;
 using System.Reflection;
 using System.Security;
 using System.Security.Permissions;
-using Maxfire.TestCommons.Extensions;
+
 
 namespace Maxfire.Skat.UnitTests
 {
@@ -17,12 +18,9 @@ namespace Maxfire.Skat.UnitTests
 
 			var permissions = new PermissionSet(null);
 			permissions.AddPermission(new SecurityPermission(SecurityPermissionFlag.Execution));
-			if (permissionsSetup != null)
-			{
-				permissionsSetup(permissions);
-			}
-			
-			AppDomain sandbox = null;
+		    permissionsSetup?.Invoke(permissions);
+
+		    AppDomain sandbox = null;
 			try
 			{
 				sandbox = AppDomain.CreateDomain("sandbox", null, setup, permissions);
@@ -40,4 +38,23 @@ namespace Maxfire.Skat.UnitTests
 			}
 		}
 	}
+
+    public static class AssemblyExtensions
+    {
+        /// <summary>
+        /// Get the directory where the assembly is found.
+        /// </summary>
+        /// <remarks>
+        /// This is often useful when using a runner (NCover, NUnit etc.) that loads assemblies from a temporary <see cref="AppDomain"/>.
+        /// </remarks>
+        public static string GetCodeBaseDirectory(this Assembly assembly)
+        {
+            // The CodeBase is a URL to the place where the file was found, 
+            // while the Location is the path where it was actually loaded.
+            string codeBaseUriString = assembly.CodeBase;
+            var uri = new UriBuilder(codeBaseUriString);
+            string codeBasePath = Uri.UnescapeDataString(uri.Path);
+            return Path.GetDirectoryName(codeBasePath);
+        }
+    }
 }

@@ -1,4 +1,4 @@
-using Maxfire.TestCommons.AssertExtensions;
+using Shouldly;
 using Xunit;
 
 namespace Maxfire.Skat.UnitTests
@@ -14,7 +14,7 @@ namespace Maxfire.Skat.UnitTests
 			var y = new IndkomstSkatter(kommuneskat: 2, sundhedsbidrag: 6, kirkeskat: 4, bundskat: 8, mellemskat: 10,
 			                    topskat: 12, aktieindkomstskatUnderGrundbeloebet: 14, aktieindkomstskatOverGrundbeloebet: 16);
 
-			(x + y).ShouldEqual(new IndkomstSkatter(kommuneskat: 3, sundhedsbidrag: 9, kirkeskat: 6, bundskat: 12,
+			(x + y).ShouldBe(new IndkomstSkatter(kommuneskat: 3, sundhedsbidrag: 9, kirkeskat: 6, bundskat: 12,
 			                                mellemskat: 15, topskat: 18, aktieindkomstskatUnderGrundbeloebet: 21, aktieindkomstskatOverGrundbeloebet: 24));
 		}
 	}

@@ -38,18 +38,12 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Maxfire.Core">
-      <HintPath>..\..\..\lib\maxfire\Maxfire.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Maxfire.TestCommons">
-      <HintPath>..\..\..\tools\maxfire\Maxfire.TestCommons.dll</HintPath>
-    </Reference>
+    <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BundskatBeregnerTester.cs" />
     <Compile Include="AccessorTester.cs" />
     <Compile Include="DefaultSkattelovRegistryTester.cs" />
     <Compile Include="Eksempler.cs" />

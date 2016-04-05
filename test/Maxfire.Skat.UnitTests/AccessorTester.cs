@@ -1,10 +1,8 @@
 using System;
 using System.Reflection;
 using System.Security.Permissions;
-using Maxfire.Core.Reflection;
 using Maxfire.Skat.Reflection;
-using Maxfire.TestCommons;
-using Maxfire.TestCommons.AssertExtensions;
+using Shouldly;
 using Xunit;
 
 namespace Maxfire.Skat.UnitTests
@@ -25,14 +23,14 @@ namespace Maxfire.Skat.UnitTests
 			var propertyX = IntrospectionOf<Point>.GetAccessorFor(x => x.X);
 			var propertyY = IntrospectionOf<Point>.GetAccessorFor(x => x.Y);
 
-			propertyX.GetValue(p).ShouldEqual(10);
-			propertyY.GetValue(p).ShouldEqual(20);
+			propertyX.GetValue(p).ShouldBe(10);
+			propertyY.GetValue(p).ShouldBe(20);
 
 			propertyX.SetValue(p, 12);
 			propertyY.SetValue(p, 24);
 
-			p.X.ShouldEqual(12);
-			p.Y.ShouldEqual(24);
+			p.X.ShouldBe(12);
+			p.Y.ShouldBe(24);
 		}
 
 		/// <summary>
@@ -58,14 +56,14 @@ namespace Maxfire.Skat.UnitTests
 			var propertyX = IntrospectionOf<ImmutablePointWithPrivateSetter>.GetAccessorFor(x => x.X);
 			var propertyY = IntrospectionOf<ImmutablePointWithPrivateSetter>.GetAccessorFor(x => x.Y);
 
-			propertyX.GetValue(p).ShouldEqual(10);
-			propertyY.GetValue(p).ShouldEqual(20);
+			propertyX.GetValue(p).ShouldBe(10);
+			propertyY.GetValue(p).ShouldBe(20);
 
 			propertyX.SetValue(p, 12);
 			propertyY.SetValue(p, 24);
 
-			p.X.ShouldEqual(12);
-			p.Y.ShouldEqual(24);
+			p.X.ShouldBe(12);
+			p.Y.ShouldBe(24);
 		}
 
 		public class CallingPrivateSetter : MarshalByRefObject
@@ -84,7 +82,7 @@ namespace Maxfire.Skat.UnitTests
 
 		// NOTE: Since .NET 2 SP1, reflection is available in partial trust, and reflection will demand MemberAccess in this case!
 
-		[Fact, NoCoverage]
+		[Fact]
 		public void PropertyAccessorThrowsMethodAccessExceptionWhenCallingPrivateSetterWhenRunningInPartialTrustWithoutMemberAccess()
 		{
 			Console.WriteLine("ImageRuntimeVersion: " + Assembly.GetExecutingAssembly().ImageRuntimeVersion);
@@ -93,21 +91,21 @@ namespace Maxfire.Skat.UnitTests
 				permissions => permissions.AddPermission(new ReflectionPermission(ReflectionPermissionFlag.NoFlags)));
 		}
 
-		[Fact, NoCoverage]
+		[Fact]
 		public void PropertyAccessorWorksOnImmutableTypeWithPrivateSetterWhenRunningInPartialTrustWithReflectionPermissionFlagRestrictedMemberAccess()
 		{
 			Console.WriteLine("ImageRuntimeVersion: " + Assembly.GetExecutingAssembly().ImageRuntimeVersion);
 			PartialTrustContext.RunTest<CallingPrivateSetter>(
-				runner => runner.SetAndGetX(12).ShouldEqual(12),
+				runner => runner.SetAndGetX(12).ShouldBe(12),
 				permissions => permissions.AddPermission(new ReflectionPermission(ReflectionPermissionFlag.RestrictedMemberAccess)));
 		}
 
-		[Fact, NoCoverage]
+		[Fact]
 		public void PropertyAccessorWorksOnImmutableTypeWithPrivateSetterWhenRunningInPartialTrustWithReflectionPermissionFlagMemberAccess()
 		{
 			Console.WriteLine("ImageRuntimeVersion: " + Assembly.GetExecutingAssembly().ImageRuntimeVersion);
 			PartialTrustContext.RunTest<CallingPrivateSetter>(
-				runner => runner.SetAndGetX(12).ShouldEqual(12),
+				runner => runner.SetAndGetX(12).ShouldBe(12),
 				permissions => permissions.AddPermission(new ReflectionPermission(ReflectionPermissionFlag.MemberAccess)));
 		}
 
@@ -137,7 +135,7 @@ namespace Maxfire.Skat.UnitTests
 			var propertyX = IntrospectionOf<ImmutablePointWithNoSetter>.GetAccessorFor(x => x.X);
 
 			var ex = Assert.Throws<ArgumentException>(() => propertyX.SetValue(p, 12));
-			ex.Message.ShouldEqual("Property set method not found.");
+			ex.Message.ShouldBe("Property set method not found.");
 		}
 	}
 }

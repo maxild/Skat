@@ -131,9 +131,6 @@
     <Compile Include="Extensions\ValueTupleExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Maxfire.Core">
-      <HintPath>..\..\..\lib\maxfire\Maxfire.Core.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>

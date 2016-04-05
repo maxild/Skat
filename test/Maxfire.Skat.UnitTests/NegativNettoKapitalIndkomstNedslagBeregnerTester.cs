@@ -1,5 +1,5 @@
 using Maxfire.Skat.Beregnere;
-using Maxfire.TestCommons.AssertExtensions;
+using Shouldly;
 using Xunit;
 
 namespace Maxfire.Skat.UnitTests
@@ -27,12 +27,12 @@ namespace Maxfire.Skat.UnitTests
 					{
 						NettoKapitalIndkomst = 10000
 					});
-			
+
 			var negativNettoKapitalIndkomstNedslagBeregner = new NegativNettoKapitalIndkomstNedslagBeregner(new FakeSkattelovRegistry());
-			
+
 			var nedslag = negativNettoKapitalIndkomstNedslagBeregner.BeregnNedslag(indkomster, 2012);
 
-			nedslag[0].ShouldEqual(0);
+			nedslag[0].ShouldBe(0);
 		}
 
 		[Fact]
@@ -48,7 +48,7 @@ namespace Maxfire.Skat.UnitTests
 
 			var nedslag = negativNettoKapitalIndkomstNedslagBeregner.BeregnNedslag(indkomster, 2012);
 
-			nedslag[0].ShouldEqual(1250);
+			nedslag[0].ShouldBe(1250);
 		}
 
 		[Fact]
@@ -64,7 +64,7 @@ namespace Maxfire.Skat.UnitTests
 
 			var nedslag = negativNettoKapitalIndkomstNedslagBeregner.BeregnNedslag(indkomster, 2012);
 
-			nedslag[0].ShouldEqual(2500);
+			nedslag[0].ShouldBe(2500);
 		}
 
 		[Fact]
@@ -76,9 +76,9 @@ namespace Maxfire.Skat.UnitTests
 			var negativNettoKapitalIndkomstNedslagBeregner = new NegativNettoKapitalIndkomstNedslagBeregner(new FakeSkattelovRegistry());
 			var modregnResults = negativNettoKapitalIndkomstNedslagBeregner.ModregnMedNedslag(skatter, nedslag);
 
-			modregnResults[0].UdnyttetSkattevaerdi.ShouldEqual(10);
-			modregnResults[0].IkkeUdnyttetSkattevaerdi.ShouldEqual(0);
-			modregnResults[0].ModregnedeSkatter.ShouldEqual(new IndkomstSkatter(bundskat: 990));
+			modregnResults[0].UdnyttetSkattevaerdi.ShouldBe(10);
+			modregnResults[0].IkkeUdnyttetSkattevaerdi.ShouldBe(0);
+			modregnResults[0].ModregnedeSkatter.ShouldBe(new IndkomstSkatter(bundskat: 990));
 		}
 
 		[Fact]
@@ -90,9 +90,9 @@ namespace Maxfire.Skat.UnitTests
 			var negativNettoKapitalIndkomstNedslagBeregner = new NegativNettoKapitalIndkomstNedslagBeregner(new FakeSkattelovRegistry());
 			var modregnResults = negativNettoKapitalIndkomstNedslagBeregner.ModregnMedNedslag(skatter, nedslag);
 
-			modregnResults[0].UdnyttetSkattevaerdi.ShouldEqual(1000);
-			modregnResults[0].IkkeUdnyttetSkattevaerdi.ShouldEqual(1000);
-			modregnResults[0].ModregnedeSkatter.ShouldEqual(IndkomstSkatter.Nul);
+			modregnResults[0].UdnyttetSkattevaerdi.ShouldBe(1000);
+			modregnResults[0].IkkeUdnyttetSkattevaerdi.ShouldBe(1000);
+			modregnResults[0].ModregnedeSkatter.ShouldBe(IndkomstSkatter.Nul);
 		}
 
 		[Fact]
@@ -112,8 +112,8 @@ namespace Maxfire.Skat.UnitTests
 
 			var nedslag = negativNettoKapitalIndkomstNedslagBeregner.BeregnNedslag(indkomster, 2012);
 
-			nedslag[0].ShouldEqual(0);
-			nedslag[1].ShouldEqual(0);
+			nedslag[0].ShouldBe(0);
+			nedslag[1].ShouldBe(0);
 		}
 
 		[Fact]
@@ -133,8 +133,8 @@ namespace Maxfire.Skat.UnitTests
 
 			var nedslag = negativNettoKapitalIndkomstNedslagBeregner.BeregnNedslag(indkomster, 2012);
 
-			nedslag[0].ShouldEqual(0);
-			nedslag[1].ShouldEqual(0);
+			nedslag[0].ShouldBe(0);
+			nedslag[1].ShouldBe(0);
 		}
 
 		[Fact]
@@ -154,8 +154,8 @@ namespace Maxfire.Skat.UnitTests
 
 			var nedslag = negativNettoKapitalIndkomstNedslagBeregner.BeregnNedslag(indkomster, 2012);
 
-			nedslag[0].ShouldEqual(2000);
-			nedslag[1].ShouldEqual(0);
+			nedslag[0].ShouldBe(2000);
+			nedslag[1].ShouldBe(0);
 		}
 
 		[Fact]
@@ -175,8 +175,8 @@ namespace Maxfire.Skat.UnitTests
 
 			var nedslag = negativNettoKapitalIndkomstNedslagBeregner.BeregnNedslag(indkomster, 2012);
 
-			nedslag[0].ShouldEqual(2500);
-			nedslag[1].ShouldEqual(0);
+			nedslag[0].ShouldBe(2500);
+			nedslag[1].ShouldBe(0);
 		}
 
 		[Fact]
@@ -188,12 +188,12 @@ namespace Maxfire.Skat.UnitTests
 			var negativNettoKapitalIndkomstNedslagBeregner = new NegativNettoKapitalIndkomstNedslagBeregner(new FakeSkattelovRegistry());
 			var modregnResults = negativNettoKapitalIndkomstNedslagBeregner.ModregnMedNedslag(skatter, nedslag);
 
-			modregnResults[0].UdnyttetSkattevaerdi.ShouldEqual(10);
-			modregnResults[0].IkkeUdnyttetSkattevaerdi.ShouldEqual(0);
-			modregnResults[0].ModregnedeSkatter.ShouldEqual(new IndkomstSkatter(bundskat: 990));
-			modregnResults[1].UdnyttetSkattevaerdi.ShouldEqual(30);
-			modregnResults[1].IkkeUdnyttetSkattevaerdi.ShouldEqual(0);
-			modregnResults[1].ModregnedeSkatter.ShouldEqual(new IndkomstSkatter(bundskat: 970));
+			modregnResults[0].UdnyttetSkattevaerdi.ShouldBe(10);
+			modregnResults[0].IkkeUdnyttetSkattevaerdi.ShouldBe(0);
+			modregnResults[0].ModregnedeSkatter.ShouldBe(new IndkomstSkatter(bundskat: 990));
+			modregnResults[1].UdnyttetSkattevaerdi.ShouldBe(30);
+			modregnResults[1].IkkeUdnyttetSkattevaerdi.ShouldBe(0);
+			modregnResults[1].ModregnedeSkatter.ShouldBe(new IndkomstSkatter(bundskat: 970));
 		}
 
 		[Fact]
@@ -205,12 +205,12 @@ namespace Maxfire.Skat.UnitTests
 			var negativNettoKapitalIndkomstNedslagBeregner = new NegativNettoKapitalIndkomstNedslagBeregner(new FakeSkattelovRegistry());
 			var modregnResults = negativNettoKapitalIndkomstNedslagBeregner.ModregnMedNedslag(skatter, nedslag);
 
-			modregnResults[0].UdnyttetSkattevaerdi.ShouldEqual(1000); // udnyttet i egne skatter
-			modregnResults[0].IkkeUdnyttetSkattevaerdi.ShouldEqual(500); // de resterende 500 er overført
-			modregnResults[0].ModregnedeSkatter.ShouldEqual(IndkomstSkatter.Nul);
-			modregnResults[1].UdnyttetSkattevaerdi.ShouldEqual(1000); // eget nedslag + overført nedslag
-			modregnResults[1].IkkeUdnyttetSkattevaerdi.ShouldEqual(0);
-			modregnResults[1].ModregnedeSkatter.ShouldEqual(IndkomstSkatter.Nul);
+			modregnResults[0].UdnyttetSkattevaerdi.ShouldBe(1000); // udnyttet i egne skatter
+			modregnResults[0].IkkeUdnyttetSkattevaerdi.ShouldBe(500); // de resterende 500 er overført
+			modregnResults[0].ModregnedeSkatter.ShouldBe(IndkomstSkatter.Nul);
+			modregnResults[1].UdnyttetSkattevaerdi.ShouldBe(1000); // eget nedslag + overført nedslag
+			modregnResults[1].IkkeUdnyttetSkattevaerdi.ShouldBe(0);
+			modregnResults[1].ModregnedeSkatter.ShouldBe(IndkomstSkatter.Nul);
 		}
 	}
 }
