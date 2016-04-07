@@ -136,8 +136,7 @@ task commonAssemblyInfo -depends resolveVersions {
 task pack -depends compile {
 
     # Find dependency versions
-    $preludeCoreVersion = find-dependencyVersion (join-path (join-path $source_dir "Brf.Lofus.Core") "packages.config") 'Maxfire.Prelude.Core'
-    $preludeTypeConverterVersion = find-dependencyVersion (join-path (join-path $source_dir "Brf.Lofus.Core") "packages.config") 'Maxfire.Prelude.ComponentModel.TypeConverter'
+    $maxfireCoreVersion = find-dependencyVersion (join-path (join-path $source_dir "Maxfire.Skat") "project.json") 'Maxfire.Core'
 
     # Could use the -Version option of the nuget.exe pack command to provide the actual version.
     # _but_ the package dependency version cannot be overriden at the commandline.
@@ -146,14 +145,8 @@ task pack -depends compile {
         $nuspec = [xml](Get-Content $_.FullName)
         $nuspec.package.metadata.version = $global:pkgVersion
         $nuspec | Select-Xml '//dependency' | %{
-            if ($_.Node.id.StartsWith('Brf.Lofus')) {
-                $_.Node.version = $global:pkgVersion
-            }
-            if ($_.Node.id -eq 'Maxfire.Prelude.Core') {
-                $_.Node.version = $preludeCoreVersion
-            }
-            if ($_.Node.id -eq 'Maxfire.Prelude.ComponentModel.TypeConverter') {
-                $_.Node.version = $preludeTypeConverterVersion
+            if ($_.Node.id -eq 'Maxfire.Core') {
+                $_.Node.version = $maxfireCoreVersion
             }
         }
         $nuspecFilename = join-path $artifacts_dir (Split-Path -Path $_.FullName -Leaf)
@@ -162,20 +155,27 @@ task pack -depends compile {
     }
 }
 
-function find-dependencyVersion($packagesConfigPath, $packageId) {
+# Using project.json (i.e. not packages.config!!!!)
+function find-dependencyVersion($projectJsonPath, $packageId) {
 
-    $dependencies = [xml](Get-Content  $packagesConfigPath)
-    $dependencies | Select-Xml '//package' | %{
-        if ($_.Node.id -eq $packageId) {
-            $packageVersion = $_.Node.version
-        }
-    }
+    $projectJson = Get-Content -Path $projectJsonPath -Raw | ConvertFrom-Json
 
-    if (-not $packageVersion) {
+    $dependencyVersion = $projectJson.dependencies | Select-Object -ExpandProperty $packageId
+
+    # Note: We leave this more verbose get-dependency-by-packageId here to document psobject property
+    # $projectJson.dependencies.psobject.properties | %{
+    #     $pkgId = $_.name
+    #     $pkgVersion = $_.value
+    #     if ($pkgId -eq $packageId) {
+    #         $dependencyVersion = $pkgVersion
+    #     }
+    # }
+
+    if (-not $dependencyVersion) {
         throw "Could not resolve the version of the $packageId dependency."
     }
 
-    return $packageVersion
+    return $dependencyVersion.ToString()
 }
 
 # -------------------------------------------------------------------------------------------------------------
@@ -278,7 +278,7 @@ using System.Runtime.InteropServices;
 //------------------------------------------------------------------------------
 
 [assembly: AssemblyCompany(""Maxfire"")]
-[assembly: AssemblyCopyright(""Copyright maxfire 2015-" + $date.Year + ". All rights reserved."")]
+[assembly: AssemblyCopyright(""Copyright Maxfire 2012-" + $date.Year + ". All rights reserved."")]
 [assembly: AssemblyTrademark("""")]
 [assembly: ComVisible(false)]
 
