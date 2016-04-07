@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <metadata>
+    <id>Maxfire.Skat</id>
+    <version>${version}</version>
+    <title></title>
+    <authors>Morten Maxild</authors>
+    <owners>Morten Maxild</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>This package contains danish personal tax calculator components.</description>
+    <copyright>Copyright Maxfire 2012-2016. All rights reserved.</copyright>
+    <releaseNotes>This is a prerelease.</releaseNotes>
+    <tags>maxfire skat</tags>
+    <dependencies>
+      <dependency id="Maxfire.Core" version="${version}" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="..\artifacts\Maxfire.Skat.dll" target="lib\net461" />
+    <file src="..\artifacts\Maxfire.Skat.pdb" target="lib\net461" />
+  </files>
+</package>
