@@ -1,11 +1,4 @@
-# Note that using the value 4.5.1 also works for projects that target 4.5.2
-# (the value 4.5.2 is not recognised by psake)
-# This will make msbuild point to one of:
-#    [ProgramFilesX86]\MSBuild\12.0\bin\amd64 (x64 bitness of powershell)
-#    [ProgramFilesX86]\MSBuild\12.0\bin (x32 bitness of powershell)
-# See also http://blogs.msdn.com/b/visualstudio/archive/2013/07/24/msbuild-is-now-part-of-visual-studio.aspx
-# See also https://github.com/damianh/psake/commit/0778be759e83014f0bfdd1a0c84caac008c8112f
-Framework 4.5.1
+Framework 4.6.1
 
 properties {
     $base_dir = resolve-path .
@@ -15,52 +8,42 @@ properties {
     $nuget_packages_dir = join-path $env:UserProfile '.nuget' | join-path -ChildPath 'packages' # Nuget v3.x uses shared cache
     $sln_file = "Skat.sln"
     $configuration = "debug"
-    $global:version = "1.0.0-*"
     $framework_dir = Get-FrameworkDirectory
     $tools_version = "14.0" # MSBuild 14 == vs2015 == C#6
 }
 
 task default -depends dev
 task dev -depends compile, test -description "developer build (before commits)"
-#task full -depends dev, pack -description "full build (producing nupkg's)"
+task full -depends dev, pack -description "full build (producing nupkg's)"
 
-# For project.json as { "version": "1.0.0-*", ...}, together with label='alpha'
-# and build=12345, the end result is something equivalent to (DNX_BUILD_VERSION=alpha-12345, DNX_ASSEMBLY_FILE_VERSION=12345)
-#  [assembly: AssemblyVersion("1.0.0.0")]
-#  [assembly: AssemblyFileVersion("1.0.0.12345")]
-#  [assembly: AssemblyInformationalVersion("1.0.0-alpha-12345")]
-#
-# Before building (in build.ps1) do something like
-#      $env:DNX_BUILD_VERSION="${PrereleaseTag}-${paddedBuildNumber}"
-#      $env:DNX_ASSEMBLY_FILE_VERSION=$buildNumber
-task resolveVersions {
-    if ($global:version.EndsWith('-*')) {
-        $global:assemblyVersion = $global:version.Substring(0, $global:version.Length - 2)
-        if ($env:DNX_BUILD_VERSION -ne $NULL) {
-            $global:pkgVersion = $global:version.Substring(0, $global:version.Length - 1) + $env:DNX_BUILD_VERSION
-        }
-        else {
-            $paddedBuildNumber = Format-BuildNumber $(Get-BuildNumber)
-            $global:pkgVersion = $global:assemblyVersion + "-local-$paddedBuildNumber"
-        }
-    }
-    else {
-        $global:assemblyVersion = $global:version
-        $global:pkgVersion = $global:version
-    }
+task resolveVersions -depends clearGitVersionCache {
 
-    if ($env:DNX_ASSEMBLY_FILE_VERSION -ne $NULL) {
-        [int]$fileVersion = $env:DNX_ASSEMBLY_FILE_VERSION
-    }
-    else {
-        [int]$fileVersion = 0
-    }
-    $global:assemblyFileVersion = "${global:assemblyVersion}.$fileVersion"
+    $output = & gitversion /output json
+    $versionInfoJson = $output -join "`n" # gitVersion /output json returns System.Object[] type
+    $versionInfo = $versionInfoJson | ConvertFrom-Json
 
-    # Update appveyor build details (-Version must be unique)
+    $global:buildVersion = "$($versionInfo.FullSemVer).local.$(Get-BuildNumber)"
+    $global:pkgVersion = $versionInfo.NuGetVersion
+    $global:assemblyVersion = "$($versionInfo.Major).$($versionInfo.Minor)"
+    $global:assemblyFileVersion = "$($versionInfo.MajorMinorPatch).$($versionInfo.CommitsSinceVersionSource)"
+    $global:assemblyInformationalVersion = "$buildVersion+$($versionInfo.FullBuildMetaData)"
+
+    # Update appveyor build details
     if ($env:APPVEYOR -ne $NULL) {
-        Update-AppveyorBuild -Version $global:pkgVersion
+        # put the build number in the build metadata. i.e 1.0.0+146.build.{appveyor_build_number}
+        # this way appveyor doesn't generate duplicate version numbers (-Version must be unique)
+        $global:buildVersion = "$($versionInfo.FullSemVer).build.$($env:APPVEYOR_BUILD_NUMBER)"
+        Update-AppveyorBuild -Version $buildNumber
     }
+}
+
+# See https://github.com/GitTools/GitVersion/issues/798
+task clearGitVersionCache {
+    remove-item $(join-path $base_dir '.git' | join-path -ChildPath 'gitversion_cache') -recurse -force
+}
+
+task showVersion -depends clearGitVersionCache, resolveVersions {
+    Show-Configuration
 }
 
 task VerifyTools {
@@ -68,7 +51,7 @@ task VerifyTools {
     # and the 2015 Toolset (ToolsVersion 14.0)
     #$version = &"$framework_dir\MSBuild.exe" /nologo /version
     $version = &{msbuild /nologo /version}
-    $expectedVersion = "14.0.23107.0"
+    $expectedVersion = "14.0.24723.2"
     Write-Host "Framework directory (GAC) is $framework_dir"
     Write-Host "MSBuild version is $version"
     Assert $version.StartsWith($tools_version) "MSBuild has version '$version'. It should be '$tools_version'."
@@ -88,15 +71,13 @@ task restore {
 }
 
 task compile -depends clean, restore, commonAssemblyInfo {
-    $commit = Get-Git-Commit-Full
 
     $outdir = $artifacts_dir
     if (-not ($outdir.EndsWith("\"))) {
       $outdir += '\' # MSBuild requires OutDir to end with a trailing slash
     }
 
-    Write-Host "Compiling '$sln_file' with '$configuration' configuration" -ForegroundColor Yellow
-
+    Show-Configuration
     exec { msbuild /t:Clean /t:Build /p:OutDir=$outdir /p:Configuration=$configuration /v:minimal /tv:${tools_version} /p:VisualStudioVersion=${tools_version} /maxcpucount "$sln_file" }
 
     # TODO: Use SourceLink.exe
@@ -130,7 +111,39 @@ task test -depends compile {
 }
 
 task commonAssemblyInfo -depends resolveVersions {
-    create-commonAssemblyInfo $(Get-Git-Commit-Full) "$source_dir\CommonAssemblyInfo.cs"
+    $date = Get-Date
+    "using System;
+using System.Reflection;
+using System.Runtime.InteropServices;
+
+//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//     Runtime Version:2.0.50727.4927
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: AssemblyCompany(""Maxfire"")]
+[assembly: AssemblyCopyright(""Copyright Maxfire 2012-" + $date.Year + ". All rights reserved."")]
+[assembly: AssemblyTrademark("""")]
+[assembly: ComVisible(false)]
+
+[assembly: AssemblyVersion(""$assemblyVersion"")]
+[assembly: AssemblyFileVersion(""$assemblyFileVersion"")]
+[assembly: AssemblyInformationalVersion(""$assemblyInformationalVersion"")]
+[assembly: AssemblyProduct(""Skat"")]
+
+[assembly: CLSCompliant(true)]
+
+#if DEBUG
+[assembly: AssemblyConfiguration(""Debug"")]
+#else
+[assembly: AssemblyConfiguration(""Release"")]
+#endif
+" | out-file $(join-path $source_dir 'CommonAssemblyInfo.cs') -encoding "utf8"
 }
 
 task pack -depends compile {
@@ -176,6 +189,26 @@ function find-dependencyVersion($projectJsonPath, $packageId) {
     }
 
     return $dependencyVersion.ToString()
+}
+
+function Show-Configuration {
+    Write-Host -NoNewline "Build version is '" -ForegroundColor Yellow
+    Write-Host -NoNewline "$global:buildVersion" -ForegroundColor DarkGreen
+    Write-Host -NoNewline "' with '" -ForegroundColor Yellow
+    Write-Host -NoNewline "$configuration" -ForegroundColor DarkGreen
+    Write-Host "' configuration has resulted in versions defined by" -ForegroundColor Yellow
+
+    Write-Host -NoNewline "  Version: " -ForegroundColor Yellow
+    Write-Host "$global:pkgVersion" -ForegroundColor DarkGreen
+
+    Write-Host -NoNewline "  AssemblyVersion: " -ForegroundColor Yellow
+    Write-Host "$global:assemblyVersion" -ForegroundColor DarkGreen
+
+    Write-Host -NoNewline "  AssemblyFileVersion: " -ForegroundColor Yellow
+    Write-Host "$global:assemblyFileVersion" -ForegroundColor DarkGreen
+
+    Write-Host -NoNewline "  AssemblyInformationalVersion: " -ForegroundColor Yellow
+    Write-Host "$global:assemblyInformationalVersion" -ForegroundColor DarkGreen
 }
 
 # -------------------------------------------------------------------------------------------------------------
@@ -258,41 +291,4 @@ function global:copy_files($source, $destination, $exclude = @()) {
     create_directory $destination
     Get-ChildItem $source -Recurse -Exclude $exclude |
         Copy-Item -Destination {Join-Path $destination $_.FullName.Substring($source.length)}
-}
-
-function global:create-commonAssemblyInfo($commit, $filename)
-{
-    $date = Get-Date
-    "using System;
-using System.Reflection;
-using System.Runtime.InteropServices;
-
-//------------------------------------------------------------------------------
-// <auto-generated>
-//     This code was generated by a tool.
-//     Runtime Version:2.0.50727.4927
-//
-//     Changes to this file may cause incorrect behavior and will be lost if
-//     the code is regenerated.
-// </auto-generated>
-//------------------------------------------------------------------------------
-
-[assembly: AssemblyCompany(""Maxfire"")]
-[assembly: AssemblyCopyright(""Copyright Maxfire 2012-" + $date.Year + ". All rights reserved."")]
-[assembly: AssemblyTrademark("""")]
-[assembly: ComVisible(false)]
-
-[assembly: AssemblyVersion(""$assemblyVersion"")]
-[assembly: AssemblyFileVersion(""$assemblyFileVersion"")]
-[assembly: AssemblyInformationalVersion(""$pkgVersion / $commit / "")]
-[assembly: AssemblyProduct(""Skat"")]
-
-[assembly: CLSCompliant(true)]
-
-#if DEBUG
-[assembly: AssemblyConfiguration(""Debug"")]
-#else
-[assembly: AssemblyConfiguration(""Release"")]
-#endif
-" | out-file $filename -encoding "utf8"
 }
