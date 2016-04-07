@@ -46,7 +46,7 @@ task showVersion -depends clearGitVersionCache, resolveVersions {
     Show-Configuration
 }
 
-task VerifyTools {
+task verifyTools {
     # Visual Studio 2015 will exclusively use 2015 MSBuild and C# compilers (assembly version 14.0)
     # and the 2015 Toolset (ToolsVersion 14.0)
     #$version = &"$framework_dir\MSBuild.exe" /nologo /version
@@ -58,7 +58,7 @@ task VerifyTools {
     Assert ($version -eq $expectedVersion) "MSBuild has version '$version'. It should be '$expectedVersion'."
 }
 
-task Clean {
+task clean -depends  clearGitVersionCache {
     delete_directory $artifacts_dir
 }
 

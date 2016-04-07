@@ -1,16 +1,4 @@
 next-version: 1.0.0
-commits-since-version-source-padding: 5
 branches:
-  master:
-    tag:
-  releases?[/-]:
-    tag: rc
-  features?[/-]:
-    tag: useBranchName
-    increment: Minor
-  (pull|pull\-requests|pr)[/-]:
-    tag: pr
-  hotfix[/-]:
-    tag: rc
-  dev(elop)?$:
+  dev(elop)?(ment)?$:
     tag: beta
