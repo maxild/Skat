@@ -41,7 +41,7 @@ task resolveVersions -depends clearGitVersionCache {
         # put the build number in the build metadata. i.e 1.0.0+146.build.{appveyor_build_number}
         # this way appveyor doesn't generate duplicate version numbers (-Version must be unique)
         $global:buildVersion = "$($versionInfo.FullSemVer).build.$($env:APPVEYOR_BUILD_NUMBER)"
-        Update-AppveyorBuild -Version $buildNumber
+        Update-AppveyorBuild -Version $buildVersion
     }
 }
 
