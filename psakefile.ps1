@@ -30,7 +30,7 @@ task resolveVersions -depends clearGitVersionCache {
     $versionInfoJson = $output -join "`n" # gitVersion /output json returns System.Object[] type
     $versionInfo = $versionInfoJson | ConvertFrom-Json
 
-    $global:buildVersion = "$($versionInfo.FullSemVer).local.$(Get-BuildNumber)"
+    $global:buildVersion = Append-BuildNumber $versionInfo.FullSemVer "Local.$(Get-BuildNumber)"
     # feature and pull request branches does not need padded PreReleaseNumber (0001)
     if ($versionInfo.PreReleaseTag.StartsWith('a.')) {
         # What happens with two identical feature branches (can myget packages be overriden without errors?)
@@ -41,13 +41,13 @@ task resolveVersions -depends clearGitVersionCache {
     }
     $global:assemblyVersion = "$($versionInfo.Major).$($versionInfo.Minor)"
     $global:assemblyFileVersion = "$($versionInfo.MajorMinorPatch).$($versionInfo.CommitsSinceVersionSource)"
-    $global:assemblyInformationalVersion = "$buildVersion+$($versionInfo.FullBuildMetaData)"
+    $global:assemblyInformationalVersion = "$buildVersion.$($versionInfo.FullBuildMetaData)"
 
     # Update appveyor build details
     if ($env:APPVEYOR -ne $NULL) {
         # put the build number in the build metadata. i.e 1.0.0+146.build.{appveyor_build_number}
         # this way appveyor doesn't generate duplicate version numbers (-Version must be unique)
-        $global:buildVersion = "$($versionInfo.FullSemVer).build.$($env:APPVEYOR_BUILD_NUMBER)"
+        $global:buildVersion = Append-BuildNumber $versionInfo.FullSemVer "Build.$($env:APPVEYOR_BUILD_NUMBER)"
         Update-AppveyorBuild -Version $buildVersion
     }
 }
@@ -232,6 +232,15 @@ function Show-Configuration {
 # -------------------------------------------------------------------------------------------------------------
 # generalized functions
 # --------------------------------------------------------------------------------------------------------------
+function Append-BuildNumber([string]$SemVer, [string]$BuildNumber) {
+    if ($SemVer.Contains('+')) {
+        return "$SemVer.$BuildNumber" # append build number to build metadata using dot separator
+    }
+    else {
+        return "$SemVer+$BuildNumber" # append build number as the only metadata using metadata separator
+    }
+}
+
 function Format-PrereleaseTag([string]$PreReleaseTag) {
     # The string MUST be comprised of only alphanumerics plus dash [0-9A-Za-z-].
     $tag = $PreReleaseTag.Replace(".", "-");
