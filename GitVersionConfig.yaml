@@ -2,3 +2,11 @@ next-version: 1.0.0
 branches:
   dev(elop)?(ment)?$:
     tag: beta
+  features?[/-]:
+    tag: a-f-{BranchName}
+  (pull|pull\-requests|pr)[/-]:
+    tag: a-pr
+  releases?[/-]:
+    tag: rc
+  hotfix(es)?[/-]:
+    tag: rc
