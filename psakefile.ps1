@@ -33,7 +33,7 @@ task resolveVersions -depends clearGitVersionCache {
     $global:buildVersion = "$($versionInfo.FullSemVer).local.$(Get-BuildNumber)"
     # feature and pull request branches does not need padded PreReleaseNumber (0001)
     if ($versionInfo.PreReleaseTag.StartsWith('a.')) {
-        # What happens with two identical feature branches (can myget packages be overriden without errors???)
+        # What happens with two identical feature branches (can myget packages be overriden without errors?)
         $global:pkgVersion = "$($versionInfo.MajorMinorPatch)-$(Format-PrereleaseTag $versionInfo.PreReleaseLabel)"
     }
     else {
