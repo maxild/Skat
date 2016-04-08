@@ -1,4 +1,3 @@
-next-version: 0.1.0
 # For all branches except dev GitVersion will produce the same
 # version NuGet package each commit until you tag a release.
 # The base version are calculated from
