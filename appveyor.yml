@@ -1,4 +1,13 @@
+environment:
+  github_password:
+    secure: MSpb924hdiyXPSuUSzWG/w==
+
+# GitVersion (i.e. libgit2) doesn't support SSH, so to avoid 'Unsupported URL protocol'
+# when GitVersion fetches from the remote, we have to convert to using HTTPS
 install:
+  - git remote set-url origin https://github.com/maxild/Skat.git
+  - ps: $env:GITVERSION_REMOTE_USERNAME="maxild"
+  - ps: $env:GITVERSION_REMOTE_PASSWORD ="$($env:github_password)"
   - choco install gitversion.portable -pre -y
 
 build_script:
