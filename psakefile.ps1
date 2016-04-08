@@ -31,7 +31,14 @@ task resolveVersions -depends clearGitVersionCache {
     $versionInfo = $versionInfoJson | ConvertFrom-Json
 
     $global:buildVersion = "$($versionInfo.FullSemVer).local.$(Get-BuildNumber)"
-    $global:pkgVersion = $versionInfo.NuGetVersion
+    # feature and pull request branches does not need padded PreReleaseNumber (0001)
+    if ($versionInfo.PreReleaseTag.StartsWith('a.')) {
+        # What happens with two identical feature branches (can myget packages be overriden without errors?)
+        $global:pkgVersion = "$($versionInfo.MajorMinorPatch)-$(Format-PrereleaseTag $versionInfo.PreReleaseLabel)"
+    }
+    else {
+        $global:pkgVersion = $versionInfo.NuGetVersion
+    }
     $global:assemblyVersion = "$($versionInfo.Major).$($versionInfo.Minor)"
     $global:assemblyFileVersion = "$($versionInfo.MajorMinorPatch).$($versionInfo.CommitsSinceVersionSource)"
     $global:assemblyInformationalVersion = "$buildVersion+$($versionInfo.FullBuildMetaData)"
@@ -225,6 +232,18 @@ function Show-Configuration {
 # -------------------------------------------------------------------------------------------------------------
 # generalized functions
 # --------------------------------------------------------------------------------------------------------------
+function Format-PrereleaseTag([string]$PreReleaseTag) {
+    # The string MUST be comprised of only alphanumerics plus dash [0-9A-Za-z-].
+    $tag = $PreReleaseTag.Replace(".", "-");
+
+    # The string cannot exceeed 20 chars
+    if ($tag.Length -gt 20) {
+        return $tag.Substring(0, 20);
+    }
+
+    return $tag;
+}
+
 function Format-BuildNumber([int]$BuildNumber) {
     if ($BuildNumber -gt 99999) {
         Throw "Build number cannot be greater than 99999, because of Legacy SemVer limitations in Nuget."

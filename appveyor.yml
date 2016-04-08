@@ -3,7 +3,8 @@ environment:
     secure: MSpb924hdiyXPSuUSzWG/w==
 
 # GitVersion (i.e. libgit2) doesn't support SSH, so to avoid 'Unsupported URL protocol'
-# when GitVersion fetches from the remote, we have to convert to using HTTPS
+# when GitVersion fetches from the remote, we have to convert to using HTTPS. Also because
+# we are building a private repo we need to configure username/password used by GitVersion.
 install:
   - git remote set-url origin https://github.com/maxild/Skat.git
   - ps: $env:GITVERSION_REMOTE_USERNAME="maxild"
@@ -26,5 +27,3 @@ deploy:
     secure: EOVLFyiHRhh9Jij3/mITdSV5JH1SzT8JUbqqTIFtvOPndNeMme3mME01ws3+5nFB
   skip_symbols: true
   artifact: MyGet
-  on:
-    branch: dev

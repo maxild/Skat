@@ -2,3 +2,16 @@ next-version: 1.0.0
 branches:
   dev(elop)?(ment)?$:
     tag: beta
+  features?[/-]:
+    tag: a.{BranchName}
+  # pull requests are not important, because we use a shared/centralized upstream repo and
+  # base all our work off supporting feature/xxx, release/x.y.z and hotfix/x.y.z branches.
+  # We have in fact turned off app veyor ci builds for pull requests in the github web hook
+  # config for the same reason, because app veyor have all ready build the supporting centralized
+  # branch.
+  (pull|pull\-requests|pr)[/-]:
+    tag: a.pr
+  releases?[/-]:
+    tag: rc
+  hotfix(es)?[/-]:
+    tag: rc
