@@ -3,9 +3,9 @@ branches:
   dev(elop)?(ment)?$:
     tag: beta
   features?[/-]:
-    tag: a-f-{BranchName}
+    tag: af-{BranchName}
   (pull|pull\-requests|pr)[/-]:
-    tag: a-pr
+    tag: apr
   releases?[/-]:
     tag: rc
   hotfix(es)?[/-]:
