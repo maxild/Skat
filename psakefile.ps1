@@ -18,16 +18,17 @@ task full -depends dev, pack -description "full build (producing nupkg's)"
 
 task resolveVersions -depends clearGitVersionCache {
 
-    $output = & gitversion /output json /l GitVersion.log
+    $logPath = [System.IO.Path]::GetTempFileName()
+    $output = & gitversion /output json /l $logPath
     if ($LASTEXITCODE -ne 0) {
-        Write-Verbose "$output"
+        Write-Host "GitVersion Log:"
+        Get-Content $logPath | % { Write-Output $_ }
+        Write-Error "$output"
         throw "GitVersion Exit Code: $LASTEXITCODE"
     }
 
     $versionInfoJson = $output -join "`n" # gitVersion /output json returns System.Object[] type
     $versionInfo = $versionInfoJson | ConvertFrom-Json
-
-    Write-Host $versionInfo
 
     $global:buildVersion = "$($versionInfo.FullSemVer).local.$(Get-BuildNumber)"
     $global:pkgVersion = $versionInfo.NuGetVersion
