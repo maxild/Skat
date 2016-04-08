@@ -1,7 +1,13 @@
-next-version: 1.0.0
+next-version: 0.1.0
+# For all branches except dev GitVersion will produce the same
+# version NuGet package each commit until you tag a release.
+# The base version are calculated from
+#   1) next-version in config
+#   2) branch name (e.g. release/1.0.0)
+#   3) Tagging a commit (tag can be either 1.0.0 or v1.0.0 or v1.0.0-beta5, v.1.0.0-rc1)
 branches:
   dev(elop)?(ment)?$:
-    tag: beta
+    tag: cidev
   features?[/-]:
     tag: a.{BranchName}
   # pull requests are not important, because we use a shared/centralized upstream repo and
