@@ -1,5 +1,7 @@
 [CmdletBinding()]
-param()
+param (
+    [switch]$SkipPush
+)
 
 $ErrorActionPreference = "Stop"
 trap
@@ -42,6 +44,8 @@ if ($LASTEXITCODE -ne 0) {
 }
 
 # push the (annotated) tag
-& git push origin $tagName
+if (-not $SkipPush) {
+    & git push origin $tagName
+}
 
 Pop-Location
