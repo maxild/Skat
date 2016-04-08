@@ -5,13 +5,18 @@ next-version: 0.1.0
 #   1) next-version in config
 #   2) branch name (e.g. release/1.0.0)
 #   3) Tagging a commit (tag can be either 1.0.0 or v1.0.0 or v1.0.0-beta5, v.1.0.0-rc1)
+# GitVersion v3 has a problemtic sorting of tags because it doesn't bump the next version
+# of dev (ci builds) until release have been merged into master.
+# https://github.com/GitTools/GitVersion/issues/632
+# https://github.com/GitTools/GitVersion/issues/695
+# The sorting should be feature (alpha) < develop (cidev|beta) < release|hotfix (rc) < master
 branches:
   dev(elop)?(ment)?$:
     tag: cidev
   features?[/-]:
     tag: a.{BranchName}
   # pull requests are not important, because we use a shared/centralized upstream repo and
-  # base all our work off supporting feature/xxx, release/x.y.z and hotfix/x.y.z branches.
+  # base all our work of supporting feature/xxx, release/x.y.z and hotfix/x.y.z branches.
   # We have in fact turned off app veyor ci builds for pull requests in the github web hook
   # config for the same reason, because app veyor have all ready build the supporting centralized
   # branch.
