@@ -39,7 +39,10 @@ task resolveVersions -depends clearGitVersionCache {
 
 # See https://github.com/GitTools/GitVersion/issues/798
 task clearGitVersionCache {
-    remove-item $(join-path $base_dir '.git' | join-path -ChildPath 'gitversion_cache') -recurse -force
+    $pathToGitVersionCache = join-path $base_dir '.git' | join-path -ChildPath 'gitversion_cache'
+    if (Test-Path -PathType Container -Path $pathToGitVersionCache) {
+        remove-item $pathToGitVersionCache -recurse -force
+    }
 }
 
 task showVersion -depends clearGitVersionCache, resolveVersions {
