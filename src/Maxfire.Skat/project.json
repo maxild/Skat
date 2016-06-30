@@ -1,9 +1,8 @@
 ﻿{
   "dependencies": {
-    "Maxfire.Core": "1.0.0-alpha-00004"
   },
   "frameworks": {
-    "net461": {}
+    "net46": {}
   },
   "runtimes": {
     "win": {}

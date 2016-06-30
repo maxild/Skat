@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Maxfire.Skat.UnitTests</RootNamespace>
     <AssemblyName>Maxfire.Skat.UnitTests</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -72,13 +72,13 @@
     <Compile Include="SkatteberegnerTester.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Maxfire.Skat\Maxfire.Skat.csproj">
-      <Project>{96028503-E4FA-4BFA-A88F-6307F43965D6}</Project>
-      <Name>Maxfire.Skat</Name>
-    </ProjectReference>
+    <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="project.json" />
+    <ProjectReference Include="..\..\src\Maxfire.Skat\Maxfire.Skat.csproj">
+      <Project>{96028503-e4fa-4bfa-a88f-6307f43965d6}</Project>
+      <Name>Maxfire.Skat</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

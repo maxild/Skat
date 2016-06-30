@@ -12,7 +12,6 @@
     <releaseNotes>This is a prerelease.</releaseNotes>
     <tags>maxfire skat</tags>
     <dependencies>
-      <dependency id="Maxfire.Core" version="${version}" />
     </dependencies>
   </metadata>
   <files>

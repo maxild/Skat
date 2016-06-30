@@ -9,8 +9,8 @@ namespace Maxfire.Skat.Beregnere
 		/// </summary>
 		public ValueTuple<decimal> BeregnBruttoGrundlag(IValueTuple<IPersonligeIndkomster> indkomster)
 		{
-			var personligIndkomst = indkomster.Map(x => x.PersonligIndkomstSkattegrundlag);
-			var nettoKapitalIndkomst = indkomster.Map(x => x.NettoKapitalIndkomstSkattegrundlag);
+			var personligIndkomst = indkomster.Map(x => x.PersonligIndkomstSkattegrundlag).ToValueTuple();
+			var nettoKapitalIndkomst = indkomster.Map(x => x.NettoKapitalIndkomstSkattegrundlag).ToValueTuple();
 
 			var nettoKapitalIndkomstEfterModregning = nettoKapitalIndkomst.NedbringPositivtMedEvtNegativt();
 

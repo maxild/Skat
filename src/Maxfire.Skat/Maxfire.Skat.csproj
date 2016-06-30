@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Maxfire.Skat</RootNamespace>
     <AssemblyName>Maxfire.Skat</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -41,13 +41,16 @@
     <Compile Include="AntalBoern.cs" />
     <Compile Include="BefordringsfradragBeregner.cs" />
     <Compile Include="Beloeb.cs" />
+    <Compile Include="Beregnere\Numbers.cs" />
     <Compile Include="Beregnere\SkatterAfPersonligIndkomstResult.cs" />
     <Compile Include="Beregnere\TopskatResult.cs" />
     <Compile Include="Civilstand.cs" />
     <Compile Include="Internal\BeloebCollection.cs" />
     <Compile Include="Beregnere\AktieindkomstSkatBeregnere.cs" />
     <Compile Include="Beregnere\AMBidragBeregner.cs" />
+    <Compile Include="ITextValuePair.cs" />
     <Compile Include="MedlemAfFolkekirken.cs" />
+    <Compile Include="NullOp.cs" />
     <Compile Include="Obsolete\Beloebsgraenser.cs" />
     <Compile Include="Beregnere\IArbejdsmarkedIndkomster.cs" />
     <Compile Include="Beregnere\IPersonligeIndkomsterModregning.cs" />
@@ -100,9 +103,12 @@
     <Compile Include="Beregnere\KommuneskatBeregner.cs" />
     <Compile Include="Beregnere\PersonligIndkomstSkatteberegner.cs" />
     <Compile Include="Beregnere\PersonligIndkomstUnderskudBeregner.cs" />
+    <Compile Include="Operator.cs" />
     <Compile Include="PersonligIndkomstValue.cs" />
     <Compile Include="Internal\PersonligIndkomstBeloebCollection.cs" />
+    <Compile Include="PreludeExtensions.cs" />
     <Compile Include="Reflection\Accessor.cs" />
+    <Compile Include="Reflection\ExpressionHelper.cs" />
     <Compile Include="Reflection\Getter.cs" />
     <Compile Include="Reflection\IntrospectionOf.cs" />
     <Compile Include="Reflection\PropertyAccessor.cs" />
@@ -122,6 +128,7 @@
     <Compile Include="Beregnere\SkattevaerdiOmregner.cs" />
     <Compile Include="Internal\TextValuePairCollection.cs" />
     <Compile Include="SpecificeredeIndkomstSkatter.cs" />
+    <Compile Include="TextValuePair.cs" />
     <Compile Include="ValueTuple.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Skatteberegner.cs" />

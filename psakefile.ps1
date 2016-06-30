@@ -167,7 +167,7 @@ using System.Runtime.InteropServices;
 task pack -depends compile {
 
     # Find dependency versions
-    $maxfireCoreVersion = find-dependencyVersion (join-path (join-path $source_dir "Maxfire.Skat") "project.json") 'Maxfire.Core'
+    #$maxfireCoreVersion = find-dependencyVersion (join-path (join-path $source_dir "Maxfire.Skat") "project.json") 'Maxfire.Core'
 
     # Could use the -Version option of the nuget.exe pack command to provide the actual version.
     # _but_ the package dependency version cannot be overriden at the commandline.
@@ -175,11 +175,11 @@ task pack -depends compile {
     $packages | %{
         $nuspec = [xml](Get-Content $_.FullName)
         $nuspec.package.metadata.version = $global:pkgVersion
-        $nuspec | Select-Xml '//dependency' | %{
-            if ($_.Node.id -eq 'Maxfire.Core') {
-                $_.Node.version = $maxfireCoreVersion
-            }
-        }
+        # $nuspec | Select-Xml '//dependency' | %{
+        #     if ($_.Node.id -eq 'Maxfire.Core') {
+        #         $_.Node.version = $maxfireCoreVersion
+        #     }
+        # }
         $nuspecFilename = join-path $artifacts_dir (Split-Path -Path $_.FullName -Leaf)
         $nuspec.Save($nuspecFilename)
         exec { & $base_dir\.nuget\Nuget.exe pack -OutputDirectory $artifacts_dir $nuspecFilename }

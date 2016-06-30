@@ -1,6 +1,4 @@
-﻿using Maxfire.Core;
-
-namespace Maxfire.Skat
+﻿namespace Maxfire.Skat
 {
-	public interface IPersonligIndkomstBeloebCollection : ISumableEnumerable<ITextValuePair<PersonligIndkomstValue>, decimal> {}
+    public interface IPersonligIndkomstBeloebCollection : ISumableEnumerable<ITextValuePair<PersonligIndkomstValue>, decimal> { }
 }

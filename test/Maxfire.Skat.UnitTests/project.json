@@ -1,12 +1,11 @@
 ﻿{
   "dependencies": {
-    "Maxfire.Core": "1.0.0-alpha-00004",
     "Shouldly": "2.7.0",
     "xunit": "2.1.0",
     "xunit.runner.console": "2.1.0"
   },
   "frameworks": {
-    "net461": {}
+    "net46": {}
   },
   "runtimes": {
     "win": {}
