@@ -1,13 +1,37 @@
-﻿{
-  "dependencies": {
-    "Shouldly": "2.7.0",
-    "xunit": "2.1.0",
-    "xunit.runner.console": "2.1.0"
-  },
-  "frameworks": {
-    "net46": {}
-  },
-  "runtimes": {
-    "win": {}
-  }
+{
+    "version": "1.0.0-*",
+
+    "dependencies": {
+        "xunit": "2.1.0",
+        "dotnet-test-xunit": "1.0.0-rc2-*",
+        "Shouldly": "2.8.0",
+        "Maxfire.Skat": {
+            "version": "1.0.0-*",
+            "target": "project"
+        }
+    },
+
+    "testRunner": "xunit",
+
+    "frameworks": {
+        "netcoreapp1.0": {
+            "imports": [
+                "dotnet5.6",
+                "dnxcore50",
+                "portable-net45+win8"
+            ],
+            "dependencies": {
+                "Microsoft.NETCore.App": {
+                    "version": "1.0.0",
+                    "type": "platform"
+                }
+            }
+        },
+        "net46": {
+            "dependencies": {
+                "Microsoft.NETCore.Platforms": "1.0.1"
+            }
+        }
+    }
+
 }

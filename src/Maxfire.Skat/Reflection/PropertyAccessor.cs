@@ -23,12 +23,12 @@ namespace Maxfire.Skat.Reflection
 
         public void SetValue(TObject target, TPropertyValue propertyValue)
         {
-            _propertyInfo.SetValue(target, propertyValue, DEFAULT_BINDINGFLAGS, null, null, null);
+            _propertyInfo.SetValue(target, propertyValue);
         }
 
         public TPropertyValue GetValue(TObject target)
         {
-            return (TPropertyValue)_propertyInfo.GetValue(target, DEFAULT_BINDINGFLAGS, null, null, null);
+            return (TPropertyValue)_propertyInfo.GetValue(target);
         }
 
         public string PropertyName
