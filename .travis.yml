@@ -33,7 +33,6 @@ install:
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew install openssl; fi
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew link --force openssl; fi
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew list; fi
-  - chmod +x build.sh
 #  - ./build.sh -target=Restore
 
 script:
