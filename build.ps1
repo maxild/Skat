@@ -95,7 +95,7 @@ if ((Test-Path $PSScriptRoot) -and (-not (Test-Path $TOOLS_DIR))) {
     New-Item -Path $TOOLS_DIR -Type directory | out-null
 }
 
-# Try download NuGet.exe if not exists
+# Download NuGet if it does not exist.
 if (-not (Test-Path $NUGET_EXE)) {
     Write-Verbose -Message "Downloading NuGet.exe..."
     try {
