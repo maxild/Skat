@@ -1,40 +1,129 @@
+##########################################################################
+# This is the Cake bootstrapper script for PowerShell.
+# This file was downloaded from https://github.com/cake-build/resources
+# Feel free to change this file to fit your needs.
+##########################################################################
+
+<#
+
+.SYNOPSIS
+This is a Powershell script to bootstrap a Cake build.
+
+.DESCRIPTION
+This Powershell script will download NuGet if missing, restore NuGet tools (including Cake)
+and execute your Cake build script with the parameters you provide.
+
+.PARAMETER Script
+The build script to execute.
+.PARAMETER Target
+The build script target to run.
+.PARAMETER Configuration
+The build configuration to use.
+.PARAMETER Verbosity
+Specifies the amount of information to be displayed.
+.PARAMETER Experimental
+Tells Cake to use the latest Roslyn release.
+.PARAMETER WhatIf
+Performs a dry run of the build script.
+No tasks will be executed.
+.PARAMETER Mono
+Tells Cake to use the Mono scripting engine.
+.PARAMETER SkipToolPackageRestore
+Skips restoring of packages.
+.PARAMETER ScriptArgs
+Remaining arguments are added here.
+
+.LINK
+http://cakebuild.net
+
+#>
+
 [CmdletBinding()]
-param (
-    [ValidateSet("debug", "release")]
-    [Alias('config')]
-    [string]$Configuration = 'debug',
-    [switch]$SkipRestore,
-    [switch]$CleanCache,
-    [switch]$SkipTests
+Param(
+    [string]$Script = "build.cake",
+    [string]$Target = "Default",
+    [string]$Configuration = "Release",
+    [ValidateSet("Quiet", "Minimal", "Normal", "Verbose", "Diagnostic")]
+    [string]$Verbosity = "Verbose",
+    [switch]$Experimental,
+    [Alias("DryRun","Noop")]
+    [switch]$WhatIf,
+    [switch]$Mono,
+    [switch]$SkipToolPackageRestore,
+    [Parameter(Position=0,Mandatory=$false,ValueFromRemainingArguments=$true)]
+    [string[]]$ScriptArgs
 )
 
-$RepoRoot = $PSScriptRoot
-$NuGetExe = Join-Path $RepoRoot '.nuget\nuget.exe'
+Write-Host "Preparing to run build script..."
 
-function Install-NuGet {
-    [CmdletBinding()]
-    param([string] $NugetVersion = "latest")
-    if (-not (Test-Path $NuGetExe)) {
-        Write-Host -ForegroundColor Cyan 'Downloading nuget.exe'
-        $NuGetDir = Join-Path $RepoRoot '.nuget'
-        if (-not (Test-Path $NuGetDir)) {
-            New-Item -ItemType directory -Path $NuGetDir
-        }
-        Invoke-WebRequest "https://dist.nuget.org/win-x86-commandline/$NugetVersion/nuget.exe" -OutFile $NuGetExe
+$PSScriptRoot = split-path -parent $MyInvocation.MyCommand.Definition;
+
+# Tree
+$BUILD_DIR       = Join-Path $PSScriptRoot "build" # build scripts, maybe rename
+$TOOLS_DIR       = Join-Path $PSScriptRoot ".tools"
+$NUGET_EXE       = Join-Path $TOOLS_DIR "nuget.exe"
+$CAKE_EXE        = Join-Path $TOOLS_DIR "Cake/Cake.exe"
+$PACKAGES_CONFIG = Join-Path $BUILD_DIR "packages.config" # containing Cake dependency
+
+# Aliases for the entire powershell session
+Set-Alias nuget $NUGET_EXE -scope global
+Set-Alias cake  $CAKE_EXE -scope global
+
+# Should we use mono?
+$UseMono = "";
+if($Mono.IsPresent) {
+    Write-Verbose -Message "Using the Mono based scripting engine."
+    $UseMono = "-mono"
+}
+
+# Should we use the new Roslyn?
+$UseExperimental = "";
+if($Experimental.IsPresent -and (-not ($Mono.IsPresent))) {
+    Write-Verbose -Message "Using experimental version of Roslyn."
+    $UseExperimental = "-experimental"
+}
+
+# Is this a dry run?
+$UseDryRun = "";
+if($WhatIf.IsPresent) {
+    $UseDryRun = "-dryrun"
+}
+
+# Make sure .tools folder exists
+if ((Test-Path $PSScriptRoot) -and (-not (Test-Path $TOOLS_DIR))) {
+    Write-Verbose -Message "Creating tools directory..."
+    New-Item -Path $TOOLS_DIR -Type directory | out-null
+}
+
+# Try download NuGet.exe if not exists
+if (-not (Test-Path $NUGET_EXE)) {
+    Write-Verbose -Message "Downloading NuGet.exe..."
+    try {
+        Invoke-WebRequest "https://dist.nuget.org/win-x86-commandline/latest/nuget.exe" -OutFile $NUGET_EXE
+    } catch {
+        Throw "Could not download NuGet.exe."
     }
 }
 
-function Install-PSake {
-    if (-not (Test-Path (Join-Path $RepoRoot 'packages\psake'))) {
-        & $NuGetExe install psake -version 4.5.0 -ExcludeVersion -o packages -nocache
+# Install tools (i.e. Cake) using NuGet
+if(-not $SkipToolPackageRestore.IsPresent) {
+    Push-Location
+    Set-Location $TOOLS_DIR
+    Write-Verbose -Message "Restoring tools from NuGet..."
+    $NuGetOutput = &nuget install $PACKAGES_CONFIG -ExcludeVersion -OutputDirectory `"$TOOLS_DIR`"
+    if ($LASTEXITCODE -ne 0) {
+        Throw "An error occured while restoring NuGet tools."
     }
+    Write-Verbose -Message ($NuGetOutput | out-string)
+    Pop-Location
 }
 
-Install-NuGet
-Install-PSake
+# Make sure that Cake has been installed.
+if (-not (Test-Path $CAKE_EXE)) {
+    Throw "Could not find Cake.exe at $CAKE_EXE"
+}
 
-# right now it is hardcoded to full task
-.\packages\psake\tools\psake.ps1 .\psakefile.ps1 full -properties @{configuration=$Configuration}
-
-# report success or failure
-if ($psake.build_success -eq $false) { exit 1 } else { exit 0 }
+# Start Cake
+Write-Host "Running build script..."
+&cake $Script -target="$Target" -configuration="$Configuration" -verbosity="$Verbosity" $UseMono $UseDryRun $UseExperimental $ScriptArgs
+exit $LASTEXITCODE

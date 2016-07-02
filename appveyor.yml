@@ -12,18 +12,18 @@ install:
   - choco install gitversion.portable -pre -y
 
 build_script:
-  - ps: .\build.ps1 -config Release
+  - ps: .\build.ps1
 
 test: off
 
-artifacts:
-- path: artifacts\**\*.nupkg
-  name: MyGet
-
-deploy:
-- provider: NuGet
-  server: https://www.myget.org/F/brf-ci/api/v2/package
-  api_key:
-    secure: EOVLFyiHRhh9Jij3/mITdSV5JH1SzT8JUbqqTIFtvOPndNeMme3mME01ws3+5nFB
-  skip_symbols: true
-  artifact: MyGet
+#artifacts:
+#- path: artifacts\**\*.nupkg
+#  name: MyGet
+#
+#deploy:
+#- provider: NuGet
+#  server: https://www.myget.org/F/brf-ci/api/v2/package
+#  api_key:
+#    secure: EOVLFyiHRhh9Jij3/mITdSV5JH1SzT8JUbqqTIFtvOPndNeMme3mME01ws3+5nFB
+#  skip_symbols: true
+#  artifact: MyGet
