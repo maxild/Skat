@@ -128,5 +128,6 @@ Write-Host "Running build script..."
 # C# v6 features (e.g. string interpolation) are not supported without '-experimental' flag
 #   See https://github.com/cake-build/cake/issues/293
 #   See https://github.com/cake-build/cake/issues/326
-&cake $Script -experimental -target="$Target" -configuration="$Configuration" -verbosity="$Verbosity" $UseMono $UseDryRun $UseExperimental $ScriptArgs
+#&cake $Script -experimental -target="$Target" -configuration="$Configuration" -verbosity="$Verbosity" $UseMono $UseDryRun $UseExperimental $ScriptArgs
+&cake $Script -target="$Target" -configuration="$Configuration" -verbosity="$Verbosity" $UseMono $UseDryRun $UseExperimental $ScriptArgs
 exit $LASTEXITCODE

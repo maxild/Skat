@@ -28,14 +28,14 @@ public class BuildPaths {
     public BuildPaths(BuildSettings settings) {
         _settings = settings;
     }
-    public string Root => System.IO.Directory.GetCurrentDirectory();
-    public string Artifacts => System.IO.Path.Combine(Root, _settings.ArtifactsFolder);
-    public string Src => System.IO.Path.Combine(Root, _settings.SrcFolder);
-    public string Test => System.IO.Path.Combine(Root, _settings.TestFolder);
-    public string BuildTools => System.IO.Path.Combine(Root, _settings.BuildToolsFolder);
-    public string BuildScripts => System.IO.Path.Combine(Root, _settings.BuildScriptsFolder);
-    public string DotNetCli => System.IO.Path.Combine(Root, _settings.DotNetCliFolder);
-    public string DotNetExe => System.IO.Path.Combine(DotNetCli, "dotnet.exe");
+    public string Root { get { return System.IO.Directory.GetCurrentDirectory(); } }
+    public string Artifacts { get { return System.IO.Path.Combine(Root, _settings.ArtifactsFolder); } }
+    public string Src { get { return System.IO.Path.Combine(Root, _settings.SrcFolder); } }
+    public string Test { get { return System.IO.Path.Combine(Root, _settings.TestFolder); } }
+    public string BuildTools { get { return System.IO.Path.Combine(Root, _settings.BuildToolsFolder); } }
+    public string BuildScripts { get { return System.IO.Path.Combine(Root, _settings.BuildScriptsFolder); } }
+    public string DotNetCli { get { return System.IO.Path.Combine(Root, _settings.DotNetCliFolder); } }
+    public string DotNetExe { get { return System.IO.Path.Combine(DotNetCli, "dotnet.exe"); } }
 }
 
 // public class BuildTools {
@@ -66,7 +66,7 @@ var settings = new BuildSettings {
 var paths = new BuildPaths(settings);  
 //var tools = new BuildTools(settings, paths);
 
-string dotnet => settings.UseSystemDotNetPath 
+string dotnet = settings.UseSystemDotNetPath 
             ? "dotnet" 
             : System.IO.Path.Combine(paths.DotNetCli, "dotnet");
 
@@ -97,8 +97,8 @@ Task("InstallDotNet")
     Information("Downloading .NET Core SDK Binaries");
 
     var ext = IsRunningOnWindows() ? "ps1" : "sh";
-    var installScript = $"dotnet-install.{ext}";
-    var installScriptDownloadUrl = $"{settings.DotNetCliInstallScriptUrl}/{installScript}";
+    var installScript = "dotnet-install." + ext;
+    var installScriptDownloadUrl = settings.DotNetCliInstallScriptUrl +"/" + installScript;
     var dotnetInstallScript = System.IO.Path.Combine(paths.DotNetCli, installScript);
     
     CreateDirectory(paths.DotNetCli);
@@ -116,7 +116,7 @@ Task("InstallDotNet")
     
     // Run the dotnet-install.{ps1|sh} script. 
     // Note: The script will bypass if the version of the SDK has already been downloaded
-    Shell($"{dotnetInstallScript} -Channel {settings.DotNetCliChannel} -Version {settings.DotNetCliVersion} -InstallDir {paths.DotNetCli} -NoPath");
+    Shell(string.Format("{0} -Channel {1} -Version {2} -InstallDir {3} -NoPath", dotnetInstallScript, settings.DotNetCliChannel, settings.DotNetCliVersion, paths.DotNetCli));
     
     if (!FileExists(paths.DotNetExe)) {
         throw new Exception("Unable to find dotnet.exe. The CLI install may have failed.");
