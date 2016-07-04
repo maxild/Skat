@@ -4,7 +4,7 @@
 
 using System.Net;
 
-// Basic arguments
+// argument defaults
 var target = Argument("target", "Default");
 var configuration = Argument("configuration", "Release");
 
@@ -35,8 +35,8 @@ public class BuildPaths {
     public string BuildTools { get { return System.IO.Path.Combine(Root, _settings.BuildToolsFolder); } }
     public string BuildScripts { get { return System.IO.Path.Combine(Root, _settings.BuildScriptsFolder); } }
     public string DotNetCli { get { return System.IO.Path.Combine(Root, _settings.DotNetCliFolder); } }
-    public string DotNetExe { get { return System.IO.Path.Combine(DotNetCli, "dotnet.exe"); } }
 }
+
 
 // public class BuildTools {
 //     private readonly BuildSettings _settings;
@@ -111,15 +111,17 @@ Task("InstallDotNet")
 
     if (!IsRunningOnWindows())
     {
-        Shell("chmod +x {dotnetInstallScript}");
+        Shell("chmod +x " + dotnetInstallScript);
     }
     
     // Run the dotnet-install.{ps1|sh} script. 
     // Note: The script will bypass if the version of the SDK has already been downloaded
     Shell(string.Format("{0} -Channel {1} -Version {2} -InstallDir {3} -NoPath", dotnetInstallScript, settings.DotNetCliChannel, settings.DotNetCliVersion, paths.DotNetCli));
     
-    if (!FileExists(paths.DotNetExe)) {
-        throw new Exception("Unable to find dotnet.exe. The CLI install may have failed.");
+    var dotNetExe = IsRunningOnWindows() ? "dotnet.exe" : "dotnet";
+    if (!FileExists(System.IO.Path.Combine(paths.DotNetCli, dotNetExe))) 
+    {
+        throw new Exception(string.Format("Unable to find {0}. The dotnet CLI install may have failed.", dotNetExe));
     }
 
     try
@@ -128,7 +130,7 @@ Task("InstallDotNet")
     }
     catch
     {
-        throw new Exception(".NET CLI binary cannot be found.");
+        throw new Exception("dotnet --info have failed to execute. The dotnet CLI install may have failed.");
     }
 });
 
