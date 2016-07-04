@@ -108,9 +108,11 @@ ExitStatus Shell(string command, string workingDirectory)
 /// <returns>The exit status for further queries</returns>
 ExitStatus Shell(string command, RunOptions runOptions)
 {
-    Verbose($"Shell: {command}");
+    Verbose("Shell: {0}", command);
     var exec = IsRunningOnWindows() ? "powershell" : "bash";
-    var args = IsRunningOnWindows() ? $"/Command {command}" : $"-C {command}";
+    var args = IsRunningOnWindows() 
+        ? "/Command " + command 
+        : "-C " + command;
     return Run(exec, args, runOptions);
 }
 
@@ -199,10 +201,10 @@ public void KillProcessTree(Process process)
     // Use TASKKILL to kill the process hierarchy rooted in the process
     if (IsRunningOnWindows())
     {
-        StartProcess($"TASKKILL",
+        StartProcess("TASKKILL",
             new ProcessSettings
             {
-                Arguments = $"/PID {process.Id} /T /F",
+                Arguments = "/PID " + process.Id.ToString() + " /T /F",
             });
     }
     else
