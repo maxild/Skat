@@ -1,7 +1,7 @@
 # Tool folders 
 .nuget/
 .tools/
-.dotnetcli/
+.dotnet/
 packages/
 
 # VS Code

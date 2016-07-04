@@ -125,5 +125,8 @@ if (-not (Test-Path $CAKE_EXE)) {
 
 # Start Cake
 Write-Host "Running build script..."
-&cake $Script -target="$Target" -configuration="$Configuration" -verbosity="$Verbosity" $UseMono $UseDryRun $UseExperimental $ScriptArgs
+# C# v6 features (e.g. string interpolation) are not supported without '-experimental' flag
+#   See https://github.com/cake-build/cake/issues/293
+#   See https://github.com/cake-build/cake/issues/326
+&cake $Script -experimental -target="$Target" -configuration="$Configuration" -verbosity="$Verbosity" $UseMono $UseDryRun $UseExperimental $ScriptArgs
 exit $LASTEXITCODE
