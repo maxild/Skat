@@ -184,7 +184,7 @@ ExitStatus Run(string exec, string args, RunOptions runOptions)
         else
         {
             KillProcessTree(process);
-            return new ExitStatus(0, timeout: true);
+            return new ExitStatus(0, true);
         }
     }
 }
