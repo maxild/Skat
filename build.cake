@@ -1,54 +1,14 @@
 //#tool nuget:?package=NUnit.ConsoleRunner&version=3.4.0
 
+#load "build/paths.cake"
 #load "build/runhelpers.cake"
+#load "build/failurehelpers.cake"
 
 using System.Net;
 
 // Basic arguments
 var target = Argument("target", "Default");
 var configuration = Argument("configuration", "Release");
-
-public class BuildSettings
-{
-    public string ArtifactsFolder { get; set; }
-    public string SrcFolder { get; set; }
-    public string TestFolder { get; set; }
-    public string BuildToolsFolder { get; set; }
-    public string BuildScriptsFolder { get; set; }
-    public bool UseSystemDotNetPath { get; set; }
-    public string DotNetCliFolder { get; set; }
-    public string DotNetCliInstallScriptUrl { get; set; }
-    public string DotNetCliBranch { get; set; }
-    public string DotNetCliChannel { get; set; }
-    public string DotNetCliVersion { get; set; }
-}
-
-public class BuildPaths {
-    private readonly BuildSettings _settings;
-    public BuildPaths(BuildSettings settings) {
-        _settings = settings;
-    }
-    public string Root { get { return System.IO.Directory.GetCurrentDirectory(); } }
-    public string Artifacts { get { return System.IO.Path.Combine(Root, _settings.ArtifactsFolder); } }
-    public string Src { get { return System.IO.Path.Combine(Root, _settings.SrcFolder); } }
-    public string Test { get { return System.IO.Path.Combine(Root, _settings.TestFolder); } }
-    public string BuildTools { get { return System.IO.Path.Combine(Root, _settings.BuildToolsFolder); } }
-    public string BuildScripts { get { return System.IO.Path.Combine(Root, _settings.BuildScriptsFolder); } }
-    public string DotNetCli { get { return System.IO.Path.Combine(Root, _settings.DotNetCliFolder); } }
-    public string DotNetExe { get { return System.IO.Path.Combine(DotNetCli, "dotnet.exe"); } }
-}
-
-// public class BuildTools {
-//     private readonly BuildSettings _settings;
-//     private readonly BuildPaths _paths;
-//     public BuildTools(BuildSettings settings, BuildPaths paths) {
-//         _settings = settings;
-//         _paths = paths;
-//     }
-//     public string dotnet => _settings.UseSystemDotNetPath 
-//             ? "dotnet" 
-//             : System.IO.Path.Combine(_paths.DotNet, "dotnet");
-// }
 
 // Configuration (Note: branch of dotnet cli is '1.0.0-preview2')
 var settings = new BuildSettings {
@@ -66,9 +26,13 @@ var settings = new BuildSettings {
 var paths = new BuildPaths(settings);  
 //var tools = new BuildTools(settings, paths);
 
+// Tools
 string dotnet = settings.UseSystemDotNetPath 
             ? "dotnet" 
             : System.IO.Path.Combine(paths.DotNetCli, "dotnet");
+
+///////////////////////////////////////////////////////////////
+// Tasks
 
 Task("EnsureFolders")
     .Does(() => 
@@ -94,7 +58,7 @@ Task("Clean")
 Task("InstallDotNet")
     .Does(() =>
 {
-    Information("Downloading .NET Core SDK Binaries");
+    Information("Installing .NET Core SDK Binaries...");
 
     var ext = IsRunningOnWindows() ? "ps1" : "sh";
     var installScript = "dotnet-install." + ext;
@@ -109,7 +73,7 @@ Task("InstallDotNet")
         client.DownloadFile(installScriptDownloadUrl, dotnetInstallScript);
     }
 
-    if (!IsRunningOnWindows())
+    if (IsRunningOnUnix())
     {
         Shell("chmod +x {dotnetInstallScript}");
     }
@@ -118,7 +82,8 @@ Task("InstallDotNet")
     // Note: The script will bypass if the version of the SDK has already been downloaded
     Shell(string.Format("{0} -Channel {1} -Version {2} -InstallDir {3} -NoPath", dotnetInstallScript, settings.DotNetCliChannel, settings.DotNetCliVersion, paths.DotNetCli));
     
-    if (!FileExists(paths.DotNetExe)) {
+    if (!FileExists(paths.DotNetExe)) 
+    {
         throw new Exception("Unable to find dotnet.exe. The CLI install may have failed.");
     }
 
@@ -130,9 +95,23 @@ Task("InstallDotNet")
     {
         throw new Exception(".NET CLI binary cannot be found.");
     }
+
+    Information(".NET Core SDK install was succesful!");
+});
+
+Task("Restore")
+    .IsDependentOn("InstallDotNet")
+    .Does(() => 
+{
+    Information("Restoring packages...");
+    int exitCode1 = Run(dotnet, "restore", paths.Src);
+    FailureHelper.ExceptionOnError(exitCode1, "Failed to restore packages under src folder.");
+    int exitCode2 = Run(dotnet, "restore", paths.Test);
+    FailureHelper.ExceptionOnError(exitCode2, "Failed to restore packages under test folder.");
+    Information("Package restore was successful!");
 });
 
 Task("Default")
-    .IsDependentOn("InstallDotNet");
+    .IsDependentOn("Restore");
 
 RunTarget(target);
