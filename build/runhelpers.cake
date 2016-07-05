@@ -31,7 +31,6 @@ int Shell(string command, ProcessSettings settings)
     {
         throw new ArgumentNullException("settings");
     }
-    Verbose("Shell: {0}", command);
     var exec = IsRunningOnWindows() ? "powershell" : "bash";
     var args = IsRunningOnWindows() 
         ? "/Command " + command 
@@ -75,6 +74,7 @@ int Run(string exec, string args, ProcessSettings settings)
     {
         throw new ArgumentNullException("settings");
     }
+    Verbose("{0} {1}", exec, args);
     settings.Arguments = args;
     return StartProcess(exec, settings);
 }
