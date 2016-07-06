@@ -157,25 +157,33 @@ Task("Run-Tests")
         var testPrjDir = testPrj.GetDirectory();
         var testPrjName = testPrjDir.GetDirectoryName();
 
-        // Ideally we would use the 'dotnet test' command to test both netcoreapp1.0 (CoreCLR)
-        // and net46 (DesktopCLR, Mono), but this currently doesn't work due to
-        //    https://github.com/dotnet/cli/issues/3073
-        int exitCode1 = Run(dotnet, string.Format("test {0} --configuration {1} --framework netcoreapp1.0", testPrj, configuration));
-        FailureHelper.ExceptionOnError(exitCode1, string.Format("Failed to run tests on Core CLR in {0}.", testPrjDir));
+        if (IsRunningOnWindows())
+        {
+            int exitCode = Run(dotnet, string.Format("test {0} --configuration {1}", testPrj, configuration));
+            FailureHelper.ExceptionOnError(exitCode, string.Format("Failed to run tests on Core CLR in {0}.", testPrjDir));
+        }
+        else
+        {
+            // Ideally we would use the 'dotnet test' command to test both netcoreapp1.0 (CoreCLR)
+            // and net46 (Mono), but this currently doesn't work due to
+            //    https://github.com/dotnet/cli/issues/3073
+            int exitCode1 = Run(dotnet, string.Format("test {0} --configuration {1} --framework netcoreapp1.0", testPrj, configuration));
+            FailureHelper.ExceptionOnError(exitCode1, string.Format("Failed to run tests on Core CLR in {0}.", testPrjDir));
 
-        // Instead we run xUnit.net .NET CLI test runner directly with mono for the full/desktop .net version
+            // Instead we run xUnit.net .NET CLI test runner directly with mono for the net46 target framework
 
-        // Build using .NET CLI
-        int exitCode2 = Run(dotnet, string.Format("build {0} --configuration {1} --framework net46", testPrj, configuration));
-        FailureHelper.ExceptionOnError(exitCode2, string.Format("Failed to build tests on Desktop CLR in {0}.", testPrjDir));
+            // Build using .NET CLI
+            int exitCode2 = Run(dotnet, string.Format("build {0} --configuration {1} --framework net46", testPrj, configuration));
+            FailureHelper.ExceptionOnError(exitCode2, string.Format("Failed to build tests on Desktop CLR in {0}.", testPrjDir));
 
-        // Shell() helper does not support running mono, so we glob here
-        var dotnetTestXunit = GetFiles(string.Format("{0}/bin/{1}/net46/*/dotnet-test-xunit.exe", testPrjDir, configuration)).First();
-        var dotnetTestAssembly = GetFiles(string.Format("{0}/bin/{1}/net46/*/{2}.dll", testPrjDir, configuration, testPrjName)).First();
+            // Shell() helper does not support running mono, so we glob here
+            var dotnetTestXunit = GetFiles(string.Format("{0}/bin/{1}/net46/*/dotnet-test-xunit.exe", testPrjDir, configuration)).First();
+            var dotnetTestAssembly = GetFiles(string.Format("{0}/bin/{1}/net46/*/{2}.dll", testPrjDir, configuration, testPrjName)).First();
 
-        // Run using Mono
-        int exitCode3 = Run("mono", string.Format("{0} {1}", dotnetTestXunit, dotnetTestAssembly));
-        FailureHelper.ExceptionOnError(exitCode3, string.Format("Failed to run tests on Desktop CLR in {0}.", testPrjDir));
+            // Run using Mono
+            int exitCode3 = Run("mono", string.Format("{0} {1}", dotnetTestXunit, dotnetTestAssembly));
+            FailureHelper.ExceptionOnError(exitCode3, string.Format("Failed to run tests on Desktop CLR in {0}.", testPrjDir));
+        }
 
         Information("Tests in {0} was succesful!", testPrj);
     }
