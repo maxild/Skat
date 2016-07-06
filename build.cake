@@ -24,13 +24,13 @@ var settings = new BuildSettings {
     DotNetCliChannel = "preview",
     DotNetCliVersion = "1.0.0-preview2-003121"
 };
-var paths = new BuildPaths(settings);  
+var paths = new BuildPaths(settings);
 //var tools = new BuildTools(settings, paths);
 
 // Tools (like aliases)
 // TODO: Use Cake Tools framework (ToolsLocator etc..)
-string dotnet = settings.UseSystemDotNetPath 
-            ? "dotnet" 
+string dotnet = settings.UseSystemDotNetPath
+            ? "dotnet"
             : System.IO.Path.Combine(paths.DotNetCli, "dotnet");
 string nuget = System.IO.Path.Combine(paths.BuildTools, "nuget");
 
@@ -44,7 +44,7 @@ Task("Clear-Artifacts")
     .Does(() =>
 {
     //CleanDirectory(paths.Artifacts); // this will not delete the artifacts folder
-    if (DirectoryExists(paths.Artifacts)) 
+    if (DirectoryExists(paths.Artifacts))
     {
         DeleteDirectory(paths.Artifacts, true);
     }
@@ -62,9 +62,9 @@ Task("InstallDotNet")
     var installScript = string.Format("dotnet-install.{0}", ext);
     var installScriptDownloadUrl = string.Format("{0}/{1}", settings.DotNetCliInstallScriptUrl, installScript);
     var dotnetInstallScript = System.IO.Path.Combine(paths.DotNetCli, installScript);
-    
+
     CreateDirectory(paths.DotNetCli);
-    
+
     // TODO: wget(installScriptDownloadUrl, dotnetInstallScript)
     using (WebClient client = new WebClient())
     {
@@ -75,13 +75,13 @@ Task("InstallDotNet")
     {
         Shell(string.Format("chmod +x {0}", dotnetInstallScript));
     }
-    
-    // Run the dotnet-install.{ps1|sh} script. 
+
+    // Run the dotnet-install.{ps1|sh} script.
     // Note: The script will bypass if the version of the SDK has already been downloaded
     Shell(string.Format("{0} -Channel {1} -Version {2} -InstallDir {3} -NoPath", dotnetInstallScript, settings.DotNetCliChannel, settings.DotNetCliVersion, paths.DotNetCli));
-    
+
     var dotNetExe = IsRunningOnWindows() ? "dotnet.exe" : "dotnet";
-    if (!FileExists(System.IO.Path.Combine(paths.DotNetCli, dotNetExe))) 
+    if (!FileExists(System.IO.Path.Combine(paths.DotNetCli, dotNetExe)))
     {
         throw new Exception(string.Format("Unable to find {0}. The dotnet CLI install may have failed.", dotNetExe));
     }
@@ -100,7 +100,7 @@ Task("InstallDotNet")
 
 Task("Restore")
     .IsDependentOn("InstallDotNet")
-    .Does(() => 
+    .Does(() =>
 {
     Information("Restoring packages...");
     // TODO: --verbosity minimal
@@ -112,11 +112,11 @@ Task("Restore")
 });
 
 /// <summary>
-///  Clears local nuget resources such as the packages cache 
+///  Clears local nuget resources such as the packages cache
 ///  and the machine-wide global packages folder.
 /// </summary>
 Task("Clear-PackageCache")
-    .Does(() => 
+    .Does(() =>
 {
     Information("Clearing NuGet package caches...");
 
@@ -126,7 +126,7 @@ Task("Clear-PackageCache")
     //        C:\Users\Maxfire\.nuget\packages\   (global-packages)
     //        https://api.nuget.org/v3/index.json (only configured feed)
 
-    var nugetCaches = new Dictionary<string, bool> 
+    var nugetCaches = new Dictionary<string, bool>
     {
         {"http-cache", false},      // %LOCALAPPDATA%\NuGet\v3-cache
         {"packages-cache", true},   // %LOCALAPPDATA%\NuGet\Cache
@@ -134,7 +134,7 @@ Task("Clear-PackageCache")
         {"temp", false},            // %LOCALAPPDATA%\Temp\NuGetScratch
     };
 
-    foreach (var cache in nugetCaches.Where(kvp => kvp.Value).Select(kvp => kvp.Key)) 
+    foreach (var cache in nugetCaches.Where(kvp => kvp.Value).Select(kvp => kvp.Key))
     {
         Information("Clearing nuget resources in {0}.", cache);
         int exitCode = Run(nuget, string.Format("locals {0} -clear -verbosity detailed", cache));
@@ -146,26 +146,36 @@ Task("Clear-PackageCache")
 
 Task("Run-Tests")
     .IsDependentOn("Restore")
-    .Does(() => 
+    .Does(() =>
 {
+    // TODO: Do not fail the build before all tests have run...then fail the build aoutside the foreach
+
     foreach (var testPrj in GetFiles(string.Format("{0}/**/project.json", paths.Test)))
     {
         Information("Run tests in {0}", testPrj);
-        
+
         var testPrjDir = testPrj.GetDirectory();
         var testPrjName = testPrjDir.GetDirectoryName();
 
-        // Ideally we would use the 'dotnet test' command to test both netcoreapp1.0 (CoreCLR) 
-        // and net46 (DesktopCLR, Mono), but this currently doesn't work due to 
+        // Ideally we would use the 'dotnet test' command to test both netcoreapp1.0 (CoreCLR)
+        // and net46 (DesktopCLR, Mono), but this currently doesn't work due to
         //    https://github.com/dotnet/cli/issues/3073
         int exitCode1 = Run(dotnet, string.Format("test {0} --configuration {1} --framework netcoreapp1.0", testPrj, configuration));
         FailureHelper.ExceptionOnError(exitCode1, string.Format("Failed to run tests on Core CLR in {0}.", testPrjDir));
 
         // Instead we run xUnit.net .NET CLI test runner directly with mono for the full/desktop .net version
-        // int exitCode2 = Run("mono", 
-        //     string.Format("{0}/bin/{1}/net46/*/dotnet-test-xunit.exe {0}/bin/{1}/net46/*/{2}.dll", 
-        //         testPrjDir, configuration, testPrjName));
-        // FailureHelper.ExceptionOnError(exitCode2, string.Format("Failed to run tests on Desktop CLR in {0}.", testPrjDir);
+
+        // Build using .NET CLI
+        int exitCode2 = Run(dotnet, string.Format("build {0} --configuration {1} --framework net46", testPrj, configuration));
+        FailureHelper.ExceptionOnError(exitCode2, string.Format("Failed to build tests on Desktop CLR in {0}.", testPrjDir));
+
+        // Shell() helper does not support running mono, so we glob here
+        var dotnetTestXunit = GetFiles(string.Format("{0}/bin/{1}/net46/*/dotnet-test-xunit.exe", testPrjDir, configuration)).First();
+        var dotnetTestAssembly = GetFiles(string.Format("{0}/bin/{1}/net46/*/{2}.dll", testPrjDir, configuration, testPrjName)).First();
+
+        // Run using Mono
+        int exitCode3 = Run("mono", string.Format("{0} {1}", dotnetTestXunit, dotnetTestAssembly));
+        FailureHelper.ExceptionOnError(exitCode3, string.Format("Failed to run tests on Desktop CLR in {0}.", testPrjDir));
 
         Information("Tests in {0} was succesful!", testPrj);
     }
@@ -177,7 +187,7 @@ Task("Run-Tests")
 Task("Pack")
     .IsDependentOn("Clear-Artifacts")
     .IsDependentOn("Restore")
-    .Does(() => 
+    .Does(() =>
 {
     foreach (var srcPrj in GetFiles(string.Format("{0}/**/project.json", paths.Src)))
     {
@@ -188,7 +198,7 @@ Task("Pack")
         string prerelaseTag = string.Format("{0}-{1:D5}", buildLabel, buildNumber);
         // TODO: -v, if Verbose
         int exitCode = Run(dotnet, string.Format("pack {0} --serviceable --configuration {1} --output {2} --version-suffix {3}", srcPrj, configuration, paths.Artifacts, prerelaseTag));
-        FailureHelper.ExceptionOnError(exitCode, string.Format("Failed to pack '{0}'.", srcPrj.GetDirectory()));    
+        FailureHelper.ExceptionOnError(exitCode, string.Format("Failed to pack '{0}'.", srcPrj.GetDirectory()));
     }
 });
 
