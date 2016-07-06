@@ -33,12 +33,10 @@ install:
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew install openssl; fi
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew link --force openssl; fi
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew list; fi
-#  - ./build.sh -target=Restore
 
 script:
-  - ./build.sh --configuration Debug
-# A few tests fail on Release config....to be investigated!!!
- # - ./build.sh --configuration Release
+  - ./build.sh --target Verify --configuration Debug
+  - ./build.sh --target Verify --configuration Release
 
 branches:
   only:

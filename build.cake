@@ -150,6 +150,12 @@ Task("Run-Tests")
 {
     // TODO: Do not fail the build before all tests have run...then fail the build aoutside the foreach
 
+    // TODO: For Release builds the following test methods fail:
+    //     1) Maxfire.Skat.UnitTests.Eksempler.Eksempel_22_ModregningFuldtUdPartnersSkat
+    //     2) Maxfire.Skat.UnitTests.Eksempler.Eksempel_23_DenEnePartnerHarUnderskudFraTidligereAar
+    //     3) Maxfire.Skat.UnitTests.Eksempler.Eksempel_24_DenEnePartnerHarNegativSkattepligtigIndkomstDenAndenHarEtFremfoertUnderskud
+    //     4) Maxfire.Skat.UnitTests.Eksempler.Eksempel_25_BeggeHarUnderskudFraTidligereAar
+
     foreach (var testPrj in GetFiles(string.Format("{0}/**/project.json", paths.Test)))
     {
         Information("Run tests in {0}", testPrj);
@@ -213,6 +219,9 @@ Task("Pack")
 Task("All")
     .IsDependentOn("Run-Tests")
     .IsDependentOn("Pack");
+
+Task("Verify")
+    .IsDependentOn("Run-Tests");
 
 Task("Default")
     .IsDependentOn("All");
