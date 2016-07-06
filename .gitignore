@@ -1,12 +1,12 @@
-# Tool folders 
-.nuget/
+# Tool folders
 .tools/
 .dotnet/
-packages/
 
-# VS Code
-/.vscode/settings.json
-/.vscode/launch.json
+# VS Code (share debug and task specific settings)
+/.vscode/*
+!/.vscode/settings.json
+!/.vscode/launch.json
+!/.vscode/tasks.json
 
 # Visual Studio
 /.vs

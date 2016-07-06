@@ -1,0 +1,40 @@
+{
+    "version": "0.1.0",
+    // See https://github.com/Microsoft/vscode/issues/981 why we use shells
+    "linux": {
+        "command": "sh",
+        "args": ["-c"]
+    },
+    "osx": {
+        "command": "sh",
+        "args": ["-c"]
+    },
+    "windows": {
+        "command": "powershell",
+        "args": ["-Command"]
+    },
+    "suppressTaskName": true,
+    "isShellCommand": true,
+    "showOutput": "always",
+    "args": [],
+    // By building test project we build everything
+    "options": {
+        "cwd": "${workspaceRoot}/test/Maxfire.Skat.UnitTests"
+    },
+    "tasks": [
+        {
+            "taskName": "build",
+            "args": [ "dotnet build --configuration Debug; dotnet build --configuration Release" ],
+            "isBuildCommand": true,
+            "showOutput": "silent",
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "taskName": "test",
+            "args": [ "dotnet test --framework netcoreapp1.0 --configuration Release" ],
+            "isTestCommand": true,
+            "showOutput": "always",
+            "problemMatcher": "$msCompile"
+        }
+    ]
+}
