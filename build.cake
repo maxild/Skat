@@ -28,6 +28,7 @@ var paths = new BuildPaths(settings);
 //var tools = new BuildTools(settings, paths);
 
 // Tools (like aliases)
+// TODO: Use Cake Tools framework (ToolsLocator etc..)
 string dotnet = settings.UseSystemDotNetPath 
             ? "dotnet" 
             : System.IO.Path.Combine(paths.DotNetCli, "dotnet");
@@ -43,7 +44,8 @@ Task("Clear-Artifacts")
     .Does(() =>
 {
     //CleanDirectory(paths.Artifacts); // this will not delete the artifacts folder
-    if (DirectoryExists(paths.Artifacts)) {
+    if (DirectoryExists(paths.Artifacts)) 
+    {
         DeleteDirectory(paths.Artifacts, true);
     }
 });
@@ -149,9 +151,23 @@ Task("Run-Tests")
     foreach (var testPrj in GetFiles(string.Format("{0}/**/project.json", paths.Test)))
     {
         Information("Run tests in {0}", testPrj);
-        // TODO: --framework
-        int exitCode = Run(dotnet, string.Format("test {0} --configuration {1}", testPrj, configuration));
-        FailureHelper.ExceptionOnError(exitCode, string.Format("Failed to run tests in {0}.", testPrj.GetDirectory()));    
+        
+        var testPrjDir = testPrj.GetDirectory();
+        var testPrjName = testPrjDir.GetDirectoryName();
+
+        // Ideally we would use the 'dotnet test' command to test both netcoreapp1.0 (CoreCLR) 
+        // and net46 (DesktopCLR, Mono), but this currently doesn't work due to 
+        //    https://github.com/dotnet/cli/issues/3073
+        int exitCode1 = Run(dotnet, string.Format("test {0} --configuration {1} --framework netcoreapp1.0", testPrj, configuration));
+        FailureHelper.ExceptionOnError(exitCode1, string.Format("Failed to run tests on Core CLR in {0}.", testPrjDir));
+
+        // Instead we run xUnit.net .NET CLI test runner directly with mono for the full/desktop .net version
+        // int exitCode2 = Run("mono", 
+        //     string.Format("{0}/bin/{1}/net46/*/dotnet-test-xunit.exe {0}/bin/{1}/net46/*/{2}.dll", 
+        //         testPrjDir, configuration, testPrjName));
+        // FailureHelper.ExceptionOnError(exitCode2, string.Format("Failed to run tests on Desktop CLR in {0}.", testPrjDir);
+
+        Information("Tests in {0} was succesful!", testPrj);
     }
 });
 
