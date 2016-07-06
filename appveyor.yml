@@ -19,12 +19,12 @@ test: off
 
 artifacts:
 - path: artifacts\**\*.nupkg
- name: MyGet
+  name: MyGet
 
 deploy:
 - provider: NuGet
- server: https://www.myget.org/F/brf-ci/api/v2/package
- api_key:
-   secure: EOVLFyiHRhh9Jij3/mITdSV5JH1SzT8JUbqqTIFtvOPndNeMme3mME01ws3+5nFB
- skip_symbols: true
- artifact: MyGet
+  server: https://www.myget.org/F/brf-ci/api/v2/package
+  api_key:
+    secure: EOVLFyiHRhh9Jij3/mITdSV5JH1SzT8JUbqqTIFtvOPndNeMme3mME01ws3+5nFB
+  skip_symbols: true
+  artifact: MyGet
