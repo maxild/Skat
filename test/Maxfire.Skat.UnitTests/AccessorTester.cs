@@ -90,7 +90,7 @@ namespace Maxfire.Skat.UnitTests
 
             var ex = Assert.Throws<ArgumentException>(() => propertyX.SetValue(p, 12));
 
-            if (IsMonoCLR())
+            if (RuntimeInformationHelper.IsMonoCLR())
             {
                 // Mono
                 ex.Message.ShouldBe("Set Method not found for 'X'");
@@ -102,14 +102,5 @@ namespace Maxfire.Skat.UnitTests
             }
         }
 
-        static bool IsMonoCLR()
-        {
-            return Type.GetType("Mono.Runtime") != null;
-        }
-
-        static bool IsMicrosoftCLR()
-        {
-            return Type.GetType("Mono.Runtime") == null;
-        }
     }
 }

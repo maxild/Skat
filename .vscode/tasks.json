@@ -35,6 +35,15 @@
             "isTestCommand": true,
             "showOutput": "always",
             "problemMatcher": "$msCompile"
+        },
+        {
+            "taskName": "failingtest",
+            // This test method will fail on osx and linux (but not on windows) running on CoreCLR in Release build
+            "args" : ["dotnet test --framework netcoreapp1.0 --configuration Release -method Maxfire.Skat.UnitTests.Eksempler.Eksempel_22_ModregningFuldtUdPartnersSkat"],
+            "isTestCommand": false,
+            "showOutput": "always",
+            "problemMatcher": "$msCompile"
         }
+
     ]
 }

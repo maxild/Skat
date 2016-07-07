@@ -1056,7 +1056,9 @@ namespace Maxfire.Skat.UnitTests
             skatterEfterPersonfradrag[1].ShouldBe(IndkomstSkatter.Nul);
         }
 
-        [Fact(Skip="Fails on osx and linux")]
+        // This test fails on CoreCLR running on OSX or linux in Release build
+        //[SkipOnCoreCLROnUnixInReleaseConfigurationFact]
+        [Fact]
         public void Eksempel_22_ModregningFuldtUdPartnersSkat()
         {
             var skatteydere = GetPersonerForGifte();
@@ -1153,7 +1155,9 @@ namespace Maxfire.Skat.UnitTests
             skatterEfterPersonfradrag[1].ShouldBe(IndkomstSkatter.Nul);
         }
 
-        [Fact(Skip="Fails on osx and linux")]
+        // This test fails on CoreCLR running on OSX or linux in Release build
+        //[SkipOnCoreCLROnUnixInReleaseConfigurationFact]
+        [Fact]
         public void Eksempel_23_DenEnePartnerHarUnderskudFraTidligereAar()
         {
             var skatteydere = GetPersonerForGifte();
@@ -1246,7 +1250,9 @@ namespace Maxfire.Skat.UnitTests
             skatterEfterPersonfradrag[1].ShouldBe(IndkomstSkatter.Nul);
         }
 
-        [Fact(Skip="Fails on osx and linux")]
+        // This test fails on CoreCLR running on OSX or linux in Release build
+        //[SkipOnCoreCLROnUnixInReleaseConfigurationFact]
+        [Fact]
         public void Eksempel_24_DenEnePartnerHarNegativSkattepligtigIndkomstDenAndenHarEtFremfoertUnderskud()
         {
             var skatteydere = GetPersonerForGifte();
@@ -1342,7 +1348,9 @@ namespace Maxfire.Skat.UnitTests
             skatterEfterPersonfradrag[1].ShouldBe(IndkomstSkatter.Nul);
         }
 
-        [Fact(Skip="Fails on osx and linux")]
+        // This test fails on CoreCLR running on OSX or linux in Release build
+        //[SkipOnCoreCLROnUnixInReleaseConfigurationFact]
+        [Fact]
         public void Eksempel_25_BeggeHarUnderskudFraTidligereAar()
         {
             var skatteydere = GetPersonerForGifte();

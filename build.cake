@@ -4,6 +4,9 @@
 #load "build/runhelpers.cake"
 #load "build/failurehelpers.cake"
 
+using System;
+using System.Collections.Generic;
+using System.Text;
 using System.Net;
 using System.Linq;
 
@@ -148,7 +151,7 @@ Task("Run-Tests")
     .IsDependentOn("Restore")
     .Does(() =>
 {
-    // TODO: Do not fail the build before all tests have run...then fail the build aoutside the foreach
+    var results = new List<TestResult>();
 
     // TODO: For Release builds the following test methods fail:
     //     1) Maxfire.Skat.UnitTests.Eksempler.Eksempel_22_ModregningFuldtUdPartnersSkat
@@ -174,7 +177,8 @@ Task("Run-Tests")
             // and net46 (Mono), but this currently doesn't work due to
             //    https://github.com/dotnet/cli/issues/3073
             int exitCode1 = Run(dotnet, string.Format("test {0} --configuration {1} --framework netcoreapp1.0", testPrj, configuration));
-            FailureHelper.ExceptionOnError(exitCode1, string.Format("Failed to run tests on Core CLR in {0}.", testPrjDir));
+            //FailureHelper.ExceptionOnError(exitCode1, string.Format("Failed to run tests on Core CLR in {0}.", testPrjDir));
+            results.Add(new TestResult(string.Format("CoreCLR: {0}", testPrjName), exitCode1));
 
             // Instead we run xUnit.net .NET CLI test runner directly with mono for the net46 target framework
 
@@ -188,7 +192,17 @@ Task("Run-Tests")
 
             // Run using Mono
             int exitCode3 = Run("mono", string.Format("{0} {1}", dotnetTestXunit, dotnetTestAssembly));
-            FailureHelper.ExceptionOnError(exitCode3, string.Format("Failed to run tests on Desktop CLR in {0}.", testPrjDir));
+            //FailureHelper.ExceptionOnError(exitCode3, string.Format("Failed to run tests on Desktop CLR in {0}.", testPrjDir));
+            results.Add(new TestResult(string.Format("DesktopCLR: {0}", testPrjName), exitCode3));
+
+        }
+
+        if (results.Any(r => r.Failed))
+        {
+            throw new Exception(
+                results.Aggregate(new StringBuilder(), (sb, result) =>
+                    sb.AppendFormat("{0}{1}", result.ErrorMessage, Environment.NewLine)).ToString().TrimEnd()
+                );
         }
 
         Information("Tests in {0} was succesful!", testPrj);
