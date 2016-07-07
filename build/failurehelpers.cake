@@ -19,7 +19,7 @@ public class TestResult
         ExitCode = exitCode;
     }
 
-    public int ExitCode { get; }
+    public int ExitCode { get; private set; }
     public bool Failed { get { return ExitCode != 0; } }
     public string ErrorMessage { get { return Failed ? string.Concat("One or more tests did fail on ", _msg) : string.Empty; } }
 }
