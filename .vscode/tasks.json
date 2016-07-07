@@ -30,8 +30,15 @@
             "problemMatcher": "$msCompile"
         },
         {
-            "taskName": "test",
+            "taskName": "test (Release)",
             "args": [ "dotnet test --framework netcoreapp1.0 --configuration Release" ],
+            "isTestCommand": false,
+            "showOutput": "always",
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "taskName": "test (Debug)",
+            "args": [ "dotnet test --framework netcoreapp1.0 --configuration Debug" ],
             "isTestCommand": true,
             "showOutput": "always",
             "problemMatcher": "$msCompile"
