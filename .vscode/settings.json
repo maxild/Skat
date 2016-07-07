@@ -3,6 +3,9 @@
     "files.trimTrailingWhitespace": true,
 	"files.exclude": {
 		".git": true,
+		".vs": true,
+		"**/bin": true,
+		"**/obj": true,
 		"**/.DS_Store": true
 	}
 }
