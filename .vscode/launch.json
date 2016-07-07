@@ -2,17 +2,17 @@
     "version": "0.2.0",
     // See https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger.md
     "configurations": [
-        {
-            "name": ".NET Core Launch (Debug)",
-            "type": "coreclr",
-            "request": "launch",
-            "preLaunchTask": "build",
-            "program": "${workspaceRoot}/test/Maxfire.Skat.UnitTests/bin/Debug/netcoreapp1.0/Maxfire.Skat.UnitTests.dll",
-            "args": [],
-            "cwd": "${workspaceRoot}",
-            "stopAtEntry": false,
-            "externalConsole": false
-        },
+        // {
+        //     "name": ".NET Core Launch (Debug)",
+        //     "type": "coreclr",
+        //     "request": "launch",
+        //     "preLaunchTask": "build",
+        //     "program": "${workspaceRoot}/test/Maxfire.Skat.UnitTests/bin/Debug/netcoreapp1.0/Maxfire.Skat.UnitTests.dll",
+        //     "args": [],
+        //     "cwd": "${workspaceRoot}",
+        //     "stopAtEntry": false,
+        //     "externalConsole": false
+        // },
         {
             "name": ".NET Core Launch (Release)",
             "type": "coreclr",
