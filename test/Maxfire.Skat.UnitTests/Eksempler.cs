@@ -4,6 +4,12 @@ using Maxfire.Skat.Extensions;
 using Shouldly;
 using Xunit;
 
+// Notes about running tests
+//
+// dotnet test ./test/Maxfire.Skat.UnitTests/ -f netcoreapp1.0  -method Maxfire.Skat.UnitTests.Eksempler.Eksempel_2_Bundskattegrundlag_Gifte
+// dotnet test ./test/Maxfire.Skat.UnitTests/ -f netcoreapp1.0  -class Maxfire.Skat.UnitTests.Eksempler
+// dotnet test ./test/Maxfire.Skat.UnitTests/ -f netcoreapp1.0  -namespace Maxfire.Skat.UnitTests
+//
 namespace Maxfire.Skat.UnitTests
 {
     /// <summary>
