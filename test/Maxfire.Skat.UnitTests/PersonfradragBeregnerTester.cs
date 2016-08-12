@@ -109,7 +109,7 @@ namespace Maxfire.Skat.UnitTests
         }
 
         [Fact]
-        public void DelvisUdnyttelseAfSkattevaerdiPåSelveSkatten_Ugift()
+        public void DelvisUdnyttelseAfSkattevaerdiPaaSelveSkatten_Ugift()
         {
             var skatter = new ValueTuple<IndkomstSkatter>(new IndkomstSkatter(sundhedsbidrag: 5, kommuneskat: 500, bundskat: 200, kirkeskat: 50));
 
@@ -126,7 +126,7 @@ namespace Maxfire.Skat.UnitTests
             var modregnResults = _personfradragBeregner.ModregningAfPersonfradrag(skatteydere, skatter, kommunaleSatser, 2010);
             var modregnedeSkatter = modregnResults.Map(x => x.ModregnedeSkatter).ToValueTuple();
 
-            // Resterende skatteværdi af personfradrag mht. sundhedsbidrag på 5 overvæltes i reduktionen af bundskat
+            // Resterende skattevaerdi af personfradrag mht. sundhedsbidrag paa 5 overvaeltes i reduktionen af bundskat
             modregnedeSkatter[0].Sundhedsbidrag.ShouldBe(0);
             modregnedeSkatter[0].Bundskat.ShouldBe(190); // <-- reduktion her
             modregnedeSkatter[0].Kommuneskat.ShouldBe(475);
@@ -183,13 +183,13 @@ namespace Maxfire.Skat.UnitTests
             var modregnResults = _personfradragBeregner.ModregningAfPersonfradrag(skatteydere, skatter, kommunaleSatser, 2010);
             var modregnedeSkatter = modregnResults.Map(x => x.ModregnedeSkatter).ToValueTuple();
 
-            // Skatterne nulstilles af værdien af personfradraget,
+            // Skatterne nulstilles af vaerdien af personfradraget,
             modregnedeSkatter[0].Sundhedsbidrag.ShouldBe(0);
             modregnedeSkatter[0].Bundskat.ShouldBe(0);
             modregnedeSkatter[0].Kommuneskat.ShouldBe(0);
             modregnedeSkatter[0].Kirkeskat.ShouldBe(0);
 
-            // og det uudnyttede personfradrag overføres til ægtefællen
+            // og det uudnyttede personfradrag overfoeres til aegtefaellen
             modregnedeSkatter[1].Sundhedsbidrag.ShouldBe(90 - 3.42m);
             modregnedeSkatter[1].Bundskat.ShouldBe(195 - 1.71m);
             modregnedeSkatter[1].Kommuneskat.ShouldBe(475 - 8.54m);

@@ -1,6 +1,26 @@
 ﻿{
   "version": "1.0.0-*",
 
+  "buildOptions": {
+      "debugType": "portable",
+      "warningsAsErrors": true
+  },
+
+  "configurations": {
+    "Debug": {
+      "buildOptions": {
+        "define": ["DEBUG"],
+        "optimize": true
+      }
+    },
+    "Release": {
+      "buildOptions": {
+        "define": ["RELEASE"],
+        "optimize": false
+      }
+    }
+  },
+
   "dependencies": {
     "NETStandard.Library": "1.6.0"
   },
@@ -8,7 +28,7 @@
   "frameworks": {
     "netstandard1.5": {
         "dependencies": {
-            "Microsoft.CSharp": "4.0.1" 
+            "Microsoft.CSharp": "4.0.1"
         }
     },
     "net46": {}

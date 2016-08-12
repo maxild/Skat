@@ -1,0 +1,61 @@
+{
+    "version": "0.1.0",
+    // See https://github.com/Microsoft/vscode/issues/981 why we use shells
+    "linux": {
+        "command": "sh",
+        "args": ["-c"]
+    },
+    "osx": {
+        "command": "sh",
+        "args": ["-c"]
+    },
+    "windows": {
+        "command": "powershell",
+        "args": ["-Command"]
+    },
+    "suppressTaskName": true,
+    "isShellCommand": true,
+    "showOutput": "always",
+    "echoCommand": true,
+    "args": [],
+    // By building test project we build everything
+    "options": {
+        "cwd": "${workspaceRoot}/test/Maxfire.Skat.UnitTests"
+    },
+    "tasks": [
+        {
+            "taskName": "build",
+            "args": [ "dotnet build --configuration Release" ],
+            //"args": [ "dotnet build --configuration Debug; dotnet build --configuration Release" ],
+            "isBuildCommand": true,
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "taskName": "test (Release, without manual tests)",
+            //"args": [ "dotnet test --framework netcoreapp1.0 --configuration Release -notrait \"manual=true\"" ],
+            "args": [ "dotnet test --framework netcoreapp1.0 --configuration Release" ],
+            "isTestCommand": true,
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "taskName": "test (Debug)",
+            "args": [ "dotnet test --framework netcoreapp1.0 --configuration Debug" ],
+            "isTestCommand": false,
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "taskName": "failingtest",
+            // This test method will fail on osx and linux (but not on windows) running on CoreCLR in Release build
+            "args" : ["dotnet test --framework netcoreapp1.0 --configuration Release -method Maxfire.Skat.UnitTests.Eksempler.Eksempel_22_ModregningFuldtUdPartnersSkat"],
+            "isTestCommand": false,
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "taskName": "failingtests",
+            // This test method will fail on osx and linux (but not on windows) running on CoreCLR in Release build
+            "args" : ["dotnet test --framework netcoreapp1.0 --configuration Release -class Maxfire.Skat.UnitTests.Eksempler"],
+            "isTestCommand": false,
+            "problemMatcher": "$msCompile"
+        }
+    ]
+}

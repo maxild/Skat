@@ -89,7 +89,18 @@ namespace Maxfire.Skat.UnitTests
             var propertyX = IntrospectionOf<ImmutablePointWithNoSetter>.GetAccessorFor(x => x.X);
 
             var ex = Assert.Throws<ArgumentException>(() => propertyX.SetValue(p, 12));
-            ex.Message.ShouldBe("Property set method not found.");
+
+            if (RuntimeInformationHelper.IsMonoCLR())
+            {
+                // Mono
+                ex.Message.ShouldBe("Set Method not found for 'X'");
+            }
+            else
+            {
+                // CoreCLR, DesktopCLR
+                ex.Message.ShouldBe("Property set method not found.");
+            }
         }
+
     }
 }
