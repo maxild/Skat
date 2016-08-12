@@ -21,6 +21,8 @@ The build script target to run.
 The build configuration to use.
 .PARAMETER Verbosity
 Specifies the amount of information to be displayed.
+.PARAMETER ShowVersion
+Show version of Cake tool.
 .PARAMETER Experimental
 Tells Cake to use the latest Roslyn release.
 .PARAMETER WhatIf
@@ -45,6 +47,7 @@ Param(
     [string]$Configuration = "Release",
     [ValidateSet("Quiet", "Minimal", "Normal", "Verbose", "Diagnostic")]
     [string]$Verbosity = "Verbose",
+    [switch]$ShowVersion,
     [switch]$Experimental,
     [Alias("DryRun","Noop")]
     [switch]$WhatIf,
@@ -54,16 +57,40 @@ Param(
     [string[]]$ScriptArgs
 )
 
-Write-Host "Preparing to run build script..."
+[Reflection.Assembly]::LoadWithPartialName("System.Security") | Out-Null
+function MD5HashFile([string] $filePath)
+{
+    if ([string]::IsNullOrEmpty($filePath) -or !(Test-Path $filePath -PathType Leaf))
+    {
+        return $null
+    }
+
+    [System.IO.Stream] $file = $null;
+    [System.Security.Cryptography.MD5] $md5 = $null;
+    try
+    {
+        $md5 = [System.Security.Cryptography.MD5]::Create()
+        $file = [System.IO.File]::OpenRead($filePath)
+        return [System.BitConverter]::ToString($md5.ComputeHash($file))
+    }
+    finally
+    {
+        if ($file -ne $null)
+        {
+            $file.Dispose()
+        }
+    }
+}
 
 $PSScriptRoot = split-path -parent $MyInvocation.MyCommand.Definition;
 
 # Tree
-$BUILD_DIR       = Join-Path $PSScriptRoot "build" # build scripts, maybe rename
-$TOOLS_DIR       = Join-Path $PSScriptRoot ".tools"
-$NUGET_EXE       = Join-Path $TOOLS_DIR "nuget.exe"
-$CAKE_EXE        = Join-Path $TOOLS_DIR "Cake/Cake.exe"
-$PACKAGES_CONFIG = Join-Path $BUILD_DIR "packages.config" # containing Cake dependency
+$BUILD_DIR           = Join-Path $PSScriptRoot "build" # build scripts, maybe rename
+$TOOLS_DIR           = Join-Path $PSScriptRoot ".tools"
+$NUGET_EXE           = Join-Path $TOOLS_DIR "nuget.exe"
+$CAKE_EXE            = Join-Path $TOOLS_DIR "Cake/Cake.exe"
+$PACKAGES_CONFIG     = Join-Path $BUILD_DIR "packages.config" # containing Cake dependency
+$PACKAGES_CONFIG_MD5 = Join-Path $TOOLS_DIR "packages.config.md5sum"
 
 # Aliases for the entire powershell session
 Set-Alias nuget $NUGET_EXE -scope global
@@ -86,6 +113,7 @@ if($Experimental.IsPresent -and (-not ($Mono.IsPresent))) {
 # Is this a dry run?
 $UseDryRun = "";
 if($WhatIf.IsPresent) {
+    Write-Verbose -Message "Performs a dry run of the build script."
     $UseDryRun = "-dryrun"
 }
 
@@ -105,15 +133,30 @@ if (-not (Test-Path $NUGET_EXE)) {
     }
 }
 
-# Install tools (i.e. Cake) using NuGet
+# Install/restore tools (i.e. Cake) using NuGet
 if(-not $SkipToolPackageRestore.IsPresent) {
     Push-Location
     Set-Location $TOOLS_DIR
+
+    # Check for changes in packages.config and remove installed tools if true.
+    [string] $md5Hash = MD5HashFile $PACKAGES_CONFIG
+    if ( (-not (Test-Path $PACKAGES_CONFIG_MD5)) -Or
+      ($md5Hash -ne (Get-Content $PACKAGES_CONFIG_MD5 )) ) {
+        Write-Verbose -Message "Missing or changed packages.config hash..."
+        Remove-Item * -Recurse -Exclude nuget.exe # remove installed tools (ie. cake)
+    }
+
     Write-Verbose -Message "Restoring tools from NuGet..."
     $NuGetOutput = &nuget install $PACKAGES_CONFIG -ExcludeVersion -OutputDirectory `"$TOOLS_DIR`"
     if ($LASTEXITCODE -ne 0) {
         Throw "An error occured while restoring NuGet tools."
     }
+    else
+    {
+        # save packages.config hash to disk
+        $md5Hash | Out-File $PACKAGES_CONFIG_MD5 -Encoding "ASCII"
+    }
+
     Write-Verbose -Message ($NuGetOutput | out-string)
     Pop-Location
 }
@@ -124,10 +167,15 @@ if (-not (Test-Path $CAKE_EXE)) {
 }
 
 # Start Cake
-Write-Host "Running build script..."
-# C# v6 features (e.g. string interpolation) are not supported without '-experimental' flag
-#   See https://github.com/cake-build/cake/issues/293
-#   See https://github.com/cake-build/cake/issues/326
-#&cake $Script -experimental -target="$Target" -configuration="$Configuration" -verbosity="$Verbosity" $UseMono $UseDryRun $UseExperimental $ScriptArgs
-&cake $Script -target="$Target" -configuration="$Configuration" -verbosity="$Verbosity" $UseMono $UseDryRun $UseExperimental $ScriptArgs
+if($ShowVersion.IsPresent) {
+    &cake -version
+}
+else {
+    Write-Host "Running build script..."
+    # C# v6 features (e.g. string interpolation) are not supported without '-experimental' flag
+    #   See https://github.com/cake-build/cake/issues/293
+    #   See https://github.com/cake-build/cake/issues/326
+    #&cake $Script -experimental -target="$Target" -configuration="$Configuration" -verbosity="$Verbosity" $UseMono $UseDryRun $UseExperimental $ScriptArgs
+    &cake $Script -target="$Target" -configuration="$Configuration" -verbosity="$Verbosity" $UseMono $UseDryRun $UseExperimental $ScriptArgs
+}
 exit $LASTEXITCODE
