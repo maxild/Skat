@@ -1,0 +1,32 @@
+{
+    "version": "1.0.0-*",
+
+    "buildOptions": {
+        "emitEntryPoint": true,
+        "debugType": "portable"
+    },
+
+    "dependencies": {
+        "Maxfire.Skat.UnitTests": {
+            "version": "1.0.0-*",
+            "target": "project"
+        }
+    },
+
+    "frameworks": {
+        "netcoreapp1.0": {
+            "dependencies": {
+                "Microsoft.NETCore.App": {
+                    "version": "1.0.0",
+                    "type": "platform"
+                }
+            }
+        },
+        "net46": {
+            "dependencies": {
+                "Microsoft.NETCore.Platforms": "1.0.1"
+            }
+        }
+    }
+
+}
