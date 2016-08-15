@@ -34,25 +34,25 @@
         {
             "taskName": "test (Release, without manual tests)",
             //"args": [ "dotnet test --framework netcoreapp1.0 --configuration Release -notrait \"manual=true\"" ],
-            "args": [ "dotnet test --framework netcoreapp1.0 --configuration Release" ],
+            "args": [ "cd ${workspaceRoot}/test/Maxfire.Skat.UnitTests; dotnet test --framework netcoreapp1.0 --configuration Release" ],
             "isTestCommand": true,
             "problemMatcher": "$msCompile"
         },
         {
             "taskName": "test (Debug)",
-            "args": [ "dotnet test --framework netcoreapp1.0 --configuration Debug" ],
+            "args": [ "cd ${workspaceRoot}/test/Maxfire.Skat.UnitTests; dotnet test --framework netcoreapp1.0 --configuration Debug" ],
             "problemMatcher": "$msCompile"
         },
         {
             "taskName": "failingtest",
             // This test method will fail on osx and linux (but not on windows) running on CoreCLR in Release build
-            "args" : ["dotnet test --framework netcoreapp1.0 --configuration Release -method Maxfire.Skat.UnitTests.Eksempler.Eksempel_22_ModregningFuldtUdPartnersSkat"],
+            "args" : ["cd ${workspaceRoot}/test/Maxfire.Skat.UnitTests; dotnet test --framework netcoreapp1.0 --configuration Release -method Maxfire.Skat.UnitTests.Eksempler.Eksempel_22_ModregningFuldtUdPartnersSkat"],
             "problemMatcher": "$msCompile"
         },
         {
             "taskName": "failingtests",
             // This test method will fail on osx and linux (but not on windows) running on CoreCLR in Release build
-            "args" : ["dotnet test --framework netcoreapp1.0 --configuration Release -class Maxfire.Skat.UnitTests.Eksempler"],
+            "args" : ["cd ${workspaceRoot}/test/Maxfire.Skat.UnitTests; dotnet test --framework netcoreapp1.0 --configuration Release -class Maxfire.Skat.UnitTests.Eksempler"],
             "problemMatcher": "$msCompile"
         }
     ]
