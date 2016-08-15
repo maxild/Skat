@@ -10,13 +10,13 @@
     "Debug": {
       "buildOptions": {
         "define": ["DEBUG"],
-        "optimize": true
+        "optimize": false
       }
     },
     "Release": {
       "buildOptions": {
         "define": ["RELEASE"],
-        "optimize": false
+        "optimize": true
       }
     }
   },
