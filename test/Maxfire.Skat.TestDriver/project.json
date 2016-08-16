@@ -7,6 +7,21 @@
         "warningsAsErrors": true
     },
 
+    "configurations": {
+        "Debug": {
+            "buildOptions": {
+                "define": ["DEBUG"],
+                "optimize": false
+            }
+        },
+        "Release": {
+            "buildOptions": {
+                "define": ["RELEASE"],
+                "optimize": true
+            }
+        }
+    },
+
     "dependencies": {
         "Maxfire.Skat.UnitTests": {
             "version": "1.0.0-*",

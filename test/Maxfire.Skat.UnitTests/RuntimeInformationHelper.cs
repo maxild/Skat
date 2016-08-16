@@ -2,6 +2,26 @@ namespace Maxfire.Skat.UnitTests
 {
     static class RuntimeInformationHelper
     {
+#if DEBUG
+        public static bool IsDebugBuild()
+        {
+            return true;
+        }
+        public static bool IsReleaseBuild()
+        {
+            return false;
+        }
+#else
+        public static bool IsDebugBuild()
+        {
+            return false;
+        }
+        public static bool IsReleaseBuild()
+        {
+            return true;
+        }
+#endif
+
 #if net46
         private const string FrameworkName = ".NET Framework";
         public static bool IsCoreCLR()
@@ -62,7 +82,9 @@ namespace Maxfire.Skat.UnitTests
             // Unknown
             return false;
 #else
-            bool result = System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Linux) ||
+            // System.Runtime.InteropServices.RuntimeInformation only works on CoreCLR, therefore we determine upfront if running on mono
+            bool result = IsMonoCLR() ||
+                          System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Linux) ||
                           System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.OSX);
             return result;
 #endif

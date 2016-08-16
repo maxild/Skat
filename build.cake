@@ -159,7 +159,10 @@ Task("Run-Tests")
     //     3) Maxfire.Skat.UnitTests.Eksempler.Eksempel_24_DenEnePartnerHarNegativSkattepligtigIndkomstDenAndenHarEtFremfoertUnderskud
     //     4) Maxfire.Skat.UnitTests.Eksempler.Eksempel_25_BeggeHarUnderskudFraTidligereAar
 
-    foreach (var testPrj in GetFiles(string.Format("{0}/**/project.json", paths.Test)))
+    Func<IFileSystemInfo, bool> exclude_test_driver =
+        fileSystemInfo => fileSystemInfo.Path.FullPath.IndexOf("Maxfire.Skat.TestDriver", StringComparison.OrdinalIgnoreCase) < 0;
+
+    foreach (var testPrj in GetFiles(string.Format("{0}/**/project.json", paths.Test), exclude_test_driver))
     {
         Information("Run tests in {0}", testPrj);
 
