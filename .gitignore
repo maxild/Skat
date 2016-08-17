@@ -2,6 +2,9 @@
 .tools/
 .dotnet/
 
+# Rider
+/.idea
+
 # VS Code (share debug and task specific settings)
 /.vscode/*
 !/.vscode/settings.json
