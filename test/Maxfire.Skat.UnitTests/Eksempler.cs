@@ -15,6 +15,18 @@ namespace Maxfire.Skat.UnitTests
 {
     public class MysteriousBugs
     {
+        class Person
+        {
+            public decimal Earnings { get; set; }
+        }
+
+        [Fact]
+        public void ZeroDecimalFieldOfObjectDoesNotShowUpCorrectlyInVsCodeDebugger()
+        {
+            var person = new Person { Earnings = 0m};
+            person.Earnings.ShouldBe(0m);
+        }
+
         [Fact]
         public void NoBugUsingXunitAssert()
         {
@@ -1224,6 +1236,9 @@ namespace Maxfire.Skat.UnitTests
                     NettoKapitalIndkomst = -30000,
                     LigningsmaessigtFradrag = 3000
                 });
+
+            // OBS: debugger shows wrong values for decimal fields
+            selvangivneBeloeb[0].AktieIndkomst.ShouldBe(0m);
 
             var kommunaleSatser = GetKommunaleSatserForGifte();
 
