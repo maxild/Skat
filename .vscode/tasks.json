@@ -47,9 +47,9 @@
             "taskName": "failingtest",
             // This test method will fail on osx and linux (but not on windows) running on CoreCLR in Release build
             //"args" : ["cd ${workspaceRoot}/test/Maxfire.Skat.UnitTests; dotnet test --framework netcoreapp1.0 --configuration Release -method Maxfire.Skat.UnitTests.Eksempler.Eksempel_22_ModregningFuldtUdPartnersSkat"],
-            //"args" : ["cd ${workspaceRoot}/test/Maxfire.Skat.UnitTests; dotnet test --framework netcoreapp1.0 --configuration Release -method Maxfire.Skat.UnitTests.Eksempler.Eksempel_23_DenEnePartnerHarUnderskudFraTidligereAar"],
+            "args" : ["cd ${workspaceRoot}/test/Maxfire.Skat.UnitTests; dotnet test --framework netcoreapp1.0 --configuration Release -method Maxfire.Skat.UnitTests.Eksempler.Eksempel_23_DenEnePartnerHarUnderskudFraTidligereAar"],
             //"args" : ["cd ${workspaceRoot}/test/Maxfire.Skat.UnitTests; dotnet test --framework netcoreapp1.0 --configuration Release -method Maxfire.Skat.UnitTests.Eksempler.Eksempel_24_DenEnePartnerHarNegativSkattepligtigIndkomstDenAndenHarEtFremfoertUnderskud"],
-            "args" : ["cd ${workspaceRoot}/test/Maxfire.Skat.UnitTests; dotnet test --framework netcoreapp1.0 --configuration Release -method Maxfire.Skat.UnitTests.Eksempler.Eksempel_25_BeggeHarUnderskudFraTidligereAar"],
+            //"args" : ["cd ${workspaceRoot}/test/Maxfire.Skat.UnitTests; dotnet test --framework netcoreapp1.0 --configuration Release -method Maxfire.Skat.UnitTests.Eksempler.Eksempel_25_BeggeHarUnderskudFraTidligereAar"],
             "problemMatcher": "$msCompile"
         },
         {

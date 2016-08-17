@@ -3,6 +3,7 @@ using Maxfire.Skat.Beregnere;
 using Maxfire.Skat.Extensions;
 using Shouldly;
 using Xunit;
+using Xunit.Abstractions;
 
 // Notes about running tests
 //
@@ -32,11 +33,16 @@ namespace Maxfire.Skat.UnitTests
     /// </summary>
     public class Eksempler
     {
+        // BUG: Test output (ITestOutputhelper) is only shown when the test fails.
+        // See https://github.com/aspnet/Tooling/issues/324 and https://github.com/aspnet/Tooling/issues/541
+        private readonly ITestOutputHelper output;
+
         const int SKATTE_AAR = 2009;
         private readonly ISkattelovRegistry _skattelovRegistry;
 
-        public Eksempler()
+        public Eksempler(ITestOutputHelper output)
         {
+            this.output = output;
             _skattelovRegistry = new DefaultSkattelovRegistry();
         }
 
@@ -1119,14 +1125,38 @@ namespace Maxfire.Skat.UnitTests
             var underskudBeregner = new SkattepligtigIndkomstUnderskudBeregner(_skattelovRegistry);
             var modregnResults = underskudBeregner.ModregningAfUnderskud(indkomster, skatterAfPersonligIndkomst, kommunaleSatser, SKATTE_AAR);
 
+            // Output to trace problem
+
+            output.WriteLine("The values should be: {0, 2000, 0}, {0, 1000, 0}");
+            output.WriteLine("indkomster[0].SkattepligtigIndkomstSkattegrundlag: {0}", indkomster[0].SkattepligtigIndkomstSkattegrundlag);
+            output.WriteLine("indkomster[0].SkattepligtigIndkomstModregninger: {0}", indkomster[0].SkattepligtigIndkomstModregninger);
+            output.WriteLine("indkomster[0].SkattepligtigIndkomstUnderskudTilFremfoersel: {0}", indkomster[0].SkattepligtigIndkomstUnderskudTilFremfoersel);
+            output.WriteLine("indkomster[1].SkattepligtigIndkomstSkattegrundlag: {0}", indkomster[1].SkattepligtigIndkomstSkattegrundlag);
+            output.WriteLine("indkomster[1].SkattepligtigIndkomstModregninger: {0}", indkomster[1].SkattepligtigIndkomstModregninger);
+            output.WriteLine("indkomster[1].SkattepligtigIndkomstUnderskudTilFremfoersel: {0}", indkomster[1].SkattepligtigIndkomstUnderskudTilFremfoersel);
+
             // Skattepligtig indkomst efter modregning af underskud mellem �gtef�ller
             // TODO: Uncomment again....and refactor into smaller test
-            //indkomster[0].SkattepligtigIndkomstSkattegrundlag.ShouldBe(0);            // -2000 in Release
-            //indkomster[0].SkattepligtigIndkomstModregninger.ShouldBe(2000);           // 0 in Release
+            // if (RuntimeInformationHelper.IsRunningOnWindows() || RuntimeInformationHelper.IsDesktopCLR() || RuntimeInformationHelper.IsDebugBuild())
+            // {
+            //     indkomster[0].SkattepligtigIndkomstSkattegrundlag.ShouldBe(0);
+            //     indkomster[0].SkattepligtigIndkomstModregninger.ShouldBe(2000);
+            // }
+            // else
+            // {
+            //     indkomster[0].SkattepligtigIndkomstSkattegrundlag.ShouldBe(0);
+            //     indkomster[0].SkattepligtigIndkomstModregninger.ShouldBe(2000);
+            // }
+//#if DEBUG
+            indkomster[0].SkattepligtigIndkomstSkattegrundlag.ShouldBe(0);            // -2000 in Release
+            indkomster[0].SkattepligtigIndkomstModregninger.ShouldBe(2000);           // 0 in Release
+//#endif
             indkomster[0].SkattepligtigIndkomstUnderskudTilFremfoersel.ShouldBe(0);     //
             indkomster[1].SkattepligtigIndkomstSkattegrundlag.ShouldBe(0);              //
             indkomster[1].SkattepligtigIndkomstModregninger.ShouldBe(1000);             //
             indkomster[1].SkattepligtigIndkomstUnderskudTilFremfoersel.ShouldBe(0);     //
+
+            //Assert.False(true); // Make the test fail, so that output is shown (BUG in dotnetcli tooling)
 
             var modregningUnderskudSkattepligtigIndkomst =
                 modregnResults.Map(x => x.ModregningUnderskudSkattepligtigIndkomst).ToValueTuple();
@@ -1222,14 +1252,25 @@ namespace Maxfire.Skat.UnitTests
             var underskudBeregner = new SkattepligtigIndkomstUnderskudBeregner(_skattelovRegistry);
             var modregnResults = underskudBeregner.ModregningAfUnderskud(indkomster, skatterAfPersonligIndkomst, kommunaleSatser, SKATTE_AAR);
 
+            // Output to trace problem (by outputing the six values below, the compiler optimize problem/bug disappears?????)
+
+            output.WriteLine("The values should be: {0, -173000, 213174.35m}, {0, -67000, 0}");
+            output.WriteLine("indkomster[0].SkattepligtigIndkomstSkattegrundlag: {0}", indkomster[0].SkattepligtigIndkomstSkattegrundlag);
+            output.WriteLine("indkomster[0].SkattepligtigIndkomstModregninger: {0}", indkomster[0].SkattepligtigIndkomstModregninger);
+            output.WriteLine("indkomster[0].SkattepligtigIndkomstUnderskudTilFremfoersel: {0}", indkomster[0].SkattepligtigIndkomstUnderskudTilFremfoersel);
+            output.WriteLine("indkomster[1].SkattepligtigIndkomstSkattegrundlag: {0}", indkomster[1].SkattepligtigIndkomstSkattegrundlag);
+            output.WriteLine("indkomster[1].SkattepligtigIndkomstModregninger: {0}", indkomster[1].SkattepligtigIndkomstModregninger);
+            output.WriteLine("indkomster[1].SkattepligtigIndkomstUnderskudTilFremfoersel: {0}", indkomster[1].SkattepligtigIndkomstUnderskudTilFremfoersel);
+
             // Skattepligtig indkomst efter modregning af underskud mellem �gtef�ller
-            // TODO: Uncomment again....and refactor into smaller test
-            // indkomster[0].SkattepligtigIndkomstSkattegrundlag.ShouldBe(0);                   // 173000 in Release
-            // indkomster[0].SkattepligtigIndkomstModregninger.ShouldBe(-173000);               // 0 in Release
-            // indkomster[0].SkattepligtigIndkomstUnderskudTilFremfoersel.ShouldBe(213174.35m); // 0 in Release
-            // indkomster[1].SkattepligtigIndkomstSkattegrundlag.ShouldBe(0);                   // 67000 in Release
-            // indkomster[1].SkattepligtigIndkomstModregninger.ShouldBe(-67000);                // 0 in Release
-            indkomster[1].SkattepligtigIndkomstUnderskudTilFremfoersel.ShouldBe(0);             //
+            indkomster[0].SkattepligtigIndkomstSkattegrundlag.ShouldBe(0);                   // 173000 in Release
+            indkomster[0].SkattepligtigIndkomstModregninger.ShouldBe(-173000);               // 0 in Release
+            indkomster[0].SkattepligtigIndkomstUnderskudTilFremfoersel.ShouldBe(213174.35m); // 0 in Release
+            indkomster[1].SkattepligtigIndkomstSkattegrundlag.ShouldBe(0);                   // 67000 in Release
+            indkomster[1].SkattepligtigIndkomstModregninger.ShouldBe(-67000);                // 0 in Release
+            indkomster[1].SkattepligtigIndkomstUnderskudTilFremfoersel.ShouldBe(0);          // 0 in Release
+
+            //Assert.False(true);
 
             var summenAfAaretsOgFremfoertUnderskud = modregnResults.Map(x => x.Underskud).ToValueTuple();
             var modregningUnderskudSkattepligtigIndkomst =

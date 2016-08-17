@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Maxfire.Skat.DebugUtilities;
 
 namespace Maxfire.Skat
 {
@@ -15,8 +17,16 @@ namespace Maxfire.Skat
     /// where n is a positive integer. There is also one 0-tuple, an empty sequence. An n-tuple is
     /// defined inductively using the construction of an ordered pair.
     /// </summary>
+    /// <remarks>
+    /// This ValueTuple implementation always have a size of either one or two elements. This correspond
+    /// to the situation of 'not married' and 'married' when calculating income taxes.
+    ///</remarks>
+    [DebuggerTypeProxy(typeof(ValueTupleDebugView<>)), DebuggerDisplay("{DebuggerDisplay,nq}")]
     public class ValueTuple<T> : IValueTuple<T>, IEquatable<IValueTuple<T>>
     {
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private string DebuggerDisplay => $"Count = {Size}";
+
         private readonly T[] _list;
 
         public ValueTuple(T first)
