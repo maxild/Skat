@@ -40,6 +40,6 @@ script:
   - ./build.sh --target Verify --configuration Debug
   - ./build.sh --target Verify --configuration Release
 
-branches:
-  only:
-    - dotnetcli
+# branches:
+#   only:
+#    - dotnetcli
