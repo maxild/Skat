@@ -1,15 +1,15 @@
 environment:
-  github_password:
-    secure: MSpb924hdiyXPSuUSzWG/w==
+  #github_password:
+    #secure: MSpb924hdiyXPSuUSzWG/w==
 
 # GitVersion (i.e. libgit2) doesn't support SSH, so to avoid 'Unsupported URL protocol'
 # when GitVersion fetches from the remote, we have to convert to using HTTPS. Also because
 # we are building a private repo we need to configure username/password used by GitVersion.
 install:
-  - git remote set-url origin https://github.com/maxild/Skat.git
-  - ps: $env:GITVERSION_REMOTE_USERNAME="maxild"
-  - ps: $env:GITVERSION_REMOTE_PASSWORD ="$($env:github_password)"
-  - choco install gitversion.portable -pre -y
+  #- git remote set-url origin https://github.com/maxild/Skat.git
+  #- ps: $env:GITVERSION_REMOTE_USERNAME="maxild"
+  #- ps: $env:GITVERSION_REMOTE_PASSWORD ="$($env:github_password)"
+  #- choco install gitversion.portable -pre -y
 
 build_script:
   - ps: .\build.ps1 -target Verify -configuration Debug
@@ -23,7 +23,7 @@ artifacts:
 
 deploy:
 - provider: NuGet
-  server: https://www.myget.org/F/brf-ci/api/v2/package
+  server: https://www.myget.org/F/maxfire-ci/api/v2/package
   api_key:
     secure: EOVLFyiHRhh9Jij3/mITdSV5JH1SzT8JUbqqTIFtvOPndNeMme3mME01ws3+5nFB
   skip_symbols: true
