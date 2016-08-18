@@ -83,8 +83,9 @@ task clean -depends  clearGitVersionCache {
 task restore {
     exec {
         # always update nuget to latest release
-        & $base_dir\.nuget\Nuget.exe update -self
-        & $base_dir\.nuget\Nuget.exe restore $sln_file
+        #& $base_dir\.nuget\Nuget.exe update -self
+        #& $base_dir\.nuget\Nuget.exe restore $sln_file
+        & dotnet restore
     }
 }
 

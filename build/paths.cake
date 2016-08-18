@@ -15,7 +15,7 @@ public class BuildSettings
 
 public class BuildPaths {
     private readonly BuildSettings _settings;
-    public BuildPaths(BuildSettings settings) {
+    private BuildPaths(BuildSettings settings) {
         _settings = settings;
     }
     public string Root { get { return System.IO.Directory.GetCurrentDirectory(); } }
@@ -25,7 +25,12 @@ public class BuildPaths {
     public string BuildTools { get { return System.IO.Path.Combine(Root, _settings.BuildToolsFolder); } }
     public string BuildScripts { get { return System.IO.Path.Combine(Root, _settings.BuildScriptsFolder); } }
     public string DotNetCli { get { return System.IO.Path.Combine(Root, _settings.DotNetCliFolder); } }
-    public string DotNetExe { get { return System.IO.Path.Combine(DotNetCli, "dotnet.exe"); } }
+    public string DotNetToolPath { get { return _settings.UseSystemDotNetPath ? null : System.IO.Path.Combine(DotNetCli, "dotnet.exe"); } }
+
+    public static BuildPaths GetPaths(BuildSettings settings)
+    {
+        return new BuildPaths(settings);
+    }
 }
 
 // public class BuildTools {
@@ -35,7 +40,7 @@ public class BuildPaths {
 //         _settings = settings;
 //         _paths = paths;
 //     }
-//     public string dotnet => _settings.UseSystemDotNetPath 
-//             ? "dotnet" 
+//     public string dotnet => _settings.UseSystemDotNetPath
+//             ? "dotnet"
 //             : System.IO.Path.Combine(_paths.DotNet, "dotnet");
 // }

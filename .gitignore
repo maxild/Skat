@@ -16,6 +16,14 @@
 *.suo
 *.user
 
+# Versioning
+src/CommonAssemblyInfo.cs
+
+# Old (to be removed) psake build
+/packages
+/.nuget
+
+
 # Build results
 artifacts/
 project.lock.json

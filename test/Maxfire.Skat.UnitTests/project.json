@@ -26,7 +26,6 @@
         "dotnet-test-xunit": "2.2.0-preview2-build1029",
         "Shouldly": "2.8.0",
         "Maxfire.Skat": {
-            "version": "1.0.0-*",
             "target": "project"
         }
     },

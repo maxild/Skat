@@ -1,35 +1,35 @@
 ﻿{
-  "version": "1.0.0-*",
-
+  "version": "0.1.1-myget-deploy0001",
   "buildOptions": {
-      "debugType": "portable",
-      "warningsAsErrors": true
+    "debugType": "portable",
+    "warningsAsErrors": true
   },
-
   "configurations": {
     "Debug": {
       "buildOptions": {
-        "define": ["DEBUG"],
+        "define": [
+          "DEBUG"
+        ],
         "optimize": false
       }
     },
     "Release": {
       "buildOptions": {
-        "define": ["RELEASE"],
+        "define": [
+          "RELEASE"
+        ],
         "optimize": true
       }
     }
   },
-
   "dependencies": {
     "NETStandard.Library": "1.6.0"
   },
-
   "frameworks": {
     "netstandard1.5": {
-        "dependencies": {
-            "Microsoft.CSharp": "4.0.1"
-        }
+      "dependencies": {
+        "Microsoft.CSharp": "4.0.1"
+      }
     },
     "net46": {}
   }
