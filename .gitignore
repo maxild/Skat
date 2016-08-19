@@ -17,7 +17,7 @@
 *.user
 
 # Versioning
-src/CommonAssemblyInfo.cs
+src/Maxfire.Skat/Properties/AssemblyVersionInfo.cs
 
 # Old (to be removed) psake build
 /packages
