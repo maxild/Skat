@@ -40,8 +40,7 @@ var settings = new BuildSettings {
     DotNetCliChannel = "preview",
     DotNetCliVersion = "1.0.0-preview2-003121"
 };
-var paths = BuildPaths.GetPaths(settings);
-//var tools = new BuildTools(settings, paths);
+var paths = BuildPaths.GetPaths(Context, settings);
 
 // Tools (like aliases)
 // TODO: Use Cake Tools framework (ToolsLocator etc..)
@@ -160,7 +159,7 @@ Task("Restore-NuGet-Packages")
     {
         ToolPath = paths.DotNetToolPath,
         Verbose = false,
-        Verbosity = DotNetCoreRestoreVerbosity.Warning
+        Verbosity = DotNetCoreRestoreVerbosity.Minimal
     });
 
     Information("Package restore was successful!");

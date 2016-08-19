@@ -15,8 +15,10 @@ public class BuildSettings
 
 public class BuildPaths {
     private readonly BuildSettings _settings;
-    private BuildPaths(BuildSettings settings) {
+    private bool _isRunningOnWindows;
+    private BuildPaths(ICakeContext context, BuildSettings settings) {
         _settings = settings;
+        _isRunningOnWindows = context.IsRunningOnWindows();
     }
     public string Root { get { return System.IO.Directory.GetCurrentDirectory(); } }
     public string Artifacts { get { return System.IO.Path.Combine(Root, _settings.ArtifactsFolder); } }
@@ -25,22 +27,25 @@ public class BuildPaths {
     public string BuildTools { get { return System.IO.Path.Combine(Root, _settings.BuildToolsFolder); } }
     public string BuildScripts { get { return System.IO.Path.Combine(Root, _settings.BuildScriptsFolder); } }
     public string DotNetCli { get { return System.IO.Path.Combine(Root, _settings.DotNetCliFolder); } }
-    public string DotNetToolPath { get { return _settings.UseSystemDotNetPath ? null : System.IO.Path.Combine(DotNetCli, "dotnet.exe"); } }
 
-    public static BuildPaths GetPaths(BuildSettings settings)
+    public string DotNetToolPath
     {
-        return new BuildPaths(settings);
+        get
+        {
+            if (_settings.UseSystemDotNetPath)
+            {
+                return null; // Use system dotnet SDK configured in PATH env var
+            }
+
+            // Use local dotnet SDK installed in .dotnet subfolder
+            return _isRunningOnWindows
+                ? System.IO.Path.Combine(DotNetCli, "dotnet.exe")
+                : System.IO.Path.Combine(DotNetCli, "dotnet");
+        }
+    }
+
+    public static BuildPaths GetPaths(ICakeContext context, BuildSettings settings)
+    {
+        return new BuildPaths(context, settings);
     }
 }
-
-// public class BuildTools {
-//     private readonly BuildSettings _settings;
-//     private readonly BuildPaths _paths;
-//     public BuildTools(BuildSettings settings, BuildPaths paths) {
-//         _settings = settings;
-//         _paths = paths;
-//     }
-//     public string dotnet => _settings.UseSystemDotNetPath
-//             ? "dotnet"
-//             : System.IO.Path.Combine(_paths.DotNet, "dotnet");
-// }
