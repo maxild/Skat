@@ -14,20 +14,53 @@
 # of dev (ci builds) until release have been merged into master.
 # https://github.com/GitTools/GitVersion/issues/632
 # https://github.com/GitTools/GitVersion/issues/695
-# The sorting should be feature (alpha) < develop (cidev|beta) < release|hotfix (rc) < master
+# The sorting should be feature (alpha|a) < develop (cidev|dev|beta) < release|hotfix (rc) < master
+assembly-versioning-scheme: None
+mode: ContinuousDeployment
+#next-version: 1.0.0
+legacy-semver-padding: 4
+build-metadata-padding: 4
+commits-since-version-source-padding: 4
+commit-message-incrementing: Enabled
 branches:
-  dev(elop)?(ment)?$:
-    tag: cidev
   features?[/-]:
+    mode: ContinuousDelivery
     tag: a.{BranchName}
+    increment: Inherit
+    prevent-increment-of-merged-branch-version: false
+    track-merge-target: false
+    is-develop: false
+    is-release-branch: false
+    is-mainline: false
+  dev(elop)?(ment)?$:
+    mode: ContinuousDeployment
+    tag: dev
+    increment: Minor
+    prevent-increment-of-merged-branch-version: false
+    track-merge-target: true
+    is-develop: true
+    is-release-branch: false
+    is-mainline: false
   # pull requests are not important, because we use a shared/centralized upstream repo and
   # base all our work of supporting feature/xxx, release/x.y.z and hotfix/x.y.z branches.
   # We have in fact turned off app veyor ci builds for pull requests in the github web hook
   # config for the same reason, because app veyor have all ready build the supporting centralized
   # branch.
-  (pull|pull\-requests|pr)[/-]:
-    tag: a.pr
   releases?[/-]:
+    mode: ContinuousDelivery
     tag: rc
-  hotfix(es)?[/-]:
-    tag: rc
+    increment: Patch
+    prevent-increment-of-merged-branch-version: true
+    track-merge-target: false
+    is-develop: false
+    is-release-branch: true
+    is-mainline: false
+  master:
+    mode: ContinuousDelivery
+    tag:
+    increment: Patch
+    prevent-increment-of-merged-branch-version: true
+    track-merge-target: false
+    is-develop: false
+    is-release-branch: false
+    is-mainline: true
