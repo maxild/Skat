@@ -1,3 +1,9 @@
+# You can run
+#     GitVersion /showConfig
+# to see the effective configuration (defaults + overrides).
+#
+# See also: https://gitversion.readthedocs.io/en/latest/configuration/
+#
 # For all branches except dev GitVersion will produce the same
 # version NuGet package each commit until you tag a release.
 # The base version are calculated from
