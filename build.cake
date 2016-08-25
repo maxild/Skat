@@ -295,21 +295,21 @@ Task("Run-Unit-Tests")
         else
         {
             // Ideally we would use the 'dotnet test' command to test both netcoreapp1.0 (CoreCLR)
-            // and net46 (Mono), but this currently doesn't work due to
+            // and net452 (Mono), but this currently doesn't work due to
             //    https://github.com/dotnet/cli/issues/3073
             int exitCode1 = Run(dotnet, string.Format("test {0} --configuration {1} --framework netcoreapp1.0", testPrj, parameters.Configuration));
             //FailureHelper.ExceptionOnError(exitCode1, string.Format("Failed to run tests on Core CLR in {0}.", testPrjDir));
             results.Add(new TestResult(string.Format("CoreCLR: {0}", testPrjName), exitCode1));
 
-            // Instead we run xUnit.net .NET CLI test runner directly with mono for the net46 target framework
+            // Instead we run xUnit.net .NET CLI test runner directly with mono for the net452 target framework
 
             // Build using .NET CLI
-            int exitCode2 = Run(dotnet, string.Format("build {0} --configuration {1} --framework net46", testPrj, parameters.Configuration));
+            int exitCode2 = Run(dotnet, string.Format("build {0} --configuration {1} --framework net452", testPrj, parameters.Configuration));
             FailureHelper.ExceptionOnError(exitCode2, string.Format("Failed to build tests on Desktop CLR in {0}.", testPrjDir));
 
             // Shell() helper does not support running mono, so we glob here
-            var dotnetTestXunit = GetFiles(string.Format("{0}/bin/{1}/net46/*/dotnet-test-xunit.exe", testPrjDir, parameters.Configuration)).First();
-            var dotnetTestAssembly = GetFiles(string.Format("{0}/bin/{1}/net46/*/{2}.dll", testPrjDir, parameters.Configuration, testPrjName)).First();
+            var dotnetTestXunit = GetFiles(string.Format("{0}/bin/{1}/net452/*/dotnet-test-xunit.exe", testPrjDir, parameters.Configuration)).First();
+            var dotnetTestAssembly = GetFiles(string.Format("{0}/bin/{1}/net452/*/{2}.dll", testPrjDir, parameters.Configuration, testPrjName)).First();
 
             // Run using Mono
             int exitCode3 = Run("mono", string.Format("{0} {1}", dotnetTestXunit, dotnetTestAssembly));
