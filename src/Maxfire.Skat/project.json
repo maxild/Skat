@@ -1,5 +1,5 @@
 ﻿{
-  "version": "0.1.1-*",
+  "version": "0.2.0-*",
   "buildOptions": {
     "debugType": "portable",
     "warningsAsErrors": true
@@ -27,9 +27,9 @@
   },
   "frameworks": {
     "netstandard1.5": {
-        "dependencies": {
-            "Microsoft.CSharp": "4.0.1"
-        }
+      "dependencies": {
+        "Microsoft.CSharp": "4.0.1"
+      }
     },
     "net452": {}
   }

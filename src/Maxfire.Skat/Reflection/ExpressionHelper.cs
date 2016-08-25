@@ -3,52 +3,8 @@ using System.Linq.Expressions;
 
 namespace Maxfire.Skat.Reflection
 {
-    public static class ExpressionHelper
+    internal static class ExpressionHelper
     {
-        //public static string GetExpressionText(LambdaExpression expression)
-        //{
-        //	string expressionText = new ExpressionNameVisitor().ToString(expression.Body);
-        //	return expressionText;
-        //}
-
-        //public static PropertyInfo GetProperty<TObject>(Expression<Func<TObject, object>> expression)
-        //{
-        //	MemberExpression memberExpression = GetMemberExpression(expression);
-        //	return (PropertyInfo)memberExpression.Member;
-        //}
-
-        //public static PropertyInfo GetProperty<TObject, TPropertyValue>(Expression<Func<TObject, TPropertyValue>> expression)
-        //{
-        //	MemberExpression memberExpression = GetMemberExpression(expression);
-        //	return (PropertyInfo)memberExpression.Member;
-        //}
-
-        //public static MemberExpression GetMemberExpression<TObject, TPropertyValue>(Expression<Func<TObject, TPropertyValue>> expression)
-        //{
-        //    return GetMemberExpression(expression, true);
-        //}
-
-        //public static MemberExpression GetMemberExpression<TObject, TPropertyValue>(Expression<Func<TObject, TPropertyValue>> expression, bool enforceCheck)
-        //{
-        //    MemberExpression memberExpression = null;
-        //    if (expression.Body.NodeType == ExpressionType.Convert)
-        //    {
-        //        var body = (UnaryExpression)expression.Body;
-        //        memberExpression = body.Operand as MemberExpression;
-        //    }
-        //    else if (expression.Body.NodeType == ExpressionType.MemberAccess)
-        //    {
-        //        memberExpression = expression.Body as MemberExpression;
-        //    }
-
-        //    if (enforceCheck && memberExpression == null)
-        //    {
-        //        throw new ArgumentException("Not a member access", "expression");
-        //    }
-
-        //    return memberExpression;
-        //}
-
         /// <summary>
         /// Create a function delegate representing a unary operation
         /// </summary>

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace Maxfire.Skat
+namespace Maxfire.Skat.UnitTests
 {
     // TODO: Disse skal importeres fra Prelude paa sigt
     internal static class PreludeExtensions
