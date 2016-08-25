@@ -14,7 +14,6 @@ namespace Maxfire.Skat.Reflection
     public class PropertyAccessor<TObject, TPropertyValue> : Accessor<TObject, TPropertyValue>
     {
         private readonly PropertyInfo _propertyInfo;
-        private const BindingFlags DEFAULT_BINDINGFLAGS = BindingFlags.Public | BindingFlags.Instance;
 
         public PropertyAccessor(PropertyInfo propertyInfo)
         {
@@ -31,9 +30,6 @@ namespace Maxfire.Skat.Reflection
             return (TPropertyValue)_propertyInfo.GetValue(target);
         }
 
-        public string PropertyName
-        {
-            get { return _propertyInfo.Name; }
-        }
+        public string PropertyName => _propertyInfo.Name;
     }
 }

@@ -472,6 +472,11 @@ namespace Maxfire.Skat
             if (typeT.IsValueType && typeT.IsGenericType && (typeT.GetGenericTypeDefinition() == typeof(Nullable<>)))
             {
                 // get the *inner* zero (not a null Nullable<TValue>, but default(TValue))
+                // See https://github.com/dotnet/corefx/issues/2214#issuecomment-118179251
+                //Type nullType = typeT.GenericTypeArguments[0];
+                //Type nullType = typeT.IsGenericTypeDefinition
+                //    ? typeT.GenericTypeParameters
+                //    : typeT.GenericTypeArguments;
                 Type nullType = typeT.GetGenericArguments()[0];
                 _zero = (T)Activator.CreateInstance(nullType);
                 _nullOp = (INullOp<T>)Activator.CreateInstance(

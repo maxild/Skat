@@ -27,10 +27,10 @@
   },
   "frameworks": {
     "netstandard1.5": {
-      "dependencies": {
-        "Microsoft.CSharp": "4.0.1"
-      }
+        "dependencies": {
+            "Microsoft.CSharp": "4.0.1"
+        }
     },
-    "net46": {}
+    "net452": {}
   }
 }
