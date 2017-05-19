@@ -1,6 +1,6 @@
 .dotnet/
 artifacts/
-tools/
+tools/*
 !tools/packages.config
 
 # Rider
