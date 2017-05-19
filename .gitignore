@@ -1,6 +1,7 @@
-# Tool folders
-.tools/
 .dotnet/
+artifacts/
+tools/
+!tools/packages.config
 
 # Rider
 /.idea
@@ -18,11 +19,7 @@
 
 # Versioning
 src/Maxfire.Skat/Properties/AssemblyVersionInfo.cs
-
-# Old (to be removed) psake build
-/packages
-/.nuget
-
+src/CommonAssemblyInfo.cs
 
 # Build results
 artifacts/

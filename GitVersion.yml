@@ -10,11 +10,20 @@
 #   1) next-version in config
 #   2) branch name (e.g. release/1.0.0)
 #   3) Tagging a commit (tag can be either 1.0.0 or v1.0.0 or v1.0.0-beta5, v.1.0.0-rc1)
-# GitVersion v3 has a problemtic sorting of tags because it doesn't bump the next version
+# GitVersion v3 has a problematic sorting of tags because it doesn't bump the next version
 # of dev (ci builds) until release have been merged into master.
 # https://github.com/GitTools/GitVersion/issues/632
 # https://github.com/GitTools/GitVersion/issues/695
-# The sorting should be feature (alpha|a) < develop (cidev|dev|beta) < release|hotfix (rc) < master
+# This should have been fixed in v4
+#
+# The sorting should be feature (alpha|a) < develop (ci|dev|beta) < release|hotfix (rc) < master
+#
+# About Git commit counters: getting a commit counter from git is easy and fast, even for 
+# very large repos: 
+#      git rev-list master --count 
+# or for all commits on a particular branch
+#      git rev-list branch ^master --count
+# Also read https://github.com/GitTools/GitVersion/issues/889
 assembly-versioning-scheme: None
 mode: ContinuousDeployment
 #next-version: 1.0.0
@@ -23,7 +32,8 @@ build-metadata-padding: 4
 commits-since-version-source-padding: 4
 commit-message-incrementing: Enabled
 branches:
-  features?[/-]:
+  feature:
+    regex: features?[/-]
     mode: ContinuousDelivery
     tag: a.{BranchName}
     increment: Inherit
@@ -32,7 +42,8 @@ branches:
     is-develop: false
     is-release-branch: false
     is-mainline: false
-  dev(elop)?(ment)?$:
+  develop:
+    regex: dev(elop)?(ment)?$
     mode: ContinuousDeployment
     tag: dev
     increment: Minor
@@ -46,7 +57,8 @@ branches:
   # We have in fact turned off app veyor ci builds for pull requests in the github web hook
   # config for the same reason, because app veyor have all ready build the supporting centralized
   # branch.
-  releases?[/-]:
+  release:
+    regex: releases?[/-]
     mode: ContinuousDelivery
     tag: rc
     increment: Patch
@@ -56,6 +68,7 @@ branches:
     is-release-branch: true
     is-mainline: false
   master:
+    regex: master
     mode: ContinuousDelivery
     tag:
     increment: Patch
@@ -64,3 +77,13 @@ branches:
     is-develop: false
     is-release-branch: false
     is-mainline: true
+  hotfix:
+    regex: hotfix(es)?[/-]
+    mode: ContinuousDelivery
+    tag: rc
+    increment: Patch
+    prevent-increment-of-merged-branch-version: true
+    track-merge-target: false
+    is-develop: false
+    is-release-branch: false
+    is-mainline: false

@@ -1,19 +1,14 @@
-#environment:
-  #github_password:
-    #secure: MSpb924hdiyXPSuUSzWG/w==
+# See http://help.appveyor.com/discussions/questions/2449-what-os-setting-should-i-use-to-get-windows-machine-with-no-dotnet-cli-bits-installed
+# os: Visual Studio 2013 # Image without preinstalled .NET Core SDK
+# We use image with preinstalled .NET Core SDK, because we also need net452
+os: Visual Studio 2015
 
-# GitVersion (i.e. libgit2) doesn't support SSH, so to avoid 'Unsupported URL protocol'
-# when GitVersion fetches from the remote, we have to convert to using HTTPS. Also because
-# we are building a private repo we need to configure username/password used by GitVersion.
-#install:
-  #- git remote set-url origin https://github.com/maxild/Skat.git
-  #- ps: $env:GITVERSION_REMOTE_USERNAME="maxild"
-  #- ps: $env:GITVERSION_REMOTE_PASSWORD ="$($env:github_password)"
-  #- choco install gitversion.portable -pre -y
+init:
+  - git config --global core.autocrlf input
 
 build_script:
-  - ps: .\build.ps1 -target Verify -configuration Debug
-  - ps: .\build.ps1 -target All -configuration Release
+  - ps: .\build.ps1 -target AppVeyor -configuration Debug -verbosity diagnostic
+  - ps: .\build.ps1 -target AppVeyor -configuration Release -verbosity diagnostic
 
 test: off
 
