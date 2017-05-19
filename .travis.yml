@@ -1,12 +1,12 @@
 language: csharp
+os:
+  - linux # Ubuntu 14.04
+  - osx
 
+# .NET CLI require Ubuntu 14.04
+# See also https://github.com/dotnet/core/blob/master/Documentation/prereqs.md
 sudo: required
 dist: trusty
-
-env:
-  - CLI_VERSION=1.0.0-preview2-003121
-
-# See also https://github.com/dotnet/core/blob/master/Documentation/prereqs.md
 addons:
   apt:
     packages:
@@ -20,26 +20,16 @@ addons:
 mono:
   - latest
 
-os:
-  - linux # Ubuntu 14.04
-  - osx
-
-#osx_image: xcode7.2 # OSX 10.11
+# .NET CLI require OSX 10.10
 osx_image: xcode7.3
 
-# install automatically retries
 install:
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew update; fi
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew install openssl; fi
-  #- if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew link --force openssl; fi
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then ln -s /usr/local/opt/openssl/lib/libcrypto.1.0.0.dylib /usr/local/lib/; fi
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/; fi
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew list; fi
 
 script:
-  - ./build.sh --target Verify --configuration Debug
-  - ./build.sh --target Verify --configuration Release
-
-# branches:
-#   only:
-#    - dotnetcli
+  - ./build.sh --target Travis --configuration Debug --verbosity diagnostic
+  #- ./build.sh --target Travis --configuration Release
