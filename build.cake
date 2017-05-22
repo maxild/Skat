@@ -110,82 +110,58 @@ Task("Build")
     }
 });
 
-public class TestResult
-{
-    private readonly string _msg;
-    public TestResult(string msg, int exitCode)
-    {
-        _msg = msg;
-        ExitCode = exitCode;
-    }
-
-    public int ExitCode { get; private set; }
-    public bool Failed { get { return ExitCode != 0; } }
-    public string ErrorMessage { get { return Failed ? string.Concat("One or more tests did fail on ", _msg) : string.Empty; } }
-}
-
 Task("Test")
     .IsDependentOn("Build")
     .Does(() =>
 {
-    var results = new List<TestResult>();
-
-    // TODO: For Release builds the following test methods fail:
-    //     1) Maxfire.Skat.UnitTests.Eksempler.Eksempel_22_ModregningFuldtUdPartnersSkat
-    //     2) Maxfire.Skat.UnitTests.Eksempler.Eksempel_23_DenEnePartnerHarUnderskudFraTidligereAar
-    //     3) Maxfire.Skat.UnitTests.Eksempler.Eksempel_24_DenEnePartnerHarNegativSkattepligtigIndkomstDenAndenHarEtFremfoertUnderskud
-    //     4) Maxfire.Skat.UnitTests.Eksempler.Eksempel_25_BeggeHarUnderskudFraTidligereAar
-
     Func<IFileSystemInfo, bool> exclude_test_driver =
         fileSystemInfo => fileSystemInfo.Path.FullPath.IndexOf("Maxfire.Skat.TestDriver", StringComparison.OrdinalIgnoreCase) < 0;
 
-    foreach (var testPrj in GetFiles(string.Format("{0}/**/project.json", parameters.Paths.Directories.Test), exclude_test_driver))
+    foreach (var testProject in GetFiles(string.Format("{0}/**/project.json", parameters.Paths.Directories.Test), exclude_test_driver))
     {
-        Information("Run tests in {0}", testPrj);
-
-        var testPrjDir = testPrj.GetDirectory();
-        var testPrjName = testPrjDir.GetDirectoryName();
-
         if (IsRunningOnWindows())
         {
-            int exitCode = Run("dotnet", string.Format("test {0} --configuration {1}", testPrj, parameters.Configuration));
-            FailureHelper.ExceptionOnError(exitCode, string.Format("Failed to run tests on Core CLR in {0}.", testPrjDir));
+            DotNetCoreTest(testProject.GetDirectory().FullPath, new DotNetCoreTestSettings {
+                Configuration = parameters.Configuration,
+                NoBuild = true,
+                Verbose = false
+            });
         }
         else
         {
             // Ideally we would use the 'dotnet test' command to test both netcoreapp1.0 (CoreCLR)
             // and net452 (Mono), but this currently doesn't work due to
             //    https://github.com/dotnet/cli/issues/3073
-            int exitCode1 = Run("dotnet", string.Format("test {0} --configuration {1} --framework netcoreapp1.0", testPrj, parameters.Configuration));
-            //FailureHelper.ExceptionOnError(exitCode1, string.Format("Failed to run tests on Core CLR in {0}.", testPrjDir));
-            results.Add(new TestResult(string.Format("CoreCLR: {0}", testPrjName), exitCode1));
 
-            // Instead we run xUnit.net .NET CLI test runner directly with mono for the net452 target framework
+            //
+            // .NET Core (on Linux and OS X)
+            //
 
-            // Build using .NET CLI
-            int exitCode2 = Run("dotnet", string.Format("build {0} --configuration {1} --framework net452", testPrj, parameters.Configuration));
-            FailureHelper.ExceptionOnError(exitCode2, string.Format("Failed to build tests on Desktop CLR in {0}.", testPrjDir));
+            DotNetCoreTest(testProject.GetDirectory().FullPath, new DotNetCoreTestSettings {
+                Configuration = parameters.Configuration,
+                Framework = "netcoreapp1.0",
+                NoBuild = true,
+                Verbose = false
+            });
 
-            // Shell() helper does not support running mono, so we glob here
-            var dotnetTestXunit = GetFiles(string.Format("{0}/bin/{1}/net452/*/dotnet-test-xunit.exe", testPrjDir, parameters.Configuration)).First();
-            var dotnetTestAssembly = GetFiles(string.Format("{0}/bin/{1}/net452/*/{2}.dll", testPrjDir, parameters.Configuration, testPrjName)).First();
+            //
+            // Mono (on Linux and OS X)
+            //
 
-            // Run using Mono
-            int exitCode3 = Run("mono", string.Format("{0} {1}", dotnetTestXunit, dotnetTestAssembly));
-            //FailureHelper.ExceptionOnError(exitCode3, string.Format("Failed to run tests on Desktop CLR in {0}.", testPrjDir));
-            results.Add(new TestResult(string.Format("DesktopCLR: {0}", testPrjName), exitCode3));
+            var testProjectPath = testProject.GetDirectory().FullPath;
+            var testProjectName = testProject.GetDirectory().GetDirectoryName();
 
+            var xunitRunner = GetFiles(testProjectPath + "/bin/" + parameters.Configuration + "/net452/*/dotnet-test-xunit.exe").First().FullPath;
+            var testAssembly = GetFiles(testProjectPath + "/bin/" + parameters.Configuration + "/net452/*/" + testProjectName + ".dll").First().FullPath;
+
+            int exitCode = Run("mono", xunitRunner + " " + testAssembly);
+            if (exitCode != 0)
+            {
+                throw new Exception("Tests in '" + testProjectName + "' failed on Mono!");
+            }
         }
 
-        if (results.Any(r => r.Failed))
-        {
-            throw new Exception(
-                results.Aggregate(new StringBuilder(), (sb, result) =>
-                    sb.AppendFormat("{0}{1}", result.ErrorMessage, Environment.NewLine)).ToString().TrimEnd()
-                );
-        }
-
-        Information("Tests in {0} was succesful!", testPrj);
+        Information("Tests in {0} was succesful!", testProject);
     }
 });
 
@@ -196,8 +172,6 @@ Task("Package")
 {
     foreach (var project in GetFiles(string.Format("{0}/**/project.json", parameters.Paths.Directories.Src)))
     {
-        Information("Build nupkg in {0}", project.GetDirectory());
-
         DotNetCorePack(project.GetDirectory().FullPath, new DotNetCorePackSettings {
             VersionSuffix = parameters.VersionInfo.VersionSuffix,
             Configuration = parameters.Configuration,
