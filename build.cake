@@ -20,10 +20,6 @@ var parameters = CakeScripts.GetParameters(
     {
         MainRepositoryOwner = "maxild",
         RepositoryName = "Prelude",
-    },
-    new BuildPathSettings
-    {
-        BuildToolsDir = "./tools"
     });
 bool publishingError = false;
 
