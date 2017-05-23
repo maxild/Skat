@@ -19,7 +19,7 @@ var parameters = CakeScripts.GetParameters(
     new BuildSettings   // My personal overrides
     {
         MainRepositoryOwner = "maxild",
-        RepositoryName = "Prelude",
+        RepositoryName = "Skat",
         DeployToCIFeedUrl = "https://www.myget.org/F/maxfire-ci/api/v2/package", // MyGet feed url
         DeployToProdFeedUrl = "https://www.nuget.org/api/v2/package"             // NuGet.org feed url
     });
