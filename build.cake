@@ -20,6 +20,8 @@ var parameters = CakeScripts.GetParameters(
     {
         MainRepositoryOwner = "maxild",
         RepositoryName = "Prelude",
+        DeployToCIFeedUrl = "https://www.myget.org/F/maxfire-ci/api/v2/package", // MyGet feed url
+        DeployToProdFeedUrl = "https://www.nuget.org/api/v2/package"             // NuGet.org feed url
     });
 bool publishingError = false;
 
@@ -48,19 +50,19 @@ Setup(context =>
 ///////////////////////////////////////////////////////////////////////////////
 
 Task("Default")
-    .IsDependentOn("Show-Info")
-    .IsDependentOn("Print-AppVeyor-Environment-Variables")
     .IsDependentOn("Package");
 
 Task("Travis")
     .IsDependentOn("Show-Info")
-    .IsDependentOn("Package");
+    .IsDependentOn("Test");
 
 Task("AppVeyor")
     .IsDependentOn("Show-Info")
     .IsDependentOn("Print-AppVeyor-Environment-Variables")
     .IsDependentOn("Package")
     .IsDependentOn("Upload-AppVeyor-Artifacts")
+    .IsDependentOn("Publish-CIFeed-MyGet")
+    .IsDependentOn("Publish-ProdFeed-NuGet")
     .IsDependentOn("Publish-GitHub-Release")
     .Finally(() =>
 {
@@ -69,6 +71,12 @@ Task("AppVeyor")
         throw new Exception("An error occurred during the publishing of " + parameters.ProjectName + ".  All publishing tasks have been attempted.");
     }
 });
+
+Task("ReleaseNotes")
+    .IsDependentOn("Create-Release-Notes");
+
+Task("Clean")
+    .IsDependentOn("Clear-Artifacts");
 
 Task("CakeScripts")
     .Does(() =>
@@ -79,12 +87,6 @@ Task("CakeScripts")
         DeleteDirectory(dirToDelete, true);
     }
 });
-
-Task("ReleaseNotes")
-    .IsDependentOn("Create-Release-Notes");
-
-Task("Clean")
-    .IsDependentOn("Clear-Artifacts");
 
 Task("Restore")
     .Does(() =>
@@ -160,8 +162,6 @@ Task("Test")
                 throw new Exception("Tests in '" + testProjectName + "' failed on Mono!");
             }
         }
-
-        Information("Tests in {0} was succesful!", testProject);
     }
 });
 
@@ -180,6 +180,46 @@ Task("Package")
             Verbose = false
         });
     }
+});
+
+Task("Publish-CIFeed-MyGet")
+    .IsDependentOn("Package")
+    .WithCriteria(() => parameters.ShouldDeployToCIFeed)
+    .Does(() =>
+{
+    foreach (var package in GetFiles(parameters.Paths.Directories.Artifacts + "/*.nupkg"))
+    {
+        NuGetPush(package.FullPath, new NuGetPushSettings {
+            Source = parameters.CIFeed.SourceUrl,
+            ApiKey = parameters.CIFeed.ApiKey,
+            ArgumentCustomization = args => args.Append("-NoSymbols")
+        });
+    }
+})
+.OnError(exception =>
+{
+    Information("Publish-MyGet Task failed, but continuing with next Task...");
+    publishingError = true;
+});
+
+Task("Publish-ProdFeed-NuGet")
+    .IsDependentOn("Package")
+    .WithCriteria(() => parameters.ShouldDeployToProdFeed)
+    .Does(() =>
+{
+    foreach (var package in GetFiles(parameters.Paths.Directories.Artifacts + "/*.nupkg"))
+    {
+        NuGetPush(package.FullPath, new NuGetPushSettings {
+            Source = parameters.ProdFeed.SourceUrl,
+            ApiKey = parameters.ProdFeed.ApiKey,
+            ArgumentCustomization = args => args.Append("-NoSymbols")
+        });
+    }
+})
+.OnError(exception =>
+{
+    Information("Publish-NuGet Task failed, but continuing with next Task...");
+    publishingError = true;
 });
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -211,14 +251,13 @@ Task("Publish-GitHub-Release")
     .WithCriteria(() => parameters.ConfigurationIsRelease())
     .Does(() =>
 {
-    if (DirectoryExists(parameters.Paths.Directories.Artifacts))
+    // TODO: Both NAME.nupkg and NAME.symbols.nupkg?
+    foreach (var package in GetFiles(parameters.Paths.Directories.Artifacts + "/*.nupkg"))
     {
-        // TODO: Make this library specific
-        // Add ffv-rtl.exe artifact to the published release
-        //var exeFile = GetFiles(parameters.Paths.Directories.Artifacts + "/*.exe").Single();
-        //GitReleaseManagerAddAssets(parameters.GitHub.UserName, parameters.GitHub.Password,
-        //                            parameters.GitHub.RepositoryOwner, parameters.GitHub.RepositoryName,
-        //                            parameters.VersionInfo.Milestone, exeFile.FullPath);
+        GitReleaseManagerAddAssets(parameters.GitHub.UserName, parameters.GitHub.Password,
+                                   parameters.GitHub.RepositoryOwner, parameters.GitHub.RepositoryName,
+                                   parameters.VersionInfo.Milestone, package.FullPath);
+
     }
 
     // Close the milestone
@@ -232,30 +271,17 @@ Task("Publish-GitHub-Release")
     publishingError = true;
 });
 
-Task("Show-Info")
-    .Does(() =>
-{
-    parameters.PrintToLog();
-});
-
-Task("Print-AppVeyor-Environment-Variables")
-    .WithCriteria(AppVeyor.IsRunningOnAppVeyor)
-    .Does(() =>
-{
-    parameters.PrintAppVeyorEnvironmentVariables();
-});
-
-// appveyor PushArtifact <path> [options] (See https://www.appveyor.com/docs/build-worker-api/#push-artifact)
 Task("Upload-AppVeyor-Artifacts")
     .IsDependentOn("Package")
     .WithCriteria(() => parameters.IsRunningOnAppVeyor)
-    .WithCriteria(() => DirectoryExists(parameters.Paths.Directories.Artifacts))
-    .WithCriteria(() => parameters.ConfigurationIsRelease())
     .Does(() =>
 {
-    // TODO: Make this library specific
-    //var exeFile = GetFiles(parameters.Paths.Directories.Artifacts + "/*.exe").Single();
-    //AppVeyor.UploadArtifact(exeFile);
+    // TODO: Both NAME.nupkg and NAME.symbols.nupkg?
+    foreach (var package in GetFiles(parameters.Paths.Directories.Artifacts + "/*.nupkg"))
+    {
+        // appveyor PushArtifact <path> [options] (See https://www.appveyor.com/docs/build-worker-api/#push-artifact)
+        AppVeyor.UploadArtifact(package);
+    }
 });
 
 Task("Clear-Artifacts")
@@ -267,14 +293,17 @@ Task("Clear-Artifacts")
     }
 });
 
-Task("Copy-Artifacts")
+Task("Show-Info")
     .Does(() =>
 {
-    EnsureDirectoryExists(parameters.Paths.Directories.Artifacts);
-    // TODO: Make this library specific
-    //CopyFileToDirectory(
-    //    parameters.SrcProject("FFV-RTL.Console").GetBuildArtifact(string.Format("{0}.exe", parameters.ProjectName.ToLower())),
-    //    parameters.Paths.Directories.Artifacts);
+    parameters.PrintToLog();
+});
+
+Task("Print-AppVeyor-Environment-Variables")
+    .WithCriteria(AppVeyor.IsRunningOnAppVeyor)
+    .Does(() =>
+{
+    parameters.PrintAppVeyorEnvironmentVariables();
 });
 
 Task("Patch-Project-Json")
