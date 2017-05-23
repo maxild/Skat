@@ -12,7 +12,7 @@ Stable releases can be found on NuGet.org. Our CI build also produces packages, 
 
 ### Stable releases
 
-[![NuGet](https://img.shields.io/nuget/v/Maxfire.Skat.svg?label=Maxfire.Skat)](https://www.nuget.org/packages/Maxfire.Prelude.Core/)
+[![NuGet](https://img.shields.io/nuget/v/Maxfire.Skat.svg?label=Maxfire.Skat)](https://www.nuget.org/packages/Maxfire.Skat/)
 
 Stable releases are published to [NuGet.org](https://www.nuget.org/packages?q=Maxfire.Skat).
 
