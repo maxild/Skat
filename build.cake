@@ -336,6 +336,9 @@ Task("Patch-Project-Json")
     }
 });
 
+// TODO: Den benyttes ikke...afventer investigation af tooling (project.json vs csproj, and assemblyinfo attributes)
+// TODO: Skal denne tilfoejes vs2015 solution (dvs xproj), saa skal den kopieres under src, da filer adderes dynamisk
+// TODO: Hvordan indsaettes AssemblyVersion, AssemblyFileVersion og AssemblyInformationalVersion
 Task("Generate-CommonAssemblyInfo")
     .Does(() =>
 {
@@ -375,6 +378,7 @@ Task("Generate-CommonAssemblyInfo")
     var projects = GetFiles("./src/**/project.json");
     foreach (var project in projects)
     {
+        // TODO: Indsaettes som ./Properties/AssemblyVersionInfo.cs i hvert projekt
         System.IO.File.WriteAllText(parameters.Paths.Files.CommonAssemblyInfo.FullPath, content, Encoding.UTF8);
         //System.IO.File.WriteAllText(System.IO.Path.Combine(parameters.Paths.Directories.Src, "Maxfire.Skat", "Properties" , "AssemblyVersionInfo.cs"), content, Encoding.UTF8);
         //System.IO.File.WriteAllText(System.IO.Path.Combine(project.GetDirectory().FullPath, "Properties" , "AssemblyVersionInfo.cs"), content, Encoding.UTF8);
