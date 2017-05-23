@@ -182,8 +182,10 @@ Task("Package")
     }
 });
 
+// Debug builds are published to MyGet CI feed
 Task("Publish-CIFeed-MyGet")
     .IsDependentOn("Package")
+    .WithCriteria(() => parameters.ConfigurationIsDebug())
     .WithCriteria(() => parameters.ShouldDeployToCIFeed)
     .Does(() =>
 {
@@ -202,8 +204,10 @@ Task("Publish-CIFeed-MyGet")
     publishingError = true;
 });
 
+// Release builds are published to NuGet.Org production feed
 Task("Publish-ProdFeed-NuGet")
     .IsDependentOn("Package")
+    .WithCriteria(() => parameters.ConfigurationIsRelease())
     .WithCriteria(() => parameters.ShouldDeployToProdFeed)
     .Does(() =>
 {
