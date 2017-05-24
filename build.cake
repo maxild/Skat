@@ -189,7 +189,11 @@ Task("Publish-CIFeed-MyGet")
     .WithCriteria(() => parameters.ShouldDeployToCIFeed)
     .Does(() =>
 {
-    foreach (var package in GetFiles(parameters.Paths.Directories.Artifacts + "/*.nupkg"))
+    var packages =
+            GetFiles(parameters.Paths.Directories.Artifacts + "/*.nupkg") -
+            GetFiles(parameters.Paths.Directories.Artifacts + "/*.symbols.nupkg");
+
+    foreach (var package in packages)
     {
         NuGetPush(package.FullPath, new NuGetPushSettings {
             Source = parameters.CIFeed.SourceUrl,
@@ -211,7 +215,14 @@ Task("Publish-ProdFeed-NuGet")
     .WithCriteria(() => parameters.ShouldDeployToProdFeed)
     .Does(() =>
 {
-    foreach (var package in GetFiles(parameters.Paths.Directories.Artifacts + "/*.nupkg"))
+    // Note: NuGet automatically publishes to symbolsource.org automatically if it detects a symbol package
+    // See also https://docs.microsoft.com/en-us/nuget/create-packages/symbol-packages
+
+    var packages =
+            GetFiles(parameters.Paths.Directories.Artifacts + "/*.nupkg") -
+            GetFiles(parameters.Paths.Directories.Artifacts + "/*.symbols.nupkg");
+
+    foreach (var package in packages)
     {
         NuGetPush(package.FullPath, new NuGetPushSettings {
             Source = parameters.ProdFeed.SourceUrl,
