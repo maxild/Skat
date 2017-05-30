@@ -61,8 +61,7 @@ Task("AppVeyor")
     .IsDependentOn("Print-AppVeyor-Environment-Variables")
     .IsDependentOn("Package")
     .IsDependentOn("Upload-AppVeyor-Artifacts")
-    .IsDependentOn("Publish-CIFeed-MyGet")
-    .IsDependentOn("Publish-ProdFeed-NuGet")
+    .IsDependentOn("Publish")
     .IsDependentOn("Publish-GitHub-Release")
     .Finally(() =>
 {
@@ -77,16 +76,6 @@ Task("ReleaseNotes")
 
 Task("Clean")
     .IsDependentOn("Clear-Artifacts");
-
-Task("CakeScripts")
-    .Does(() =>
-{
-    var dirToDelete = parameters.Paths.Directories.BuildTools.Combine("Maxfire.CakeScripts");
-    if (DirectoryExists(dirToDelete))
-    {
-        DeleteDirectory(dirToDelete, true);
-    }
-});
 
 Task("Restore")
     .Does(() =>
@@ -182,10 +171,52 @@ Task("Package")
     }
 });
 
+Task("Publish")
+    .IsDependentOn("Publish-CIFeed-MyGet")
+    .IsDependentOn("Publish-ProdFeed-NuGet");
+
+Task("Upload-AppVeyor-Artifacts")
+    .IsDependentOn("Upload-AppVeyor-Debug-Artifacts")
+    .IsDependentOn("Upload-AppVeyor-Release-Artifacts");
+
+///////////////////////////////////////////////////////////////////////////////
+// SECONDARY TASKS (indirect targets)
+///////////////////////////////////////////////////////////////////////////////
+
+// Release artifacts are uploaded for release-line branches (master and support), and Debug
+// artifacts are uploaded for non release-line branches (dev, feature etc.).
+Task("Upload-AppVeyor-Debug-Artifacts")
+    .IsDependentOn("Package")
+    .WithCriteria(() => parameters.IsRunningOnAppVeyor)
+    .WithCriteria(() => parameters.Git.IsDevelopmentLineBranch && parameters.ConfigurationIsDebug)
+    .Does(() =>
+{
+    // TODO: Both NAME.nupkg and NAME.symbols.nupkg?
+    foreach (var package in GetFiles(parameters.Paths.Directories.Artifacts + "/*.nupkg"))
+    {
+        // appveyor PushArtifact <path> [options] (See https://www.appveyor.com/docs/build-worker-api/#push-artifact)
+        AppVeyor.UploadArtifact(package);
+    }
+});
+
+Task("Upload-AppVeyor-Release-Artifacts")
+    .IsDependentOn("Package")
+    .WithCriteria(() => parameters.IsRunningOnAppVeyor)
+    .WithCriteria(() => parameters.Git.IsReleaseLineBranch && parameters.ConfigurationIsRelease)
+    .Does(() =>
+{
+    // TODO: Both NAME.nupkg and NAME.symbols.nupkg?
+    foreach (var package in GetFiles(parameters.Paths.Directories.Artifacts + "/*.nupkg"))
+    {
+        // appveyor PushArtifact <path> [options] (See https://www.appveyor.com/docs/build-worker-api/#push-artifact)
+        AppVeyor.UploadArtifact(package);
+    }
+});
+
 // Debug builds are published to MyGet CI feed
 Task("Publish-CIFeed-MyGet")
     .IsDependentOn("Package")
-    .WithCriteria(() => parameters.ConfigurationIsDebug())
+    .WithCriteria(() => parameters.ConfigurationIsDebug)
     .WithCriteria(() => parameters.ShouldDeployToCIFeed)
     .Does(() =>
 {
@@ -211,7 +242,7 @@ Task("Publish-CIFeed-MyGet")
 // Release builds are published to NuGet.Org production feed
 Task("Publish-ProdFeed-NuGet")
     .IsDependentOn("Package")
-    .WithCriteria(() => parameters.ConfigurationIsRelease())
+    .WithCriteria(() => parameters.ConfigurationIsRelease)
     .WithCriteria(() => parameters.ShouldDeployToProdFeed)
     .Does(() =>
 {
@@ -237,10 +268,6 @@ Task("Publish-ProdFeed-NuGet")
     publishingError = true;
 });
 
-///////////////////////////////////////////////////////////////////////////////
-// SECONDARY TASKS (indirect targets)
-///////////////////////////////////////////////////////////////////////////////
-
 Task("Create-Release-Notes")
     .Does(() =>
 
@@ -263,7 +290,7 @@ Task("Create-Release-Notes")
 Task("Publish-GitHub-Release")
     .IsDependentOn("Package")
     .WithCriteria(() => parameters.ShouldDeployToProdFeed)
-    .WithCriteria(() => parameters.ConfigurationIsRelease())
+    .WithCriteria(() => parameters.ConfigurationIsRelease)
     .Does(() =>
 {
     // TODO: Both NAME.nupkg and NAME.symbols.nupkg?
@@ -284,19 +311,6 @@ Task("Publish-GitHub-Release")
 {
     Information("Publish-GitHub-Release Task failed, but continuing with next Task...");
     publishingError = true;
-});
-
-Task("Upload-AppVeyor-Artifacts")
-    .IsDependentOn("Package")
-    .WithCriteria(() => parameters.IsRunningOnAppVeyor)
-    .Does(() =>
-{
-    // TODO: Both NAME.nupkg and NAME.symbols.nupkg?
-    foreach (var package in GetFiles(parameters.Paths.Directories.Artifacts + "/*.nupkg"))
-    {
-        // appveyor PushArtifact <path> [options] (See https://www.appveyor.com/docs/build-worker-api/#push-artifact)
-        AppVeyor.UploadArtifact(package);
-    }
 });
 
 Task("Clear-Artifacts")
