@@ -2,7 +2,12 @@
   "version": "0.3.0-*",
   "buildOptions": {
     "debugType": "portable",
-    "warningsAsErrors": true
+    "warningsAsErrors": true,
+    "compile": {
+      "includeFiles": [
+        "../CommonAssemblyInfo.cs"
+      ]
+    }
   },
   "configurations": {
     "Debug": {
