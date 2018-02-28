@@ -22,17 +22,7 @@ namespace Maxfire.Skat.UnitTests
         }
 #endif
 
-#if net46
-        private const string FrameworkName = ".NET Framework";
-        public static bool IsCoreCLR()
-        {
-            return false;
-        }
-        public static bool IsDesktopCLR()
-        {
-            return true;
-        }
-#else
+#if NETCORE
         private const string FrameworkName = ".NET Core";
         public static bool IsCoreCLR()
         {
@@ -41,6 +31,16 @@ namespace Maxfire.Skat.UnitTests
         public static bool IsDesktopCLR()
         {
             return false;
+        }
+#else
+        private const string FrameworkName = ".NET Framework";
+        public static bool IsCoreCLR()
+        {
+            return false;
+        }
+        public static bool IsDesktopCLR()
+        {
+            return true;
         }
 #endif
 
@@ -62,7 +62,13 @@ namespace Maxfire.Skat.UnitTests
         public static bool IsRunningOnUnix()
         {
             // See https://github.com/dotnet/corefx/issues/1017
-#if net46
+#if NETCORE
+            // System.Runtime.InteropServices.RuntimeInformation only works on CoreCLR, therefore we determine upfront if running on mono
+            bool result = IsMonoCLR() ||
+                          System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Linux) ||
+                          System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.OSX);
+            return result;
+#else
             var platform = (int)System.Environment.OSVersion.Platform;
             if (platform == (int)System.PlatformID.MacOSX)
             {
@@ -81,12 +87,6 @@ namespace Maxfire.Skat.UnitTests
             }
             // Unknown
             return false;
-#else
-            // System.Runtime.InteropServices.RuntimeInformation only works on CoreCLR, therefore we determine upfront if running on mono
-            bool result = IsMonoCLR() ||
-                          System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Linux) ||
-                          System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.OSX);
-            return result;
 #endif
         }
     }
